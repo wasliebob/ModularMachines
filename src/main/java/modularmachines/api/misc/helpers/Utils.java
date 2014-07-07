@@ -1,4 +1,4 @@
-/** TODO Deprecate */
+/** TODO Deprecate and use WaslieCore for this */
 package modularmachines.api.misc.helpers;
 
 import java.util.Random;
