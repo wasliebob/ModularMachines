@@ -1,0 +1,16 @@
+[
+{
+  "modid": "ModularMachines",
+  "name": "Modular Machines",
+  "description": "Customize your machines",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "http://wasliebob.nl/MM.html",
+  "updateUrl": "",
+  "authors": ["Wasliebob"],
+  "credits": "Creator: Wasliebob",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

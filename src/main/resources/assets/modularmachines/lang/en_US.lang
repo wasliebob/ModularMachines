@@ -1,0 +1,32 @@
+==Blocks==
+tile.modularmachines.block.core.name=Modular Machine Core
+
+tile.modularmachines.block.interacting machine core.name=Interacting Machine Core
+tile.modularmachines.block.heat router.name=Heat Router
+tile.modularmachines.block.fluid heater.name=Fluid Heater
+tile.modularmachines.block.ic power converter.name=Power Converter: IC2
+tile.modularmachines.block.potion tank.name=Potion Tank
+==Items==
+item.modularmachines.item.furnace.name=Machine Upgrade: Furnace
+item.modularmachines.item.macerator.name=Machine Upgrade: Macerator
+item.modularmachines.item.charger.name=Machine Upgrade: Charger
+item.modularmachines.item.heated pickaxe.name=Heated Pickaxe
+item.modularmachines.item.heated shovel.name=Heated Shovel
+item.modularmachines.item.heated axe.name=Heated Axe
+item.modularmachines.item.potion flask.name=Potion Flask
+item.modularmachines.item.programmer.name=Modular Programmer
+item.modularmachines.item.modular wrench.name=Modular Wrench
+item.modularmachines.item.input.name=Modular Machine Input
+item.modularmachines.item.output.name=Modular Machine Output
+item.modularmachines.item.screen.name=Modular Machine Screen
+item.modularmachines.item.transfer.name=Interacting Upgrade: Transfer
+item.modularmachines.item.break.name=Interacting Upgrade: Break
+item.modularmachines.item.vacuum.name=Interacting Upgrade: Vacuum
+item.modularmachines.item.place.name=Interacting Upgrade: Place
+item.modularmachines.item.fertilize.name=Interacting Upgrade: Fertilize
+item.modularmachines.item.elevator.name=Interacting Upgrade: Elevator
+==Text==
+==Misc==
+itemGroup.tabModularMachines=Modular Machines
+mm.warning.1=You are using a unstable build of Modular Machines!
+mm.warning.2=Be aware that this will most likely have a lot of bugs, and is unstable!
