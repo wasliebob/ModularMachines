@@ -6,7 +6,6 @@ import modularmachines.blocks.tiles.TilePotionTank;
 import modularmachines.helpers.PotionHelper;
 import modularmachines.main.init.MMBlocks;
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
