@@ -5,7 +5,6 @@ import java.awt.Color;
 import modularmachines.api.classes.TileInteracting;
 import modularmachines.api.heat.interfaces.IHeatedMachine;
 import modularmachines.api.heat.interfaces.IHeatedTool;
-import modularmachines.api.misc.helpers.Utils;
 import modularmachines.blocks.tiles.TileRouter;
 import modularmachines.helpers.DirectionHelper;
 import modularmachines.items.MMProgrammer;
@@ -24,6 +23,7 @@ import net.minecraftforge.client.event.RenderWorldLastEvent;
 
 import org.lwjgl.opengl.GL11;
 
+import wasliecore.helpers.Utils;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

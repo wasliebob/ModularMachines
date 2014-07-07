@@ -1,7 +1,6 @@
 package modularmachines.items;
 
 import modularmachines.api.classes.TileInteracting;
-import modularmachines.api.misc.helpers.Utils;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMItems;
 import modularmachines.main.init.MMTabs;
@@ -14,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import wasliecore.helpers.Utils;
 import wasliecore.helpers.misc.WrenchHelper;
 import wasliecore.interfaces.IWrench;
 import wasliecore.interfaces.IWrenchable;
