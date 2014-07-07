@@ -2,6 +2,8 @@ package modularmachines.main.init;
 
 import java.util.ArrayList;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+
 import modularmachines.api.main.MMApi;
 import modularmachines.api.misc.InteractingUpgrade;
 import modularmachines.api.misc.Upgrade;
@@ -41,7 +43,150 @@ public class MMRecipes implements IInitalization{
 	}
 	
 	public void initCraftingRecipes(){
+		GameRegistry.addShapedRecipe(new ItemStack(MMBlocks.core_machine), new Object[]{
+			"XYX",
+			"YIY",
+			"XYX",
+			'X', Items.gold_ingot,
+			'Y', Items.redstone,
+			'I', Blocks.iron_block});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(MMBlocks.core_interacting), new Object[]{
+			"XYX",
+			"YIY",
+			"XYX",
+			'X', Items.gold_ingot,
+			'Y', Items.redstone,
+			'I', MMBlocks.core_machine});
+		
+		
+		GameRegistry.addShapedRecipe(new ItemStack(MMBlocks.router), new Object[]{
+			"XYX",
+			"YIY",
+			"XYX",
+			'X', Items.iron_ingot,
+			'Y', Items.coal,
+			'I', Blocks.redstone_block});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(MMBlocks.heater_fluid), new Object[]{
+			"XYX",
+			"YIY",
+			"XYX",
+			'X', Items.lava_bucket,
+			'Y', Items.diamond,
+			'I', MMBlocks.router});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(MMBlocks.tank_potion), new Object[]{
+			"XYX",
+			"YIY",
+			"XYX",
+			'X', Items.glass_bottle,
+			'Y', Blocks.glass,
+			'I', Items.diamond});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(MMItems.input), new Object[]{
+			"XYX",
+			"YIY",
+			"XYX",
+			'X', Items.iron_ingot,
+			'Y', Items.redstone,
+			'I', Items.gold_ingot});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(MMItems.output), new Object[]{
+			"XYX",
+			"YIY",
+			"XYX",
+			'X', Items.redstone,
+			'Y', Items.iron_ingot,
+			'I', Items.gold_ingot});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(MMItems.screen), new Object[]{
+			"XYX",
+			"YIY",
+			"XYX",
+			'X', Items.gold_ingot,
+			'Y', Items.iron_ingot,
+			'I', Blocks.glass});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(MMItems.upgrade_furnace), new Object[]{
+			"XYX",
+			"YIY",
+			"XYX",
+			'X', Items.iron_ingot,
+			'Y', Items.redstone,
+			'I', Blocks.coal_block});
 
+		GameRegistry.addShapedRecipe(new ItemStack(MMItems.upgrade_charger), new Object[]{
+			"XYX",
+			"YIY",
+			"XYX",
+			'X', Items.iron_ingot,
+			'Y', Items.gold_ingot,
+			'I', Blocks.redstone_block});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(MMItems.wrench), new Object[]{
+			"X X",
+			"XYX",
+			" X ",
+			'X', Items.iron_ingot,
+			'Y', Items.diamond});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(MMItems.programmer), new Object[]{
+			"XXX",
+			"XYX",
+			"XXX",
+			'X', Items.iron_ingot,
+			'Y', Blocks.glass});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(MMItems.interacting_break), new Object[]{
+			"XYX",
+			"YIY",
+			"XYX",
+			'X', Items.iron_ingot,
+			'Y', Blocks.piston,
+			'I', Blocks.redstone_block});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(MMItems.interacting_elevator), new Object[]{
+			"XYX",
+			"YIY",
+			"XYX",
+			'X', Items.iron_ingot,
+			'Y', Blocks.piston,
+			'I', Items.ender_pearl});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(MMItems.interacting_fertilize), new Object[]{
+			"XYX",
+			"YIY",
+			"XYX",
+			'X', Items.iron_ingot,
+			'Y', Items.diamond,
+			'I', new ItemStack(Items.dye, 1, 14)});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(MMItems.interacting_place), new Object[]{
+			"XYX",
+			"YIY",
+			"XYX",
+			'X', Items.iron_ingot,
+			'Y', Blocks.piston,
+			'I', Items.diamond});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(MMItems.interacting_transfer), new Object[]{
+			"XYX",
+			"WIW",
+			"XYX",
+			'X', Items.iron_ingot,
+			'Y', Items.ender_pearl,
+			'W', Blocks.stone,
+			'I', Items.diamond});
+		
+//		GameRegistry.addShapedRecipe(new ItemStack(MMItems.interacting_vacuum), new Object[]{
+//			"XYX",
+//			"WIW",
+//			"XYX",
+//			'X', Items.iron_ingot,
+//			'Y', Items.ender_pearl,
+//			'W', Items.gold_ingot,
+//			'I', Blocks.hopper});
 	}
 	
 	public void initMaceratorRecipes(){
