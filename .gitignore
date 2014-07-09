@@ -1,4 +1,5 @@
 /*
+!LICENSE
 !.gitignore
 !/deps/
 !/deps/*
@@ -9,4 +10,3 @@
 gradlew
 gradlew.bat
 build.gradle
-LICENSE
