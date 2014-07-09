@@ -16,7 +16,7 @@ public class GuiWarningOptions extends GuiScreen{
     String url_bug = "http://www.wasliebob.nl/";
     String url_changelog = "https://dl.dropboxusercontent.com/u/46500170/Site/MM/MM_" + MM.version + ".txt";
     String url_developer = "http://www.wasliebob.nl/about.php";
-    String url_download = "https://wasliebob.ci.cloudbees.com/job/Modular%20Machines/";
+    String url_download = "https://wasliebob.ci.cloudbees.com/job/ModularMachines/";
     
     @SuppressWarnings("unchecked")
 	@Override

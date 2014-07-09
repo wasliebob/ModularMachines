@@ -13,6 +13,7 @@ public class MMInit implements IInitalization{
 		items.preInit();
 		recipes.preInit();
 		integration.preInit();
+		misc.preInit();
 	}
 
 	@Override
@@ -22,6 +23,7 @@ public class MMInit implements IInitalization{
 		recipes.init();
 		events.init();
 		integration.init();
+		misc.init();
 		packetPipeline.initialise();
 	}
 	
@@ -31,12 +33,14 @@ public class MMInit implements IInitalization{
 		items.postInit();
 		recipes.postInit();
 		integration.postInit();
+		misc.postInit();
 		packetPipeline.postInitialise();
 	}
 	public static MMRecipes recipes = new MMRecipes();
 	public static MMBlocks blocks = new MMBlocks();
 	public static MMItems items = new MMItems();
 	public static MMEvents events = new MMEvents();
+	public static MMMisc misc = new MMMisc();
 	public static IntegrationLoader integration = new IntegrationLoader();
 	public static PacketPipeline packetPipeline = new PacketPipeline();
 	public static SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel(MM.alias + "|PACKET");
