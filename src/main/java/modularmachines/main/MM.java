@@ -26,22 +26,19 @@ public class MM {
     public static MMInit init = new MMInit();
     
 	@EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {
+    public void preInit(FMLPreInitializationEvent event){
 		proxy.load();
 		init.preInit();
     }
     
     @EventHandler
-    public void init(FMLInitializationEvent event)
-    {
+    public void init(FMLInitializationEvent event){
     	init.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     }
     
     @EventHandler
-    public void postInit(FMLPostInitializationEvent evt)
-    {
+    public void postInit(FMLPostInitializationEvent evt){
     	init.postInit();
     }
 }
