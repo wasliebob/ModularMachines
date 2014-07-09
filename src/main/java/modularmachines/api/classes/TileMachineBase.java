@@ -35,8 +35,7 @@ public class TileMachineBase extends TileEntity implements ISidedInventory, IHea
 	public boolean enabled;
 	
 	@Override
-	public void updateEntity()
-	{		
+	public void updateEntity(){		
 		if(!worldObj.isRemote && enabled == true){
 			ItemStack fuel = getStackInSlot(1);
 			ItemStack upgrade = getStackInSlot(3);
@@ -48,8 +47,7 @@ public class TileMachineBase extends TileEntity implements ISidedInventory, IHea
 		}
 	}
 	
-	public void addHeat()
-	{
+	public void addHeat(){
 		if(getStackInSlot(1).stackSize > 1){
 			heat.increaseHeat(MMHeatFuels.getFuel(getStackInSlot(1).getItem()));
 			stacks[1].stackSize--;
@@ -62,8 +60,7 @@ public class TileMachineBase extends TileEntity implements ISidedInventory, IHea
 	}
 	
 	@Override
-	public void writeToNBT(NBTTagCompound nbt)
-	{
+	public void writeToNBT(NBTTagCompound nbt){
 		super.writeToNBT(nbt);
 		nbt.setInteger("ENERGY", this.heat.heat);
 		nbt.setBoolean("ENABLED", this.enabled);
@@ -91,8 +88,7 @@ public class TileMachineBase extends TileEntity implements ISidedInventory, IHea
 	}
 		
 	@Override
-	public void readFromNBT(NBTTagCompound nbt)
-	{
+	public void readFromNBT(NBTTagCompound nbt){
 		super.readFromNBT(nbt);
 		this.enabled = nbt.getBoolean("ENABLED");
 		this.heat.setHeat(nbt.getInteger("ENERGY"));
@@ -135,8 +131,7 @@ public class TileMachineBase extends TileEntity implements ISidedInventory, IHea
 	}
 	
 	@Override
-	public ItemStack getStackInSlot(int i) 
-	{
+	public ItemStack getStackInSlot(int i) {
 		   if(i > stacks.length)
 	            return stacks[0];
 	            else
@@ -144,8 +139,7 @@ public class TileMachineBase extends TileEntity implements ISidedInventory, IHea
 	}
 
 	@Override
-	public void setInventorySlotContents(int i, ItemStack itemstack) 
-	{	
+	public void setInventorySlotContents(int i, ItemStack itemstack) {	
 		stacks[i] = itemstack;
 
         if (itemstack != null && itemstack.stackSize > getInventoryStackLimit())
@@ -155,46 +149,33 @@ public class TileMachineBase extends TileEntity implements ISidedInventory, IHea
 	}
 	
 	@Override
-	public ItemStack decrStackSize(int i, int j)
-	{
-		if (stacks[i] != null)
-        {
-
-            if (stacks[i].stackSize <= j)
-            {
+	public ItemStack decrStackSize(int i, int j){
+		if (stacks[i] != null){
+            if (stacks[i].stackSize <= j){
                 ItemStack itemstack = stacks[i];
                 stacks[i] = null;
                 return itemstack;
-            }
-            else
-            {
+            }else{
                 ItemStack itemstack1 = stacks[i].splitStack(j);
 
-                if (stacks[i].stackSize == 0)
-                {
+                if (stacks[i].stackSize == 0){
                 	stacks[i] = null;
                 }
-
+                
                 return itemstack1;
             }
-        }
-        else
-        {
+        }else{
             return null;
         }
 	}
 
     @Override
-    public ItemStack getStackInSlotOnClosing(int i)
-{
-        if (stacks[i] != null)
-        {
+    public ItemStack getStackInSlotOnClosing(int i){
+        if (stacks[i] != null){
             ItemStack itemstack = stacks[i];
             stacks[i] = null;
             return itemstack;
-        }
-        else
-        {
+        }else{
             return null;
         }
     }

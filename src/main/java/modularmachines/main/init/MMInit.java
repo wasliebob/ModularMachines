@@ -16,8 +16,7 @@ public class MMInit implements IInitalization{
 	}
 
 	@Override
-	public void init()
-	{
+	public void init(){
 		blocks.init();
 		items.init();
 		recipes.init();
@@ -27,8 +26,7 @@ public class MMInit implements IInitalization{
 	}
 	
 	@Override
-	public void postInit()
-	{
+	public void postInit(){
 		blocks.postInit();
 		items.postInit();
 		recipes.postInit();

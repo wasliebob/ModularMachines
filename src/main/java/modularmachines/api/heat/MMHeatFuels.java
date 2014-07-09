@@ -5,16 +5,16 @@ import java.util.HashMap;
 import net.minecraft.item.Item;
 
 public class MMHeatFuels {
-	public static void addFuel(Item item, int amount){
-		heatFuel.put(item, amount);
+	public static void addFuel(Item Item, int amount){
+		heatFuel.put(Item, amount);
 	}
 	
-	public static int getFuel(Item item){
-		return heatFuel.get(item);
+	public static int getFuel(Item Item){
+		return heatFuel.get(Item);
 	}
 	
-	public static boolean containsItem(Item item){
-		return heatFuel.containsKey(item);
+	public static boolean containsItem(Item Item){
+		return heatFuel.containsKey(Item);
 	}
 	public static HashMap<Item, Integer> heatFuel = new HashMap<Item, Integer>();
 }

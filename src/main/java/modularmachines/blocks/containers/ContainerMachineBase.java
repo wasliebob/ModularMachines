@@ -107,8 +107,7 @@ public class ContainerMachineBase extends Container {
         		return 1;
         }
         
-        public boolean doesItemFitInSlot(ItemStack stack)
-        {
+        public boolean doesItemFitInSlot(ItemStack stack){
         	if(MMUpgrades.containsItem(stack.getItem()))
         		return true;
         	else if(MMHeatFuels.containsItem(stack.getItem()))

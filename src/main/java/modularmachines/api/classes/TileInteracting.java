@@ -25,6 +25,7 @@ public class TileInteracting extends TileEntity implements IHeatedMachine{
 		meta = -1;
 		programmerMode = 0;
 		up = 2;
+		enabled = true;
 	}
 	public HeatStorage heat;
 	public Item upgrade;
@@ -43,7 +44,6 @@ public class TileInteracting extends TileEntity implements IHeatedMachine{
 			MMInteractingUpgrades.getUpgrade(upgrade).action.onUpdate(this);
 		}
 	}
-	
 	
 	@Override
 	public void writeToNBT(NBTTagCompound nbt)

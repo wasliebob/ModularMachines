@@ -2,8 +2,7 @@ package modularmachines.main.init;
 
 import java.util.ArrayList;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-
+import modularmachines.api.heat.MMHeatFluids;
 import modularmachines.api.main.MMApi;
 import modularmachines.api.misc.InteractingUpgrade;
 import modularmachines.api.misc.Upgrade;
@@ -23,6 +22,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import wasliecore.interfaces.IInitalization;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class MMRecipes implements IInitalization{
 	@Override
@@ -179,14 +179,14 @@ public class MMRecipes implements IInitalization{
 			'W', Blocks.stone,
 			'I', Items.diamond});
 		
-//		GameRegistry.addShapedRecipe(new ItemStack(MMItems.interacting_vacuum), new Object[]{
-//			"XYX",
-//			"WIW",
-//			"XYX",
-//			'X', Items.iron_ingot,
-//			'Y', Items.ender_pearl,
-//			'W', Items.gold_ingot,
-//			'I', Blocks.hopper});
+		GameRegistry.addShapedRecipe(new ItemStack(MMItems.interacting_vacuum), new Object[]{
+			"XYX",
+			"WIW",
+			"XYX",
+			'X', Items.iron_ingot,
+			'Y', Items.ender_pearl,
+			'W', Items.gold_ingot,
+			'I', Blocks.hopper});
 	}
 	
 	public void initMaceratorRecipes(){
@@ -217,11 +217,12 @@ public class MMRecipes implements IInitalization{
 	}
 	
 	public void initFluidFuels(){
-		MMApi.addHeatFuel(Blocks.lava, 10);
+		MMHeatFluids.addFuel(Blocks.lava, 10);
 	}
 	
 	public void initFuels(){
 		MMApi.addFuel(Items.coal, 10);
+
 		MMApi.addFuel(Item.getItemFromBlock(Blocks.log), 5);
 		MMApi.addFuel(Item.getItemFromBlock(Blocks.coal_block), 10*9);
 	}

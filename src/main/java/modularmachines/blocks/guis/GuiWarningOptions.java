@@ -26,6 +26,7 @@ public class GuiWarningOptions extends GuiScreen{
         /** Exit Button */
         this.buttonList.add(new GuiButton(0, (this.width / 2) - 175, (this.height - 24), 350, 20, "Back"));
     
+        /** Extra Buttons */
         this.buttonList.add(new GuiButton(1, (this.width / 2) - 175, (this.height - 64), 350, 20, "Report a bug"));
         this.buttonList.add(new GuiButton(2, (this.width / 2) - 175, (this.height - 84), 350, 20, "View Changelog"));
         this.buttonList.add(new GuiButton(3, (this.width / 2) - 175, (this.height - 104), 350, 20, "About The Developer"));
