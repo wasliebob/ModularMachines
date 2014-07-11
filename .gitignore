@@ -2,8 +2,8 @@
 !.gitignore
 !/deps/
 !/deps/*
-/src/
-/src/*
+!/src/
+!/src/*
 /gradle/
 /gradle/*
 gradlew
