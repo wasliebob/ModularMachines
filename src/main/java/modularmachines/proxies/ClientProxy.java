@@ -4,10 +4,12 @@ import modularmachines.api.classes.TileInteracting;
 import modularmachines.api.classes.TileMachineBase;
 import modularmachines.blocks.tiles.TilePotionTank;
 import modularmachines.blocks.tiles.TileRouter;
+import modularmachines.blocks.tiles.TileTransporter;
 import modularmachines.client.renders.TileInteractingRenderer;
 import modularmachines.client.renders.TileMachineBaseRenderer;
 import modularmachines.client.renders.TilePotionTankRenderer;
 import modularmachines.client.renders.TileRouterRenderer;
+import modularmachines.client.renders.TileTransporterRenderer;
 import modularmachines.events.MMKeyHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.World;
@@ -29,6 +31,8 @@ public class ClientProxy extends CommonProxy{
 		ClientRegistry.bindTileEntitySpecialRenderer(TileInteracting.class, new TileInteractingRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileRouter.class, new TileRouterRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TilePotionTank.class, new TilePotionTankRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileTransporter.class, new TileTransporterRenderer());
+
 	}
 	
 	@Override

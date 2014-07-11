@@ -15,6 +15,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import wasliecore.interfaces.IWrenchable;
@@ -88,12 +89,27 @@ public class MMBlockInteracting extends BlockContainer implements IWrenchable{
             return false;
     }
 	
-	
-	
-	
 	@Override
     public void registerBlockIcons(IIconRegister ir) 
 	{
         blockIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "core");
 	}
+	
+	@Override
+    public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z){
+        int side = target.sideHit;
+        ForgeDirection dir = ForgeDirection.getOrientation(side);
+        TileEntity te = world.getTileEntity(target.blockX, target.blockY, target.blockZ);
+        
+        if(te != null && te instanceof TileInteracting){
+        	TileInteracting tr = (TileInteracting)te;
+        	if(dir == tr.input)
+        		return new ItemStack(MMItems.input);
+        	else if(dir == tr.output)
+        		return new ItemStack(MMItems.output);
+        	else if(dir == tr.upgradeSide)
+        		return new ItemStack(tr.upgrade);
+        }
+        return super.getPickBlock(target, world, x, y, z);
+    }
 }

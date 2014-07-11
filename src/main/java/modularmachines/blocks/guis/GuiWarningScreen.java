@@ -21,8 +21,8 @@ public class GuiWarningScreen extends GuiScreen{
     public void initGui(){
         Keyboard.enableRepeatEvents(true);
         this.buttonList.clear();
-        this.buttonList.add(new GuiButton(0, (this.width / 2) - 175, (this.height - 24), 350, 20, "I Agree"));
-        this.buttonList.add(new GuiButton(1, (this.width / 2) - 175, (this.height - 44), 350, 20, "Options"));
+        this.buttonList.add(new GuiButton(0, (this.width / 2) - 175, (this.height - 44), 350, 20, "I Agree"));
+        this.buttonList.add(new GuiButton(1, (this.width / 2) - 175, (this.height - 24), 350, 20, "Options"));
 
     }
 

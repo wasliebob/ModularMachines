@@ -1,6 +1,5 @@
 package modularmachines.blocks;
 
-import wasliecore.interfaces.IWrenchable;
 import modularmachines.blocks.tiles.TileFluidHeater;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMItems;
@@ -12,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
+import wasliecore.interfaces.IWrenchable;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class MMBlockFluidHeater extends BlockContainer implements IWrenchable{

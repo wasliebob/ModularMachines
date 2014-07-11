@@ -116,6 +116,14 @@ public class MMRecipes implements IInitalization{
 			'Y', Items.redstone,
 			'I', Blocks.coal_block});
 
+		GameRegistry.addShapedRecipe(new ItemStack(MMItems.upgrade_macerator), new Object[]{
+			"XYX",
+			"YIY",
+			"XYX",
+			'X', Items.iron_ingot,
+			'Y', Items.flint,
+			'I', Items.diamond});
+		
 		GameRegistry.addShapedRecipe(new ItemStack(MMItems.upgrade_charger), new Object[]{
 			"XYX",
 			"YIY",
@@ -186,6 +194,15 @@ public class MMRecipes implements IInitalization{
 			'X', Items.iron_ingot,
 			'Y', Items.ender_pearl,
 			'W', Items.gold_ingot,
+			'I', Blocks.hopper});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(MMBlocks.transporter), new Object[]{
+			"XYX",
+			"WIW",
+			"XYX",
+			'X', Items.iron_ingot,
+			'Y', Items.ender_pearl,
+			'W', Blocks.chest,
 			'I', Blocks.hopper});
 	}
 	

@@ -8,8 +8,10 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import wasliecore.interfaces.IWrenchable;
@@ -37,18 +39,26 @@ public class MMBlockRouter extends BlockContainer implements IWrenchable{
 	{
 		TileRouter te = (TileRouter)world.getTileEntity(x, y, z);
 		
-		if(!world.isRemote && te != null && player.getHeldItem() != null){
+		if(!world.isRemote && te != null && player.getHeldItem() != null && player.getHeldItem().getItem() != MMItems.wrench){
 			if(player.getHeldItem().getItem() == MMItems.programmer){
 				player.addChatComponentMessage(new ChatComponentText("Heat: " + te.heat.getHeat() + "/" + te.heat.getMaxHeat()));
-			}else if(player.getHeldItem().getItem() == MMItems.input && te.output != ForgeDirection.getOrientation(side)){
+			}else if(player.getHeldItem().getItem() == MMItems.input && te.input == null && te.output != ForgeDirection.getOrientation(side)){
 				te.input = ForgeDirection.getOrientation(side);
+				if(player.getHeldItem().stackSize > 1)
+					player.setCurrentItemOrArmor(0, new ItemStack(player.getHeldItem().getItem(), player.getHeldItem().stackSize--, player.getHeldItem().getItemDamage()));
+				else
+					player.setCurrentItemOrArmor(0, null);
 				world.markBlockForUpdate(x, y, z);
-			}else if(player.getHeldItem().getItem() == MMItems.output && te.input != ForgeDirection.getOrientation(side)){
+			}else if(player.getHeldItem().getItem() == MMItems.output && te.output == null && te.input != ForgeDirection.getOrientation(side)){
 				te.output = ForgeDirection.getOrientation(side);
+				if(player.getHeldItem().stackSize > 1)
+					player.setCurrentItemOrArmor(0, new ItemStack(player.getHeldItem().getItem(), player.getHeldItem().stackSize--, player.getHeldItem().getItemDamage()));
+				else
+					player.setCurrentItemOrArmor(0, null);
 				world.markBlockForUpdate(x, y, z);
 			}
 		}
-		return true;
+        return false;
     }
 	
 	@Override
@@ -56,4 +66,20 @@ public class MMBlockRouter extends BlockContainer implements IWrenchable{
 	{
         blockIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "core");
 	}
+	
+	@Override
+    public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z){
+        int side = target.sideHit;
+        ForgeDirection dir = ForgeDirection.getOrientation(side);
+        TileEntity te = world.getTileEntity(target.blockX, target.blockY, target.blockZ);
+        
+        if(te != null && te instanceof TileRouter){
+        	TileRouter tr = (TileRouter)te;
+        	if(dir == tr.input)
+        		return new ItemStack(MMItems.input);
+        	else if(dir == tr.output)
+        		return new ItemStack(MMItems.output);
+        }
+        return super.getPickBlock(target, world, x, y, z);
+    }
 }

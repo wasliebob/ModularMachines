@@ -1,6 +1,9 @@
 package modularmachines.items;
 
 import modularmachines.api.classes.TileInteracting;
+import modularmachines.api.classes.TileMachineBase;
+import modularmachines.blocks.tiles.TileRouter;
+import modularmachines.blocks.tiles.TileTransporter;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMItems;
 import modularmachines.main.init.MMTabs;
@@ -72,15 +75,48 @@ public class MMWrench extends Item implements IWrench{
 							Utils.dropBlock(world, x, y, z, new ItemStack(ti.upgrade));
 						ti.upgradeSide = null;
 						ti.upgrade = null;
+					}else if(ti.input == dir){
+						ti.input = null;
+						if(!world.isRemote)
+							Utils.dropBlock(world, x, y, z, new ItemStack(MMItems.input));
+					}else if(ti.output == dir){
+						ti.output = null;
+						if(!world.isRemote)
+							Utils.dropBlock(world, x, y, z, new ItemStack(MMItems.output));
 					}
-					
+				}else if(te instanceof TileMachineBase){
+					TileMachineBase ti = (TileMachineBase)te;
 					if(ti.input == dir){
 						ti.input = null;
 						if(!world.isRemote)
 							Utils.dropBlock(world, x, y, z, new ItemStack(MMItems.input));
+					}else if(ti.output == dir){
+						ti.output = null;
+						if(!world.isRemote)
+							Utils.dropBlock(world, x, y, z, new ItemStack(MMItems.output));
+					}else if(ti.screen == dir){
+						ti.screen = null;
+						if(!world.isRemote)
+							Utils.dropBlock(world, x, y, z, new ItemStack(MMItems.screen));
 					}
-					
-					if(ti.output == dir){
+				}else if(te instanceof TileRouter){
+					TileRouter ti = (TileRouter)te;
+					if(ti.input == dir){
+						ti.input = null;
+						if(!world.isRemote)
+							Utils.dropBlock(world, x, y, z, new ItemStack(MMItems.input));
+					}else if(ti.output == dir){
+						ti.output = null;
+						if(!world.isRemote)
+							Utils.dropBlock(world, x, y, z, new ItemStack(MMItems.output));
+					}
+				}else if(te instanceof TileTransporter){
+					TileTransporter ti = (TileTransporter)te;
+					if(ti.input == dir){
+						ti.input = null;
+						if(!world.isRemote)
+							Utils.dropBlock(world, x, y, z, new ItemStack(MMItems.input));
+					}else if(ti.output == dir){
 						ti.output = null;
 						if(!world.isRemote)
 							Utils.dropBlock(world, x, y, z, new ItemStack(MMItems.output));
