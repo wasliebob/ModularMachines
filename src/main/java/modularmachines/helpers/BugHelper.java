@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import modularmachines.api.misc.Bug;
-import modularmachines.main.MM;
 import wasliecore.helpers.FileHelper;
 import wasliecore.main.WaslieCore;
 
@@ -32,7 +31,7 @@ public class BugHelper {
 			writer.println("Mod Name: " + bug.modName);
 			writer.println("Minecraft Version: " + bug.mcVersion);
 			
-			writer.println(Mod "Version: " + bug.modVersion);
+			writer.println("Mod Version: " + bug.modVersion);
 			writer.println(bug.bug);
 
 			writer.close();
