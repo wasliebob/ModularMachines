@@ -1,7 +1,7 @@
 package modularmachines.api.heat.enums;
 
 public enum EnumHeatConverting {
-	EU(100);
+	EU(10), COFH(10);
 	private int value;
 	
     private EnumHeatConverting(int heat) {

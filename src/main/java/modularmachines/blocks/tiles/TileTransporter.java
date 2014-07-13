@@ -12,9 +12,9 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class TileTransporter extends TileEntity{
 	public TileTransporter(){
-		range = 10;
+		range = 15;
 		input = null;
-		output = null;
+		output = null;		
 	}
 	public ForgeDirection input;
 	public ForgeDirection output;

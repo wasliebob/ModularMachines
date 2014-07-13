@@ -204,6 +204,43 @@ public class MMRecipes implements IInitalization{
 			'Y', Items.ender_pearl,
 			'W', Blocks.chest,
 			'I', Blocks.hopper});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(MMItems.crystal_energy), new Object[]{
+			"XYX",
+			"YIY",
+			"XYX",
+			'X', Items.iron_ingot,
+			'Y', Blocks.redstone_block,
+			'I', Items.diamond});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(MMItems.stick_iron), new Object[]{
+			"X",
+			"X",
+			'X', Items.iron_ingot});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(MMItems.axe_heated), new Object[]{
+			" XY",
+			" IX",
+			" I ",
+			'X', Items.iron_ingot,
+			'Y', MMItems.crystal_energy,
+			'I', MMItems.stick_iron});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(MMItems.pickaxe_heated), new Object[]{
+			"XYX",
+			" I ",
+			" I ",
+			'X', Items.iron_ingot,
+			'Y', MMItems.crystal_energy,
+			'I', MMItems.stick_iron});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(MMItems.shovel_heated), new Object[]{
+			" X ",
+			" Y ",
+			" I ",
+			'X', Items.iron_ingot,
+			'Y', MMItems.crystal_energy,
+			'I', MMItems.stick_iron});
 	}
 	
 	public void initMaceratorRecipes(){

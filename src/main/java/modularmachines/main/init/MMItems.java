@@ -3,6 +3,7 @@ package modularmachines.main.init;
 import java.awt.Color;
 
 import modularmachines.items.MMInteractingUpgrade;
+import modularmachines.items.MMItem;
 import modularmachines.items.MMProgrammer;
 import modularmachines.items.MMSpecialUpgrade;
 import modularmachines.items.MMSpecialUpgradeScreen;
@@ -55,12 +56,16 @@ public class MMItems implements IInitalization{
 		output = new MMSpecialUpgrade("output", ColorHelper.getColorCodeFromColor(Color.red));
 		screen = new MMSpecialUpgradeScreen();
 		wrench = new MMWrench("modular wrench");
+		crystal_energy = new MMItem(1, "energy crystal", "crystal_energy");
+		stick_iron = new MMItem(64, "iron stick", "stick_iron");
 	}
 	public static MMProgrammer programmer;
 	public static MMSpecialUpgrade input;
 	public static MMSpecialUpgrade output;
 	public static MMSpecialUpgradeScreen screen;
 	public static MMWrench wrench;
+	public static MMItem crystal_energy;
+	public static MMItem stick_iron;
 
 	public void initTools(){
 		heated = EnumHelper.addToolMaterial("HEATED", 4, -1, 10F, 0F, 0);
