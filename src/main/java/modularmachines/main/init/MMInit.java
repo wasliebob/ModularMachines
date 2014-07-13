@@ -1,6 +1,7 @@
 package modularmachines.main.init;
 
 import net.minecraft.nbt.NBTTagCompound;
+import modularmachines.helpers.BugHelper;
 import modularmachines.main.MM;
 import modularmachines.network.PacketPipeline;
 import wasliecore.helpers.IMCHelper;
@@ -13,6 +14,8 @@ import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 public class MMInit implements IInitalization{
 	@Override
 	public void preInit(){
+		BugHelper.createBugFolder();
+		
 		blocks.preInit();
 		items.preInit();
 		recipes.preInit();

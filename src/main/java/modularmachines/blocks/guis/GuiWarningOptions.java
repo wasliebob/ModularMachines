@@ -13,7 +13,6 @@ public class GuiWarningOptions extends GuiScreen{
 		this.parent = parent;
 	}
     private GuiScreen parent;
-    String url_bug = "http://www.wasliebob.nl/";
     String url_changelog = "https://dl.dropboxusercontent.com/u/46500170/Site/MM/MM_" + MM.version + ".txt";
     String url_developer = "http://www.wasliebob.nl/about.php";
     String url_download = "https://wasliebob.ci.cloudbees.com/job/ModularMachines/";
@@ -39,7 +38,7 @@ public class GuiWarningOptions extends GuiScreen{
     	if (button.id == 0)
     		this.mc.displayGuiScreen(this.parent);
     	if(button.id == 1)
-    		WebHelper.openURL(this.url_bug);
+    		this.mc.displayGuiScreen(new GuiBugReport(this));
     	if(button.id == 2)
     		WebHelper.openURL(this.url_changelog);
     	if(button.id == 3)

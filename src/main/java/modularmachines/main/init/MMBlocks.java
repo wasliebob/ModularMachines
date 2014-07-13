@@ -46,7 +46,7 @@ public class MMBlocks implements IInitalization{
 	public static MMBlockInteracting core_interacting;
 	public static MMBlockPotionTank tank_potion;
 	public static MMBlockTransporter transporter;
-
+	
 	public static MMBlockPowerConverterIC2 power_converter_ic2;
 	public static MMBlockPowerConverterCoFH power_converter_cofh;
 
