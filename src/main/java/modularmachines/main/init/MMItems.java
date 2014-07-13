@@ -66,7 +66,7 @@ public class MMItems implements IInitalization{
 	public static MMWrench wrench;
 	public static MMItem crystal_energy;
 	public static MMItem stick_iron;
-
+	
 	public void initTools(){
 		heated = EnumHelper.addToolMaterial("HEATED", 4, -1, 10F, 0F, 0);
 		pickaxe_heated = new HeatedPickaxe("heated pickaxe");

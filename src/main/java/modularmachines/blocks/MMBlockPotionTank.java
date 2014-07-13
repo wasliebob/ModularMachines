@@ -3,20 +3,16 @@ package modularmachines.blocks;
 import java.util.ArrayList;
 import java.util.List;
 
-import modularmachines.blocks.itemblocks.ItemBlockPotionTank;
 import modularmachines.blocks.tiles.TilePotionTank;
-import modularmachines.helpers.PotionHelper;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMItems;
 import modularmachines.main.init.MMTabs;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemPotion;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
@@ -37,7 +33,7 @@ public class MMBlockPotionTank extends BlockContainer implements IWrenchable{
 
 		this.name = name;
 		
-		GameRegistry.registerBlock(this, ItemBlockPotionTank.class, this.getUnlocalizedName());
+		GameRegistry.registerBlock(this, this.getUnlocalizedName());
 	}
 	String name;
 	public IIcon icon_fluid;
@@ -135,24 +131,5 @@ public class MMBlockPotionTank extends BlockContainer implements IWrenchable{
 	{
         blockIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "tank");
         icon_fluid = ir.registerIcon(MM.modName.toLowerCase() + ":" + "fluid");
-	}
-	
-	public void breakBlock(World world, int x, int y, int z, Block block, int par6) {
-		TileEntity tile = world.getTileEntity(x, y, z);    
-		if(tile instanceof TilePotionTank){
-			TilePotionTank te = (TilePotionTank)tile;
-			ItemStack item = new ItemStack(ItemBlockPotionTank.getItemFromBlock(this));
-			if(!item.hasTagCompound())
-				item.setTagCompound(new NBTTagCompound());
-			
-			if(te.tank.potion != null)
-				item.getTagCompound().setInteger("potion", PotionHelper.getIDFromPotion(te.tank.potion));
-			
-			item.getTagCompound().setInteger("amount", te.tank.amount);
-			item.getTagCompound().setInteger("capacity", te.tank.capacity);
-			dropBlockAsItem(world, x, y, z, item);	
-			
-			world.removeTileEntity(x, y, z);
-		}
 	}
 }

@@ -27,7 +27,6 @@ public class BugHelper {
 			file.createNewFile();
 			PrintWriter writer = new PrintWriter(WaslieCore.configLocation + FileHelper.getSlash() + "Bugs" + FileHelper.getSlash() + fileName + ".txt", "UTF-8");
 			
-			/** TODO Make the file with all arguments in Bug */
 			writer.println("Mod Name: " + bug.modName);
 			writer.println("Minecraft Version: " + bug.mcVersion);
 			

@@ -60,6 +60,9 @@ public class HeatedShovel extends ItemSpade implements IHeatContainer, IHeatedTo
 	
 	@Override
     public boolean onBlockDestroyed(ItemStack stack, World world, Block block, int x, int y, int z, EntityLivingBase living){
+		if(living instanceof EntityPlayer && ((EntityPlayer)living).capabilities.isCreativeMode)
+			return true;
+		
 		if(getHeatStored(stack) >= calculateCost(stack)){
 			decreaseHeatStored(stack, calculateCost(stack));
 		}
@@ -77,9 +80,12 @@ public class HeatedShovel extends ItemSpade implements IHeatContainer, IHeatedTo
 	
 	@Override
     public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5){
-    	super.onUpdate(stack, world, entity, par4, par5);
-		if(!stack.hasTagCompound())
+    	super.onUpdate(stack, world, entity, par4, par5);	
+    	if(!stack.hasTagCompound())
     		stack.setTagCompound(new NBTTagCompound());
+    	
+		if(entity instanceof EntityPlayer && ((EntityPlayer)entity).capabilities.isCreativeMode)
+			this.setHeatStored(stack, this.getCapacity(stack));
     }
 
     @Override

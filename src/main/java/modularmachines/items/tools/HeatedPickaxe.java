@@ -63,6 +63,9 @@ public class HeatedPickaxe extends ItemPickaxe implements IHeatContainer, IHeate
 	
 	@Override
     public boolean onBlockDestroyed(ItemStack stack, World world, Block block, int x, int y, int z, EntityLivingBase living){
+		if(living instanceof EntityPlayer && ((EntityPlayer)living).capabilities.isCreativeMode)
+			return true;
+		
 		if(getHeatStored(stack) >= calculateCost(stack)){
 			decreaseHeatStored(stack, calculateCost(stack));
 		}
@@ -83,6 +86,9 @@ public class HeatedPickaxe extends ItemPickaxe implements IHeatContainer, IHeate
     	super.onUpdate(stack, world, entity, par4, par5);
 		if(!stack.hasTagCompound())
     		stack.setTagCompound(new NBTTagCompound());
+		
+		if(entity instanceof EntityPlayer && ((EntityPlayer)entity).capabilities.isCreativeMode)
+			this.setHeatStored(stack, this.getCapacity(stack));
     }
 
     @Override

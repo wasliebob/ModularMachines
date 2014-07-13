@@ -28,7 +28,7 @@ public class GuiBugReport extends GuiScreen{
         text.setFocused(true);
         text.setText("Bug");
         text.setMaxStringLength(1000);
-        
+
         name = new GuiTextField(Minecraft.getMinecraft().fontRenderer, (this.width / 2) - 175, (this.height - 204), 350, 20);
         name.setFocused(false);
         name.setText("FileName");
