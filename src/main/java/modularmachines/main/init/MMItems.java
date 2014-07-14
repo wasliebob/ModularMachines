@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import modularmachines.items.MMInteractingUpgrade;
 import modularmachines.items.MMItem;
+import modularmachines.items.MMItemGuide;
 import modularmachines.items.MMProgrammer;
 import modularmachines.items.MMSpecialUpgrade;
 import modularmachines.items.MMSpecialUpgradeScreen;
@@ -55,6 +56,7 @@ public class MMItems implements IInitalization{
 		input = new MMSpecialUpgrade("input", ColorHelper.getColorCodeFromColor(Color.cyan));
 		output = new MMSpecialUpgrade("output", ColorHelper.getColorCodeFromColor(Color.red));
 		screen = new MMSpecialUpgradeScreen();
+		guide = new MMItemGuide();
 		wrench = new MMWrench("modular wrench");
 		crystal_energy = new MMItem(1, "energy crystal", "crystal_energy");
 		stick_iron = new MMItem(64, "iron stick", "stick_iron");
@@ -66,7 +68,8 @@ public class MMItems implements IInitalization{
 	public static MMWrench wrench;
 	public static MMItem crystal_energy;
 	public static MMItem stick_iron;
-	
+	public static MMItemGuide guide;
+
 	public void initTools(){
 		heated = EnumHelper.addToolMaterial("HEATED", 4, -1, 10F, 0F, 0);
 		pickaxe_heated = new HeatedPickaxe("heated pickaxe");

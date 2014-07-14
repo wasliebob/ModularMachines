@@ -43,6 +43,9 @@ public class MMRecipes implements IInitalization{
 	}
 	
 	public void initCraftingRecipes(){
+		GameRegistry.addShapelessRecipe(new ItemStack(MMItems.guide), 
+				new ItemStack(Items.book), new ItemStack(Items.iron_ingot));
+		
 		GameRegistry.addShapedRecipe(new ItemStack(MMBlocks.core_machine), new Object[]{
 			"XYX",
 			"YIY",
@@ -225,7 +228,7 @@ public class MMRecipes implements IInitalization{
 			'X', Items.iron_ingot,
 			'Y', MMItems.crystal_energy,
 			'I', MMItems.stick_iron});
-		
+
 		GameRegistry.addShapedRecipe(new ItemStack(MMItems.pickaxe_heated), new Object[]{
 			"XYX",
 			" I ",

@@ -1,9 +1,9 @@
 package modularmachines.main.init;
 
-import net.minecraft.nbt.NBTTagCompound;
 import modularmachines.helpers.BugHelper;
 import modularmachines.main.MM;
 import modularmachines.network.PacketPipeline;
+import net.minecraft.nbt.NBTTagCompound;
 import wasliecore.helpers.IMCHelper;
 import wasliecore.helpers.NBTHelper;
 import wasliecore.interfaces.IInitalization;
@@ -19,6 +19,7 @@ public class MMInit implements IInitalization{
 		blocks.preInit();
 		items.preInit();
 		recipes.preInit();
+		entries.preInit();
 		integration.preInit();
 		
 	     NBTTagCompound tag = NBTHelper.createTagCompound();
@@ -34,6 +35,7 @@ public class MMInit implements IInitalization{
 		items.init();
 		recipes.init();
 		events.init();
+		entries.init();
 		integration.init();
 		packetPipeline.initialise();
 	}
@@ -42,6 +44,7 @@ public class MMInit implements IInitalization{
 	public void postInit(){
 		blocks.postInit();
 		items.postInit();
+		entries.postInit();
 		recipes.postInit();
 		integration.postInit();
 		packetPipeline.postInitialise();
@@ -50,6 +53,8 @@ public class MMInit implements IInitalization{
 	public static MMBlocks blocks = new MMBlocks();
 	public static MMItems items = new MMItems();
 	public static MMEvents events = new MMEvents();
+	public static MMEntries entries = new MMEntries();
+
 	public static IntegrationLoader integration = new IntegrationLoader();
 	public static PacketPipeline packetPipeline = new PacketPipeline();
 	public static SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel(MM.alias + "|PACKET");

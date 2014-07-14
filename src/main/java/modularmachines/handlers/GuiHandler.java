@@ -5,6 +5,7 @@ import modularmachines.api.classes.TileMachineBase;
 import modularmachines.blocks.containers.ContainerMachineBase;
 import modularmachines.blocks.guis.GuiInformation;
 import modularmachines.blocks.guis.GuiMachineBase;
+import modularmachines.blocks.guis.guide.GuiGuide;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -17,6 +18,7 @@ public class GuiHandler implements IGuiHandler {
                 switch(id){
                 case 1: return new ContainerMachineBase((TileMachineBase)tile, player.inventory);
                 case 2: return null;
+                case 3: return null;
                 default: return false;
                 }
         }
@@ -27,6 +29,7 @@ public class GuiHandler implements IGuiHandler {
                 switch(id){
                 case 1: return new GuiMachineBase((TileMachineBase)tile, player.inventory);
                 case 2: return new GuiInformation((TileInteracting)tile);
+                case 3: return new GuiGuide(player);
                 default: return false;
                 }
 

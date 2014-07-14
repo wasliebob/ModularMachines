@@ -40,7 +40,7 @@ public class TileInteracting extends TileEntity implements IHeatedMachine{
 	
 	@Override
 	public void updateEntity(){
-		if(!worldObj.isRemote && upgrade != null && MMInteractingUpgrades.getUpgrade(upgrade).action.hasRequired(this) && enabled){
+		if(!worldObj.isRemote && upgrade != null && MMInteractingUpgrades.containsItem(upgrade) && MMInteractingUpgrades.getUpgrade(upgrade).action.hasRequired(this) && enabled){
 			MMInteractingUpgrades.getUpgrade(upgrade).action.onUpdate(this);
 		}
 	}
