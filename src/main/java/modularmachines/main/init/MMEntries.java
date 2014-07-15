@@ -26,7 +26,12 @@ public class MMEntries implements IInitalization{
 		String[] text;
 		ItemStack[] recipe;
 		
-		EntryHelper.addEntry("Modular Machines", new IEntry[]{new EntryTitle("modularmachines:textures/misc/logo.png", 122, 44)}, 0);
+		text = new String[]{
+				"Next: Button",
+				"Previous: Button",
+				"Return: Backspace"
+		};
+		EntryHelper.addEntry("Modular Machines", new IEntry[]{new EntryTitle("modularmachines:textures/misc/logo.png", 122, 44), new EntryText(text)}, 0);
 		
 		
 		text = new String[]{
@@ -50,12 +55,11 @@ public class MMEntries implements IInitalization{
 				"machine core.",
 				"is a really",
 				"helpfull block",
-				"that will",
-				"interact with the",
-				"world.",
-				"this block has",
-				"a lot of",
-				"different upgrades",
+				"that will interact",
+				"with the world.",
+				"this block has a",
+				"lot of different",
+				"upgrades.",
 		};
 		
 		recipe = new ItemStack[]{

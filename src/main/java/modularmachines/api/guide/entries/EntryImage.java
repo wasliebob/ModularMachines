@@ -1,8 +1,8 @@
 package modularmachines.api.guide.entries;
 
 import modularmachines.api.guide.IEntry;
-import modularmachines.helpers.IconHelper;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 
@@ -22,6 +22,16 @@ public class EntryImage implements IEntry{
 		int y = top + 10;
 		Minecraft.getMinecraft().getTextureManager().bindTexture(this.resource);
 
-		IconHelper.drawIconWithoutColor(x, y, this.iconWidth, this.iconHeight, 0);
+		drawIconWithoutColor(x, y, this.iconWidth, this.iconHeight, 0);
+	}
+	
+	public static void drawIconWithoutColor(int x, int y, int width, int height, float zLevel){
+	    Tessellator t = Tessellator.instance;
+	    t.startDrawingQuads();
+	    t.addVertexWithUV(x + 0, y + height, zLevel, 0D, 1D);
+	    t.addVertexWithUV(x + width, y + height, zLevel, 1D, 1D);
+	    t.addVertexWithUV(x + width, y + 0, zLevel, 1D, 0D);
+	    t.addVertexWithUV(x + 0, y + 0, zLevel, 0D, 0D);
+	    t.draw();
 	}
 }
