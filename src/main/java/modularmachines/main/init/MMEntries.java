@@ -4,6 +4,7 @@ import modularmachines.api.guide.EntryHelper;
 import modularmachines.api.guide.IEntry;
 import modularmachines.api.guide.entries.EntryRecipe;
 import modularmachines.api.guide.entries.EntryText;
+import modularmachines.api.heat.enums.EnumHeatConverting;
 import modularmachines.blocks.guis.guide.entries.EntryTitle;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -38,7 +39,7 @@ public class MMEntries implements IInitalization{
 				"The machine core",
 				"is the block you",
 				"most likely want",
-				"to make first",
+				"to make first.",
 		};
 		
 		recipe = new ItemStack[]{
@@ -47,7 +48,6 @@ public class MMEntries implements IInitalization{
 			new ItemStack(Items.gold_ingot), new ItemStack(Items.redstone), new ItemStack(Items.gold_ingot)
 		};
 		EntryHelper.addEntry("Machine Core", new IEntry[]{new EntryText(text), new EntryRecipe(recipe)}, 0);
-		
 		
 		
 		text = new String[]{
@@ -68,5 +68,12 @@ public class MMEntries implements IInitalization{
 				new ItemStack(Items.gold_ingot), new ItemStack(Items.redstone), new ItemStack(Items.gold_ingot)
 			};
 			EntryHelper.addEntry("Interacting Core", new IEntry[]{new EntryText(text), new EntryRecipe(recipe)}, 0);
+	
+		text = new String[]{
+			EnumHeatConverting.EU.getValue() + " EU: " + 1 + " Heat",
+			EnumHeatConverting.RF.getValue() + " RF: " + 1 + " Heat",
+		};
+		EntryHelper.addEntry("Heat Converting", new IEntry[]{new EntryText(text)}, 0);
+
 	}
 }
