@@ -36,6 +36,11 @@ public class GuiEntry extends GuiScreen{
 		
         this.buttonList.add(next = new ButtonNext(500, k + 120, top + 160, true));
         this.buttonList.add(prev = new ButtonNext(501, k + 38,  top + 160, false));
+		
+        IEntry entry = EntryHelper.entries.get(key)[currPage];
+		if(entry != null){
+			entry.initGui(gwidth, gheight, left, top, player, this.buttonList);
+		}
 	}
 	
 	@Override
@@ -90,10 +95,12 @@ public class GuiEntry extends GuiScreen{
 		if(id == 500){
 			if(currPage < maxPages){
 				currPage++;
+				initGui();
 			}
 		}else if(id == 501){
 			if(currPage > 0){
 				currPage--;
+				initGui();
 			}
 		}
 	}

@@ -1,5 +1,7 @@
 package modularmachines.blocks.guis.guide.entries;
 
+import java.util.List;
+
 import modularmachines.api.guide.IEntry;
 import modularmachines.helpers.IconHelper;
 import modularmachines.main.MM;
@@ -28,5 +30,12 @@ public class EntryTitle implements IEntry{
 		Minecraft.getMinecraft().fontRenderer.drawString("Version: " + MM.version, x + 12, y + this.iconHeight, 0);
 		Minecraft.getMinecraft().fontRenderer.drawString("Created by Wasliebob", x + 12, y + this.iconHeight + 9, 0);
 
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public void initGui(int width, int height, int left, int top,
+			EntityPlayer player, List buttonList) {
+		
 	}
 }

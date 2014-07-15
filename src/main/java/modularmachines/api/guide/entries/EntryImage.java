@@ -1,5 +1,7 @@
 package modularmachines.api.guide.entries;
 
+import java.util.List;
+
 import modularmachines.api.guide.IEntry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
@@ -33,5 +35,12 @@ public class EntryImage implements IEntry{
 	    t.addVertexWithUV(x + width, y + 0, zLevel, 1D, 0D);
 	    t.addVertexWithUV(x + 0, y + 0, zLevel, 0D, 0D);
 	    t.draw();
+	}
+	
+	@SuppressWarnings("rawtypes")
+	@Override
+	public void initGui(int width, int height, int left, int top,
+			EntityPlayer player, List buttonList) {
+		
 	}
 }

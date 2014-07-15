@@ -1,5 +1,7 @@
 package modularmachines.api.guide.entries;
 
+import java.util.List;
+
 import modularmachines.api.guide.IEntry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
@@ -40,5 +42,12 @@ public class EntryRecipe extends GuiScreen implements IEntry{
 		}
 		
 		GL11.glDisable(GL11.GL_BLEND);
+	}
+	
+	@SuppressWarnings("rawtypes")
+	@Override
+	public void initGui(int width, int height, int left, int top,
+			EntityPlayer player, List buttonList) {
+		
 	}
 }

@@ -43,6 +43,7 @@ public class MMItems implements IInitalization{
 		interacting_place = new MMInteractingUpgrade("place", new Color(100, 0, 100));
 		interacting_fertilize = new MMInteractingUpgrade("fertilize", new Color(0, 100, 0));
 		interacting_elevator = new MMInteractingUpgrade("elevator", new Color(0, 100, 100));
+		interacting_update = new MMInteractingUpgrade("update", new Color(150, 0, 150));
 	}
 	public static MMInteractingUpgrade interacting_transfer;
 	public static MMInteractingUpgrade interacting_break;
@@ -50,7 +51,8 @@ public class MMItems implements IInitalization{
 	public static MMInteractingUpgrade interacting_place;
 	public static MMInteractingUpgrade interacting_fertilize;
 	public static MMInteractingUpgrade interacting_elevator;
-	
+	public static MMInteractingUpgrade interacting_update;
+
 	public void initItems(){
 		programmer = new MMProgrammer("programmer");
 		input = new MMSpecialUpgrade("input", ColorHelper.getColorCodeFromColor(Color.cyan));

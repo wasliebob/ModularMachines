@@ -25,6 +25,7 @@ item.modularmachines.item.vacuum.name=Interacting Upgrade: Vacuum
 item.modularmachines.item.place.name=Interacting Upgrade: Place
 item.modularmachines.item.fertilize.name=Interacting Upgrade: Fertilize
 item.modularmachines.item.elevator.name=Interacting Upgrade: Elevator
+item.modularmachines.item.update.name=Interacting Upgrade: Update
 item.modularmachines.item.energy crystal.name=Energy Crystal
 item.modularmachines.item.iron stick.name=Iron Stick
 item.modularmachines.item.guide.name=Modular Guide

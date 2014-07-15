@@ -1,5 +1,7 @@
 package modularmachines.api.guide;
 
+import java.util.List;
+
 import net.minecraft.entity.player.EntityPlayer;
 
 public interface IEntry {
@@ -13,4 +15,7 @@ public interface IEntry {
 	 * The player who has the book open
 	 */
 	public void draw(int width, int height, int left, int top, EntityPlayer player);
+	
+	@SuppressWarnings("rawtypes")
+	public void initGui(int width, int height, int left, int top, EntityPlayer player, List buttonList);
 }

@@ -1,6 +1,7 @@
 package modularmachines.api.guide.entries;
 
 import java.awt.Color;
+import java.util.List;
 
 import modularmachines.api.guide.IEntry;
 import net.minecraft.client.Minecraft;
@@ -44,5 +45,11 @@ public class EntryText implements IEntry{
 				j = j + 18;
 			}
 		}
+	}
+	
+	@SuppressWarnings("rawtypes")
+	@Override
+	public void initGui(int width, int height, int left, int top,
+			EntityPlayer player, List buttonList){
 	}
 }

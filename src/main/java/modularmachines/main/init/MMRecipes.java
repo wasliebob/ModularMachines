@@ -15,6 +15,7 @@ import modularmachines.upgrades.interacting.UpgradeElevator;
 import modularmachines.upgrades.interacting.UpgradeFertilize;
 import modularmachines.upgrades.interacting.UpgradePlace;
 import modularmachines.upgrades.interacting.UpgradeTransfer;
+import modularmachines.upgrades.interacting.UpgradeUpdate;
 import modularmachines.upgrades.interacting.UpgradeVacuum;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -199,6 +200,15 @@ public class MMRecipes implements IInitalization{
 			'W', Items.gold_ingot,
 			'I', Blocks.hopper});
 		
+		GameRegistry.addShapedRecipe(new ItemStack(MMItems.interacting_update), new Object[]{
+			"XYX",
+			"WIW",
+			"XYX",
+			'X', Items.iron_ingot,
+			'Y', Blocks.stone_pressure_plate,
+			'W', Items.redstone,
+			'I', Blocks.redstone_block});
+		
 		GameRegistry.addShapedRecipe(new ItemStack(MMBlocks.transporter), new Object[]{
 			"XYX",
 			"WIW",
@@ -297,5 +307,6 @@ public class MMRecipes implements IInitalization{
 		MMApi.addInteractingUpgrade(MMItems.interacting_place, new InteractingUpgrade(new UpgradePlace()));
 		MMApi.addInteractingUpgrade(MMItems.interacting_fertilize, new InteractingUpgrade(new UpgradeFertilize()));
 		MMApi.addInteractingUpgrade(MMItems.interacting_elevator, new InteractingUpgrade(new UpgradeElevator()));
+		MMApi.addInteractingUpgrade(MMItems.interacting_update, new InteractingUpgrade(new UpgradeUpdate()));
 	}
 }
