@@ -53,7 +53,10 @@ public class GuiBugReport extends GuiScreen{
     @Override
     public void actionPerformed(GuiButton button){
     	if (button.id == 0)
-    		this.mc.displayGuiScreen(this.parent);
+    		if(this.parent != null)
+    			this.mc.displayGuiScreen(this.parent);
+    		else
+    			this.onGuiClosed();
     	else if(button.id == 1)
     		BugHelper.createBug(name.getText(), new Bug(text.getText(), MM.version, MM.mcVersion, MM.modName));
     }

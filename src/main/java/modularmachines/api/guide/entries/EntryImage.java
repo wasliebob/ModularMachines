@@ -20,7 +20,7 @@ public class EntryImage implements IEntry{
 	public int iconHeight;
 	
 	@Override
-	public void draw(int width, int height, int left, int top, EntityPlayer player){
+	public void draw(int width, int height, int left, int top, EntityPlayer player, String key, int page){
 		int x = left + 32;
 		int y = top + 10;
 		Minecraft.getMinecraft().getTextureManager().bindTexture(this.resource);

@@ -38,7 +38,7 @@ public class GuiWarningScreen extends GuiScreen{
     public void drawScreen(int x, int y, float renderPartialTicks){
         this.drawDefaultBackground();
         this.drawCenteredString(this.fontRendererObj, "Modular Machines " + MM.version, this.width / 2, 50, Color.cyan.getRGB());
-
+		
         this.drawCenteredString(this.fontRendererObj, StatCollector.translateToLocal("mm.warning.1"), this.width / 2, 82, Color.red.getRGB());
         this.drawCenteredString(this.fontRendererObj, StatCollector.translateToLocal("mm.warning.2"), this.width / 2, 82 + (8), Color.red.getRGB());
 

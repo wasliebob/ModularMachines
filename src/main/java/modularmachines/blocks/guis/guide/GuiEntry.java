@@ -59,7 +59,7 @@ public class GuiEntry extends GuiScreen{
 
 		IEntry entry = EntryHelper.entries.get(key)[currPage];
 		if(entry != null){
-			entry.draw(gwidth, gheight, left, top, player);
+			entry.draw(gwidth, gheight, left, top, player, key, currPage);
 		}
 		super.drawScreen(mX, mY, f1);
 	}

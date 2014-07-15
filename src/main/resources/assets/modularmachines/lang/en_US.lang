@@ -30,6 +30,10 @@ item.modularmachines.item.energy crystal.name=Energy Crystal
 item.modularmachines.item.iron stick.name=Iron Stick
 item.modularmachines.item.guide.name=Modular Guide
 ==Text==
+mm.guide.entries.Modular Machines.1=Tip: you can return to previous page by pressing backspace!
+mm.guide.entries.Modular Core.0=The Modular Machine Core is the a customizable block. This block also has an GUI!
+mm.guide.entries.Interacting Core.0=The interacting machine core is a really helpful block. This block will interact with the world and has a lot of different upgrades.
+mm.guide.entries.Heat Router.0=The heat router is used to transport heat between locations. It requires an input and an output. When looking at the block with a programmer held you will see to which block it's linked.
 ==Misc==
 itemGroup.tabModularMachines=Modular Machines
 mm.warning.1=You are using a unstable build of Modular Machines!

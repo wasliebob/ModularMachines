@@ -18,7 +18,7 @@ public class EntryRecipe extends GuiScreen implements IEntry{
 	public ItemStack[] recipe;
 	
 	@Override
-	public void draw(int width, int height, int left, int top, EntityPlayer player){
+	public void draw(int width, int height, int left, int top, EntityPlayer player, String key, int page){
 		int x, y;
 		
 		GL11.glEnable(GL11.GL_BLEND);

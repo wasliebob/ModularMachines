@@ -255,7 +255,7 @@ public class MMRecipes implements IInitalization{
 			'Y', MMItems.crystal_energy,
 			'I', MMItems.stick_iron});
 	}
-	
+
 	public void initMaceratorRecipes(){
 		ArrayList<ItemStack> output;
 		output = OreDictionary.getOres("dustIron");
