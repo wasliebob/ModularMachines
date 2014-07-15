@@ -102,6 +102,8 @@ public class GuiEntry extends GuiScreen{
 				currPage--;
 				initGui();
 			}
+		}else{
+			EntryHelper.entries.get(key)[currPage].actionPerformed(button);
 		}
 	}
 	

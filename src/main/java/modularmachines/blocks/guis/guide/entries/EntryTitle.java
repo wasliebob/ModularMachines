@@ -6,6 +6,7 @@ import modularmachines.api.guide.IEntry;
 import modularmachines.helpers.IconHelper;
 import modularmachines.main.MM;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 
@@ -37,5 +38,9 @@ public class EntryTitle implements IEntry{
 	public void initGui(int width, int height, int left, int top,
 			EntityPlayer player, List buttonList) {
 		
+	}
+
+	@Override
+	public void actionPerformed(GuiButton button) {		
 	}
 }

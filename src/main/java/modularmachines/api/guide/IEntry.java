@@ -2,6 +2,7 @@ package modularmachines.api.guide;
 
 import java.util.List;
 
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.EntityPlayer;
 
 public interface IEntry {
@@ -18,4 +19,6 @@ public interface IEntry {
 	
 	@SuppressWarnings("rawtypes")
 	public void initGui(int width, int height, int left, int top, EntityPlayer player, List buttonList);
+
+	public void actionPerformed(GuiButton button);
 }

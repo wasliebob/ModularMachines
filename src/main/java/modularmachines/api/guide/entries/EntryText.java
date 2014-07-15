@@ -5,6 +5,7 @@ import java.util.List;
 
 import modularmachines.api.guide.IEntry;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.EntityPlayer;
 
 public class EntryText implements IEntry{
@@ -51,5 +52,11 @@ public class EntryText implements IEntry{
 	@Override
 	public void initGui(int width, int height, int left, int top,
 			EntityPlayer player, List buttonList){
+
+	}
+	
+	@Override
+	public void actionPerformed(GuiButton button){
+		
 	}
 }

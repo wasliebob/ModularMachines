@@ -4,6 +4,7 @@ import java.util.List;
 
 import modularmachines.api.guide.IEntry;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -47,7 +48,12 @@ public class EntryRecipe extends GuiScreen implements IEntry{
 	@SuppressWarnings("rawtypes")
 	@Override
 	public void initGui(int width, int height, int left, int top,
-			EntityPlayer player, List buttonList) {
+			EntityPlayer player, List buttonList){
+		
+	}
+	
+	@Override
+	public void actionPerformed(GuiButton button){		
 		
 	}
 }
