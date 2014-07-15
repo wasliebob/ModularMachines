@@ -4,7 +4,7 @@ import modularmachines.api.guide.EntryHelper;
 import modularmachines.api.guide.IEntry;
 import modularmachines.api.guide.entries.EntryRecipe;
 import modularmachines.api.guide.entries.EntryText;
-import modularmachines.main.MM;
+import modularmachines.blocks.guis.guide.entries.EntryTitle;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -26,13 +26,7 @@ public class MMEntries implements IInitalization{
 		String[] text;
 		ItemStack[] recipe;
 		
-		text = new String[]{
-				"Welcome to Modular",
-				"Machines a mod",
-				"created by wasliebob",
-				"Version: " + MM.version
-		};
-		EntryHelper.addEntry("Modular Machines", new IEntry[]{new EntryText(text)}, 0);
+		EntryHelper.addEntry("Modular Machines", new IEntry[]{new EntryTitle("modularmachines:textures/misc/logo.png", 122, 44)}, 0);
 		
 		
 		text = new String[]{

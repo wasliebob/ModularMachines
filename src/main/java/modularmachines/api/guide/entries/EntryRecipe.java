@@ -1,11 +1,12 @@
 package modularmachines.api.guide.entries;
 
-import org.lwjgl.opengl.GL11;
-
 import modularmachines.api.guide.IEntry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+
+import org.lwjgl.opengl.GL11;
 
 public class EntryRecipe extends GuiScreen implements IEntry{
 	public EntryRecipe(ItemStack[] recipe){
@@ -14,7 +15,7 @@ public class EntryRecipe extends GuiScreen implements IEntry{
 	public ItemStack[] recipe;
 	
 	@Override
-	public void draw(int width, int height, int left, int top){
+	public void draw(int width, int height, int left, int top, EntityPlayer player){
 		int x, y;
 		
 		GL11.glEnable(GL11.GL_BLEND);

@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import modularmachines.api.guide.IEntry;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
 
 public class EntryText implements IEntry{
 	public EntryText(String[] text){
@@ -12,7 +13,7 @@ public class EntryText implements IEntry{
 	public String[] text;
 
 	@Override
-	public void draw(int width, int height, int left, int top) {
+	public void draw(int width, int height, int left, int top, EntityPlayer player){
 		int x, y;
 		
 		int j = 0;
