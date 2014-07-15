@@ -172,7 +172,7 @@ public class MMRecipes implements IInitalization{
 			"XYX",
 			'X', Items.iron_ingot,
 			'Y', Items.diamond,
-			'I', new ItemStack(Items.dye, 1, 14)});
+			'I', new ItemStack(Items.dye, 1, 15)});
 		
 		GameRegistry.addShapedRecipe(new ItemStack(MMItems.interacting_place), new Object[]{
 			"XYX",
