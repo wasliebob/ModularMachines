@@ -3,12 +3,12 @@ package modularmachines.blocks.guis.elements;
 import java.awt.Color;
 
 import modularmachines.api.classes.TileMachineBase;
-import modularmachines.api.gui.IElement;
 import modularmachines.helpers.GuiHelper;
 import modularmachines.main.init.MMInit;
 import modularmachines.network.packets.newpackets.PacketToggle;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
+import wasliecore.interfaces.IElement;
 
 public class ElementToggle extends GuiScreen implements IElement{
 

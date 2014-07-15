@@ -3,10 +3,10 @@ package modularmachines.blocks.guis.elements;
 import java.awt.Color;
 
 import modularmachines.api.classes.TileMachineBase;
-import modularmachines.api.gui.IElement;
 import modularmachines.helpers.GuiHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
+import wasliecore.interfaces.IElement;
 
 public class ElementHeat extends GuiScreen implements IElement{
 

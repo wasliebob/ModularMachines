@@ -2,11 +2,11 @@ package modularmachines.blocks.guis.elements;
 
 import java.awt.Color;
 
-import modularmachines.api.gui.IElement;
 import modularmachines.helpers.GuiHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.tileentity.TileEntity;
+import wasliecore.interfaces.IElement;
 
 public class ElementInfo extends GuiScreen implements IElement{
 

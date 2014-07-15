@@ -16,13 +16,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import wasliecore.helpers.MathHelper;
 import wasliecore.interfaces.IWrenchable;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class MMBlockPotionTank extends BlockContainer implements IWrenchable{
 	public MMBlockPotionTank(String name) {
@@ -47,9 +45,7 @@ public class MMBlockPotionTank extends BlockContainer implements IWrenchable{
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float cX, float cY, float cZ) {
 		TilePotionTank te = (TilePotionTank)world.getTileEntity(x, y, z);		
 		if(te != null && player.getHeldItem() != null && player.getHeldItem().getItem() == MMItems.programmer){
-			if(!world.isRemote && !player.isSneaking() && te.tank.potion != null){
-				player.addChatComponentMessage(new ChatComponentText(LanguageRegistry.instance().getStringLocalization(te.tank.getPotion().getName()) + ": " + te.tank.amount +  "/" + te.tank.capacity));
-			}
+			
 		}else if(te != null && player.getHeldItem() != null && player.getHeldItem().getItem() instanceof ItemPotion){
 			ItemPotion potion = (ItemPotion)player.getHeldItem().getItem();
 			PotionEffect p = genEffect(player, potion).get(0);
