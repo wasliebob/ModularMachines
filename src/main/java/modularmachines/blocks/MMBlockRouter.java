@@ -1,5 +1,6 @@
 package modularmachines.blocks;
 
+import modularmachines.api.guide.IGuided;
 import modularmachines.blocks.tiles.TileRouter;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMItems;
@@ -17,7 +18,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import wasliecore.interfaces.IWrenchable;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class MMBlockRouter extends BlockContainer implements IWrenchable{
+public class MMBlockRouter extends BlockContainer implements IWrenchable, IGuided{
 
 	public MMBlockRouter(String name) {
 		super(Material.iron);
@@ -39,7 +40,7 @@ public class MMBlockRouter extends BlockContainer implements IWrenchable{
 	{
 		TileRouter te = (TileRouter)world.getTileEntity(x, y, z);
 		
-		if(!world.isRemote && te != null && player.getHeldItem() != null && player.getHeldItem().getItem() != MMItems.wrench){
+		if(!world.isRemote && te != null && player.getHeldItem() != null && player.getHeldItem().getItem() != MMItems.wrench && player.getHeldItem().getItem() != MMItems.guide){
 			if(player.getHeldItem().getItem() == MMItems.programmer){
 				player.addChatComponentMessage(new ChatComponentText("Heat: " + te.heat.getHeat() + "/" + te.heat.getMaxHeat()));
 			}else if(player.getHeldItem().getItem() == MMItems.input && te.input == null && te.output != ForgeDirection.getOrientation(side)){
@@ -82,4 +83,9 @@ public class MMBlockRouter extends BlockContainer implements IWrenchable{
         }
         return super.getPickBlock(target, world, x, y, z);
     }
+	
+	@Override
+	public String getKey(){
+		return "Heat Router";
+	}
 }

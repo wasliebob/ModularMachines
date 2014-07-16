@@ -1,8 +1,10 @@
 package modularmachines.main;
 
+import modularmachines.events.MMRenderOverlay;
 import modularmachines.handlers.GuiHandler;
 import modularmachines.main.init.MMInit;
 import modularmachines.proxies.CommonProxy;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -11,6 +13,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 @Mod(modid = "ModularMachines", name = "ModularMachines", version = "1.0" ,dependencies = "required-after:WaslieCore")
 public class MM {
@@ -36,6 +39,11 @@ public class MM {
     @EventHandler
     public void init(FMLInitializationEvent event){
     	init.init();
+    	
+    	if(event.getSide() == Side.CLIENT){
+    		MinecraftForge.EVENT_BUS.register(new MMRenderOverlay());
+    	}
+    	
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     }
     

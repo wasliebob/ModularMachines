@@ -39,7 +39,7 @@ public class MMBlockTransporter extends BlockContainer implements IWrenchable{
 	@Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		TileTransporter ti = (TileTransporter)world.getTileEntity(x, y, z);
-		if(ti != null && !player.isSneaking() && player.getHeldItem() != null && player.getHeldItem().getItem() != MMItems.programmer && player.getHeldItem().getItem() != MMItems.wrench){
+		if(ti != null && !player.isSneaking() && player.getHeldItem() != null && player.getHeldItem().getItem() != MMItems.programmer && player.getHeldItem().getItem() != MMItems.wrench && player.getHeldItem().getItem() != MMItems.guide){
 			Item heldItem = player.getHeldItem().getItem();
 			ForgeDirection dir = ForgeDirection.getOrientation(side);
 			if(heldItem == MMItems.input && ti.input == null && ti.output != dir){

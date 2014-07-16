@@ -3,6 +3,7 @@ package modularmachines.blocks;
 import java.util.Random;
 
 import modularmachines.api.classes.TileMachineBase;
+import modularmachines.api.guide.IGuided;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMItems;
 import modularmachines.main.init.MMTabs;
@@ -23,7 +24,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import wasliecore.interfaces.IWrenchable;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class MMBlockCore extends BlockContainer implements IWrenchable{
+public class MMBlockCore extends BlockContainer implements IWrenchable, IGuided{
 
 	public MMBlockCore(String name) {
 		super(Material.iron);
@@ -45,7 +46,7 @@ public class MMBlockCore extends BlockContainer implements IWrenchable{
 	@Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		TileMachineBase base = (TileMachineBase)world.getTileEntity(x, y, z);
-		if(base != null && player.getHeldItem() != null && player.getHeldItem().getItem() != MMItems.wrench){
+		if(base != null && player.getHeldItem() != null && player.getHeldItem().getItem() != MMItems.wrench && player.getHeldItem().getItem() != MMItems.guide){
 			Item heldItem = player.getHeldItem().getItem();
 			ForgeDirection dir = ForgeDirection.getOrientation(side);
 			if(!player.isSneaking() && heldItem == MMItems.input && base.input == null && base.output != dir && base.screen != dir){
@@ -144,4 +145,9 @@ public class MMBlockCore extends BlockContainer implements IWrenchable{
         }
         return super.getPickBlock(target, world, x, y, z);
     }
+
+	@Override
+	public String getKey(){
+		return "Modular Core";
+	}
 }

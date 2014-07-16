@@ -1,6 +1,7 @@
 package modularmachines.blocks;
 
 import modularmachines.api.classes.TileInteracting;
+import modularmachines.api.guide.IGuided;
 import modularmachines.api.main.MMInteractingUpgrades;
 import modularmachines.api.upgrades.IInteractingAction;
 import modularmachines.api.upgrades.IInteractingUpgrade;
@@ -21,7 +22,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import wasliecore.interfaces.IWrenchable;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class MMBlockInteracting extends BlockContainer implements IWrenchable{
+public class MMBlockInteracting extends BlockContainer implements IWrenchable, IGuided{
 
 	public MMBlockInteracting(String name) {
 		super(Material.iron);
@@ -112,4 +113,9 @@ public class MMBlockInteracting extends BlockContainer implements IWrenchable{
         }
         return super.getPickBlock(target, world, x, y, z);
     }
+
+	@Override
+	public String getKey(){
+		return "Interacting Core";
+	}
 }
