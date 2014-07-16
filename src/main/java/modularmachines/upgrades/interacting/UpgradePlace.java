@@ -96,4 +96,9 @@ public class UpgradePlace implements IInteractingAction {
 	public void onActivateWithProgrammer(TileInteracting ti, EntityPlayer player) {
 		// TODO Auto-generated method stub
 	}
+	
+	@Override
+	public String getKey() {
+		return null;
+	}
 }

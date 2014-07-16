@@ -1,5 +1,6 @@
 package modularmachines.blocks;
 
+import modularmachines.api.guide.IGuided;
 import modularmachines.blocks.tiles.TileFluidHeater;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMItems;
@@ -14,7 +15,7 @@ import net.minecraft.world.World;
 import wasliecore.interfaces.IWrenchable;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class MMBlockFluidHeater extends BlockContainer implements IWrenchable{
+public class MMBlockFluidHeater extends BlockContainer implements IWrenchable, IGuided{
 
 	public MMBlockFluidHeater(String name) {
 		super(Material.iron);
@@ -48,5 +49,10 @@ public class MMBlockFluidHeater extends BlockContainer implements IWrenchable{
     public void registerBlockIcons(IIconRegister ir) 
 	{
         blockIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "core");
+	}
+
+	@Override
+	public String getKey() {
+		return "Fluid Heater";
 	}
 }

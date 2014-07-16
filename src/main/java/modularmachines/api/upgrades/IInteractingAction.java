@@ -22,4 +22,6 @@ public interface IInteractingAction {
 	public void decreaseHeat(TileInteracting ti, int heat);
 	
 	public boolean hasRequired(TileInteracting ti);
+	
+	public String getKey();
 }

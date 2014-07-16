@@ -3,6 +3,7 @@ package modularmachines.blocks;
 import java.util.ArrayList;
 import java.util.List;
 
+import modularmachines.api.guide.IGuided;
 import modularmachines.blocks.tiles.TilePotionTank;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMItems;
@@ -22,7 +23,7 @@ import wasliecore.helpers.MathHelper;
 import wasliecore.interfaces.IWrenchable;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class MMBlockPotionTank extends BlockContainer implements IWrenchable{
+public class MMBlockPotionTank extends BlockContainer implements IWrenchable, IGuided{
 	public MMBlockPotionTank(String name) {
 		super(Material.iron);
 		setHardness(1.0F);
@@ -123,9 +124,13 @@ public class MMBlockPotionTank extends BlockContainer implements IWrenchable{
 	}
     
 	@Override
-    public void registerBlockIcons(IIconRegister ir) 
-	{
+    public void registerBlockIcons(IIconRegister ir) {
         blockIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "tank");
         icon_fluid = ir.registerIcon(MM.modName.toLowerCase() + ":" + "fluid");
+	}
+	
+	@Override
+	public String getKey() {
+		return "Potion Tank";
 	}
 }

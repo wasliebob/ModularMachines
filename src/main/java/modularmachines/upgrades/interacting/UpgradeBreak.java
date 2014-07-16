@@ -144,4 +144,9 @@ public class UpgradeBreak implements IInteractingAction{
 			ti.getWorldObj().markBlockForUpdate(ti.xCoord, ti.yCoord, ti.zCoord);
 		}
 	}
+
+	@Override
+	public String getKey() {
+		return "Upgrade: Break";
+	}
 }

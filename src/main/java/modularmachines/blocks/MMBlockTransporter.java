@@ -1,5 +1,6 @@
 package modularmachines.blocks;
 
+import modularmachines.api.guide.IGuided;
 import modularmachines.blocks.tiles.TileTransporter;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMItems;
@@ -17,7 +18,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import wasliecore.interfaces.IWrenchable;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class MMBlockTransporter extends BlockContainer implements IWrenchable{
+public class MMBlockTransporter extends BlockContainer implements IWrenchable, IGuided{
 
 	public MMBlockTransporter(String name) {
 		super(Material.iron);
@@ -78,5 +79,10 @@ public class MMBlockTransporter extends BlockContainer implements IWrenchable{
 	@Override
     public void registerBlockIcons(IIconRegister ir) {
         blockIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "core");
+	}
+
+	@Override
+	public String getKey() {
+		return "Item Transporter";
 	}
 }

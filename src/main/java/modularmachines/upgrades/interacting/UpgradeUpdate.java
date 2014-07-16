@@ -82,4 +82,9 @@ public class UpgradeUpdate implements IInteractingAction{
 	public boolean hasRequired(TileInteracting ti) {
 		return ti.output != null;
 	}
+	
+	@Override
+	public String getKey() {
+		return null;
+	}
 }

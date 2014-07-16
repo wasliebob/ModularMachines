@@ -50,5 +50,27 @@ public class MMEntries implements IInitalization{
 		};
 		EntryHelper.addEntry("Heat Router", new IEntry[]{new EntryText(), new EntryRecipe(recipe)}, 0);
 
+		recipe = new ItemStack[]{
+				new ItemStack(Items.lava_bucket), new ItemStack(Items.diamond), new ItemStack(Items.lava_bucket),
+				new ItemStack(Items.diamond), new ItemStack(MMBlocks.router),  new ItemStack(Items.diamond),
+				new ItemStack(Items.lava_bucket), new ItemStack(Items.diamond), new ItemStack(Items.lava_bucket) 
+		};
+		EntryHelper.addEntry("Fluid Heater", new IEntry[]{new EntryText(), new EntryRecipe(recipe)}, 0);
+		
+		recipe = new ItemStack[]{
+				new ItemStack(Items.glass_bottle), new ItemStack(Blocks.glass), new ItemStack(Items.glass_bottle),
+				new ItemStack(Blocks.glass), new ItemStack(Items.diamond),  new ItemStack(Blocks.glass),
+				new ItemStack(Items.glass_bottle), new ItemStack(Blocks.glass), new ItemStack(Items.glass_bottle) 
+		};
+		EntryHelper.addEntry("Potion Tank", new IEntry[]{new EntryText(), new EntryRecipe(recipe)}, 0);
+		
+		recipe = new ItemStack[]{
+				new ItemStack(Items.iron_ingot), new ItemStack(Items.ender_pearl), new ItemStack(Items.iron_ingot),
+				new ItemStack(Blocks.chest), new ItemStack(Blocks.hopper),  new ItemStack(Blocks.chest),
+				new ItemStack(Items.iron_ingot), new ItemStack(Items.ender_pearl), new ItemStack(Items.iron_ingot) 
+		};
+		EntryHelper.addEntry("Item Transporter", new IEntry[]{new EntryText(), new EntryRecipe(recipe)}, 0);
+	
+		EntryHelper.addEntry("Upgrade: Break", new IEntry[]{new EntryText()}, 0);
 	}
 }
