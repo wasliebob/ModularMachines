@@ -99,6 +99,6 @@ public class UpgradePlace implements IInteractingAction {
 	
 	@Override
 	public String getKey() {
-		return null;
+		return "Upgrade: Place";
 	}
 }

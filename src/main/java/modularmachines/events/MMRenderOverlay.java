@@ -2,7 +2,10 @@ package modularmachines.events;
 
 import java.awt.Color;
 
+import modularmachines.api.classes.TileInteracting;
 import modularmachines.api.guide.IGuided;
+import modularmachines.api.main.MMInteractingUpgrades;
+import modularmachines.api.upgrades.IInteractingAction;
 import modularmachines.items.MMItemGuide;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -11,8 +14,10 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
+import net.minecraftforge.common.util.ForgeDirection;
 
 import org.lwjgl.opengl.GL11;
 
@@ -45,7 +50,31 @@ public class MMRenderOverlay extends Gui{
 				int width = res.getScaledWidth();
 				int height = res.getScaledHeight();
 				FontRenderer font = mc.fontRenderer;
-				String s = "Guide Energy: " + guided.getKey();
+				String s = null;
+				
+				TileEntity te = Utils.getTargetTile(player);
+				if(te != null && te instanceof TileInteracting){
+					TileInteracting ti = (TileInteracting)te;
+					ForgeDirection dir = ForgeDirection.getOrientation(Utils.getTargetBlockSide(player));
+					if(dir == ti.upgradeSide){
+						IInteractingAction action = MMInteractingUpgrades.getUpgrade(ti.upgrade).action;
+						if(action != null){
+							String key = action.getKey();
+							if(key != null){
+								s = "Guide Entry: " + key;
+							}else{
+								s = "Guide Entry: " + guided.getKey();
+							}
+						}else{
+							s = "Guide Entry: " + guided.getKey();
+						}
+					}else{
+						s = "Guide Entry: " + guided.getKey();
+					}
+				}else{
+					s = "Guide Entry: " + guided.getKey();
+
+				}
 				int stringLengthX = (width - font.getStringWidth(s)) / 2;
 				int stringLengthY = height - 70;    
 				

@@ -82,6 +82,6 @@ public class UpgradeFertilize implements IInteractingAction{
 	
 	@Override
 	public String getKey() {
-		return null;
+		return "Upgrade: Fertilize";
 	}
 }

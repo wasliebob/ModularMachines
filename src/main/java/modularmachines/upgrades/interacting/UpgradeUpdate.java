@@ -85,6 +85,6 @@ public class UpgradeUpdate implements IInteractingAction{
 	
 	@Override
 	public String getKey() {
-		return null;
+		return "Upgrade: Update";
 	}
 }

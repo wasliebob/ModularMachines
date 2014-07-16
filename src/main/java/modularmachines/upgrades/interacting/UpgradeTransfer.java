@@ -103,6 +103,6 @@ public class UpgradeTransfer implements IInteractingAction{
 	
 	@Override
 	public String getKey() {
-		return null;
+		return "Upgrade: Transfer";
 	}
 }

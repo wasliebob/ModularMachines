@@ -74,6 +74,6 @@ public class UpgradeElevator implements IInteractingAction{
 	
 	@Override
 	public String getKey() {
-		return null;
+		return "Upgrade: Elevator";
 	}
 }

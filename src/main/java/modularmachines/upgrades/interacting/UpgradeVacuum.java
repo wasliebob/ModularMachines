@@ -111,6 +111,6 @@ public class UpgradeVacuum implements IInteractingAction{
 	
 	@Override
 	public String getKey() {
-		return null;
+		return "Upgrade: Vacuum";
 	}
 }

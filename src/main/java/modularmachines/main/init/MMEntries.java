@@ -72,5 +72,18 @@ public class MMEntries implements IInitalization{
 		EntryHelper.addEntry("Item Transporter", new IEntry[]{new EntryText(), new EntryRecipe(recipe)}, 0);
 	
 		EntryHelper.addEntry("Upgrade: Break", new IEntry[]{new EntryText()}, 0);
+		
+		EntryHelper.addEntry("Upgrade: Elevator", new IEntry[]{new EntryText()}, 0);
+		
+		EntryHelper.addEntry("Upgrade: Fertilize", new IEntry[]{new EntryText()}, 0);
+		
+		EntryHelper.addEntry("Upgrade: Place", new IEntry[]{new EntryText()}, 0);
+
+		EntryHelper.addEntry("Upgrade: Transfer", new IEntry[]{new EntryText()}, 0);
+
+		EntryHelper.addEntry("Upgrade: Update", new IEntry[]{new EntryText()}, 0);
+
+		EntryHelper.addEntry("Upgrade: Vacuum", new IEntry[]{new EntryText()}, 0);
+
 	}
 }
