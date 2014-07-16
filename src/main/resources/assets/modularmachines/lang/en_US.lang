@@ -31,12 +31,14 @@ item.modularmachines.item.iron stick.name=Iron Stick
 item.modularmachines.item.guide.name=Modular Guide
 ==Text==
 mm.guide.entries.Modular Machines.1=Tip: you can return to previous page by pressing backspace!
+==Blocks==
 mm.guide.entries.Modular Core.0=The modular machine core is the a customizable block. This block also has an GUI!
 mm.guide.entries.Interacting Core.0=The interacting machine core is a really helpful block. This block will interact with the world and has a lot of different upgrades.
 mm.guide.entries.Heat Router.0=The heat router is used to transport heat between locations. It requires an input and an output. When looking at the block with a programmer held you will see to which block it's linked.
 mm.guide.entries.Fluid Heater.0=The fluid heater is used to collect heat from hot fluids. This heat can be used in your machines.
 mm.guide.entries.Potion Tank.0=The potion tank is a block which is capable of storing potions. Right click to apply the potion effect on your. It will use up 10mb of potion. The effects can be stacked as can the time it works.
 mm.guide.entries.Item Transporter.0=The item transporter is a block capable of easily transporting items without need of pipes or cables. Just set an input where the inventory will be placed. and an output where the chest to move the items to will be.
+==Interacting Upgrades==
 mm.guide.entries.Upgrade: Break.0=This upgrade makes it possible for the core to break a block placed at the input.
 mm.guide.entries.Upgrade: Elevator.0=This upgrade will make your core act like an elevator. By placing another core with the elevator upgrade a few blocks above it is able to teleport you to that point (click on the block to go up, shift-click to go down).
 mm.guide.entries.Upgrade: Fertilize.0=This upgrade will make your core act like a fertilizer. This block will fertilize a block which is x blocks higher (click on the upgrade side with a programmer to change) default is 2 (1 soil with a crop on it).
@@ -44,6 +46,9 @@ mm.guide.entries.Upgrade: Place.0=This upgrade will make your core able to place
 mm.guide.entries.Upgrade: Transfer.0=This upgrade will make your core able to transfer blocks from the input to the output. Tile Entities cannot be moved unless the tile is implementing a function in the api.
 mm.guide.entries.Upgrade: Update.0=This upgrade will make your core able to mark the block at the output to update.
 mm.guide.entries.Upgrade: Vacuum.0=This upgrade will make your core act like a vacuum, sucking up all items close to it and putting it in the inventory which needs to be at the output side.
+mm.guide.entries.Upgrade: Furnace.0=This upgrade will make your core act like a furnace, using heat instead of solid fuel.
+mm.guide.entries.Upgrade: Macerator.0=This upgrade will make your core act like a macerator, it uses heat.
+mm.guide.entries.Upgrade: Charger.0=This upgrade will make your core act like a charging station, it uses heat.
 ==Misc==
 itemGroup.tabModularMachines=Modular Machines
 mm.warning.1=You are using a unstable build of Modular Machines!

@@ -25,6 +25,7 @@ public class MMEntries implements IInitalization{
 	public void postInit() {
 		ItemStack[] recipe;
 
+		/** Page One */
 		EntryHelper.addEntry("Modular Machines", new IEntry[]{new EntryTitle("modularmachines:textures/misc/logo.png", 122, 44), new EntryText()}, 0);
 		
 		recipe = new ItemStack[]{
@@ -84,6 +85,10 @@ public class MMEntries implements IInitalization{
 		EntryHelper.addEntry("Upgrade: Update", new IEntry[]{new EntryText()}, 0);
 
 		EntryHelper.addEntry("Upgrade: Vacuum", new IEntry[]{new EntryText()}, 0);
-
+		
+		/** Page Two */
+		EntryHelper.addEntry("Upgrade: Furnace", new IEntry[]{new EntryText()}, 1);
+		EntryHelper.addEntry("Upgrade: Macerator", new IEntry[]{new EntryText()}, 1);
+		EntryHelper.addEntry("Upgrade: Charger", new IEntry[]{new EntryText()}, 1);
 	}
 }
