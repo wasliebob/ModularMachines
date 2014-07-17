@@ -5,9 +5,6 @@ public class GuiHelper {
 		int xSize = x + width;
 		int ySize = y + height;
 		
-		if(mouseX > x && mouseX < xSize && mouseY > y && mouseY < ySize)
-			return true;
-		
-		return false;
+		return (mouseX > x && mouseX < xSize && mouseY > y && mouseY < ySize);
 	}
 }

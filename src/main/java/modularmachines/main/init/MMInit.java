@@ -44,8 +44,8 @@ public class MMInit implements IInitalization{
 	public void postInit(){
 		blocks.postInit();
 		items.postInit();
-		entries.postInit();
 		recipes.postInit();
+		entries.postInit();
 		integration.postInit();
 		packetPipeline.postInitialise();
 	}

@@ -10,7 +10,7 @@ import net.minecraft.util.StatCollector;
 
 public class EntryText implements IEntry{
 	@Override
-	public void draw(int width, int height, int left, int top, EntityPlayer player, String key, int page){
+	public void draw(int width, int height, int left, int top, EntityPlayer player, String key, int page, int mX, int mY){
 		int x, y;
 		
 		String s = StatCollector.translateToLocal("mm.guide.entries." + key + "." + page);

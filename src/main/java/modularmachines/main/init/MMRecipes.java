@@ -21,6 +21,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.OreDictionary;
 import wasliecore.interfaces.IInitalization;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -42,147 +44,164 @@ public class MMRecipes implements IInitalization{
 		initUpgrades();
 		initInteractingUpgrades();
 	}
-	
+
 	public void initCraftingRecipes(){
 		GameRegistry.addShapelessRecipe(new ItemStack(MMItems.guide), 
 				new ItemStack(Items.book), new ItemStack(Items.iron_ingot));
 		
-		GameRegistry.addShapedRecipe(new ItemStack(MMBlocks.core_machine), new Object[]{
-			"XYX",
-			"YIY",
-			"XYX",
-			'X', Items.gold_ingot,
-			'Y', Items.redstone,
-			'I', Blocks.iron_block});
+		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.core_machine), new Object[]{
+				"XYX",
+				"YIY",
+				"XYX",
+				'X', Items.gold_ingot,
+				'Y', Items.redstone,
+				'I', Blocks.iron_block});
+		core_machine = RecipeHelper.getLatest();
 		
-		GameRegistry.addShapedRecipe(new ItemStack(MMBlocks.core_interacting), new Object[]{
+		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.core_interacting), new Object[]{
 			"XYX",
 			"YIY",
 			"XYX",
 			'X', Items.gold_ingot,
 			'Y', Items.redstone,
 			'I', MMBlocks.core_machine});
+		core_interacting = RecipeHelper.getLatest();
+
 		
-		
-		GameRegistry.addShapedRecipe(new ItemStack(MMBlocks.router), new Object[]{
+		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.router), new Object[]{
 			"XYX",
 			"YIY",
 			"XYX",
 			'X', Items.iron_ingot,
 			'Y', Items.coal,
 			'I', Blocks.redstone_block});
-		
-		GameRegistry.addShapedRecipe(new ItemStack(MMBlocks.heater_fluid), new Object[]{
+		router = RecipeHelper.getLatest();
+
+		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.heater_fluid), new Object[]{
 			"XYX",
 			"YIY",
 			"XYX",
 			'X', Items.lava_bucket,
 			'Y', Items.diamond,
 			'I', MMBlocks.router});
-		
-		GameRegistry.addShapedRecipe(new ItemStack(MMBlocks.tank_potion), new Object[]{
+		heater_fluid = RecipeHelper.getLatest();
+
+		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.tank_potion), new Object[]{
 			"XYX",
 			"YIY",
 			"XYX",
 			'X', Items.glass_bottle,
 			'Y', Blocks.glass,
 			'I', Items.diamond});
-		
-		GameRegistry.addShapedRecipe(new ItemStack(MMItems.input), new Object[]{
+		tank_potion = RecipeHelper.getLatest();
+
+		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.input), new Object[]{
 			"XYX",
 			"YIY",
 			"XYX",
 			'X', Items.iron_ingot,
 			'Y', Items.redstone,
 			'I', Items.gold_ingot});
-		
-		GameRegistry.addShapedRecipe(new ItemStack(MMItems.output), new Object[]{
+		input = RecipeHelper.getLatest();
+
+		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.output), new Object[]{
 			"XYX",
 			"YIY",
 			"XYX",
 			'X', Items.redstone,
 			'Y', Items.iron_ingot,
 			'I', Items.gold_ingot});
-		
-		GameRegistry.addShapedRecipe(new ItemStack(MMItems.screen), new Object[]{
+		output = RecipeHelper.getLatest();
+
+		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.screen), new Object[]{
 			"XYX",
 			"YIY",
 			"XYX",
 			'X', Items.gold_ingot,
 			'Y', Items.iron_ingot,
 			'I', Blocks.glass});
-		
-		GameRegistry.addShapedRecipe(new ItemStack(MMItems.upgrade_furnace), new Object[]{
+		screen = RecipeHelper.getLatest();
+
+		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.upgrade_furnace), new Object[]{
 			"XYX",
 			"YIY",
 			"XYX",
 			'X', Items.iron_ingot,
 			'Y', Items.redstone,
 			'I', Blocks.coal_block});
-
-		GameRegistry.addShapedRecipe(new ItemStack(MMItems.upgrade_macerator), new Object[]{
+		upgrade_furnace = RecipeHelper.getLatest();
+		
+		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.upgrade_macerator), new Object[]{
 			"XYX",
 			"YIY",
 			"XYX",
 			'X', Items.iron_ingot,
 			'Y', Items.flint,
 			'I', Items.diamond});
-		
-		GameRegistry.addShapedRecipe(new ItemStack(MMItems.upgrade_charger), new Object[]{
+		upgrade_macerator = RecipeHelper.getLatest();
+
+		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.upgrade_charger), new Object[]{
 			"XYX",
 			"YIY",
 			"XYX",
 			'X', Items.iron_ingot,
 			'Y', Items.gold_ingot,
 			'I', Blocks.redstone_block});
-		
-		GameRegistry.addShapedRecipe(new ItemStack(MMItems.wrench), new Object[]{
+		upgrade_charger = RecipeHelper.getLatest();
+
+		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.wrench), new Object[]{
 			"X X",
 			"XYX",
 			" X ",
 			'X', Items.iron_ingot,
 			'Y', Items.diamond});
-		
-		GameRegistry.addShapedRecipe(new ItemStack(MMItems.programmer), new Object[]{
+		wrench = RecipeHelper.getLatest();
+
+		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.programmer), new Object[]{
 			"XXX",
 			"XYX",
 			"XXX",
 			'X', Items.iron_ingot,
 			'Y', Blocks.glass});
-		
-		GameRegistry.addShapedRecipe(new ItemStack(MMItems.interacting_break), new Object[]{
+		programmer = RecipeHelper.getLatest();
+
+		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.interacting_break), new Object[]{
 			"XYX",
 			"YIY",
 			"XYX",
 			'X', Items.iron_ingot,
 			'Y', Blocks.piston,
 			'I', Blocks.redstone_block});
-		
-		GameRegistry.addShapedRecipe(new ItemStack(MMItems.interacting_elevator), new Object[]{
+		interacting_break = RecipeHelper.getLatest();
+
+		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.interacting_elevator), new Object[]{
 			"XYX",
 			"YIY",
 			"XYX",
 			'X', Items.iron_ingot,
 			'Y', Blocks.piston,
 			'I', Items.ender_pearl});
-		
-		GameRegistry.addShapedRecipe(new ItemStack(MMItems.interacting_fertilize), new Object[]{
+		interacting_elevator = RecipeHelper.getLatest();
+
+		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.interacting_fertilize), new Object[]{
 			"XYX",
 			"YIY",
 			"XYX",
 			'X', Items.iron_ingot,
 			'Y', Items.diamond,
 			'I', new ItemStack(Items.dye, 1, 15)});
-		
-		GameRegistry.addShapedRecipe(new ItemStack(MMItems.interacting_place), new Object[]{
+		interacting_fertilize = RecipeHelper.getLatest();
+
+		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.interacting_place), new Object[]{
 			"XYX",
 			"YIY",
 			"XYX",
 			'X', Items.iron_ingot,
 			'Y', Blocks.piston,
 			'I', Items.diamond});
-		
-		GameRegistry.addShapedRecipe(new ItemStack(MMItems.interacting_transfer), new Object[]{
+		interacting_place = RecipeHelper.getLatest();
+
+		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.interacting_transfer), new Object[]{
 			"XYX",
 			"WIW",
 			"XYX",
@@ -190,8 +209,9 @@ public class MMRecipes implements IInitalization{
 			'Y', Items.ender_pearl,
 			'W', Blocks.stone,
 			'I', Items.diamond});
-		
-		GameRegistry.addShapedRecipe(new ItemStack(MMItems.interacting_vacuum), new Object[]{
+		interacting_transfer = RecipeHelper.getLatest();
+
+		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.interacting_vacuum), new Object[]{
 			"XYX",
 			"WIW",
 			"XYX",
@@ -199,8 +219,9 @@ public class MMRecipes implements IInitalization{
 			'Y', Items.ender_pearl,
 			'W', Items.gold_ingot,
 			'I', Blocks.hopper});
-		
-		GameRegistry.addShapedRecipe(new ItemStack(MMItems.interacting_update), new Object[]{
+		interacting_vacuum = RecipeHelper.getLatest();
+
+		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.interacting_update), new Object[]{
 			"XYX",
 			"WIW",
 			"XYX",
@@ -208,8 +229,9 @@ public class MMRecipes implements IInitalization{
 			'Y', Blocks.stone_pressure_plate,
 			'W', Items.redstone,
 			'I', Blocks.redstone_block});
-		
-		GameRegistry.addShapedRecipe(new ItemStack(MMBlocks.transporter), new Object[]{
+		interacting_update = RecipeHelper.getLatest();
+
+		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.transporter), new Object[]{
 			"XYX",
 			"WIW",
 			"XYX",
@@ -217,44 +239,83 @@ public class MMRecipes implements IInitalization{
 			'Y', Items.ender_pearl,
 			'W', Blocks.chest,
 			'I', Blocks.hopper});
-		
-		GameRegistry.addShapedRecipe(new ItemStack(MMItems.crystal_energy), new Object[]{
+		transporter = RecipeHelper.getLatest();
+
+		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.crystal_energy), new Object[]{
 			"XYX",
 			"YIY",
 			"XYX",
 			'X', Items.iron_ingot,
 			'Y', Blocks.redstone_block,
 			'I', Items.diamond});
-		
-		GameRegistry.addShapedRecipe(new ItemStack(MMItems.stick_iron), new Object[]{
+		crystal_energy = RecipeHelper.getLatest();
+
+		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.stick_iron), new Object[]{
 			"X",
 			"X",
 			'X', Items.iron_ingot});
-		
-		GameRegistry.addShapedRecipe(new ItemStack(MMItems.axe_heated), new Object[]{
+		stick_iron = RecipeHelper.getLatest();
+
+		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.axe_heated), new Object[]{
 			" XY",
 			" IX",
 			" I ",
 			'X', Items.iron_ingot,
 			'Y', MMItems.crystal_energy,
 			'I', MMItems.stick_iron});
+		axe_heated = RecipeHelper.getLatest();
 
-		GameRegistry.addShapedRecipe(new ItemStack(MMItems.pickaxe_heated), new Object[]{
+		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.pickaxe_heated), new Object[]{
 			"XYX",
 			" I ",
 			" I ",
 			'X', Items.iron_ingot,
 			'Y', MMItems.crystal_energy,
 			'I', MMItems.stick_iron});
-		
-		GameRegistry.addShapedRecipe(new ItemStack(MMItems.shovel_heated), new Object[]{
+		pickaxe_heated = RecipeHelper.getLatest();
+
+		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.shovel_heated), new Object[]{
 			" X ",
 			" Y ",
 			" I ",
 			'X', Items.iron_ingot,
 			'Y', MMItems.crystal_energy,
 			'I', MMItems.stick_iron});
+		shovel_heated = RecipeHelper.getLatest();
+
 	}
+	public static IRecipe core_machine;
+	public static IRecipe core_interacting;
+	public static IRecipe heater_fluid;
+	public static IRecipe tank_potion;
+	public static IRecipe router;
+	public static IRecipe transporter;
+	
+	public static IRecipe interacting_break;
+	public static IRecipe interacting_elevator;
+	public static IRecipe interacting_transfer;
+	public static IRecipe interacting_update;
+	public static IRecipe interacting_place;
+	public static IRecipe interacting_vacuum;
+	public static IRecipe interacting_fertilize;
+
+	public static IRecipe upgrade_furnace;
+	public static IRecipe upgrade_macerator;
+	public static IRecipe upgrade_charger;
+
+	public static IRecipe axe_heated;
+	public static IRecipe pickaxe_heated;
+	public static IRecipe shovel_heated;
+
+	public static IRecipe input;
+	public static IRecipe output;
+	public static IRecipe screen;
+	
+	public static IRecipe wrench;
+	public static IRecipe programmer;
+	
+	public static IRecipe stick_iron;
+	public static IRecipe crystal_energy;
 
 	public void initMaceratorRecipes(){
 		ArrayList<ItemStack> output;
@@ -308,5 +369,20 @@ public class MMRecipes implements IInitalization{
 		MMApi.addInteractingUpgrade(MMItems.interacting_fertilize, new InteractingUpgrade(new UpgradeFertilize()));
 		MMApi.addInteractingUpgrade(MMItems.interacting_elevator, new InteractingUpgrade(new UpgradeElevator()));
 		MMApi.addInteractingUpgrade(MMItems.interacting_update, new InteractingUpgrade(new UpgradeUpdate()));
+	}
+	
+	static class RecipeHelper{
+		public static ArrayList<IRecipe> recipes = new ArrayList<IRecipe>();
+		
+		/** Used registering items to the guide */
+		public static IRecipe getLatest(){
+			IRecipe rec = (IRecipe)CraftingManager.getInstance().getRecipeList().get(CraftingManager.getInstance().getRecipeList().size() -1);
+			recipes.add(rec);
+			return recipes.get(recipes.size() - 1);
+		}
+		
+		public static void addShapedRecipe(ItemStack output, Object[] obj){
+			GameRegistry.addShapedRecipe(output, obj);
+		}
 	}
 }

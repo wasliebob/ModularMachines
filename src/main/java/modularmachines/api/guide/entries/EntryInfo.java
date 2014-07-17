@@ -17,7 +17,7 @@ public class EntryInfo implements IEntry{
 	public String type;
 	
 	@Override
-	public void draw(int width, int height, int left, int top, EntityPlayer player, String key, int page){
+	public void draw(int width, int height, int left, int top, EntityPlayer player, String key, int page, int mX, int mY){
 		int x, y;
 		x = left + width / 2 - 58;
 		y = (top + 15);

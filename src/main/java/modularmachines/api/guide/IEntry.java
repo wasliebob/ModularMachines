@@ -15,7 +15,7 @@ public interface IEntry {
 	 * @param player
 	 * The player who has the book open
 	 */
-	public void draw(int width, int height, int left, int top, EntityPlayer player, String key, int page);
+	public void draw(int width, int height, int left, int top, EntityPlayer player, String key, int page, int mX, int mY);
 	
 	@SuppressWarnings("rawtypes")
 	public void initGui(int width, int height, int left, int top, EntityPlayer player, List buttonList);
