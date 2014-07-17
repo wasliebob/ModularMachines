@@ -19,7 +19,6 @@ public class MMKeyHandler{
     ClientRegistry.registerKeyBinding(a1);
   }
  
-//  @SideOnly(Side.CLIENT)
   @SubscribeEvent
   public void onKeyInput(KeyInputEvent e){
 	  if(a1.getIsKeyPressed()){
