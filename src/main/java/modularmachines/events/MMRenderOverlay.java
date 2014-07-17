@@ -7,11 +7,14 @@ import modularmachines.api.guide.IGuided;
 import modularmachines.api.main.MMInteractingUpgrades;
 import modularmachines.api.upgrades.IInteractingAction;
 import modularmachines.items.MMItemGuide;
+import modularmachines.main.init.MMItems;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -20,6 +23,7 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
 
 import wasliecore.helpers.ColorHelper;
 import wasliecore.helpers.Utils;
@@ -62,18 +66,22 @@ public class MMRenderOverlay extends Gui{
 							String key = action.getKey();
 							if(key != null){
 								s = "Guide Entry: " + key;
+								drawIcon(event);
 							}else{
 								s = "Guide Entry: " + guided.getKey();
+								drawIcon(event);
 							}
 						}else{
 							s = "Guide Entry: " + guided.getKey();
+							drawIcon(event);
 						}
 					}else{
 						s = "Guide Entry: " + guided.getKey();
+						drawIcon(event);
 					}
 				}else{
 					s = "Guide Entry: " + guided.getKey();
-
+					drawIcon(event);
 				}
 				int stringLengthX = (width - font.getStringWidth(s)) / 2;
 				int stringLengthY = height - 70;    
@@ -86,5 +94,24 @@ public class MMRenderOverlay extends Gui{
 				GL11.glPopMatrix();
 			}
 		}
+	}
+	
+	public void drawIcon(RenderGameOverlayEvent event){
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		GL11.glColor4f(1F, 1F, 1F, 1F);
+		RenderHelper.enableGUIStandardItemLighting();
+		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+		GL11.glEnable(GL11.GL_DEPTH_TEST);
+		
+		RenderItem ri = new RenderItem();
+		FontRenderer fr = Minecraft.getMinecraft().fontRenderer;
+		int x = event.resolution.getScaledWidth()/2 + event.resolution.getScaledWidth()/3 + 40;
+		int y = event.resolution.getScaledHeight()/2 - event.resolution.getScaledHeight()/3 - 30;
+
+		ri.renderItemIntoGUI(fr, Minecraft.getMinecraft().renderEngine, new ItemStack(MMItems.guide), x, y);
+		
+		RenderHelper.disableStandardItemLighting();
+		GL11.glDisable(GL11.GL_BLEND);
 	}
 }
