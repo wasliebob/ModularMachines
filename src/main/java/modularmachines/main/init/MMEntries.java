@@ -2,6 +2,7 @@ package modularmachines.main.init;
 
 import modularmachines.api.guide.EntryHelper;
 import modularmachines.api.guide.IEntry;
+import modularmachines.api.guide.entries.EntryInfo;
 import modularmachines.api.guide.entries.EntryRecipe;
 import modularmachines.api.guide.entries.EntryText;
 import modularmachines.blocks.guis.guide.entries.EntryTitle;
@@ -72,23 +73,23 @@ public class MMEntries implements IInitalization{
 		};
 		EntryHelper.addEntry("Item Transporter", new IEntry[]{new EntryText(), new EntryRecipe(recipe)}, 0);
 	
-		EntryHelper.addEntry("Upgrade: Break", new IEntry[]{new EntryText()}, 0);
+		EntryHelper.addEntry("Upgrade: Break", new IEntry[]{new EntryText(), new EntryInfo(1)}, 0);
 		
-		EntryHelper.addEntry("Upgrade: Elevator", new IEntry[]{new EntryText()}, 0);
+		EntryHelper.addEntry("Upgrade: Elevator", new IEntry[]{new EntryText(), new EntryInfo(1)}, 0);
 		
-		EntryHelper.addEntry("Upgrade: Fertilize", new IEntry[]{new EntryText()}, 0);
+		EntryHelper.addEntry("Upgrade: Fertilize", new IEntry[]{new EntryText(), new EntryInfo(1)}, 0);
 		
-		EntryHelper.addEntry("Upgrade: Place", new IEntry[]{new EntryText()}, 0);
+		EntryHelper.addEntry("Upgrade: Place", new IEntry[]{new EntryText(), new EntryInfo(1)}, 0);
 
-		EntryHelper.addEntry("Upgrade: Transfer", new IEntry[]{new EntryText()}, 0);
+		EntryHelper.addEntry("Upgrade: Transfer", new IEntry[]{new EntryText(), new EntryInfo(1)}, 0);
 
-		EntryHelper.addEntry("Upgrade: Update", new IEntry[]{new EntryText()}, 0);
+		EntryHelper.addEntry("Upgrade: Update", new IEntry[]{new EntryText(), new EntryInfo(1)}, 0);
 
-		EntryHelper.addEntry("Upgrade: Vacuum", new IEntry[]{new EntryText()}, 0);
+		EntryHelper.addEntry("Upgrade: Vacuum", new IEntry[]{new EntryText(), new EntryInfo(1)}, 0);
 		
 		/** Page Two */
-		EntryHelper.addEntry("Upgrade: Furnace", new IEntry[]{new EntryText()}, 1);
-		EntryHelper.addEntry("Upgrade: Macerator", new IEntry[]{new EntryText()}, 1);
-		EntryHelper.addEntry("Upgrade: Charger", new IEntry[]{new EntryText()}, 1);
+		EntryHelper.addEntry("Upgrade: Furnace", new IEntry[]{new EntryText(), new EntryInfo(0)}, 1);
+		EntryHelper.addEntry("Upgrade: Macerator", new IEntry[]{new EntryText(), new EntryInfo(0)}, 1);
+		EntryHelper.addEntry("Upgrade: Charger", new IEntry[]{new EntryText(), new EntryInfo(0)}, 1);
 	}
 }
