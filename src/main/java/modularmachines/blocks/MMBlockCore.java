@@ -73,9 +73,8 @@ public class MMBlockCore extends BlockContainer implements IWrenchable, IGuided{
 				base.screen = null;
 			}
 		}else if((player.getHeldItem() != null && player.getHeldItem().getItem() != MMItems.wrench) || player.getHeldItem() == null){
-			if(base != null && !player.isSneaking() && base.screen != null){
-				if(base.input != null && side == base.screen.ordinal())
-					player.openGui(MM.instance, 1, world, x, y, z);
+			if(base != null && !player.isSneaking() && base.screen != null && ForgeDirection.getOrientation(side) == base.screen ){
+				player.openGui(MM.instance, 1, world, x, y, z);
 			}
 		}
 		return false;

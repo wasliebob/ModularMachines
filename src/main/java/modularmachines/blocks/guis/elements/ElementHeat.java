@@ -29,22 +29,19 @@ public class ElementHeat extends GuiScreen implements IElement{
 		
 		if(tile.getHeatStorage().getHeat() != 0){
 			int stored = tile.getHeatStorage().getHeat();
+			
 
-			drawRect(x, y, x + width, y + height, getColor(stored));
+			if(stored > 0 && stored < 250)
+				drawRect(x, (y + height), x + width, (y + height) - 12, Color.red.getRGB());
+			else if(stored >= 250 && stored < 500)
+				drawRect(x, (y + height), x + width, (y + height) - 24, Color.red.getRGB());
+			else if(stored >= 500 && stored < 750)
+				drawRect(x, (y + height), x + width, (y + height) - 32, Color.red.getRGB());
+			else if(stored >= 750 && stored < 1200)
+				drawRect(x, (y + height), x + width, (y + height) - 44, Color.red.getRGB());
+			else if(stored == 1200)
+				drawRect(x, (y + height), x + width, (y + height) - 56, Color.red.getRGB());
 		}
-	}
-	
-	public int getColor(int stored){
-		if(stored > 0 && stored < 251)
-			return new Color(200, 0, 0).getRGB();
-		if(stored > 250 && stored < 501)
-			return Color.red.getRGB();
-		else if(stored > 500 && stored < 751)
-			return Color.orange.getRGB();
-		else if(stored > 750)
-			return Color.yellow.getRGB();
-		else
-			return Color.gray.getRGB();
 	}
 	
 	@Override
