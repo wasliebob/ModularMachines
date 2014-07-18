@@ -6,6 +6,7 @@ import modularmachines.api.classes.TileInteracting;
 import modularmachines.api.guide.IGuided;
 import modularmachines.api.main.MMInteractingUpgrades;
 import modularmachines.api.upgrades.IInteractingAction;
+import modularmachines.items.MMInteractingUpgrade;
 import modularmachines.items.MMItemGuide;
 import modularmachines.main.init.MMItems;
 import net.minecraft.block.Block;
@@ -60,7 +61,7 @@ public class MMRenderOverlay extends Gui{
 				if(te != null && te instanceof TileInteracting){
 					TileInteracting ti = (TileInteracting)te;
 					ForgeDirection dir = ForgeDirection.getOrientation(Utils.getTargetBlockSide(player));
-					if(dir == ti.upgradeSide){
+					if(dir == ti.upgradeSide && ti.upgrade != null && ti.upgrade instanceof MMInteractingUpgrade){
 						IInteractingAction action = MMInteractingUpgrades.getUpgrade(ti.upgrade).action;
 						if(action != null){
 							String key = action.getKey();

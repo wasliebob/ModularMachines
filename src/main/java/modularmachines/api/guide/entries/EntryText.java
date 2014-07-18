@@ -3,6 +3,7 @@ package modularmachines.api.guide.entries;
 import java.util.List;
 
 import modularmachines.api.guide.IEntry;
+import modularmachines.blocks.guis.guide.GuiEntry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,7 +11,7 @@ import net.minecraft.util.StatCollector;
 
 public class EntryText implements IEntry{
 	@Override
-	public void draw(int width, int height, int left, int top, EntityPlayer player, String key, int page, int mX, int mY){
+	public void draw(GuiEntry entry, int width, int height, int left, int top, EntityPlayer player, String key, int page, int mX, int mY){
 		int x, y;
 		
 		String s = StatCollector.translateToLocal("mm.guide.entries." + key + "." + page);

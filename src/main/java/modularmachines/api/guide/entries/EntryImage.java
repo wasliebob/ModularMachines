@@ -3,6 +3,7 @@ package modularmachines.api.guide.entries;
 import java.util.List;
 
 import modularmachines.api.guide.IEntry;
+import modularmachines.blocks.guis.guide.GuiEntry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.Tessellator;
@@ -20,7 +21,7 @@ public class EntryImage implements IEntry{
 	public int iconHeight;
 	
 	@Override
-	public void draw(int width, int height, int left, int top, EntityPlayer player, String key, int page, int mX, int mY){
+	public void draw(GuiEntry entry, int width, int height, int left, int top, EntityPlayer player, String key, int page, int mX, int mY){
 		int x = left + 32;
 		int y = top + 10;
 		Minecraft.getMinecraft().getTextureManager().bindTexture(this.resource);

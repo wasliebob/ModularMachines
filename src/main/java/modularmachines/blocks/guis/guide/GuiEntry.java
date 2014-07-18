@@ -54,12 +54,11 @@ public class GuiEntry extends GuiScreen{
 		this.drawCenteredString(fontRendererObj, str, this.left + gwidth / 2, top - 15, 0x336666);
 		
 		/** Current Page */
-
 		this.drawCenteredString(fontRendererObj, (currPage + 1) + "/" + ((EntryHelper.entries.get(key).length - 1) + 1), this.left + gwidth / 2, top + 160, 0x336666);
 
 		IEntry entry = EntryHelper.entries.get(key)[currPage];
 		if(entry != null){
-			entry.draw(gwidth, gheight, left, top, player, key, currPage, mX, mY);
+			entry.draw(this, gwidth, gheight, left, top, player, key, currPage, mX, mY);
 		}
 		super.drawScreen(mX, mY, f1);
 	}
