@@ -22,7 +22,7 @@ public class MM {
  
     @Instance("ModularMachines")
     public static MM instance;
-    public static double version = 0.2;
+    public static double version = 0.1;
     public static String mcVersion ="1.7.10";
     
     public static String modName = "ModularMachines";

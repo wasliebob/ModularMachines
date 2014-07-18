@@ -71,7 +71,7 @@ public class GuiGuide extends GuiScreen{
 		this.drawCenteredString(fontRendererObj, str, this.left + gwidth / 2, top - 15, 0x336666);
 		
 		/** Current Page */
-		this.drawCenteredString(fontRendererObj, currPage + "/" + EntryHelper.maxPages, this.left + gwidth / 2, top + 160, 0x336666);
+		this.drawCenteredString(fontRendererObj, (currPage + 1) + "/" + (EntryHelper.maxPages + 1), this.left + gwidth / 2, top + 160, 0x336666);
 		registerButtons();
 
 		super.drawScreen(mX, mY, f1);

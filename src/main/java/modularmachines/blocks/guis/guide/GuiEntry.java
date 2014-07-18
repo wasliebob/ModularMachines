@@ -55,7 +55,7 @@ public class GuiEntry extends GuiScreen{
 		
 		/** Current Page */
 
-		this.drawCenteredString(fontRendererObj, currPage + "/" + (EntryHelper.entries.get(key).length - 1), this.left + gwidth / 2, top + 160, 0x336666);
+		this.drawCenteredString(fontRendererObj, (currPage + 1) + "/" + ((EntryHelper.entries.get(key).length - 1) + 1), this.left + gwidth / 2, top + 160, 0x336666);
 
 		IEntry entry = EntryHelper.entries.get(key)[currPage];
 		if(entry != null){
