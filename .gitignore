@@ -1,5 +1,6 @@
 /*
 !.gitignore
+!/deps/
 !/src/
 !/src/*
 /gradle/
