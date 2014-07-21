@@ -19,9 +19,11 @@ public class IntegrationLoader implements IInitalization{
 	}
 
 	@Override
-	public void postInit(){}
-	public static WailaIntegration waila = new WailaIntegration();
+	public void postInit(){
+	}
 	
+	public static WailaIntegration waila = new WailaIntegration();
+
 	public static void message(String mod){
 		System.out.println("[" + MM.alias + "] " + "You have " + mod + " installed, adding intergration");
 	}

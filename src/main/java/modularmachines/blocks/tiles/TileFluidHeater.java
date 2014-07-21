@@ -24,8 +24,12 @@ public class TileFluidHeater extends TileEntity implements IHeatedTile{
 	public void updateEntity(){
 		if(!worldObj.isRemote){
 			Block above = worldObj.getBlock(xCoord, yCoord + 1, zCoord);
+			Block under = worldObj.getBlock(xCoord, yCoord - 1, zCoord);
+
 			if(MMHeatFluids.containsBlock(above) && heat != null && heat.getHeat() + MMHeatFluids.getFuel(above) <= heat.getMaxHeat()){
 				this.heat.increaseHeat(MMHeatFluids.getFuel(above));
+			}else if(MMHeatFluids.containsBlock(under) && heat != null && heat.getHeat() + MMHeatFluids.getFuel(under) <= heat.getMaxHeat()){
+				this.heat.increaseHeat(MMHeatFluids.getFuel(under));
 			}
 
 			if(this.getTransporter() != null){
