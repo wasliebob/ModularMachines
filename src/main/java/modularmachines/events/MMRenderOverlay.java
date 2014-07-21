@@ -63,8 +63,8 @@ public class MMRenderOverlay extends Gui{
 					ForgeDirection dir = ForgeDirection.getOrientation(Utils.getTargetBlockSide(player));
 					if(dir == ti.upgradeSide && ti.upgrade != null && ti.upgrade instanceof MMInteractingUpgrade){
 						IInteractingAction action = MMInteractingUpgrades.getUpgrade(ti.upgrade).action;
-						if(action != null){
-							String key = action.getKey();
+						if(action != null && action instanceof IGuided){
+							String key = ((IGuided)action).getKey();
 							if(key != null){
 								s = "Guide Entry: " + key;
 								drawIcon(event);

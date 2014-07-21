@@ -1,6 +1,7 @@
 package modularmachines.upgrades.interacting;
 
 import modularmachines.api.classes.TileInteracting;
+import modularmachines.api.guide.IGuided;
 import modularmachines.api.main.MMInteractingUpgrades;
 import modularmachines.api.upgrades.IInteractingAction;
 import net.minecraft.entity.player.EntityPlayer;
@@ -8,7 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class UpgradeElevator implements IInteractingAction{
+public class UpgradeElevator implements IInteractingAction, IGuided{
 	int max = 10;
 	
 	@Override

@@ -5,6 +5,7 @@ import java.awt.Color;
 import modularmachines.items.MMInteractingUpgrade;
 import modularmachines.items.MMItem;
 import modularmachines.items.MMItemGuide;
+import modularmachines.items.MMLinker;
 import modularmachines.items.MMProgrammer;
 import modularmachines.items.MMSpecialUpgrade;
 import modularmachines.items.MMSpecialUpgradeScreen;
@@ -31,10 +32,14 @@ public class MMItems implements IInitalization{
 		upgrade_furnace = new MMUpgrade("furnace", ColorHelper.getColorCodeFromColor(Color.red));
 		upgrade_macerator = new MMUpgrade("macerator", ColorHelper.getColorCodeFromColor(Color.magenta));
 		upgrade_charger = new MMUpgrade("charger", ColorHelper.getColorCodeFromColor(Color.cyan));
+		upgrade_blast = new MMUpgrade("blast", ColorHelper.getColorCodeFromColor(Color.GRAY));
+		upgrade_brewing = new MMUpgrade("brewing", ColorHelper.getColorCodeFromColor(Color.PINK));
 	}
 	public static MMUpgrade upgrade_furnace;
 	public static MMUpgrade upgrade_macerator;
 	public static MMUpgrade upgrade_charger;
+	public static MMUpgrade upgrade_blast;
+	public static MMUpgrade upgrade_brewing;
 
 	public void initInteractingUpgrades(){
 		interacting_transfer = new MMInteractingUpgrade("transfer", Color.blue);
@@ -57,8 +62,10 @@ public class MMItems implements IInitalization{
 		programmer = new MMProgrammer("programmer");
 		input = new MMSpecialUpgrade("input", ColorHelper.getColorCodeFromColor(Color.cyan));
 		output = new MMSpecialUpgrade("output", ColorHelper.getColorCodeFromColor(Color.red));
+		expension = new MMSpecialUpgrade("expension", ColorHelper.getColorCodeFromColor(Color.magenta));
 		screen = new MMSpecialUpgradeScreen();
 		guide = new MMItemGuide();
+		linker = new MMLinker();
 		wrench = new MMWrench("modular wrench");
 		crystal_energy = new MMItem(1, "energy crystal", "crystal_energy");
 		stick_iron = new MMItem(64, "iron stick", "stick_iron");
@@ -66,11 +73,13 @@ public class MMItems implements IInitalization{
 	public static MMProgrammer programmer;
 	public static MMSpecialUpgrade input;
 	public static MMSpecialUpgrade output;
+	public static MMSpecialUpgrade expension;
 	public static MMSpecialUpgradeScreen screen;
 	public static MMWrench wrench;
 	public static MMItem crystal_energy;
 	public static MMItem stick_iron;
 	public static MMItemGuide guide;
+	public static MMLinker linker;
 
 	public void initTools(){
 		heated = EnumHelper.addToolMaterial("HEATED", 4, -1, 10F, 0F, 0);

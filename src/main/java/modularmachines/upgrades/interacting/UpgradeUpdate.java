@@ -1,16 +1,17 @@
 package modularmachines.upgrades.interacting;
 
-import wasliecore.helpers.MathHelper;
 import modularmachines.api.classes.TileInteracting;
+import modularmachines.api.guide.IGuided;
+import modularmachines.api.misc.helpers.DirectionHelper;
 import modularmachines.api.upgrades.IInteractingAction;
-import modularmachines.helpers.DirectionHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import wasliecore.helpers.MathHelper;
 
-public class UpgradeUpdate implements IInteractingAction{
+public class UpgradeUpdate implements IInteractingAction, IGuided{
 	public UpgradeUpdate(){
 		time = MathHelper.secondToTick(1);
 	}

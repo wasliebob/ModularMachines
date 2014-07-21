@@ -3,7 +3,7 @@ package modularmachines.blocks.tiles;
 import modularmachines.api.heat.HeatStorage;
 import modularmachines.api.heat.interfaces.IHeatTransport;
 import modularmachines.api.heat.interfaces.IHeatedMachine;
-import modularmachines.helpers.DirectionHelper;
+import modularmachines.api.misc.helpers.DirectionHelper;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;

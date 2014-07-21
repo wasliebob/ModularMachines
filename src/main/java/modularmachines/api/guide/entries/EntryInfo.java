@@ -9,21 +9,27 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.EntityPlayer;
 
 public class EntryInfo implements IEntry{
-	public EntryInfo(int type){
+	public EntryInfo(int type, int heat){
 		if(type == 0)
 			this.type = "Modular";
 		else if(type == 1)
 			this.type = "Interacting";
+		this.heat = heat;
 	}
 	public String type;
+	public int heat;
 	
 	@Override
 	public void draw(GuiEntry entry, int width, int height, int left, int top, EntityPlayer player, String key, int page, int mX, int mY){
 		int x, y;
 		x = left + width / 2 - 58;
 		y = (top + 15);
-
 		Minecraft.getMinecraft().fontRenderer.drawString("Type: " + this.type, x, y, 0);	
+
+		
+		x = left + width / 2 - 58;
+		y = (top + 15) + 9;
+		Minecraft.getMinecraft().fontRenderer.drawString("Heat Required: " + this.heat, x, y, 0);	
 
 	}
 	

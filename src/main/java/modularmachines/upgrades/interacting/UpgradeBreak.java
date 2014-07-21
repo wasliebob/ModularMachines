@@ -3,8 +3,9 @@ package modularmachines.upgrades.interacting;
 import java.util.Random;
 
 import modularmachines.api.classes.TileInteracting;
+import modularmachines.api.guide.IGuided;
+import modularmachines.api.misc.helpers.DirectionHelper;
 import modularmachines.api.upgrades.IInteractingAction;
-import modularmachines.helpers.DirectionHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.entity.item.EntityItem;
@@ -16,7 +17,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 
-public class UpgradeBreak implements IInteractingAction{
+public class UpgradeBreak implements IInteractingAction, IGuided{
 
 	@Override
 	public void onUpdate(TileInteracting ti){

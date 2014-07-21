@@ -29,7 +29,6 @@ public class ElementHeat extends GuiScreen implements IElement{
 		
 		if(tile.getHeatStorage().getHeat() != 0){
 			int stored = tile.getHeatStorage().getHeat();
-			
 
 			if(stored > 0 && stored < 250)
 				drawRect(x, (y + height), x + width, (y + height) - 12, Color.red.getRGB());

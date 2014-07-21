@@ -1,27 +1,34 @@
 package modularmachines.blocks;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
 import modularmachines.api.guide.IGuided;
+import modularmachines.api.misc.IColorable;
 import modularmachines.blocks.tiles.TilePotionTank;
+import modularmachines.helpers.DyeHelper;
 import modularmachines.main.MM;
-import modularmachines.main.init.MMItems;
 import modularmachines.main.init.MMTabs;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemPotion;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import wasliecore.helpers.MathHelper;
 import wasliecore.interfaces.IWrenchable;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class MMBlockPotionTank extends BlockContainer implements IWrenchable, IGuided{
 	public MMBlockPotionTank(String name) {
@@ -45,33 +52,35 @@ public class MMBlockPotionTank extends BlockContainer implements IWrenchable, IG
 	@Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float cX, float cY, float cZ) {
 		TilePotionTank te = (TilePotionTank)world.getTileEntity(x, y, z);		
-		if(te != null && player.getHeldItem() != null && player.getHeldItem().getItem() == MMItems.programmer){
+		if(te != null && player.getHeldItem() != null && player.getHeldItem().getItem() == Items.glass_bottle){
 			
 		}else if(te != null && player.getHeldItem() != null && player.getHeldItem().getItem() instanceof ItemPotion){
 			ItemPotion potion = (ItemPotion)player.getHeldItem().getItem();
-			PotionEffect p = genEffect(player, potion).get(0);
-			Potion pe = Potion.potionTypes[p.getPotionID()];
-			if(te.tank.getPotion() == null){
-				te.tank.setPotion(pe);
-				te.tank.setAmount(10 * getPotionAmplifier(p));
-				
-				if(!player.capabilities.isCreativeMode){
-					if(player.getHeldItem().stackSize > 1)
-						player.setCurrentItemOrArmor(0, new ItemStack(player.getHeldItem().getItem(), player.getHeldItem().stackSize--, player.getHeldItem().getItemDamage()));
-					else if(player.getHeldItem().stackSize == 1)
-						player.setCurrentItemOrArmor(0, null);
+			if(potion != null && genEffect(player, potion) != null && genEffect(player, potion).size() > 0){
+				PotionEffect p = genEffect(player, potion).get(0);
+				Potion pe = Potion.potionTypes[p.getPotionID()];
+				if(te.tank.getPotion() == null){
+					te.tank.setPotion(pe);
+					te.tank.setAmount(10 * getPotionAmplifier(p));
+					
+					if(!player.capabilities.isCreativeMode){
+						if(player.getHeldItem().stackSize > 1)
+							player.setCurrentItemOrArmor(0, new ItemStack(player.getHeldItem().getItem(), player.getHeldItem().stackSize--, player.getHeldItem().getItemDamage()));
+						else if(player.getHeldItem().stackSize == 1)
+							player.setCurrentItemOrArmor(0, null);
+					}
+					world.markBlockForUpdate(x, y, z);
+				}else if(te.tank.getPotion() != null && te.tank.getPotion() == pe && te.tank.getAmount() + (10 * getPotionAmplifier(p)) <= te.tank.capacity){
+					te.tank.increaseAmount(10 * getPotionAmplifier(p));
+					
+					if(!player.capabilities.isCreativeMode){
+						if(player.getHeldItem().stackSize > 1)
+							player.setCurrentItemOrArmor(0, new ItemStack(player.getHeldItem().getItem(), player.getHeldItem().stackSize--, player.getHeldItem().getItemDamage()));
+						else if(player.getHeldItem().stackSize == 1)
+							player.setCurrentItemOrArmor(0, null);
+					}
+					world.markBlockForUpdate(x, y, z);
 				}
-				world.markBlockForUpdate(x, y, z);
-			}else if(te.tank.getPotion() != null && te.tank.getPotion() == pe && te.tank.getAmount() + (10 * getPotionAmplifier(p)) <= te.tank.capacity){
-				te.tank.increaseAmount(10 * getPotionAmplifier(p));
-				
-				if(!player.capabilities.isCreativeMode){
-					if(player.getHeldItem().stackSize > 1)
-						player.setCurrentItemOrArmor(0, new ItemStack(player.getHeldItem().getItem(), player.getHeldItem().stackSize--, player.getHeldItem().getItemDamage()));
-					else if(player.getHeldItem().stackSize == 1)
-						player.setCurrentItemOrArmor(0, null);
-				}
-				world.markBlockForUpdate(x, y, z);
 			}
 		}else if(te != null && player.getHeldItem() == null){
 			if(te.tank.getPotion() != null && te.tank.getAmount() - 10 >= 0){
@@ -92,6 +101,10 @@ public class MMBlockPotionTank extends BlockContainer implements IWrenchable, IG
 				
 				world.markBlockForUpdate(x, y, z);
 			}
+		}else if(te != null && player.getHeldItem() != null && player.getHeldItem().getItem() instanceof ItemDye){
+			int meta = player.getHeldItem().getItemDamage();
+			te.setColor(new Color(DyeHelper.getColorCode(meta)));
+			world.markBlockForUpdate(x, y, z);
 		}
 		return true;
     }
@@ -100,9 +113,11 @@ public class MMBlockPotionTank extends BlockContainer implements IWrenchable, IG
     	List<?> s = potion.getEffects(player.getHeldItem());
     	List<PotionEffect> b = new ArrayList<PotionEffect>();
     	
-    	for(Object o : s){
-    		PotionEffect e = (PotionEffect)o;
-    		b.add(e);
+    	if(s != null && !s.isEmpty()){
+    		for(Object o : s){
+    			PotionEffect e = (PotionEffect)o;
+    			b.add(e);
+    		}
     	}
     	return b;
     }
@@ -133,4 +148,13 @@ public class MMBlockPotionTank extends BlockContainer implements IWrenchable, IG
 	public String getKey() {
 		return "Potion Tank";
 	}
+	
+    @SideOnly(Side.CLIENT)
+    public int colorMultiplier(IBlockAccess world, int x, int y, int z){
+    	TileEntity te = world.getTileEntity(x, y, z);
+    	if(te != null && te instanceof IColorable && ((IColorable)te).getColor() != null){
+    		return ((IColorable)te).getColor().getRGB();
+    	}
+    	return 0;
+    }
 }

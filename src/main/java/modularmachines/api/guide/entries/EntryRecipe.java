@@ -37,6 +37,7 @@ public class EntryRecipe implements IEntry{
 			this.recipe = rec.recipeItems;
 		}
 	}
+	
 	@Override
 	public void draw(GuiEntry entry, int width, int height, int left, int top, EntityPlayer player, String key, int page, int mX, int mY){
 		int x, y;
@@ -49,30 +50,49 @@ public class EntryRecipe implements IEntry{
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 		GL11.glEnable(GL11.GL_DEPTH_TEST);
 		renderOverlay(entry, width, height, left, top);
+		
+		/** Row 1 */
+		x = (left + width / 2) - (65-31);
+		y = (height/2 - 18) + (18*0);
+		drawIcon(0, x, y);
+		
+		x = left + width / 2 - (65-48);
+		y = (height/2 - 18) + (18*(3-3));
+		drawIcon(1, x, y);
+		
+		x = left + width / 2 - (65-(48+16)-3);
+		y = (height/2 - 18) + (18*(6-6));
+		drawIcon(2, x, y);
+		/** Row 2 */
+		x = (left + width / 2) - (65-31);
+		y = (height/2 - 18) + (18*1);
+		drawIcon(3, x, y);
+		
+		x = left + width / 2 - (65-48);
+		y = (height/2 - 18) + (18*(4-3));
+		drawIcon(4, x, y);
+		
+		x = left + width / 2 - (65-(48+16)-3);
+		y = (height/2 - 18) + (18*(7-6));
+		drawIcon(5, x, y);
+		
+		/** Row 3 */
+		x = (left + width / 2) - (65-31);
+		y = (height/2 - 18) + (18*2);
+		drawIcon(6, x, y);
 
-		for(int i = 0; i < recipe.length; i++){
-			if(i <= 2){
-				x = (left + width / 2) - (65-31);
-				y = (height/2 - 18) + (18*i);
-			}else if(i > 2 && i <= 5){
-				x = left + width / 2 - (65-48);
-				y = (height/2 - 18) + (18*(i-3));
-			}else if(i > 5 && i <= 9){
-				x = left + width / 2 - (65-(48+16)-3);
-				y = (height/2 - 18) + (18*(i-6));
-			}else{
-				x = left + width / 2 - (65-32);
-				y = (height/2 - 18) + (18*i);
-			}
-			RenderItem ri = new RenderItem();
-			ri.renderItemAndEffectIntoGUI(Minecraft.getMinecraft().fontRenderer, Minecraft.getMinecraft().getTextureManager(), recipe[i], x, y);
-			ri.renderItemOverlayIntoGUI(Minecraft.getMinecraft().fontRenderer, Minecraft.getMinecraft().getTextureManager(), recipe[i], x, y);
-
-			icons.add(new ItemIcon(recipe[i], x, y));
-		}
+		x = left + width / 2 - (65-48);
+		y = (height/2 - 18) + (18*(5-3));
+		drawIcon(7, x, y);
+		
+		x = left + width / 2 - (65-(48+16)-3);
+		y = (height/2 - 18) + (18*(8-6));
+		drawIcon(8, x, y);
+		
 		RenderHelper.disableStandardItemLighting();
-		GL11.glDisable(GL11.GL_LIGHTING);
 
+		GL11.glDisable(GL11.GL_LIGHTING);
+ 
 		GL11.glPopMatrix();
 
 		for(ItemIcon icon : icons){
@@ -80,11 +100,19 @@ public class EntryRecipe implements IEntry{
 				icon.onMouseBetween(mX, mY);
 		}
 	}
+
+	public void drawIcon(int entry, int x, int y){
+		RenderItem ri = new RenderItem();
+		ri.renderItemAndEffectIntoGUI(Minecraft.getMinecraft().fontRenderer, Minecraft.getMinecraft().getTextureManager(), recipe[entry], x, y);
+		ri.renderItemOverlayIntoGUI(Minecraft.getMinecraft().fontRenderer, Minecraft.getMinecraft().getTextureManager(), recipe[entry], x, y);
+
+		icons.add(new ItemIcon(recipe[entry], x, y));
+	}
 	
 	public void renderOverlay(GuiEntry entry, int width, int height, int left, int top){
 		TextureManager tm = Minecraft.getMinecraft().getTextureManager();
 		tm.bindTexture(new ResourceLocation("modularmachines:textures/gui/crafting.png"));
-		((GuiScreen) entry).drawTexturedModalRect(left, (top/2 - 18) + (18*(9-6)) + 14, 0, 0, width, height);
+		((GuiScreen) entry).drawTexturedModalRect(left, (height/2 - 18) + (18*0) - 17, 0, 0, width, height);
 		
 	}
 	
@@ -113,9 +141,12 @@ public class EntryRecipe implements IEntry{
 			int xSize = x + 16;
 			int ySize = y + 16;
 			
+			
 			if(mX > x && mX < xSize && mY > y && mY < ySize){
+				GL11.glDisable(GL11.GL_DEPTH_TEST);
 				if(stack != null && stack.getDisplayName() != null)
-					Minecraft.getMinecraft().fontRenderer.drawString(stack.getDisplayName(), mX + 6, mY, Color.black.getRGB());
+					Minecraft.getMinecraft().fontRenderer.drawString(stack.getDisplayName(), mX + 6, mY, Color.white.getRGB());
+				GL11.glEnable(GL11.GL_DEPTH_TEST);
 			}
 		}		
 	}

@@ -15,6 +15,20 @@ buildscript {
     }
 }
 
+task deps{
+	def wsc = new File('deps/WaslieCore.jar')
+	new URL('https://dl.dropboxusercontent.com/u/46500170/MM/deps/WaslieCore.jar').withInputStream{ i -> wsc.withOutputStream{ it << i }}
+	
+	def ccc = new File('deps/CCC.jar')
+	new URL('https://dl.dropboxusercontent.com/u/46500170/MM/deps/CCC.jar').withInputStream{ i -> ccc.withOutputStream{ it << i }}
+
+	def ic = new File('deps/IC2.jar')
+	new URL('https://dl.dropboxusercontent.com/u/46500170/MM/deps/IC2.jar').withInputStream{ i -> ic.withOutputStream{ it << i }}
+
+	def nei = new File('deps/NEI.jar')
+	new URL('https://dl.dropboxusercontent.com/u/46500170/MM/deps/NEI.jar').withInputStream{ i -> nei.withOutputStream{ it << i }}
+}
+
 apply plugin: 'forge'
 
 version = "1.0"
@@ -22,7 +36,7 @@ group= "ModularMachines" // http://maven.apache.org/guides/mini/guide-naming-con
 archivesBaseName = "ModularMachines"
 
 minecraft {
-    version = "1.7.10-10.13.0.1182"
+    version = "1.7.10-10.13.0.1187"
     assetDir = "eclipse/assets"
 }
 
@@ -54,3 +68,4 @@ processResources
         exclude 'mcmod.info'
     }
 }
+build.dependsOn deps

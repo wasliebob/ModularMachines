@@ -179,7 +179,7 @@ public class TileInteractingRenderer extends TileEntitySpecialRenderer{
 	}
 	
 	public void renderUpgrade(TileInteracting ti, double x, double y, double z){
-		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("modularmachines:textures/misc/indicator.png"));
+		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("modularmachines:textures/misc/indicator_upgrade.png"));
 		OpenGlHelper.setActiveTexture(OpenGlHelper.lightmapTexUnit);
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
 		OpenGlHelper.setActiveTexture(OpenGlHelper.defaultTexUnit);

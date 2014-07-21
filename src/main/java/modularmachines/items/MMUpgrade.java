@@ -33,6 +33,6 @@ public class MMUpgrade extends Item{
 	@Override
     public void registerIcons(IIconRegister ir) 
 	{
-        itemIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "upgrade");
+        itemIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "upgrade_core");
 	}
 }

@@ -28,21 +28,23 @@ public class MMEntries implements IInitalization{
 		EntryHelper.addEntry("Interacting Core", new IEntry[]{new EntryText(), new EntryRecipe(MMRecipes.core_interacting)}, 0);
 		EntryHelper.addEntry("Heat Router", new IEntry[]{new EntryText(), new EntryRecipe(MMRecipes.router)}, 0);
 		EntryHelper.addEntry("Fluid Heater", new IEntry[]{new EntryText(), new EntryRecipe(MMRecipes.heater_fluid)}, 0);
-		EntryHelper.addEntry("Potion Tank", new IEntry[]{new EntryText(), new EntryRecipe(MMRecipes.tank_potion)}, 0);
+		EntryHelper.addEntry("Potion Tank", new IEntry[]{new EntryText(), new EntryRecipe(MMRecipes.tank_potion), new EntryText(), new EntryRecipe(MMRecipes.linker)}, 0);
 		EntryHelper.addEntry("Item Transporter", new IEntry[]{new EntryText(), new EntryRecipe(MMRecipes.transporter)}, 0);
 	
 		
-		EntryHelper.addEntry("Upgrade: Break", new IEntry[]{new EntryText(), new EntryInfo(1), new EntryRecipe(MMRecipes.interacting_break)}, 0);
-		EntryHelper.addEntry("Upgrade: Elevator", new IEntry[]{new EntryText(), new EntryInfo(1), new EntryRecipe(MMRecipes.interacting_elevator)}, 0);
-		EntryHelper.addEntry("Upgrade: Fertilize", new IEntry[]{new EntryText(), new EntryInfo(1), new EntryRecipe(MMRecipes.interacting_fertilize)}, 0);
-		EntryHelper.addEntry("Upgrade: Place", new IEntry[]{new EntryText(), new EntryInfo(1), new EntryRecipe(MMRecipes.interacting_place)}, 0);
-		EntryHelper.addEntry("Upgrade: Transfer", new IEntry[]{new EntryText(), new EntryInfo(1), new EntryRecipe(MMRecipes.interacting_transfer)}, 0);
-		EntryHelper.addEntry("Upgrade: Update", new IEntry[]{new EntryText(), new EntryInfo(1), new EntryRecipe(MMRecipes.interacting_update)}, 0);
-		EntryHelper.addEntry("Upgrade: Vacuum", new IEntry[]{new EntryText(), new EntryInfo(1), new EntryRecipe(MMRecipes.interacting_vacuum)}, 0);
+		EntryHelper.addEntry("Upgrade: Break", new IEntry[]{new EntryText(), new EntryInfo(1, 0), new EntryRecipe(MMRecipes.interacting_break)}, 0);
+		EntryHelper.addEntry("Upgrade: Elevator", new IEntry[]{new EntryText(), new EntryInfo(1, 0), new EntryRecipe(MMRecipes.interacting_elevator)}, 0);
+		EntryHelper.addEntry("Upgrade: Fertilize", new IEntry[]{new EntryText(), new EntryInfo(1, 10), new EntryRecipe(MMRecipes.interacting_fertilize)}, 0);
+		EntryHelper.addEntry("Upgrade: Place", new IEntry[]{new EntryText(), new EntryInfo(1, 0), new EntryRecipe(MMRecipes.interacting_place)}, 0);
+		EntryHelper.addEntry("Upgrade: Transfer", new IEntry[]{new EntryText(), new EntryInfo(1, 0), new EntryRecipe(MMRecipes.interacting_transfer)}, 0);
+		EntryHelper.addEntry("Upgrade: Update", new IEntry[]{new EntryText(), new EntryInfo(1, 0), new EntryRecipe(MMRecipes.interacting_update)}, 0);
+		EntryHelper.addEntry("Upgrade: Vacuum", new IEntry[]{new EntryText(), new EntryInfo(1, 0), new EntryRecipe(MMRecipes.interacting_vacuum)}, 0);
 		
 		/** Page Two */
-		EntryHelper.addEntry("Upgrade: Furnace", new IEntry[]{new EntryText(), new EntryInfo(0), new EntryRecipe(MMRecipes.upgrade_furnace)}, 1);
-		EntryHelper.addEntry("Upgrade: Macerator", new IEntry[]{new EntryText(), new EntryInfo(0), new EntryRecipe(MMRecipes.upgrade_macerator)}, 1);
-		EntryHelper.addEntry("Upgrade: Charger", new IEntry[]{new EntryText(), new EntryInfo(0), new EntryRecipe(MMRecipes.upgrade_charger)}, 1);
+		EntryHelper.addEntry("Upgrade: Furnace", new IEntry[]{new EntryText(), new EntryInfo(0, 10), new EntryRecipe(MMRecipes.upgrade_furnace)}, 1);
+		EntryHelper.addEntry("Upgrade: Macerator", new IEntry[]{new EntryText(), new EntryInfo(0, 10), new EntryRecipe(MMRecipes.upgrade_macerator)}, 1);
+		EntryHelper.addEntry("Upgrade: Charger", new IEntry[]{new EntryText(), new EntryInfo(0, 10), new EntryRecipe(MMRecipes.upgrade_charger)}, 1);
+		EntryHelper.addEntry("Upgrade: Blast", new IEntry[]{new EntryText(), new EntryInfo(0, 100), new EntryRecipe(MMRecipes.upgrade_blast)}, 1);
+		EntryHelper.addEntry("Upgrade: Brewing", new IEntry[]{new EntryText(), new EntryInfo(0, 10), new EntryRecipe(MMRecipes.upgrade_brewing)}, 1);
 	}
 }

@@ -2,9 +2,12 @@ package modularmachines.proxies;
 
 import modularmachines.api.classes.TileInteracting;
 import modularmachines.api.classes.TileMachineBase;
+import modularmachines.blocks.tiles.TileFluidHeater;
 import modularmachines.blocks.tiles.TilePotionTank;
 import modularmachines.blocks.tiles.TileRouter;
 import modularmachines.blocks.tiles.TileTransporter;
+import modularmachines.client.renders.RenderFluidHeater;
+import modularmachines.client.renders.TileFluidHeaterRenderer;
 import modularmachines.client.renders.TileInteractingRenderer;
 import modularmachines.client.renders.TileMachineBaseRenderer;
 import modularmachines.client.renders.TilePotionTankRenderer;
@@ -14,6 +17,7 @@ import modularmachines.events.MMKeyHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.World;
 import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 
 public class ClientProxy extends CommonProxy{
@@ -27,11 +31,13 @@ public class ClientProxy extends CommonProxy{
 	
 	@Override
 	public void render(){
+		RenderingRegistry.registerBlockHandler(new RenderFluidHeater());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileMachineBase.class, new TileMachineBaseRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileInteracting.class, new TileInteractingRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileRouter.class, new TileRouterRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TilePotionTank.class, new TilePotionTankRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileTransporter.class, new TileTransporterRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileFluidHeater.class, new TileFluidHeaterRenderer());
 
 	}
 	

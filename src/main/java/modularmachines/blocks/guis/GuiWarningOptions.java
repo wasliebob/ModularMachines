@@ -1,6 +1,5 @@
 package modularmachines.blocks.guis;
 
-import modularmachines.main.MM;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 
@@ -13,7 +12,6 @@ public class GuiWarningOptions extends GuiScreen{
 		this.parent = parent;
 	}
     private GuiScreen parent;
-    String url_changelog = "https://dl.dropboxusercontent.com/u/46500170/Site/MM/MM_" + MM.version + ".txt";
     String url_developer = "http://www.wasliebob.nl/about.php";
     String url_download = "https://wasliebob.ci.cloudbees.com/job/ModularMachines/";
     String url_ideas = "https://docs.google.com/document/d/1X2dNhauFYkDwff3gmrcm7x50AdvxVb_Kyc9KR5DwiQM/edit?usp=sharing";
@@ -28,10 +26,9 @@ public class GuiWarningOptions extends GuiScreen{
     
         /** Extra Buttons */
         this.buttonList.add(new GuiButton(1, (this.width / 2) - 175, (this.height - 64), 350, 20, "Report a bug"));
-        this.buttonList.add(new GuiButton(2, (this.width / 2) - 175, (this.height - 84), 350, 20, "View Changelog"));
-        this.buttonList.add(new GuiButton(3, (this.width / 2) - 175, (this.height - 104), 350, 20, "About The Developer"));
-        this.buttonList.add(new GuiButton(4, (this.width / 2) - 175, (this.height - 124), 350, 20, "Ideas/Progress"));
-        this.buttonList.add(new GuiButton(5, (this.width / 2) - 175, (this.height - 144), 350, 20, "Downloads"));
+        this.buttonList.add(new GuiButton(2, (this.width / 2) - 175, (this.height - 84), 350, 20, "About The Developer"));
+        this.buttonList.add(new GuiButton(3, (this.width / 2) - 175, (this.height - 104), 350, 20, "Ideas/Progress"));
+        this.buttonList.add(new GuiButton(4, (this.width / 2) - 175, (this.height - 124), 350, 20, "Downloads"));
 
     }
 
@@ -42,12 +39,10 @@ public class GuiWarningOptions extends GuiScreen{
     	if(button.id == 1)
     		this.mc.displayGuiScreen(new GuiBugReport(this));
     	if(button.id == 2)
-    		WebHelper.openURL(this.url_changelog);
-    	if(button.id == 3)
     		WebHelper.openURL(this.url_developer);
-    	if(button.id == 4)
+    	if(button.id == 3)
     		WebHelper.openURL(this.url_ideas);
-    	if(button.id == 5)
+    	if(button.id == 4)
     		WebHelper.openURL(this.url_download);
     }
     

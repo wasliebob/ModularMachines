@@ -4,6 +4,7 @@ import modularmachines.api.heat.HeatStorage;
 import modularmachines.api.heat.MMHeatFuels;
 import modularmachines.api.heat.interfaces.IHeatedMachine;
 import modularmachines.api.main.MMUpgrades;
+import modularmachines.api.misc.helpers.DirectionHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
@@ -16,22 +17,34 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidContainerRegistry;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidTank;
+import net.minecraftforge.fluids.FluidTankInfo;
+import net.minecraftforge.fluids.IFluidHandler;
 
-public class TileMachineBase extends TileEntity implements ISidedInventory, IHeatedMachine{    
+public class TileMachineBase extends TileEntity implements ISidedInventory, IHeatedMachine, IFluidHandler{    
 	public TileMachineBase(){
 		stacks = new ItemStack[6];
 		heat = new HeatStorage(1200, 10);
+		tank_info = new FluidTankInfo(tank.getFluid(), tank.getCapacity());
 		input = null;
 		output = null;
 		screen = null;
+		expension = null;
 		enabled = true;
 	}
 	public ItemStack[] stacks;
 	public String type;
 	public HeatStorage heat;
+	public FluidTank tank = new FluidTank(FluidContainerRegistry.BUCKET_VOLUME*16);
+	public FluidTankInfo tank_info;
 	public ForgeDirection input;
 	public ForgeDirection output;
 	public ForgeDirection screen;
+	public ForgeDirection expension;
 	public boolean enabled;
 	
 	@Override
@@ -42,7 +55,7 @@ public class TileMachineBase extends TileEntity implements ISidedInventory, IHea
 			if(fuel != null && MMHeatFuels.containsItem(fuel.getItem()) && heat != null && heat.getHeat() + MMHeatFuels.getFuel(fuel.getItem()) <= heat.getMaxHeat())
 				addHeat();
 			
-			if(upgrade != null && MMUpgrades.containsItem(upgrade.getItem()))
+			if(upgrade != null && MMUpgrades.containsItem(upgrade.getItem()) && MMUpgrades.getUpgrade(upgrade.getItem()).action.hasRequired(this))
 				MMUpgrades.getUpgrade(upgrade.getItem()).action.onUpdate(this);
 		}
 	}
@@ -74,6 +87,14 @@ public class TileMachineBase extends TileEntity implements ISidedInventory, IHea
 		if(this.screen != null)
 			nbt.setInteger("SCREEN", this.screen.ordinal());
 		
+		if(this.expension != null)
+			nbt.setInteger("EXPENSION", this.expension.ordinal());
+		
+		if(this.tank.getFluid() != null)
+			nbt.setInteger("FLUID", this.tank.getFluid().getFluid().getID());
+		
+		nbt.setInteger("AMOUNT", this.tank.getFluidAmount());
+		
 		NBTTagList itemList = new NBTTagList();
         for (int i = 0; i < stacks.length; i++) {
         	ItemStack stack = stacks[i];
@@ -102,6 +123,13 @@ public class TileMachineBase extends TileEntity implements ISidedInventory, IHea
 		if(nbt.getInteger("SCREEN") != 0)
 			this.screen = ForgeDirection.getOrientation(nbt.getInteger("SCREEN"));
 
+		if(nbt.getInteger("EXPENSION") != 0)
+			this.expension = ForgeDirection.getOrientation(nbt.getInteger("EXPENSION"));
+
+	
+		if(FluidRegistry.getFluid(nbt.getInteger("FLUID")) != null)
+			this.tank.setFluid(new FluidStack(FluidRegistry.getFluid(nbt.getInteger("FLUID")), nbt.getInteger("AMOUNT")));
+		
 		NBTTagList tagList = nbt.getTagList("Inventory", Constants.NBT.TAG_COMPOUND);
 		for (int i = 0; i < tagList.tagCount(); i++) {
 			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
@@ -142,8 +170,7 @@ public class TileMachineBase extends TileEntity implements ISidedInventory, IHea
 	public void setInventorySlotContents(int i, ItemStack itemstack) {	
 		stacks[i] = itemstack;
 
-        if (itemstack != null && itemstack.stackSize > getInventoryStackLimit())
-        {
+        if (itemstack != null && itemstack.stackSize > getInventoryStackLimit()){
             itemstack.stackSize = getInventoryStackLimit();
         }        
 	}
@@ -285,5 +312,43 @@ public class TileMachineBase extends TileEntity implements ISidedInventory, IHea
 	@Override
 	public World getWorldObj(){
 		return this.worldObj;
+	}
+
+	@Override
+	public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
+		return tank.fill(resource, doFill);
+	}
+
+	@Override
+	public FluidStack drain(ForgeDirection from, FluidStack resource,
+			boolean doDrain) {
+		return null;
+	}
+
+	@Override
+	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain) {
+		return tank.drain(maxDrain, doDrain);
+	}
+
+	@Override
+	public boolean canFill(ForgeDirection from, Fluid fluid) {
+		return true;
+	}
+
+	@Override
+	public boolean canDrain(ForgeDirection from, Fluid fluid) {
+		return true;
+	}
+
+	@Override
+	public FluidTankInfo[] getTankInfo(ForgeDirection from) {
+		return new FluidTankInfo[]{this.tank_info};
+	}
+	
+	public TileEntity getExpansion(){
+		TileEntity te = DirectionHelper.getTileEntity(worldObj, xCoord, yCoord, zCoord, expension);
+		if(te != null)
+			return te;
+		return null;
 	}
 }

@@ -98,6 +98,10 @@ public class MMWrench extends Item implements IWrench{
 						ti.screen = null;
 						if(!world.isRemote)
 							Utils.dropBlock(world, x, y, z, new ItemStack(MMItems.screen));
+					}else if(ti.expension == dir){
+						ti.expension = null;
+						if(!world.isRemote)
+							Utils.dropBlock(world, x, y, z, new ItemStack(MMItems.expension));
 					}
 				}else if(te instanceof TileRouter){
 					TileRouter ti = (TileRouter)te;

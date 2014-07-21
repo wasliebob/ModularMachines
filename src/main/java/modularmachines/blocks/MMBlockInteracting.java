@@ -6,6 +6,7 @@ import modularmachines.api.main.MMInteractingUpgrades;
 import modularmachines.api.upgrades.IInteractingAction;
 import modularmachines.api.upgrades.IInteractingUpgrade;
 import modularmachines.items.MMProgrammer;
+import modularmachines.items.MMWrench;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMItems;
 import modularmachines.main.init.MMTabs;
@@ -42,18 +43,19 @@ public class MMBlockInteracting extends BlockContainer implements IWrenchable, I
 	}
 	
 	@Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) 
-	{
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
             TileInteracting ti = (TileInteracting)world.getTileEntity(x, y, z);
-            if(ti.upgradeSide == ForgeDirection.getOrientation(side) && ti.upgrade != null){
+            if(ti.upgradeSide == ForgeDirection.getOrientation(side) && ti.upgrade != null && MMInteractingUpgrades.containsItem(ti.upgrade)){
             	IInteractingAction action = MMInteractingUpgrades.getUpgrade(ti.upgrade).action;
-            	if(player.getHeldItem() != null && player.getHeldItem().getItem() == MMItems.programmer && side == ti.upgradeSide.ordinal())
-            		action.onActivateWithProgrammer(ti, player);
-            	else if(player.getHeldItem() == null)
-            		action.onActivate(ti, player);
-            	else if(player.getHeldItem() != null)
-            		action.onActivateWithItem(ti, player.getHeldItem(), player);
-            	return false;
+            	if(action != null){
+	            	if(player.getHeldItem() != null && player.getHeldItem().getItem() == MMItems.programmer && side == ti.upgradeSide.ordinal())
+	            		action.onActivateWithProgrammer(ti, player);
+	            	else if(player.getHeldItem() == null)
+	            		action.onActivate(ti, player);
+	            	else if(player.getHeldItem() != null)
+	            		action.onActivateWithItem(ti, player.getHeldItem(), player);
+	            	return false;
+            	}
             }else if(ti != null && !player.isSneaking() && player.getHeldItem() != null && player.getHeldItem().getItem() != MMItems.programmer){
             	Item heldItem = player.getHeldItem().getItem();
         		ForgeDirection dir = ForgeDirection.getOrientation(side);
@@ -81,7 +83,7 @@ public class MMBlockInteracting extends BlockContainer implements IWrenchable, I
             }else if(ti != null && player.getHeldItem() == null && ti.upgrade != null){
             	IInteractingAction action = MMInteractingUpgrades.getUpgrade(ti.upgrade).action;
             	action.onActivateClick(ti, player);
-            }else if(ti != null && player.getHeldItem() != null && player.getHeldItem().getItem() instanceof MMProgrammer && ti.upgradeSide == ForgeDirection.getOrientation(side)){
+            }else if(ti != null && player.getHeldItem() != null && player.getHeldItem().getItem() instanceof MMProgrammer && ti.upgradeSide == ForgeDirection.getOrientation(side) && !(player.getHeldItem().getItem() instanceof MMWrench)){
             	IInteractingAction action = MMInteractingUpgrades.getUpgrade(ti.upgrade).action;
             	action.onActivateWithProgrammer(ti, player);
             }else if(ti != null && player.getHeldItem() != null && player.getHeldItem().getItem() instanceof MMProgrammer && ti.upgradeSide != ForgeDirection.getOrientation(side)){

@@ -3,6 +3,7 @@ package modularmachines.upgrades.interacting;
 import java.util.Random;
 
 import modularmachines.api.classes.TileInteracting;
+import modularmachines.api.guide.IGuided;
 import modularmachines.api.misc.helpers.MiscHelper;
 import modularmachines.api.upgrades.IInteractingAction;
 import modularmachines.main.init.MMItems;
@@ -13,7 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 
-public class UpgradeFertilize implements IInteractingAction{
+public class UpgradeFertilize implements IInteractingAction, IGuided{
 	int need = 10;
 	
 	@Override

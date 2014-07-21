@@ -49,33 +49,33 @@ public class MMBlockCore extends BlockContainer implements IWrenchable, IGuided{
 		if(base != null && player.getHeldItem() != null && player.getHeldItem().getItem() != MMItems.wrench && player.getHeldItem().getItem() != MMItems.guide){
 			Item heldItem = player.getHeldItem().getItem();
 			ForgeDirection dir = ForgeDirection.getOrientation(side);
-			if(!player.isSneaking() && heldItem == MMItems.input && base.input == null && base.output != dir && base.screen != dir){
+			if(!player.isSneaking() && heldItem == MMItems.input && base.input == null && base.output != dir && base.screen != dir && base.expension != dir){
 				base.input = dir;
 				if(player.getHeldItem().stackSize > 1)
 					player.setCurrentItemOrArmor(0, new ItemStack(player.getHeldItem().getItem(), player.getHeldItem().stackSize--, player.getHeldItem().getItemDamage()));
 				else
 					player.setCurrentItemOrArmor(0, null);
-			}else if(!player.isSneaking() && heldItem == MMItems.output && base.output == null && base.input != dir && base.screen != dir){
+			}else if(!player.isSneaking() && heldItem == MMItems.output && base.output == null && base.input != dir && base.screen != dir && base.expension != dir){
 				base.output = dir;
 				if(player.getHeldItem().stackSize > 1)
 					player.setCurrentItemOrArmor(0, new ItemStack(player.getHeldItem().getItem(), player.getHeldItem().stackSize--, player.getHeldItem().getItemDamage()));
 				else
 					player.setCurrentItemOrArmor(0, null);
-			}else if(!player.isSneaking() && heldItem == MMItems.screen && base.screen == null && base.input != dir && base.output != dir){
+			}else if(!player.isSneaking() && heldItem == MMItems.screen && base.screen == null && base.input != dir && base.output != dir && base.expension != dir){
 				base.screen = dir;
 				if(player.getHeldItem().stackSize > 1)
 					player.setCurrentItemOrArmor(0, new ItemStack(player.getHeldItem().getItem(), player.getHeldItem().stackSize--, player.getHeldItem().getItemDamage()));
 				else
 					player.setCurrentItemOrArmor(0, null);
-			}else if(player.isSneaking() && heldItem == MMItems.programmer){
-				base.input = null;
-				base.output = null;
-				base.screen = null;
+			}else if(!player.isSneaking() && heldItem == MMItems.expension && base.expension == null && base.input != dir && base.screen != dir && base.output != dir){
+				base.expension = dir;
+				if(player.getHeldItem().stackSize > 1)
+					player.setCurrentItemOrArmor(0, new ItemStack(player.getHeldItem().getItem(), player.getHeldItem().stackSize--, player.getHeldItem().getItemDamage()));
+				else
+					player.setCurrentItemOrArmor(0, null);
 			}
-		}else if((player.getHeldItem() != null && player.getHeldItem().getItem() != MMItems.wrench) || player.getHeldItem() == null){
-			if(base != null && !player.isSneaking() && base.screen != null && ForgeDirection.getOrientation(side) == base.screen ){
+		}else if(base != null && !player.isSneaking() && base.screen != null && ForgeDirection.getOrientation(side) == base.screen ){
 				player.openGui(MM.instance, 1, world, x, y, z);
-			}
 		}
 		return false;
 	}
@@ -141,6 +141,8 @@ public class MMBlockCore extends BlockContainer implements IWrenchable, IGuided{
         		return new ItemStack(MMItems.output);
         	else if(dir == tr.screen)
         		return new ItemStack(MMItems.screen);
+        	else if(dir == tr.expension)
+        		return new ItemStack(MMItems.expension);
         }
         return super.getPickBlock(target, world, x, y, z);
     }

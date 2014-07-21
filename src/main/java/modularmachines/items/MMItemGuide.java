@@ -10,11 +10,9 @@ import modularmachines.main.init.MMTabs;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -49,8 +47,8 @@ public class MMItemGuide extends Item implements IWrench{
 					ForgeDirection dir = ForgeDirection.getOrientation(Utils.getTargetBlockSide(player));
 					if(dir == ti.upgradeSide){
 						IInteractingAction action = MMInteractingUpgrades.getUpgrade(ti.upgrade).action;
-						if(action != null){
-							String key = action.getKey();
+						if(action != null && action instanceof IGuided){
+							String key = ((IGuided)action).getKey();
 							if(key != null){
 								Minecraft.getMinecraft().displayGuiScreen(new GuiEntry(key, player));
 							}else{
@@ -74,18 +72,4 @@ public class MMItemGuide extends Item implements IWrench{
 		if(guided.getKey() != null)
 			Minecraft.getMinecraft().displayGuiScreen(new GuiEntry(guided.getKey(), player));
 	}
-	
-	@Override
-    public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5){
-    	super.onUpdate(stack, world, entity, par4, par5);
-		if(!stack.hasTagCompound())
-    		stack.setTagCompound(new NBTTagCompound());
-    }
-
-    @Override
-    public void onCreated(ItemStack stack, World world, EntityPlayer player){
-    	super.onCreated(stack, world, player);
-    	if(!stack.hasTagCompound())
-    		stack.setTagCompound(new NBTTagCompound());
-    }
 }

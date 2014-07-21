@@ -5,7 +5,7 @@ import modularmachines.api.heat.MMHeatFluids;
 import modularmachines.api.heat.interfaces.IHeatTransport;
 import modularmachines.api.heat.interfaces.IHeatedMachine;
 import modularmachines.api.heat.interfaces.IHeatedTile;
-import modularmachines.helpers.DirectionHelper;
+import modularmachines.api.misc.helpers.DirectionHelper;
 import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;

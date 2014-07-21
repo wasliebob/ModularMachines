@@ -28,7 +28,7 @@ public class EntryTitle implements IEntry{
 		Minecraft.getMinecraft().getTextureManager().bindTexture(this.resource);
 
 		IconHelper.drawIconWithoutColor(x, y, this.iconWidth, this.iconHeight, 0);
-		
+
 		Minecraft.getMinecraft().fontRenderer.drawString("Version: " + MM.version, x + 12, y + this.iconHeight, 0);
 		Minecraft.getMinecraft().fontRenderer.drawString("Created by Wasliebob", x + 12, y + this.iconHeight + 9, 0);
 

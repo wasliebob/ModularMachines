@@ -1,4 +1,4 @@
-package modularmachines.helpers;
+package modularmachines.api.misc.helpers;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;

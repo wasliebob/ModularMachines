@@ -14,4 +14,5 @@ public interface IMachineAction {
 	
 	public int getTimeLeft(TileMachineBase base);
 	public int getStartTime(TileMachineBase base);
+	public boolean hasRequired(TileMachineBase base);
 }

@@ -59,4 +59,9 @@ public class UpgradeCharger implements IMachineAction{
 	public int getStartTime(TileMachineBase base){
 		return 0;
 	}
+
+	@Override
+	public boolean hasRequired(TileMachineBase base) {
+		return true;
+	}
 }

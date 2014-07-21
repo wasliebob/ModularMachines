@@ -1,6 +1,6 @@
 package modularmachines.blocks.tiles;
 
-import modularmachines.helpers.DirectionHelper;
+import modularmachines.api.misc.helpers.DirectionHelper;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

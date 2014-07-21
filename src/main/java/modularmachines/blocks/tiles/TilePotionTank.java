@@ -1,5 +1,8 @@
 package modularmachines.blocks.tiles;
 
+import java.awt.Color;
+
+import modularmachines.api.misc.IColorable;
 import modularmachines.api.misc.IPotionStorage;
 import modularmachines.api.misc.ITransportable;
 import modularmachines.api.misc.PotionStorage;
@@ -10,11 +13,13 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.potion.Potion;
 import net.minecraft.tileentity.TileEntity;
 
-public class TilePotionTank extends TileEntity implements IPotionStorage, ITransportable{
+public class TilePotionTank extends TileEntity implements IPotionStorage, ITransportable, IColorable{
 	public TilePotionTank(){
 		tank = new PotionStorage(1000, 10);
+		this.color = new Color(255, 255, 255).getRGB();
 	}
 	public PotionStorage tank;
+	public int color;
 	
 	@Override
 	public PotionStorage getPotionStorage() {
@@ -28,6 +33,8 @@ public class TilePotionTank extends TileEntity implements IPotionStorage, ITrans
 		if(this.tank != null && this.tank.getPotion() != null)
 			nbt.setInteger("POTION", this.tank.getPotion().id);
 		nbt.setInteger("AMOUNT", this.tank.getAmount());
+		
+		nbt.setInteger("COLOR", this.getColor().getRGB());
 	}
 		
 	@Override
@@ -36,6 +43,7 @@ public class TilePotionTank extends TileEntity implements IPotionStorage, ITrans
 		super.readFromNBT(nbt);
 		this.tank.setPotion(Potion.potionTypes[nbt.getInteger("POTION")]);
 		this.tank.setAmount(nbt.getInteger("AMOUNT"));
+		this.setColor(new Color(nbt.getInteger("COLOR")));
 	}
 	
 	@Override
@@ -64,6 +72,8 @@ public class TilePotionTank extends TileEntity implements IPotionStorage, ITrans
 			tag.setInteger("POTION", this.tank.getPotion().id);
 		tag.setInteger("AMOUNT", this.tank.getAmount());
 		
+		tag.setInteger("COLOR", this.getColor().getRGB());
+
 		return tag;
 	}
 
@@ -71,5 +81,16 @@ public class TilePotionTank extends TileEntity implements IPotionStorage, ITrans
 	public void readNBT(NBTTagCompound tag) {
 		this.tank.setPotion(Potion.potionTypes[tag.getInteger("POTION")]);
 		this.tank.setAmount(tag.getInteger("AMOUNT"));
+		this.setColor(new Color(tag.getInteger("COLOR")));
+	}
+
+	@Override
+	public Color getColor() {
+		return new Color(this.color);
+	}
+
+	@Override
+	public void setColor(Color color) {
+		this.color = color.getRGB();
 	}
 }

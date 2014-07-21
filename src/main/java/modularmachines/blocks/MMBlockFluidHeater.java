@@ -2,6 +2,7 @@ package modularmachines.blocks;
 
 import modularmachines.api.guide.IGuided;
 import modularmachines.blocks.tiles.TileFluidHeater;
+import modularmachines.helpers.RenderingHelper;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMItems;
 import modularmachines.main.init.MMTabs;
@@ -55,4 +56,19 @@ public class MMBlockFluidHeater extends BlockContainer implements IWrenchable, I
 	public String getKey() {
 		return "Fluid Heater";
 	}
+	
+	@Override
+    public int getRenderType(){
+        return RenderingHelper.render_fluidHeater;
+    }
+	
+	@Override
+    public boolean renderAsNormalBlock(){
+        return false;
+    }
+	
+	@Override
+    public boolean isOpaqueCube(){
+        return false;
+    }
 }

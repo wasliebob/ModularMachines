@@ -14,7 +14,7 @@ public class UpgradeFurnace implements IMachineAction{
 	}
 	public int time;
 	public int cost;
-	
+		
 	@Override
 	public void onUpdate(TileMachineBase base){		
 		if(base.heat.getHeat() >= cost){
@@ -69,5 +69,10 @@ public class UpgradeFurnace implements IMachineAction{
 	@Override
 	public int getStartTime(TileMachineBase base){
 		return MathHelper.secondToTick(5);
+	}
+
+	@Override
+	public boolean hasRequired(TileMachineBase base) {
+		return true;
 	}
 }

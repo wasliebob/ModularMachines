@@ -3,8 +3,9 @@ package modularmachines.upgrades.interacting;
 import java.util.List;
 
 import modularmachines.api.classes.TileInteracting;
+import modularmachines.api.guide.IGuided;
+import modularmachines.api.misc.helpers.DirectionHelper;
 import modularmachines.api.upgrades.IInteractingAction;
-import modularmachines.helpers.DirectionHelper;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -15,7 +16,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
-public class UpgradeVacuum implements IInteractingAction{
+public class UpgradeVacuum implements IInteractingAction, IGuided{
 
 	@SuppressWarnings("unchecked")
 	@Override

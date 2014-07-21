@@ -1,7 +1,7 @@
 package modularmachines.upgrades.base;
 
 import modularmachines.api.classes.TileMachineBase;
-import modularmachines.api.recipes.MMMaceratorRecipe;
+import modularmachines.api.recipes.MMRecipeHelper;
 import modularmachines.api.upgrades.IMachineAction;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
@@ -32,8 +32,8 @@ public class UpgradeMacerator implements IMachineAction{
 		if(Minecraft.getMinecraft() != null && Minecraft.getMinecraft().thePlayer != null){
 			ItemStack input = base.getStackInSlot(0);
 			ItemStack out = base.getStackInSlot(2);
-			if(input != null && MMMaceratorRecipe.containsItem(input.getItem())){
-				ItemStack result = MMMaceratorRecipe.getRecipe(input.getItem());
+			if(input != null && MMRecipeHelper.macerator.containsKey(input.getItem())){
+				ItemStack result = MMRecipeHelper.macerator.get(input.getItem());
 				
 				if(out == null){
 					base.stacks[2] = result;
@@ -69,5 +69,10 @@ public class UpgradeMacerator implements IMachineAction{
 	@Override
 	public int getStartTime(TileMachineBase base){
 		return MathHelper.secondToTick(5);
+	}
+
+	@Override
+	public boolean hasRequired(TileMachineBase base) {
+		return true;
 	}
 }

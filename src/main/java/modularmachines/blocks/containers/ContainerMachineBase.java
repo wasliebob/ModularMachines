@@ -3,6 +3,7 @@ package modularmachines.blocks.containers;
 import modularmachines.api.classes.TileMachineBase;
 import modularmachines.api.heat.MMHeatFuels;
 import modularmachines.api.main.MMUpgrades;
+import modularmachines.blocks.containers.slot.SlotBaseOutput;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -17,7 +18,7 @@ public class ContainerMachineBase extends Container {
                 this.addSlotToContainer(new Slot(tile, 1, 56, 53));
                 
                 /** Output */
-                this.addSlotToContainer(new Slot(tile, 2, 116, 35));
+                this.addSlotToContainer(new SlotBaseOutput(tile, 2, 116, 35));
 
                 /** Upgrade Slots */
                 this.addSlotToContainer(new Slot(tile, 3, 153, 9));

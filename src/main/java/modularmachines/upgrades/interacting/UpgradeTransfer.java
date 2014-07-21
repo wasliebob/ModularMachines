@@ -1,9 +1,10 @@
 package modularmachines.upgrades.interacting;
 
 import modularmachines.api.classes.TileInteracting;
+import modularmachines.api.guide.IGuided;
 import modularmachines.api.misc.ITransportable;
+import modularmachines.api.misc.helpers.DirectionHelper;
 import modularmachines.api.upgrades.IInteractingAction;
-import modularmachines.helpers.DirectionHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -11,7 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class UpgradeTransfer implements IInteractingAction{
+public class UpgradeTransfer implements IInteractingAction, IGuided{
 	@Override
 	public void onUpdate(TileInteracting ti){
 		World world = ti.getWorldObj();

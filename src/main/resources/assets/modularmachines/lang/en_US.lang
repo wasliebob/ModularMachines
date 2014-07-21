@@ -10,15 +10,17 @@ tile.modularmachines.block.transporter.name=Transporter
 item.modularmachines.item.furnace.name=Machine Upgrade: Furnace
 item.modularmachines.item.macerator.name=Machine Upgrade: Macerator
 item.modularmachines.item.charger.name=Machine Upgrade: Charger
+item.modularmachines.item.blast.name=Machine Upgrade: Blast
+item.modularmachines.item.brewing.name=Machine Upgrade: Brewing
 item.modularmachines.item.heated pickaxe.name=Heated Pickaxe
 item.modularmachines.item.heated shovel.name=Heated Shovel
 item.modularmachines.item.heated axe.name=Heated Axe
-item.modularmachines.item.potion flask.name=Potion Flask
 item.modularmachines.item.programmer.name=Modular Programmer
 item.modularmachines.item.modular wrench.name=Modular Wrench
 item.modularmachines.item.input.name=Modular Machine Input
 item.modularmachines.item.output.name=Modular Machine Output
 item.modularmachines.item.screen.name=Modular Machine Screen
+item.modularmachines.item.expension.name=Modular Machine Expansion
 item.modularmachines.item.transfer.name=Interacting Upgrade: Transfer
 item.modularmachines.item.break.name=Interacting Upgrade: Break
 item.modularmachines.item.vacuum.name=Interacting Upgrade: Vacuum
@@ -29,6 +31,7 @@ item.modularmachines.item.update.name=Interacting Upgrade: Update
 item.modularmachines.item.energy crystal.name=Energy Crystal
 item.modularmachines.item.iron stick.name=Iron Stick
 item.modularmachines.item.guide.name=Modular Guide
+item.modularmachines.item.linker.name=Linker
 ==Text==
 mm.guide.entries.Modular Machines.1=Tip: you can return to previous page by pressing backspace!
 ==Blocks==
@@ -37,6 +40,7 @@ mm.guide.entries.Interacting Core.0=The interacting machine core is a really hel
 mm.guide.entries.Heat Router.0=The heat router is used to transport heat between locations. It requires an input and an output. When looking at the block with a programmer held you will see to which block it's linked.
 mm.guide.entries.Fluid Heater.0=The fluid heater is used to collect heat from hot fluids. This heat can be used in your machines.
 mm.guide.entries.Potion Tank.0=The potion tank is a block which is capable of storing potions. Right click to apply the potion effect on your. It will use up 10mb of potion. The effects can be stacked as can the time it works.
+mm.guide.entries.Potion Tank.2=You can also use an item called linker, you can link the potion tank to the item by shift right clicking on the potion tank. To apply the effect from the potion tank you simply right click.
 mm.guide.entries.Item Transporter.0=The item transporter is a block capable of easily transporting items without need of pipes or cables. Just set an input where the inventory will be placed. and an output where the chest to move the items to will be.
 ==Interacting Upgrades==
 mm.guide.entries.Upgrade: Break.0=This upgrade makes it possible for the core to break a block placed at the input.
@@ -49,6 +53,8 @@ mm.guide.entries.Upgrade: Vacuum.0=This upgrade will make your core act like a v
 mm.guide.entries.Upgrade: Furnace.0=This upgrade will make your core act like a furnace, using heat instead of solid fuel.
 mm.guide.entries.Upgrade: Macerator.0=This upgrade will make your core act like a macerator, it uses heat.
 mm.guide.entries.Upgrade: Charger.0=This upgrade will make your core act like a charging station, it uses heat.
+mm.guide.entries.Upgrade: Blast.0=This upgrade will make your core act like a blast furnace. This upgrade can convert iron ingots to steel ingots.
+mm.guide.entries.Upgrade: Brewing.0=This upgrade will make your core function like a brewing system, it will require an expansion upgrade to be on the block and a potion tank on the side of the expansion. It will deposite the potion into the tank.
 ==Misc==
 itemGroup.tabModularMachines=Modular Machines
 mm.warning.1=You are using a unstable build of Modular Machines!
