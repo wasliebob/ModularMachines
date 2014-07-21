@@ -16,7 +16,7 @@ buildscript {
 }
 
 task depsFolder(type: Directory){
-	dir = file('d')
+	dir = file('deps')
 }
 
 task deps{
