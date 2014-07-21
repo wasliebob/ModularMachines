@@ -15,12 +15,8 @@ buildscript {
     }
 }
 
-task depsFolder(type: Directory){
-	dir = file('deps')
-}
-
 task deps{
-	dependsOn depsFolder
+	dependsOn project.mkdir("deps")
 	def wsc = new File('deps/WaslieCore.jar')
 	new URL('https://dl.dropboxusercontent.com/u/46500170/MM/deps/WaslieCore.jar').withInputStream{ i -> wsc.withOutputStream{ it << i }}
 	
