@@ -42,7 +42,7 @@ public class IconHelper {
 		t.addVertexWithUV(0.5D, -0.5D, 0, 0, 1);
 		t.addVertexWithUV(-0.5D, -0.5D, 0, 1, 1);
 	}
-	
+
 	public static void drawIcon(int x, int y, int width, int height, float zLevel, int red, int green, int blue)
 	{
 	    Tessellator t = Tessellator.instance;

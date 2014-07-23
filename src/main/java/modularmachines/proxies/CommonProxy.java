@@ -1,7 +1,6 @@
 package modularmachines.proxies;
 
 import modularmachines.main.init.MMInit;
-import modularmachines.network.packets.newpackets.PacketColorTank;
 import modularmachines.network.packets.newpackets.PacketToggle;
 import modularmachines.network.packets.newpackets.PacketToggleInteracting;
 import modularmachines.network.packets.newpackets.PacketTransferRate;
@@ -20,7 +19,6 @@ public class CommonProxy{
 		MMInit.network.registerMessage(PacketToggle.class, PacketToggle.class, 201, Side.SERVER);
 		MMInit.network.registerMessage(PacketToggleInteracting.class, PacketToggleInteracting.class, 202, Side.SERVER);
 		MMInit.network.registerMessage(PacketTransferRate.class, PacketTransferRate.class, 203, Side.SERVER);
-		MMInit.network.registerMessage(PacketColorTank.class, PacketColorTank.class, 204, Side.SERVER);
 	}
 	
     public void registerParticles(){}

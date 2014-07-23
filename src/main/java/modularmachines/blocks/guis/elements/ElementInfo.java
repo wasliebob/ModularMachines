@@ -3,9 +3,11 @@ package modularmachines.blocks.guis.elements;
 import java.awt.Color;
 
 import modularmachines.helpers.GuiHelper;
+import modularmachines.helpers.IconHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
 import wasliecore.interfaces.IElement;
 
 public class ElementInfo extends GuiScreen implements IElement{
@@ -79,6 +81,9 @@ public class ElementInfo extends GuiScreen implements IElement{
 			}
 		}else{
 			drawRect(x, y, x + width, y + height, color);
+			
+			Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("modularmachines:textures/misc/tabs/info.png"));
+			IconHelper.drawIcon(x + 2, y + 2, 16, 16, this.zLevel, 255, 255, 255);
 		}
 	}
 	

@@ -24,8 +24,7 @@ public class EntryInfo implements IEntry{
 		int x, y;
 		x = left + width / 2 - 58;
 		y = (top + 15);
-		Minecraft.getMinecraft().fontRenderer.drawString("Type: " + this.type, x, y, 0);	
-
+		Minecraft.getMinecraft().fontRenderer.drawString("Type: " + this.type, x, y, 0);
 		
 		x = left + width / 2 - 58;
 		y = (top + 15) + 9;
