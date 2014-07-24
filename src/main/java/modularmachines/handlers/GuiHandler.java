@@ -29,7 +29,7 @@ public class GuiHandler implements IGuiHandler {
                 switch(id){
                 case 1: return new GuiMachineBase((TileMachineBase)tile, player.inventory);
                 case 2: return new GuiInformation((TileInteracting)tile);
-                case 3: return new GuiGuide(player);
+                case 3: return new GuiGuide(player, 0);
                 default: return false;
                 }
 

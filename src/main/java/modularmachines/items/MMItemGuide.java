@@ -50,7 +50,7 @@ public class MMItemGuide extends Item implements IWrench{
 						if(action != null && action instanceof IGuided){
 							String key = ((IGuided)action).getKey();
 							if(key != null){
-								Minecraft.getMinecraft().displayGuiScreen(new GuiEntry(key, player));
+								Minecraft.getMinecraft().displayGuiScreen(new GuiEntry(key, player, 0));
 							}else{
 								openGuide(guided, player);
 							}
@@ -70,6 +70,6 @@ public class MMItemGuide extends Item implements IWrench{
 	
 	public void openGuide(IGuided guided, EntityPlayer player){
 		if(guided.getKey() != null)
-			Minecraft.getMinecraft().displayGuiScreen(new GuiEntry(guided.getKey(), player));
+			Minecraft.getMinecraft().displayGuiScreen(new GuiEntry(guided.getKey(), player, 0));
 	}
 }

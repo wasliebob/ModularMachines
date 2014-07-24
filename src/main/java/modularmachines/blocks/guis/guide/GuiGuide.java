@@ -11,8 +11,9 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 public class GuiGuide extends GuiScreen{
-	public GuiGuide(EntityPlayer player ){
+	public GuiGuide(EntityPlayer player, int prevPage){
 		this.player = player;
+		this.currPage = prevPage;
 	}
     private static final ResourceLocation gui = new ResourceLocation("modularmachines:textures/gui/guide.png");
     GuiButton prev, next, back;
@@ -124,7 +125,7 @@ public class GuiGuide extends GuiScreen{
 				registerButtons();
 			}
 		}else{
-			mc.displayGuiScreen(new GuiEntry(button.displayString, player));
+			mc.displayGuiScreen(new GuiEntry(button.displayString, player, currPage));
 		}
 	}
 }

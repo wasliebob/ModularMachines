@@ -12,13 +12,15 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 public class GuiEntry extends GuiScreen{
-	public GuiEntry(String key, EntityPlayer player){
+	public GuiEntry(String key, EntityPlayer player, int prevPage){
 		this.key = key;
 		this.player = player;
+		this.prevPage = prevPage;
 	}
     private static final ResourceLocation gui = new ResourceLocation("modularmachines:textures/gui/guide.png");
 	int gwidth = 192;
 	int gheight = 192;
+	int prevPage;
 	int left, top;
 	String key;
 	int currPage = 0;
@@ -68,7 +70,7 @@ public class GuiEntry extends GuiScreen{
 		super.mouseClicked(mX, mY, type);
 		
 		if(type  == 1)
-			mc.displayGuiScreen(new GuiGuide(player));
+			mc.displayGuiScreen(new GuiGuide(player, prevPage));
 	}
 	
     @Override
@@ -77,7 +79,7 @@ public class GuiEntry extends GuiScreen{
     	
     	if(Keyboard.getEventKeyState()){
     		if(i == 14){
-    			mc.displayGuiScreen(new GuiGuide(player));
+    			mc.displayGuiScreen(new GuiGuide(player, prevPage));
             	
     			return;
     		}
