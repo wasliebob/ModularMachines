@@ -42,7 +42,7 @@ item.modularmachines.ingot.copper.name=Copper Ingot
 item.modularmachines.ingot.tin.name=Tin Ingot
 item.modularmachines.ingot.bronze.name=Bronze Ingot
 ===Text===
-mm.guide.entries.Modular Machines.1=Tip: you can return to previous page by pressing backspace!
+mm.guide.entries.Modular Machines.1=Tip: you can return to previous page by pressing backspace or the right mouse button!
 ==Blocks==
 mm.guide.entries.Modular Core.0=The modular machine core is the a customizable block. This block also has an GUI, to use this gui you need to add a screen to the core. If you have added a screen you need to click on the side where you placed the screen, this will open the gui.
 mm.guide.entries.Interacting Core.0=The interacting machine core is a really helpful block. This block will interact with the world and has a lot of different upgrades.

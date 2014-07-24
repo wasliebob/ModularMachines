@@ -109,7 +109,7 @@ public class EntryRecipe implements IEntry{
 		drawIcon(8, x, y);
 		
 		/** Result */
-		x = left + width / 2 - (65-(48+48)-6);
+		x = left + width / 2 - (65-(48+48)-5);
 		y = (height/2 - 18) + (18*(4-3));
 		drawIcon(this.output, x, y);
 		

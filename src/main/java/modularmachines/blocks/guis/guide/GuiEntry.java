@@ -66,6 +66,9 @@ public class GuiEntry extends GuiScreen{
 	@Override
 	public void mouseClicked(int mX, int mY, int type){
 		super.mouseClicked(mX, mY, type);
+		
+		if(type  == 1)
+			mc.displayGuiScreen(new GuiGuide(player));
 	}
 	
     @Override
