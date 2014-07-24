@@ -1,4 +1,4 @@
-==Blocks==
+===Blocks===
 tile.modularmachines.block.core.name=Modular Machine Core
 tile.modularmachines.block.interacting machine core.name=Interacting Machine Core
 tile.modularmachines.block.heat router.name=Heat Router
@@ -6,7 +6,10 @@ tile.modularmachines.block.fluid heater.name=Fluid Heater
 tile.modularmachines.block.ic power converter.name=Power Converter: IC2
 tile.modularmachines.block.potion tank.name=Potion Tank
 tile.modularmachines.block.transporter.name=Transporter
-==Items==
+==Ores==
+tile.modularmachines.ore.copper.name=Copper Ore
+tile.modularmachines.ore.tin.name=Tin Ore
+===Items===
 item.modularmachines.item.furnace.name=Machine Upgrade: Furnace
 item.modularmachines.item.macerator.name=Machine Upgrade: Macerator
 item.modularmachines.item.charger.name=Machine Upgrade: Charger
@@ -28,20 +31,26 @@ item.modularmachines.item.place.name=Interacting Upgrade: Place
 item.modularmachines.item.fertilize.name=Interacting Upgrade: Fertilize
 item.modularmachines.item.elevator.name=Interacting Upgrade: Elevator
 item.modularmachines.item.update.name=Interacting Upgrade: Update
-item.modularmachines.item.energy crystal.name=Energy Crystal
-item.modularmachines.item.iron stick.name=Iron Stick
+item.modularmachines.item.miner.name=Interacting Upgrade: Miner
 item.modularmachines.item.guide.name=Modular Guide
 item.modularmachines.item.linker.name=Linker
-==Text==
+==Materials==
+item.modularmachines.item.empty upgrade.name=Empty Upgrade
+item.modularmachines.item.energy crystal.name=Energy Crystal
+item.modularmachines.item.iron stick.name=Iron Stick
+item.modularmachines.ingot.copper.name=Copper Ingot
+item.modularmachines.ingot.tin.name=Tin Ingot
+item.modularmachines.ingot.bronze.name=Bronze Ingot
+===Text===
 mm.guide.entries.Modular Machines.1=Tip: you can return to previous page by pressing backspace!
 ==Blocks==
-mm.guide.entries.Modular Core.0=The modular machine core is the a customizable block. This block also has an GUI!
+mm.guide.entries.Modular Core.0=The modular machine core is the a customizable block. This block also has an GUI, to use this gui you need to add a screen to the core. If you have added a screen you need to click on the side where you placed the screen, this will open the gui.
 mm.guide.entries.Interacting Core.0=The interacting machine core is a really helpful block. This block will interact with the world and has a lot of different upgrades.
 mm.guide.entries.Heat Router.0=The heat router is used to transport heat between locations. It requires an input and an output. When looking at the block with a programmer held you will see to which block it's linked.
 mm.guide.entries.Fluid Heater.0=The fluid heater is used to collect heat from hot fluids. This heat can be used in your machines.
 mm.guide.entries.Potion Tank.0=The potion tank is a block which is capable of storing potions. Right click to apply the potion effect on your. It will use up 10mb of potion. The effects can be stacked as can the time it works.
 mm.guide.entries.Potion Tank.2=You can also use an item called linker, you can link the potion tank to the item by shift right clicking on the potion tank. To apply the effect from the potion tank you simply right click.
-mm.guide.entries.Item Transporter.0=The item transporter is a block capable of easily transporting items without need of pipes or cables. Just set an input where the inventory will be placed. and an output where the chest to move the items to will be.
+mm.guide.entries.Transporter.0=The transporter is a block capable of easily transporting items without need of pipes or cables. Just set an input where the inventory will be placed. and an output where the chest to move the items to will be.
 ==Interacting Upgrades==
 mm.guide.entries.Upgrade: Break.0=This upgrade makes it possible for the core to break a block placed at the input.
 mm.guide.entries.Upgrade: Elevator.0=This upgrade will make your core act like an elevator. By placing another core with the elevator upgrade a few blocks above it is able to teleport you to that point (click on the block to go up, shift-click to go down).
@@ -50,12 +59,15 @@ mm.guide.entries.Upgrade: Place.0=This upgrade will make your core able to place
 mm.guide.entries.Upgrade: Transfer.0=This upgrade will make your core able to transfer blocks from the input to the output. Tile Entities cannot be moved unless the tile is implementing a function in the api.
 mm.guide.entries.Upgrade: Update.0=This upgrade will make your core able to mark the block at the output to update.
 mm.guide.entries.Upgrade: Vacuum.0=This upgrade will make your core act like a vacuum, sucking up all items close to it and putting it in the inventory which needs to be at the output side.
+mm.guide.entries.Upgrade: Miner.0=This upgrade will make your core act like a miner, the core will check for interesting blocks under it. It will only mine those interesting blocks. This upgrade requires an output and a chest at the output.
 mm.guide.entries.Upgrade: Furnace.0=This upgrade will make your core act like a furnace, using heat instead of solid fuel.
 mm.guide.entries.Upgrade: Macerator.0=This upgrade will make your core act like a macerator, it uses heat.
 mm.guide.entries.Upgrade: Charger.0=This upgrade will make your core act like a charging station, it uses heat.
 mm.guide.entries.Upgrade: Blast.0=This upgrade will make your core act like a blast furnace. This upgrade can convert iron ingots to steel ingots.
 mm.guide.entries.Upgrade: Brewing.0=This upgrade will make your core function like a brewing system, it will require an expansion upgrade to be on the block and a potion tank on the side of the expansion. It will deposite the potion into the tank.
-==Misc==
-itemGroup.tabModularMachines=Modular Machines
+===Misc===
+itemGroup.tabModularMachinesMain=Modular Machines Main
+itemGroup.tabModularMachinesMaterials=Modular Machines Materials
+itemGroup.tabModularMachinesUpgrades=Modular Machines Upgrades
 mm.warning.1=You are using a unstable build of Modular Machines!
 mm.warning.2=Be aware that this will most likely have a lot of bugs, and is unstable!

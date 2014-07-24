@@ -3,11 +3,13 @@ package modularmachines.main.init;
 import modularmachines.blocks.MMBlockCore;
 import modularmachines.blocks.MMBlockFluidHeater;
 import modularmachines.blocks.MMBlockInteracting;
+import modularmachines.blocks.MMBlockOre;
 import modularmachines.blocks.MMBlockPotionTank;
 import modularmachines.blocks.MMBlockRouter;
 import modularmachines.blocks.MMBlockTransporter;
 import modularmachines.blocks.integration.MMBlockPowerConverterCoFH;
 import modularmachines.blocks.integration.MMBlockPowerConverterIC2;
+import modularmachines.world.WorldGen;
 import wasliecore.interfaces.IInitalization;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -16,6 +18,8 @@ public class MMBlocks implements IInitalization{
 	@Override
 	public void preInit(){
 		initBlocks();
+		initOres();
+		initWorldGen();
 	}
 	
 	@Override
@@ -63,5 +67,16 @@ public class MMBlocks implements IInitalization{
 			GameRegistry.registerTileEntity(modularmachines.blocks.tiles.intergration.TilePowerConverterIC2.class, "mm_power_converter_ic2");}
 		if(Loader.isModLoaded("CoFHCore")){
 			GameRegistry.registerTileEntity(modularmachines.blocks.tiles.intergration.TilePowerConverterCoFH.class, "mm_power_converter_cofh");}
+	}
+	
+	public void initOres(){
+		ore_copper = new MMBlockOre("Copper");
+		ore_tin = new MMBlockOre("Tin");
+	}
+	public static MMBlockOre ore_copper;
+	public static MMBlockOre ore_tin;
+	
+	public void initWorldGen(){
+		GameRegistry.registerWorldGenerator(new WorldGen(), 2);
 	}
 }

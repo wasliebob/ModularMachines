@@ -6,6 +6,7 @@ import modularmachines.api.heat.MMHeatFluids;
 import modularmachines.api.main.MMApi;
 import modularmachines.api.misc.InteractingUpgrade;
 import modularmachines.api.misc.Upgrade;
+import modularmachines.api.misc.helpers.MiscHelper;
 import modularmachines.api.recipes.MMRecipeHelper;
 import modularmachines.upgrades.base.UpgradeBlast;
 import modularmachines.upgrades.base.UpgradeBrewing;
@@ -15,6 +16,7 @@ import modularmachines.upgrades.base.UpgradeMacerator;
 import modularmachines.upgrades.interacting.UpgradeBreak;
 import modularmachines.upgrades.interacting.UpgradeElevator;
 import modularmachines.upgrades.interacting.UpgradeFertilize;
+import modularmachines.upgrades.interacting.UpgradeMiner;
 import modularmachines.upgrades.interacting.UpgradePlace;
 import modularmachines.upgrades.interacting.UpgradeTransfer;
 import modularmachines.upgrades.interacting.UpgradeUpdate;
@@ -27,6 +29,7 @@ import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 import wasliecore.interfaces.IInitalization;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -46,6 +49,7 @@ public class MMRecipes implements IInitalization{
 		initMaceratorRecipes();
 		initBlastRecipes();
 		initBrewingRecipes();
+		initMisc();
 		initUpgrades();
 		initInteractingUpgrades();
 	}
@@ -54,7 +58,14 @@ public class MMRecipes implements IInitalization{
 		GameRegistry.addShapelessRecipe(new ItemStack(MMItems.guide), 
 				new ItemStack(Items.book), new ItemStack(Items.iron_ingot));
 		
-		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.core_machine), new Object[]{
+		RecipeHelper.addShapedOreRecipe(new ItemStack(MMItems.ingot_bronze), new Object[]{
+			"XX",
+			"XY",
+			'X', "ingotCopper",
+			'Y', "ingotTin"});
+		ingot_bronze = RecipeHelper.getLatest();
+	
+	RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.core_machine), new Object[]{
 				"XYX",
 				"YIY",
 				"XYX",
@@ -118,6 +129,15 @@ public class MMRecipes implements IInitalization{
 			'I', Items.gold_ingot});
 		output = RecipeHelper.getLatest();
 
+		RecipeHelper.addShapedOreRecipe(new ItemStack(MMItems.upgrade_empty), new Object[]{
+			"XYX",
+			"YIY",
+			"XYX",
+			'X', "ingotCopper",
+			'Y', Items.gold_nugget,
+			'I', Items.redstone});
+		upgrade_empty = RecipeHelper.getLatest();
+		
 		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.expension), new Object[]{
 			"XYX",
 			"YIY",
@@ -142,7 +162,7 @@ public class MMRecipes implements IInitalization{
 			"XYX",
 			'X', Items.iron_ingot,
 			'Y', Items.redstone,
-			'I', Blocks.coal_block});
+			'I', MMItems.upgrade_empty});
 		upgrade_furnace = RecipeHelper.getLatest();
 		
 		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.upgrade_macerator), new Object[]{
@@ -151,7 +171,7 @@ public class MMRecipes implements IInitalization{
 			"XYX",
 			'X', Items.iron_ingot,
 			'Y', Items.flint,
-			'I', Items.diamond});
+			'I', MMItems.upgrade_empty});
 		upgrade_macerator = RecipeHelper.getLatest();
 
 		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.upgrade_blast), new Object[]{
@@ -160,7 +180,7 @@ public class MMRecipes implements IInitalization{
 			"XYX",
 			'X', Blocks.iron_block,
 			'Y', Blocks.coal_block,
-			'I', Items.emerald});
+			'I', MMItems.upgrade_empty});
 		upgrade_blast = RecipeHelper.getLatest();
 		
 		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.upgrade_charger), new Object[]{
@@ -169,7 +189,7 @@ public class MMRecipes implements IInitalization{
 			"XYX",
 			'X', Items.iron_ingot,
 			'Y', Items.gold_ingot,
-			'I', Blocks.redstone_block});
+			'I', MMItems.upgrade_empty});
 		upgrade_charger = RecipeHelper.getLatest();
 
 		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.upgrade_brewing), new Object[]{
@@ -178,7 +198,7 @@ public class MMRecipes implements IInitalization{
 			"XYX",
 			'X', Items.iron_ingot,
 			'Y', Items.blaze_rod,
-			'I', Items.brewing_stand});
+			'I', MMItems.upgrade_empty});
 		upgrade_brewing = RecipeHelper.getLatest();
 		
 		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.wrench), new Object[]{
@@ -213,7 +233,7 @@ public class MMRecipes implements IInitalization{
 			"XYX",
 			'X', Items.iron_ingot,
 			'Y', Blocks.piston,
-			'I', Blocks.redstone_block});
+			'I', MMItems.upgrade_empty});
 		interacting_break = RecipeHelper.getLatest();
 
 		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.interacting_elevator), new Object[]{
@@ -222,7 +242,7 @@ public class MMRecipes implements IInitalization{
 			"XYX",
 			'X', Items.iron_ingot,
 			'Y', Blocks.piston,
-			'I', Items.ender_pearl});
+			'I', MMItems.upgrade_empty});
 		interacting_elevator = RecipeHelper.getLatest();
 
 		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.interacting_fertilize), new Object[]{
@@ -231,7 +251,7 @@ public class MMRecipes implements IInitalization{
 			"XYX",
 			'X', Items.iron_ingot,
 			'Y', Items.diamond,
-			'I', new ItemStack(Items.dye, 1, 15)});
+			'I', MMItems.upgrade_empty});
 		interacting_fertilize = RecipeHelper.getLatest();
 
 		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.interacting_place), new Object[]{
@@ -240,7 +260,7 @@ public class MMRecipes implements IInitalization{
 			"XYX",
 			'X', Items.iron_ingot,
 			'Y', Blocks.piston,
-			'I', Items.diamond});
+			'I', MMItems.upgrade_empty});
 		interacting_place = RecipeHelper.getLatest();
 
 		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.interacting_transfer), new Object[]{
@@ -250,7 +270,7 @@ public class MMRecipes implements IInitalization{
 			'X', Items.iron_ingot,
 			'Y', Items.ender_pearl,
 			'W', Blocks.chest,
-			'I', Items.diamond});
+			'I', MMItems.upgrade_empty});
 		interacting_transfer = RecipeHelper.getLatest();
 
 		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.interacting_vacuum), new Object[]{
@@ -260,7 +280,7 @@ public class MMRecipes implements IInitalization{
 			'X', Items.iron_ingot,
 			'Y', Items.ender_pearl,
 			'W', Items.gold_ingot,
-			'I', Blocks.hopper});
+			'I', MMItems.upgrade_empty});
 		interacting_vacuum = RecipeHelper.getLatest();
 
 		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.interacting_update), new Object[]{
@@ -270,9 +290,20 @@ public class MMRecipes implements IInitalization{
 			'X', Items.iron_ingot,
 			'Y', Blocks.stone_pressure_plate,
 			'W', Items.redstone,
-			'I', Blocks.redstone_block});
+			'I', MMItems.upgrade_empty});
 		interacting_update = RecipeHelper.getLatest();
 
+		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.interacting_miner), new Object[]{
+			"XYX",
+			"WIW",
+			"XZX",
+			'X', Blocks.redstone_block,
+			'Y', Blocks.gold_block,
+			'Z', Blocks.gold_block,
+			'W', Blocks.iron_block,
+			'I', MMItems.upgrade_empty});
+		interacting_miner = RecipeHelper.getLatest();
+		
 		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.transporter), new Object[]{
 			"XYX",
 			"WIW",
@@ -340,6 +371,7 @@ public class MMRecipes implements IInitalization{
 	public static IRecipe interacting_place;
 	public static IRecipe interacting_vacuum;
 	public static IRecipe interacting_fertilize;
+	public static IRecipe interacting_miner;
 
 	public static IRecipe upgrade_furnace;
 	public static IRecipe upgrade_macerator;
@@ -362,7 +394,9 @@ public class MMRecipes implements IInitalization{
 
 	public static IRecipe stick_iron;
 	public static IRecipe crystal_energy;
-
+	public static IRecipe ingot_bronze;
+	public static IRecipe upgrade_empty;
+	
 	public void initMaceratorRecipes(){
 		ArrayList<ItemStack> output;
 		output = OreDictionary.getOres("dustIron");
@@ -423,6 +457,26 @@ public class MMRecipes implements IInitalization{
 		MMApi.addFuel(Item.getItemFromBlock(Blocks.coal_block), 10*9);
 	}
 	
+	public void initMisc(){
+		MiscHelper.bannedMiner.add(Blocks.stone);
+		MiscHelper.bannedMiner.add(Blocks.cobblestone);
+		MiscHelper.bannedMiner.add(Blocks.sand);
+		MiscHelper.bannedMiner.add(Blocks.gravel);
+		MiscHelper.bannedMiner.add(Blocks.sandstone);
+		MiscHelper.bannedMiner.add(Blocks.dirt);
+		MiscHelper.bannedMiner.add(Blocks.grass);
+		MiscHelper.bannedMiner.add(Blocks.mossy_cobblestone);
+		MiscHelper.bannedMiner.add(Blocks.bedrock);
+		MiscHelper.bannedMiner.add(Blocks.chest);
+		MiscHelper.bannedMiner.add(Blocks.furnace);
+		MiscHelper.bannedMiner.add(Blocks.mycelium);
+		MiscHelper.bannedMiner.add(Blocks.log);
+		MiscHelper.bannedMiner.add(Blocks.log2);
+		MiscHelper.bannedMiner.add(Blocks.planks);
+		MiscHelper.bannedMiner.add(Blocks.fence);
+		MiscHelper.bannedMiner.add(Blocks.torch);
+	}
+	
 	public void initUpgrades(){
 		MMApi.addUpgrade(MMItems.upgrade_furnace, new Upgrade(new UpgradeFurnace(10)));
 		MMApi.addUpgrade(MMItems.upgrade_macerator, new Upgrade(new UpgradeMacerator(10)));
@@ -436,9 +490,10 @@ public class MMRecipes implements IInitalization{
 		MMApi.addInteractingUpgrade(MMItems.interacting_break, new InteractingUpgrade(new UpgradeBreak()));
 		MMApi.addInteractingUpgrade(MMItems.interacting_vacuum, new InteractingUpgrade(new UpgradeVacuum()));
 		MMApi.addInteractingUpgrade(MMItems.interacting_place, new InteractingUpgrade(new UpgradePlace()));
-		MMApi.addInteractingUpgrade(MMItems.interacting_fertilize, new InteractingUpgrade(new UpgradeFertilize()));
+		MMApi.addInteractingUpgrade(MMItems.interacting_fertilize, new InteractingUpgrade(new UpgradeFertilize(10)));
 		MMApi.addInteractingUpgrade(MMItems.interacting_elevator, new InteractingUpgrade(new UpgradeElevator()));
 		MMApi.addInteractingUpgrade(MMItems.interacting_update, new InteractingUpgrade(new UpgradeUpdate()));
+		MMApi.addInteractingUpgrade(MMItems.interacting_miner, new InteractingUpgrade(new UpgradeMiner(500)));
 	}
 	
 	static class RecipeHelper{
@@ -453,6 +508,10 @@ public class MMRecipes implements IInitalization{
 		
 		public static void addShapedRecipe(ItemStack output, Object[] obj){
 			GameRegistry.addShapedRecipe(output, obj);
+		}
+		
+		public static void addShapedOreRecipe(ItemStack output, Object[] obj){
+			GameRegistry.addRecipe(new ShapedOreRecipe(output, obj));
 		}
 	}
 }

@@ -46,7 +46,7 @@ public class TileMachineBase extends TileEntity implements ISidedInventory, IHea
 	public ForgeDirection screen;
 	public ForgeDirection expension;
 	public boolean enabled;
-	
+
 	@Override
 	public void updateEntity(){		
 		if(!worldObj.isRemote && enabled == true){

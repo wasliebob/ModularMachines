@@ -2,6 +2,7 @@ package modularmachines.events;
 
 import modularmachines.api.heat.interfaces.IHeatedTool;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockLiquid;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -71,49 +72,49 @@ public class MMEvent {
 						Block lfront = world.getBlock(x - 1, y, z + 1);
 						Block rfront = world.getBlock(x + 1, y, z + 1);
 
-						if(left != null && left != Blocks.bedrock){
+						if(left != null && left != Blocks.bedrock && !(left instanceof BlockLiquid)){
 							for(ItemStack stack : left.getDrops(world, x - 1, y, z, e.blockMetadata, 0))
 								e.drops.add(stack);
 							world.setBlockToAir(x - 1, y, z);
 						}
 						
-						if(right != null && right != Blocks.bedrock){
+						if(right != null && right != Blocks.bedrock && !(right instanceof BlockLiquid)){
 							for(ItemStack stack : left.getDrops(world, x + 1, y, z, e.blockMetadata, 0))
 								e.drops.add(stack);
 							world.setBlockToAir(x + 1, y, z);
 						}
 						
-						if(back != null && back != Blocks.bedrock){
+						if(back != null && back != Blocks.bedrock && !(back instanceof BlockLiquid)){
 							for(ItemStack stack : back.getDrops(world, x, y, z - 1, e.blockMetadata, 0))
 								e.drops.add(stack);
 							world.setBlockToAir(x, y, z - 1);
 						}
 						
-						if(front != null && front != Blocks.bedrock){
+						if(front != null && front != Blocks.bedrock && !(front instanceof BlockLiquid)){
 							for(ItemStack stack : front.getDrops(world, x, y, z + 1, e.blockMetadata, 0))
 								e.drops.add(stack);
 							world.setBlockToAir(x, y, z + 1);
 						}
 						
-						if(lback != null && lback != Blocks.bedrock){
+						if(lback != null && lback != Blocks.bedrock && !(lback instanceof BlockLiquid)){
 							for(ItemStack stack : lback.getDrops(world, x - 1, y, z - 1, e.blockMetadata, 0))
 								e.drops.add(stack);
 							world.setBlockToAir(x - 1, y, z - 1);
 						}
 						
-						if(rback != null && rback != Blocks.bedrock){
+						if(rback != null && rback != Blocks.bedrock && !(rback instanceof BlockLiquid)){
 							for(ItemStack stack : rback.getDrops(world, x + 1, y, z - 1, e.blockMetadata, 0))
 								e.drops.add(stack);
 							world.setBlockToAir(x + 1, y, z - 1);
 						}
 						
-						if(lfront != null && lfront != Blocks.bedrock){
+						if(lfront != null && lfront != Blocks.bedrock && !(lfront instanceof BlockLiquid)){
 							for(ItemStack stack : lfront.getDrops(world, x - 1, y, z + 1, e.blockMetadata, 0))
 								e.drops.add(stack);
 							world.setBlockToAir(x - 1, y, z + 1);
 						}
 						
-						if(rfront != null && rfront != Blocks.bedrock){
+						if(rfront != null && rfront != Blocks.bedrock && !(rfront instanceof BlockLiquid)){
 							for(ItemStack stack : rfront.getDrops(world, x + 1, y, z + 1, e.blockMetadata, 0))
 								e.drops.add(stack);
 							world.setBlockToAir(x + 1, y, z + 1);

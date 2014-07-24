@@ -17,7 +17,7 @@ public class MMInteractingUpgrade extends Item implements IInteractingUpgrade{
 	public MMInteractingUpgrade(String name, Color color) {
 		setMaxStackSize(1);
 		setUnlocalizedName(MM.modName.toLowerCase() + "." + "item" + "." + name.toLowerCase());
-		setCreativeTab(MMTabs.tabMain);
+		setCreativeTab(MMTabs.tabUpgrades);
 		
 		this.name = name;
 		this.color = color;

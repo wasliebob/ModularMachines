@@ -83,6 +83,6 @@ public class MMBlockTransporter extends BlockContainer implements IWrenchable, I
 
 	@Override
 	public String getKey() {
-		return "Item Transporter";
+		return "Transporter";
 	}
 }

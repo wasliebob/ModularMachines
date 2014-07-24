@@ -15,7 +15,10 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 
 public class UpgradeFertilize implements IInteractingAction, IGuided{
-	int need = 10;
+	public UpgradeFertilize(int need){
+		this.need = need;
+	}
+	int need;
 	
 	@Override
 	public void onUpdate(TileInteracting ti){

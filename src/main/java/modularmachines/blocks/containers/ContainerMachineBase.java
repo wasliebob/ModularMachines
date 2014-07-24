@@ -22,8 +22,10 @@ public class ContainerMachineBase extends Container {
 
                 /** Upgrade Slots */
                 this.addSlotToContainer(new Slot(tile, 3, 153, 9));
-                this.addSlotToContainer(new Slot(tile, 4, 153, 31));
-                this.addSlotToContainer(new Slot(tile, 5, 153, 53));
+                
+                /** Temp Unused, blocked input */
+                this.addSlotToContainer(new SlotBaseOutput(tile, 4, 153, 31));
+                this.addSlotToContainer(new SlotBaseOutput(tile, 5, 153, 53));
 
                 int i;
 
@@ -40,7 +42,6 @@ public class ContainerMachineBase extends Container {
                     this.addSlotToContainer(new Slot(inventory, i, 8 + i * 18, 142));
                 }
         }
-		int x, y;
 		public TileMachineBase tile;
 
         @Override

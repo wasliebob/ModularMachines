@@ -13,7 +13,6 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-
 public class TileInteracting extends TileEntity implements IHeatedMachine{
 	public TileInteracting(){
 		heat = new HeatStorage(1200, 10);

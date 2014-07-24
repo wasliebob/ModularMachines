@@ -17,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
@@ -29,12 +30,29 @@ public class EntryRecipe implements IEntry{
 	public IRecipe recipes;
 	
 	public ItemStack[] recipe;
+	public ItemStack output;
+	
 	public ArrayList<ItemIcon> icons = new ArrayList<ItemIcon>();
 	
+	@SuppressWarnings("unchecked")
 	public void populate(IRecipe recipe){
 		if(recipe instanceof ShapedRecipes){
 			ShapedRecipes rec = (ShapedRecipes)recipe;
 			this.recipe = rec.recipeItems;
+			this.output = rec.getRecipeOutput();
+		}else if(recipe instanceof ShapedOreRecipe){
+			ShapedOreRecipe rec = (ShapedOreRecipe)recipe;
+			this.recipe = new ItemStack[rec.getInput().length];;
+			for(int i = 0; i < rec.getInput().length; i++){
+				ItemStack s = null;
+				if(rec.getInput()[i] instanceof ItemStack){
+					s = (ItemStack)rec.getInput()[i];
+				}else{		
+					s = ((ArrayList<ItemStack>)rec.getInput()[i]).get(0);
+				}
+				this.recipe[i] = s;
+				this.output = rec.getRecipeOutput();
+			}
 		}
 	}
 	
@@ -63,6 +81,7 @@ public class EntryRecipe implements IEntry{
 		x = left + width / 2 - (65-(48+16)-3);
 		y = (height/2 - 18) + (18*(6-6));
 		drawIcon(2, x, y);
+		
 		/** Row 2 */
 		x = (left + width / 2) - (65-31);
 		y = (height/2 - 18) + (18*1);
@@ -89,6 +108,11 @@ public class EntryRecipe implements IEntry{
 		y = (height/2 - 18) + (18*(8-6));
 		drawIcon(8, x, y);
 		
+		/** Result */
+		x = left + width / 2 - (65-(48+48)-6);
+		y = (height/2 - 18) + (18*(4-3));
+		drawIcon(this.output, x, y);
+		
 		RenderHelper.disableStandardItemLighting();
 
 		GL11.glDisable(GL11.GL_LIGHTING);
@@ -107,6 +131,14 @@ public class EntryRecipe implements IEntry{
 		ri.renderItemOverlayIntoGUI(Minecraft.getMinecraft().fontRenderer, Minecraft.getMinecraft().getTextureManager(), recipe[entry], x, y);
 
 		icons.add(new ItemIcon(recipe[entry], x, y));
+	}
+	
+	public void drawIcon(ItemStack stack, int x, int y){
+		RenderItem ri = new RenderItem();
+		ri.renderItemAndEffectIntoGUI(Minecraft.getMinecraft().fontRenderer, Minecraft.getMinecraft().getTextureManager(), stack, x, y);
+		ri.renderItemOverlayIntoGUI(Minecraft.getMinecraft().fontRenderer, Minecraft.getMinecraft().getTextureManager(), stack, x, y);
+
+		icons.add(new ItemIcon(stack, x, y));
 	}
 	
 	public void renderOverlay(GuiEntry entry, int width, int height, int left, int top){
@@ -145,7 +177,7 @@ public class EntryRecipe implements IEntry{
 			if(mX > x && mX < xSize && mY > y && mY < ySize){
 				GL11.glDisable(GL11.GL_DEPTH_TEST);
 				if(stack != null && stack.getDisplayName() != null)
-					Minecraft.getMinecraft().fontRenderer.drawString(stack.getDisplayName(), mX + 6, mY, Color.white.getRGB());
+					Minecraft.getMinecraft().fontRenderer.drawString(stack.getDisplayName(), mX + 6, mY, Color.black.getRGB());
 				GL11.glEnable(GL11.GL_DEPTH_TEST);
 			}
 		}		

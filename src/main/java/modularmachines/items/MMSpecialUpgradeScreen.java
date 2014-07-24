@@ -11,7 +11,7 @@ public class MMSpecialUpgradeScreen extends Item{
 	public MMSpecialUpgradeScreen() {
 		setMaxStackSize(1);
 		setUnlocalizedName(MM.modName.toLowerCase() + "." + "item" + "." + "screen");
-		setCreativeTab(MMTabs.tabMain);
+		setCreativeTab(MMTabs.tabUpgrades);
 		
 		GameRegistry.registerItem(this, this.getUnlocalizedName());
 	}

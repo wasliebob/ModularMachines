@@ -14,7 +14,7 @@ public class MMUpgrade extends Item{
 	public MMUpgrade(String name, int color) {
 		setMaxStackSize(1);
 		setUnlocalizedName(MM.modName.toLowerCase() + "." + "item" + "." + name.toLowerCase());
-		setCreativeTab(MMTabs.tabMain);
+		setCreativeTab(MMTabs.tabUpgrades);
 		
 		this.name = name;
 		this.color = color;

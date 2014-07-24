@@ -1,5 +1,6 @@
 package modularmachines.blocks;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import modularmachines.api.classes.TileMachineBase;
@@ -21,6 +22,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import wasliecore.helpers.Utils;
 import wasliecore.interfaces.IWrenchable;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -84,6 +86,23 @@ public class MMBlockCore extends BlockContainer implements IWrenchable, IGuided{
 	
     @Override
     public void breakBlock(World world, int x, int y, int z, Block block, int side){
+    	TileMachineBase base = (TileMachineBase)world.getTileEntity(x, y, z);
+    	
+    	ArrayList<ItemStack> equiped = new ArrayList<ItemStack>();
+    	
+    	if(base.input != null)
+    		equiped.add(new ItemStack(MMItems.input));
+    	if(base.output != null)
+    		equiped.add(new ItemStack(MMItems.output));
+    	if(base.screen != null)
+    		equiped.add(new ItemStack(MMItems.screen));
+    	if(base.expension != null)
+    		equiped.add(new ItemStack(MMItems.expension));
+    	
+    	for(ItemStack stack : equiped){
+    		Utils.dropBlock(world, x, y, z, stack);
+    	}
+    	
     	dropItems(world, x, y, z);
     	super.breakBlock(world, x, y, z, block, side);
     }
@@ -124,8 +143,7 @@ public class MMBlockCore extends BlockContainer implements IWrenchable, IGuided{
     }
 	
 	@Override
-    public void registerBlockIcons(IIconRegister ir) 
-	{
+    public void registerBlockIcons(IIconRegister ir) {
         blockIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "core");
 	}
 	
