@@ -351,4 +351,8 @@ public class TileMachineBase extends TileEntity implements ISidedInventory, IHea
 			return te;
 		return null;
 	}
+	
+	public void markForUpdate(){
+		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+	}
 }

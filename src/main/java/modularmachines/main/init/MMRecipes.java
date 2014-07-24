@@ -474,7 +474,7 @@ public class MMRecipes implements IInitalization{
 		MiscHelper.bannedMiner.add(Blocks.log2);
 		MiscHelper.bannedMiner.add(Blocks.planks);
 		MiscHelper.bannedMiner.add(Blocks.fence);
-		MiscHelper.bannedMiner.add(Blocks.torch);
+		MiscHelper.bannedMiner.add(Blocks.torch);		
 	}
 	
 	public void initUpgrades(){

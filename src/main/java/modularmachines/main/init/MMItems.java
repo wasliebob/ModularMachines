@@ -34,8 +34,8 @@ public class MMItems implements IInitalization{
 		upgrade_furnace = new MMUpgrade("furnace", ColorHelper.getColorCodeFromColor(Color.red));
 		upgrade_macerator = new MMUpgrade("macerator", ColorHelper.getColorCodeFromColor(Color.magenta));
 		upgrade_charger = new MMUpgrade("charger", ColorHelper.getColorCodeFromColor(Color.cyan));
-		upgrade_blast = new MMUpgrade("blast", ColorHelper.getColorCodeFromColor(Color.GRAY));
-		upgrade_brewing = new MMUpgrade("brewing", ColorHelper.getColorCodeFromColor(Color.PINK));
+		upgrade_blast = new MMUpgrade("blast", ColorHelper.getColorCodeFromColor(Color.gray));
+		upgrade_brewing = new MMUpgrade("brewing", ColorHelper.getColorCodeFromColor(Color.pink));
 	}
 	public static MMUpgrade upgrade_furnace;
 	public static MMUpgrade upgrade_macerator;
@@ -46,7 +46,7 @@ public class MMItems implements IInitalization{
 	public void initInteractingUpgrades(){
 		interacting_transfer = new MMInteractingUpgrade("transfer", Color.blue);
 		interacting_break = new MMInteractingUpgrade("break", Color.green);
-		interacting_vacuum = new MMInteractingUpgrade("vacuum", Color.DARK_GRAY);
+		interacting_vacuum = new MMInteractingUpgrade("vacuum", Color.darkGray);
 		interacting_place = new MMInteractingUpgrade("place", new Color(100, 0, 100));
 		interacting_fertilize = new MMInteractingUpgrade("fertilize", new Color(0, 100, 0));
 		interacting_elevator = new MMInteractingUpgrade("elevator", new Color(0, 100, 100));

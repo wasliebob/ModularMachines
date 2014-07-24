@@ -1,7 +1,10 @@
 package modularmachines.upgrades.base;
 
 import modularmachines.api.classes.TileMachineBase;
+import modularmachines.api.main.MMUpgrades;
+import modularmachines.api.recipes.MMRecipeHelper;
 import modularmachines.api.upgrades.IMachineAction;
+import modularmachines.items.MMUpgrade;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
@@ -33,22 +36,44 @@ public class UpgradeFurnace implements IMachineAction{
 			ItemStack input = base.getStackInSlot(0);
 			ItemStack out = base.getStackInSlot(2);
 			if(input != null && FurnaceRecipes.smelting().getSmeltingResult(input) != null){
-				ItemStack result = FurnaceRecipes.smelting().getSmeltingResult(input);
+				ItemStack result = FurnaceRecipes.smelting().getSmeltingResult(input);		
+				ItemStack finalResult = getResult(base, result);
 				
 				if(out == null){
-					base.stacks[2] = result;
-				}else if(out != null && out.stackSize < 64 && result.getItem() == out.getItem() && result.getItemDamage() == out.getItemDamage()){
+					base.stacks[2] = finalResult;
+					if(input.stackSize > 1)
+						input.stackSize--;
+					else
+						base.stacks[0] = null;
+					
+					base.heat.decreaseEnergy(cost);
+					base.markForUpdate();
+				}else if(out != null && out.stackSize < 64 && finalResult.getItem() == out.getItem() && finalResult.getItemDamage() == out.getItemDamage()){
 					base.stacks[2].stackSize++;
+					if(input.stackSize > 1)
+						input.stackSize--;
+					else
+						base.stacks[0] = null;
+					
+					base.heat.decreaseEnergy(cost);
+					base.markForUpdate();
 				}
-				
-				if(input.stackSize > 1)
-					input.stackSize--;
-				else
-					base.stacks[0] = null;
-				
-				base.heat.decreaseEnergy(cost);
 			}
 		}
+	}
+	
+	public ItemStack getResult(TileMachineBase base, ItemStack result){
+		if(base.getStackInSlot(4) != null && base.getStackInSlot(4).getItem() instanceof MMUpgrade){
+			if(MMUpgrades.getUpgrade(base.getStackInSlot(4).getItem()) != null){
+				IMachineAction action = MMUpgrades.getUpgrade(base.getStackInSlot(4).getItem()).action;
+				if(action instanceof UpgradeBlast){
+					if(MMRecipeHelper.blast.containsKey(result.getItem())){
+						return MMRecipeHelper.blast.get(result.getItem());
+					}
+				}
+			}
+		}
+		return result;
 	}
 	
 	@Override

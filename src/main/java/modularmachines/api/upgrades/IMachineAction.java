@@ -8,7 +8,7 @@ public interface IMachineAction {
 	 * @param base
 	 */
 	public void onUpdate(TileMachineBase base);
-	
+		
 	public void drainFuel(TileMachineBase base);
 	public void addFuel(TileMachineBase base);
 	
