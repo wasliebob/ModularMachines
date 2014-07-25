@@ -2,6 +2,7 @@ package modularmachines.main.init;
 
 import modularmachines.blocks.MMBlockCore;
 import modularmachines.blocks.MMBlockFluidHeater;
+import modularmachines.blocks.MMBlockGenerator;
 import modularmachines.blocks.MMBlockInteracting;
 import modularmachines.blocks.MMBlockOre;
 import modularmachines.blocks.MMBlockPotionTank;
@@ -38,6 +39,8 @@ public class MMBlocks implements IInitalization{
 		core_interacting = new MMBlockInteracting("interacting machine core");
 		tank_potion = new MMBlockPotionTank("potion tank");
 		transporter = new MMBlockTransporter("transporter");
+		generator = new MMBlockGenerator("generator");
+
 		if(Loader.isModLoaded("IC2") || Loader.isModLoaded("ic2")){
 			power_converter_ic2 = new MMBlockPowerConverterIC2("ic power converter");}
 		
@@ -50,7 +53,8 @@ public class MMBlocks implements IInitalization{
 	public static MMBlockInteracting core_interacting;
 	public static MMBlockPotionTank tank_potion;
 	public static MMBlockTransporter transporter;
-	
+	public static MMBlockGenerator generator;
+
 	public static MMBlockPowerConverterIC2 power_converter_ic2;
 	public static MMBlockPowerConverterCoFH power_converter_cofh;
 
@@ -60,6 +64,7 @@ public class MMBlocks implements IInitalization{
 		GameRegistry.registerTileEntity(modularmachines.blocks.tiles.TileRouter.class, "mm_fluid_heater");
 		GameRegistry.registerTileEntity(modularmachines.blocks.tiles.TilePotionTank.class, "mm_tank_potion");
 		GameRegistry.registerTileEntity(modularmachines.blocks.tiles.TileTransporter.class, "mm_transporter");
+		GameRegistry.registerTileEntity(modularmachines.api.classes.TileGenerator.class, "mm_generator");
 
 		GameRegistry.registerTileEntity(modularmachines.api.classes.TileInteracting.class, "mm_interacting");
 

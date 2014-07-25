@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import modularmachines.api.heat.MMHeatFluids;
 import modularmachines.api.main.MMApi;
+import modularmachines.api.misc.GeneratorUpgrade;
 import modularmachines.api.misc.InteractingUpgrade;
 import modularmachines.api.misc.Upgrade;
 import modularmachines.api.misc.helpers.MiscHelper;
@@ -13,6 +14,7 @@ import modularmachines.upgrades.base.UpgradeBrewing;
 import modularmachines.upgrades.base.UpgradeCharger;
 import modularmachines.upgrades.base.UpgradeFurnace;
 import modularmachines.upgrades.base.UpgradeMacerator;
+import modularmachines.upgrades.generator.UpgradeBase;
 import modularmachines.upgrades.interacting.UpgradeBreak;
 import modularmachines.upgrades.interacting.UpgradeElevator;
 import modularmachines.upgrades.interacting.UpgradeFertilize;
@@ -52,6 +54,7 @@ public class MMRecipes implements IInitalization{
 		initMisc();
 		initUpgrades();
 		initInteractingUpgrades();
+		initGeneratorUpgrades();
 	}
 
 	public void initCraftingRecipes(){
@@ -93,6 +96,15 @@ public class MMRecipes implements IInitalization{
 			'I', Blocks.redstone_block});
 		router = RecipeHelper.getLatest();
 
+		RecipeHelper.addShapedOreRecipe(new ItemStack(MMBlocks.generator), new Object[]{
+			"XYX",
+			"YIY",
+			"XYX",
+			'X', "ingotBronze",
+			'Y', Items.gold_ingot,
+			'I', MMBlocks.router});
+		generator = RecipeHelper.getLatest();
+		
 		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.heater_fluid), new Object[]{
 			"XYX",
 			"YIY",
@@ -304,6 +316,15 @@ public class MMRecipes implements IInitalization{
 			'I', MMItems.upgrade_empty});
 		interacting_miner = RecipeHelper.getLatest();
 		
+		RecipeHelper.addShapedOreRecipe(new ItemStack(MMItems.generator_base), new Object[]{
+			"XYX",
+			"YIY",
+			"XYX",
+			'X', "ingotTin",
+			'Y', "ingotCopper",
+			'I', MMItems.upgrade_empty});
+		generator_base = RecipeHelper.getLatest();
+		
 		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.transporter), new Object[]{
 			"XYX",
 			"WIW",
@@ -363,7 +384,8 @@ public class MMRecipes implements IInitalization{
 	public static IRecipe tank_potion;
 	public static IRecipe router;
 	public static IRecipe transporter;
-	
+	public static IRecipe generator;
+
 	public static IRecipe interacting_break;
 	public static IRecipe interacting_elevator;
 	public static IRecipe interacting_transfer;
@@ -378,6 +400,8 @@ public class MMRecipes implements IInitalization{
 	public static IRecipe upgrade_charger;
 	public static IRecipe upgrade_blast;
 	public static IRecipe upgrade_brewing;
+
+	public static IRecipe generator_base;
 
 	public static IRecipe axe_heated;
 	public static IRecipe pickaxe_heated;
@@ -443,7 +467,6 @@ public class MMRecipes implements IInitalization{
 		MMRecipeHelper.brewing.put(Items.speckled_melon, Potion.heal);
 		MMRecipeHelper.brewing.put(Items.blaze_powder, Potion.damageBoost);
 		MMRecipeHelper.brewing.put(Items.fish, Potion.waterBreathing);
-
 	}
 	
 	public void initFluidFuels(){
@@ -494,6 +517,10 @@ public class MMRecipes implements IInitalization{
 		MMApi.addInteractingUpgrade(MMItems.interacting_elevator, new InteractingUpgrade(new UpgradeElevator()));
 		MMApi.addInteractingUpgrade(MMItems.interacting_update, new InteractingUpgrade(new UpgradeUpdate()));
 		MMApi.addInteractingUpgrade(MMItems.interacting_miner, new InteractingUpgrade(new UpgradeMiner(500)));
+	}
+	
+	public void initGeneratorUpgrades(){
+		MMApi.addGeneratorUpgrade(MMItems.generator_base, new GeneratorUpgrade(new UpgradeBase()));
 	}
 	
 	static class RecipeHelper{

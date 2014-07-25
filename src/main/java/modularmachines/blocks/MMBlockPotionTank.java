@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modularmachines.api.guide.IGuided;
-import modularmachines.api.misc.IColorable;
+import modularmachines.api.misc.interfaces.IColorable;
 import modularmachines.blocks.tiles.TilePotionTank;
 import modularmachines.helpers.DyeHelper;
 import modularmachines.main.MM;

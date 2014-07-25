@@ -6,6 +6,7 @@ tile.modularmachines.block.fluid heater.name=Fluid Heater
 tile.modularmachines.block.ic power converter.name=Power Converter: IC2
 tile.modularmachines.block.potion tank.name=Potion Tank
 tile.modularmachines.block.transporter.name=Transporter
+tile.modularmachines.block.generator.name=Heat Generator
 ==Ores==
 tile.modularmachines.ore.copper.name=Copper Ore
 tile.modularmachines.ore.tin.name=Tin Ore
@@ -32,6 +33,7 @@ item.modularmachines.item.fertilize.name=Interacting Upgrade: Fertilize
 item.modularmachines.item.elevator.name=Interacting Upgrade: Elevator
 item.modularmachines.item.update.name=Interacting Upgrade: Update
 item.modularmachines.item.miner.name=Interacting Upgrade: Miner
+item.modularmachines.item.base.name=Generator Upgrade: Base
 item.modularmachines.item.guide.name=Modular Guide
 item.modularmachines.item.linker.name=Linker
 ==Materials==
@@ -51,6 +53,9 @@ mm.guide.entries.Fluid Heater.0=The fluid heater is used to collect heat from ho
 mm.guide.entries.Potion Tank.0=The potion tank is a block which is capable of storing potions. Right click to apply the potion effect on your. It will use up 10mb of potion. The effects can be stacked as can the time it works.
 mm.guide.entries.Potion Tank.2=You can also use an item called linker, you can link the potion tank to the item by shift right clicking on the potion tank. To apply the effect from the potion tank you simply right click.
 mm.guide.entries.Transporter.0=The transporter is a block capable of easily transporting items without need of pipes or cables. Just set an input where the inventory will be placed. and an output where the chest to move the items to will be.
+==Generator==
+mm.guide.entries.Heat Generator.0=The heat generator is used to generate heat. The generator needs a generator upgrade to function. These upgrades determine what kind of fuel it uses and how much heat it will generate.
+mm.guide.entries.Upgrade: Base.0=This upgrade is the most base generator upgrade. It uses a fuel basic fuels like Coal, Charcoal and Coal Blocks to produce heat.
 ==Interacting Upgrades==
 mm.guide.entries.Upgrade: Break.0=This upgrade makes it possible for the core to break a block placed at the input.
 mm.guide.entries.Upgrade: Elevator.0=This upgrade will make your core act like an elevator. By placing another core with the elevator upgrade a few blocks above it is able to teleport you to that point (click on the block to go up, shift-click to go down).

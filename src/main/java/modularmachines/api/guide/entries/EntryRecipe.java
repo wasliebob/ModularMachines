@@ -177,7 +177,7 @@ public class EntryRecipe implements IEntry{
 			if(mX > x && mX < xSize && mY > y && mY < ySize){
 				GL11.glDisable(GL11.GL_DEPTH_TEST);
 				if(stack != null && stack.getDisplayName() != null)
-					Minecraft.getMinecraft().fontRenderer.drawString(stack.getDisplayName(), mX + 6, mY, Color.black.getRGB());
+					Minecraft.getMinecraft().fontRenderer.drawString(stack.getDisplayName(), mX + 6, mY, new Color(139, 137, 137).getRGB());
 				GL11.glEnable(GL11.GL_DEPTH_TEST);
 			}
 		}		

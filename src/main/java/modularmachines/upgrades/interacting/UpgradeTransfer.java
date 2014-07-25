@@ -2,8 +2,8 @@ package modularmachines.upgrades.interacting;
 
 import modularmachines.api.classes.TileInteracting;
 import modularmachines.api.guide.IGuided;
-import modularmachines.api.misc.ITransportable;
 import modularmachines.api.misc.helpers.DirectionHelper;
+import modularmachines.api.misc.interfaces.ITransportable;
 import modularmachines.api.upgrades.IInteractingAction;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;

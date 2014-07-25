@@ -32,6 +32,7 @@ public class TileInteracting extends TileEntity implements IInventory, IHeatedMa
 		up = 2;
 		enabled = true;
 		whitelist = true;
+		redstone = true;
 	}
 	public ItemStack[] filter;
  	public HeatStorage heat;
@@ -45,13 +46,25 @@ public class TileInteracting extends TileEntity implements IInventory, IHeatedMa
 	public int up;
 	public boolean enabled;
 	public boolean whitelist;
+	public boolean redstone;
 	
 	@Override
 	public void updateEntity(){
-		if(!worldObj.isRemote && upgrade != null && MMInteractingUpgrades.containsItem(upgrade) && MMInteractingUpgrades.getUpgrade(upgrade).action.hasRequired(this) && enabled){
+		setRedstoneInput();
+		if(!worldObj.isRemote && upgrade != null && MMInteractingUpgrades.containsItem(upgrade) && MMInteractingUpgrades.getUpgrade(upgrade).action.hasRequired(this) && enabled && redstone){
 			MMInteractingUpgrades.getUpgrade(upgrade).action.onUpdate(this);
 		}
 	}
+	
+	public void setRedstoneInput(){
+		redstone = true;
+		for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS){
+			int power = worldObj.getIndirectPowerLevelTo(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.ordinal());
+			if(power > 0)
+				redstone = false;
+		}
+	}
+	
 	
 	@Override
 	public void writeToNBT(NBTTagCompound nbt)
@@ -172,6 +185,10 @@ public class TileInteracting extends TileEntity implements IInventory, IHeatedMa
 	@Override
 	public int getSizeInventory() {
 		return filter.length;
+	}
+	
+	public void markBlockForUpdate(){
+		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 	
 	@Override

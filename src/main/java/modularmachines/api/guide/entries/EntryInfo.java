@@ -14,6 +14,9 @@ public class EntryInfo implements IEntry{
 			this.type = "Modular";
 		else if(type == 1)
 			this.type = "Interacting";
+		else if(type == 2)
+			this.type = "Generator";
+		
 		this.heat = heat;
 	}
 	public String type;

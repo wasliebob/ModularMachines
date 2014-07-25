@@ -1,10 +1,13 @@
 package modularmachines.handlers;
 
+import modularmachines.api.classes.TileGenerator;
 import modularmachines.api.classes.TileInteracting;
 import modularmachines.api.classes.TileMachineBase;
 import modularmachines.blocks.containers.ContainerFilter;
+import modularmachines.blocks.containers.ContainerGenerator;
 import modularmachines.blocks.containers.ContainerMachineBase;
 import modularmachines.blocks.guis.GuiFilter;
+import modularmachines.blocks.guis.GuiGenerator;
 import modularmachines.blocks.guis.GuiInformation;
 import modularmachines.blocks.guis.GuiMachineBase;
 import modularmachines.blocks.guis.guide.GuiGuide;
@@ -22,6 +25,7 @@ public class GuiHandler implements IGuiHandler {
                 case 2: return null;
                 case 3: return null;
                 case 4: return new ContainerFilter((TileInteracting)tile, player.inventory);
+                case 5: return new ContainerGenerator((TileGenerator)tile, player.inventory);
                 default: return false;
                 }
         }
@@ -34,6 +38,7 @@ public class GuiHandler implements IGuiHandler {
                 case 2: return new GuiInformation((TileInteracting)tile);
                 case 3: return new GuiGuide(player, 0);
                 case 4: return new GuiFilter((TileInteracting)tile, player.inventory);
+                case 5: return new GuiGenerator((TileGenerator)tile, player.inventory);
                 default: return false;
                 }
 

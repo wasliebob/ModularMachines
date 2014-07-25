@@ -2,10 +2,10 @@ package modularmachines.blocks.tiles;
 
 import java.awt.Color;
 
-import modularmachines.api.misc.IColorable;
-import modularmachines.api.misc.IPotionStorage;
-import modularmachines.api.misc.ITransportable;
 import modularmachines.api.misc.PotionStorage;
+import modularmachines.api.misc.interfaces.IColorable;
+import modularmachines.api.misc.interfaces.IPotionStorage;
+import modularmachines.api.misc.interfaces.ITransportable;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;

@@ -1,6 +1,7 @@
 package modularmachines.api.main;
 
 import modularmachines.api.heat.MMHeatFuels;
+import modularmachines.api.misc.GeneratorUpgrade;
 import modularmachines.api.misc.InteractingUpgrade;
 import modularmachines.api.misc.Upgrade;
 import net.minecraft.item.Item;
@@ -15,6 +16,12 @@ public class MMApi {
 		MMInteractingUpgrades.addUpgrade(item, upgrade);
 	}
 	public static MMInteractingUpgrades interactingUpgrades;
+	
+	public static void addGeneratorUpgrade(Item item, GeneratorUpgrade upgrade){
+		MMGeneratorUpgrades.addUpgrade(item, upgrade);
+	}
+	public static MMGeneratorUpgrades generatorUpgrades;
+	
 	
 	public static void addFuel(Item Item, int amount){
 		MMHeatFuels.addFuel(Item, amount);

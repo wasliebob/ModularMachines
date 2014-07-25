@@ -1,4 +1,4 @@
-package modularmachines.api.misc;
+package modularmachines.api.misc.interfaces;
 
 import net.minecraft.nbt.NBTTagCompound;
 

@@ -2,6 +2,7 @@ package modularmachines.main.init;
 
 import java.awt.Color;
 
+import modularmachines.items.MMGeneratorUpgrade;
 import modularmachines.items.MMInteractingUpgrade;
 import modularmachines.items.MMItem;
 import modularmachines.items.MMItemGuide;
@@ -28,6 +29,7 @@ public class MMItems implements IInitalization{
 		initTools();
 		initUpgrades();
 		initInteractingUpgrades();
+		initGeneratorUpgrades();
 	}
 	
 	public void initUpgrades(){
@@ -62,6 +64,11 @@ public class MMItems implements IInitalization{
 	public static MMInteractingUpgrade interacting_update;
 	public static MMInteractingUpgrade interacting_miner;
 
+	public void initGeneratorUpgrades(){
+		generator_base = new MMGeneratorUpgrade("base", Color.cyan);
+	}
+	public static MMGeneratorUpgrade generator_base;
+	
 	public void initItems(){
 		programmer = new MMProgrammer("programmer");
 		input = new MMSpecialUpgrade("input", ColorHelper.getColorCodeFromColor(Color.cyan));
