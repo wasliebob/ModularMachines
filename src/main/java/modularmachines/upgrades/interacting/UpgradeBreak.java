@@ -1,11 +1,13 @@
 package modularmachines.upgrades.interacting;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import modularmachines.api.classes.TileInteracting;
 import modularmachines.api.guide.IGuided;
 import modularmachines.api.misc.helpers.DirectionHelper;
 import modularmachines.api.upgrades.IInteractingAction;
+import modularmachines.main.MM;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.entity.item.EntityItem;
@@ -14,7 +16,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 
 public class UpgradeBreak implements IInteractingAction, IGuided{
@@ -33,7 +34,12 @@ public class UpgradeBreak implements IInteractingAction, IGuided{
 			int iZ = DirectionHelper.getZ(z, ti.input);
 			
 			if(!input.isAir(world, iX, iY, iZ) && input != Blocks.bedrock && input != Blocks.bed && !input.hasTileEntity(meta)){
-				if(canHarvest(ti, world.getBlock(iX, iY, iZ), world, iX, iY, iZ)){
+				ArrayList<ItemStack> filter = new ArrayList<ItemStack>();
+				for(ItemStack f : ti.filter){
+					if(f != null)
+						filter.add(f);
+				}
+				if(filter.isEmpty() && canHarvest(ti, world.getBlock(iX, iY, iZ), world, iX, iY, iZ)){
 					if(ti.output == null || (ti.output != null && getContainer(ti) == null)){
 						for(ItemStack drop : input.getDrops(world, iX, iY, iZ, meta, 0))
 							dropItem(drop, world, iX, iY, iZ);
@@ -42,6 +48,24 @@ public class UpgradeBreak implements IInteractingAction, IGuided{
 						for(ItemStack drop : input.getDrops(world, iX, iY, iZ, meta, 0))
 							putInContainer(ti, drop);
 						world.setBlock(iX, iY, iZ, Blocks.air);
+					}
+				}else if(!filter.isEmpty() && canHarvest(ti, world.getBlock(iX, iY, iZ), world, iX, iY, iZ)){
+					ArrayList<Block> items = new ArrayList<Block>();
+					for(ItemStack s : ti.filter){
+						if(s != null){
+							items.add(Block.getBlockFromItem(s.getItem()));
+						}
+					}
+					if(items.contains(input)){
+						if(ti.output == null || (ti.output != null && getContainer(ti) == null)){
+							for(ItemStack drop : input.getDrops(world, iX, iY, iZ, meta, 0))
+								dropItem(drop, world, iX, iY, iZ);
+							world.setBlock(iX, iY, iZ, Blocks.air);
+						}else if(ti.output != null && getContainer(ti) != null){
+							for(ItemStack drop : input.getDrops(world, iX, iY, iZ, meta, 0))
+								putInContainer(ti, drop);
+							world.setBlock(iX, iY, iZ, Blocks.air);
+						}
 					}
 				}
 			}
@@ -125,25 +149,7 @@ public class UpgradeBreak implements IInteractingAction, IGuided{
 
 	@Override
 	public void onActivateWithProgrammer(TileInteracting ti, EntityPlayer player){
-		if(player.isSneaking()){
-			
-		}else{
-			if(ti.meta < 16)
-				ti.meta++;
-			else if(ti.meta == 16)
-				ti.meta = -1;
-			else
-				ti.meta = 0;
-			
-			if(!ti.getWorldObj().isRemote){
-				if(ti.meta != -1)
-					player.addChatComponentMessage(new ChatComponentText("Blocks with metadata " + ti.meta + " only."));
-				else
-					player.addChatComponentMessage(new ChatComponentText("All metadata's"));
-			}
-			
-			ti.getWorldObj().markBlockForUpdate(ti.xCoord, ti.yCoord, ti.zCoord);
-		}
+		player.openGui(MM.instance, 4, ti.getWorldObj(), ti.xCoord, ti.yCoord, ti.zCoord);
 	}
 
 	@Override

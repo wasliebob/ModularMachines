@@ -1,10 +1,13 @@
 package modularmachines.upgrades.interacting;
 
+import java.util.ArrayList;
+
 import modularmachines.api.classes.TileInteracting;
 import modularmachines.api.guide.IGuided;
 import modularmachines.api.misc.helpers.DirectionHelper;
 import modularmachines.api.misc.helpers.MiscHelper;
 import modularmachines.api.upgrades.IInteractingAction;
+import modularmachines.main.MM;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -34,12 +37,32 @@ public class UpgradeMiner implements IInteractingAction, IGuided{
 				
 				if(ti.heat.getHeat() < this.need)
 					return;
-								
-				if(!MiscHelper.bannedMiner.contains(block)){
+				
+				ArrayList<ItemStack> filter = new ArrayList<ItemStack>();
+				for(ItemStack f : ti.filter){
+					if(f != null)
+						filter.add(f);
+				}		
+				
+				if(filter.isEmpty() && !MiscHelper.bannedMiner.contains(block)){
 					for(ItemStack drop : block.getDrops(world, x, y - i, z, meta, 0))
 						putInContainer(ti, drop);
 					world.setBlock(x, y - i, z, Blocks.air);
 					this.decreaseHeat(ti, this.need);
+				}else if(!filter.isEmpty() && !MiscHelper.bannedMiner.contains(block)){
+					ArrayList<Block> items = new ArrayList<Block>();
+					for(ItemStack s : ti.filter){
+						if(s != null){
+							items.add(Block.getBlockFromItem(s.getItem()));
+						}
+					}
+					
+					if(items.contains(block)){
+						for(ItemStack drop : block.getDrops(world, x, y - i, z, meta, 0))
+							putInContainer(ti, drop);
+						world.setBlock(x, y - i, z, Blocks.air);
+						this.decreaseHeat(ti, this.need);
+					}
 				}
 			}
 		}
@@ -109,6 +132,7 @@ public class UpgradeMiner implements IInteractingAction, IGuided{
 
 	@Override
 	public void onActivateWithProgrammer(TileInteracting ti, EntityPlayer player){
+		player.openGui(MM.instance, 4, ti.getWorldObj(), ti.xCoord, ti.yCoord, ti.zCoord);
 	}
 
 	@Override

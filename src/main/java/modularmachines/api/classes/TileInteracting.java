@@ -5,16 +5,22 @@ import java.awt.Color;
 import modularmachines.api.heat.HeatStorage;
 import modularmachines.api.heat.interfaces.IHeatedMachine;
 import modularmachines.api.main.MMInteractingUpgrades;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.ForgeDirection;
-public class TileInteracting extends TileEntity implements IHeatedMachine{
+public class TileInteracting extends TileEntity implements IInventory, IHeatedMachine{
 	public TileInteracting(){
+		filter = new ItemStack[9];
 		heat = new HeatStorage(1200, 10);
 		upgrade = null;
 		upgradeSide = null;
@@ -25,8 +31,10 @@ public class TileInteracting extends TileEntity implements IHeatedMachine{
 		programmerMode = 0;
 		up = 2;
 		enabled = true;
+		whitelist = true;
 	}
-	public HeatStorage heat;
+	public ItemStack[] filter;
+ 	public HeatStorage heat;
 	public Item upgrade;
 	public ForgeDirection upgradeSide;
 	public ForgeDirection input;
@@ -36,6 +44,7 @@ public class TileInteracting extends TileEntity implements IHeatedMachine{
 	public int programmerMode;
 	public int up;
 	public boolean enabled;
+	public boolean whitelist;
 	
 	@Override
 	public void updateEntity(){
@@ -66,6 +75,18 @@ public class TileInteracting extends TileEntity implements IHeatedMachine{
 		
 		nbt.setInteger("META", this.meta);
 		nbt.setInteger("PROGRAMMER", this.programmerMode);
+		
+		NBTTagList itemList = new NBTTagList();
+        for (int i = 0; i < filter.length; i++) {
+        	ItemStack stack = filter[i];
+        	if (stack != null) {
+        		NBTTagCompound tag = new NBTTagCompound();
+        		tag.setByte("Slot", (byte) i);
+        		stack.writeToNBT(tag);
+        		itemList.appendTag(tag);
+        	}
+        }
+        nbt.setTag("Inventory", itemList);
 	}
 		
 	@Override
@@ -84,6 +105,15 @@ public class TileInteracting extends TileEntity implements IHeatedMachine{
 		this.color = new Color(nbt.getInteger("COLOR"));
 		this.meta = nbt.getInteger("META");
 		this.programmerMode = nbt.getInteger("PROGRAMMER");
+		
+		NBTTagList tagList = nbt.getTagList("Inventory", Constants.NBT.TAG_COMPOUND);
+		for (int i = 0; i < tagList.tagCount(); i++) {
+			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
+			byte slot = tag.getByte("Slot");
+			if (slot >= 0 && slot < filter.length) {
+				filter[slot] = ItemStack.loadItemStackFromNBT(tag);
+			}
+		}
 	}
 	
 	@Override
@@ -137,5 +167,93 @@ public class TileInteracting extends TileEntity implements IHeatedMachine{
 	@Override
 	public World getWorldObj(){
 		return this.worldObj;
+	}
+
+	@Override
+	public int getSizeInventory() {
+		return filter.length;
+	}
+	
+	@Override
+	public ItemStack getStackInSlot(int i) {
+		   if(i > filter.length)
+	            return filter[0];
+		   else
+			   return filter[i];
+	}
+
+	@Override
+	public void setInventorySlotContents(int i, ItemStack itemstack) {	
+		filter[i] = itemstack;
+
+        if (itemstack != null && itemstack.stackSize > getInventoryStackLimit()){
+            itemstack.stackSize = getInventoryStackLimit();
+        }        
+	}
+	
+	@Override
+	public ItemStack decrStackSize(int i, int j){
+		if (filter[i] != null){
+            if (filter[i].stackSize <= j){
+                ItemStack itemstack = filter[i];
+                filter[i] = null;
+                return itemstack;
+            }else{
+                ItemStack itemstack1 = filter[i].splitStack(j);
+
+                if (filter[i].stackSize == 0){
+                	filter[i] = null;
+                }
+                
+                return itemstack1;
+            }
+        }else{
+            return null;
+        }
+	}
+
+    @Override
+    public ItemStack getStackInSlotOnClosing(int i){
+        if (filter[i] != null){
+            ItemStack itemstack = filter[i];
+            filter[i] = null;
+            return itemstack;
+        }else{
+            return null;
+        }
+    }
+
+	@Override
+	public int getInventoryStackLimit() {
+		return 1;
+	}
+
+	@Override
+	public boolean isUseableByPlayer(EntityPlayer player) {
+		  if (worldObj.getTileEntity(xCoord, yCoord, zCoord) != this)
+	                 return false;
+
+	         return player.getDistanceSq((double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D) <= 64D;
+	}
+
+	@Override
+	public String getInventoryName() {
+		return "mm.filter";
+	}
+
+	@Override
+	public boolean hasCustomInventoryName() {
+		return false;
+	}
+
+	@Override
+	public void openInventory() {}
+
+	@Override
+	public void closeInventory() {}
+
+	@Override
+	public boolean isItemValidForSlot(int slot, ItemStack stack) {
+		return false;
 	}
 }
