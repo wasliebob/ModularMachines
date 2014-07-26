@@ -9,17 +9,12 @@ public class UpgradeBase implements IGeneratorAction{
 	public int generateHeat(TileGenerator te){
 		int heat = 0;
 		if(te.getStackInSlot(0) != null && MMHeatFuels.containsItem(te.getStackInSlot(0).getItem())){
-			if(te.getStackInSlot(0).stackSize > 1){
-				if(te.getBound().canAdd(MMHeatFuels.getFuel(te.getStackInSlot(0).getItem()))){
-					heat = MMHeatFuels.getFuel(te.getStackInSlot(0).getItem());
+			heat = MMHeatFuels.getFuel(te.getStackInSlot(0).getItem());
+			if(te.storage.getHeat() + heat <= te.storage.getMaxHeat()){
+				if(te.getStackInSlot(0).stackSize > 1){
 					te.stacks[0].stackSize--;
-					te.markForUpdate();
-				}
-			}else{
-				if(te.getBound().canAdd(MMHeatFuels.getFuel(te.getStackInSlot(0).getItem()))){
-					heat = MMHeatFuels.getFuel(te.getStackInSlot(0).getItem());
+				}else{
 					te.stacks[0] = null;
-					te.markForUpdate();
 				}
 			}
 		}

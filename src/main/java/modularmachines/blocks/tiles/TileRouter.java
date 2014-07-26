@@ -4,6 +4,7 @@ import modularmachines.api.heat.HeatStorage;
 import modularmachines.api.heat.interfaces.IHeatTransport;
 import modularmachines.api.heat.interfaces.IHeatedMachine;
 import modularmachines.api.misc.helpers.DirectionHelper;
+import modularmachines.api.misc.interfaces.IScanable;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
@@ -11,7 +12,7 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileRouter extends TileEntity implements IHeatTransport{
+public class TileRouter extends TileEntity implements IHeatTransport, IScanable{
 	public TileRouter(){
 		heat = new HeatStorage(1200, 10);
 		range = 10;
@@ -30,6 +31,7 @@ public class TileRouter extends TileEntity implements IHeatTransport{
 			if(machine.canAdd(this.calculateSending(machine))){
 				machine.getHeatStorage().increaseHeat(this.calculateSending(machine));
 				heat.decreaseEnergy(this.calculateSending(machine));
+				machine.getWorldObj().markBlockForUpdate(machine.xCoord(), machine.yCoord(), machine.zCoord());
 			}
 		}
 		
@@ -38,6 +40,7 @@ public class TileRouter extends TileEntity implements IHeatTransport{
 			if(bound.canAdd(this.calculateSending(bound))){
 				bound.getHeatStorage().increaseHeat(this.calculateSending(bound));
 				heat.decreaseEnergy(this.calculateSending(bound));
+				bound.worldObj.markBlockForUpdate(bound.xCoord, bound.yCoord, bound.zCoord);
 			}
 		}
 	}
@@ -137,5 +140,14 @@ public class TileRouter extends TileEntity implements IHeatTransport{
 		else if(heat.getHeat() < machine.getHeatStorage().getTransfer())
 			return heat.getHeat();
 		return 0;
+	}
+	
+	@Override
+	public NBTTagCompound getInfo(){
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setString("name", "Interacting Core");
+		tag.setString("heat", "Heat: " + heat.getHeat() + "/" + heat.getMaxHeat());
+		tag.setString("transfer", "Transfer: " + heat.getTransfer());
+		return tag;
 	}
 }

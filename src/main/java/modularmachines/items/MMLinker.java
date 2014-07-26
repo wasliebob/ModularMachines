@@ -15,10 +15,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import wasliecore.helpers.MathHelper;
 import wasliecore.helpers.Utils;
-import wasliecore.interfaces.IWrench;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class MMLinker extends Item implements IWrench{
+public class MMLinker extends Item{
 
 	public MMLinker() {
 		setMaxStackSize(1);

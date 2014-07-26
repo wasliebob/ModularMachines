@@ -5,6 +5,7 @@ import java.awt.Color;
 import modularmachines.api.misc.PotionStorage;
 import modularmachines.api.misc.interfaces.IColorable;
 import modularmachines.api.misc.interfaces.IPotionStorage;
+import modularmachines.api.misc.interfaces.IScanable;
 import modularmachines.api.misc.interfaces.ITransportable;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -12,8 +13,9 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.potion.Potion;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.StatCollector;
 
-public class TilePotionTank extends TileEntity implements IPotionStorage, ITransportable, IColorable{
+public class TilePotionTank extends TileEntity implements IPotionStorage, ITransportable, IColorable, IScanable{
 	public TilePotionTank(){
 		tank = new PotionStorage(1000, 10);
 		this.color = new Color(255, 255, 255).getRGB();
@@ -92,5 +94,12 @@ public class TilePotionTank extends TileEntity implements IPotionStorage, ITrans
 	@Override
 	public void setColor(Color color) {
 		this.color = color.getRGB();
+	}
+	
+	@Override
+	public NBTTagCompound getInfo(){
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setString("potion", StatCollector.translateToLocal(tank.getPotion().getName()) + ": " + tank.getAmount() + "/" + tank.capacity);
+		return tag;
 	}
 }

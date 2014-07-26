@@ -36,6 +36,7 @@ item.modularmachines.item.miner.name=Interacting Upgrade: Miner
 item.modularmachines.item.base.name=Generator Upgrade: Base
 item.modularmachines.item.guide.name=Modular Guide
 item.modularmachines.item.linker.name=Linker
+item.modularmachines.item.scanner.name=Scanner
 ==Materials==
 item.modularmachines.item.empty upgrade.name=Empty Upgrade
 item.modularmachines.item.energy crystal.name=Energy Crystal
@@ -43,6 +44,7 @@ item.modularmachines.item.iron stick.name=Iron Stick
 item.modularmachines.ingot.copper.name=Copper Ingot
 item.modularmachines.ingot.tin.name=Tin Ingot
 item.modularmachines.ingot.bronze.name=Bronze Ingot
+item.modularmachines.ingot.steel.name=Steel Ingot
 ===Text===
 mm.guide.entries.Modular Machines.1=Tip: you can return to previous page by pressing backspace or the right mouse button!
 ==Blocks==

@@ -17,10 +17,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import wasliecore.helpers.Utils;
-import wasliecore.interfaces.IWrench;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class MMItemGuide extends Item implements IWrench{
+public class MMItemGuide extends Item{
 	public MMItemGuide() {
 		setMaxStackSize(1);
 		setUnlocalizedName(MM.modName.toLowerCase() + "." + "item" + "." + "guide");

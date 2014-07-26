@@ -11,7 +11,6 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -41,9 +40,7 @@ public class MMBlockRouter extends BlockContainer implements IWrenchable, IGuide
 		TileRouter te = (TileRouter)world.getTileEntity(x, y, z);
 		
 		if(!world.isRemote && te != null && player.getHeldItem() != null && player.getHeldItem().getItem() != MMItems.wrench && player.getHeldItem().getItem() != MMItems.guide){
-			if(player.getHeldItem().getItem() == MMItems.programmer){
-				player.addChatComponentMessage(new ChatComponentText("Heat: " + te.heat.getHeat() + "/" + te.heat.getMaxHeat()));
-			}else if(player.getHeldItem().getItem() == MMItems.input && te.input == null && te.output != ForgeDirection.getOrientation(side)){
+			if(player.getHeldItem().getItem() == MMItems.input && te.input == null && te.output != ForgeDirection.getOrientation(side)){
 				te.input = ForgeDirection.getOrientation(side);
 				if(player.getHeldItem().stackSize > 1)
 					player.setCurrentItemOrArmor(0, new ItemStack(player.getHeldItem().getItem(), player.getHeldItem().stackSize--, player.getHeldItem().getItemDamage()));

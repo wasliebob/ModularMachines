@@ -1,9 +1,11 @@
 package modularmachines.api.classes;
 
+import modularmachines.api.heat.HeatStorage;
 import modularmachines.api.heat.interfaces.IHeatGenerator;
 import modularmachines.api.heat.interfaces.IHeatTransport;
 import modularmachines.api.main.MMGeneratorUpgrades;
 import modularmachines.api.misc.helpers.DirectionHelper;
+import modularmachines.api.misc.interfaces.IScanable;
 import modularmachines.api.upgrades.IGeneratorAction;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
@@ -18,18 +20,28 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileGenerator extends TileEntity implements ISidedInventory, IHeatGenerator{    
+public class TileGenerator extends TileEntity implements ISidedInventory, IHeatGenerator, IScanable{    
 	public TileGenerator(){
 		stacks = new ItemStack[3];
+		storage = new HeatStorage(1200, 10);
 	}
+	public HeatStorage storage;
 	public ItemStack[] stacks;
 	
 	@Override
 	public void updateEntity(){
 		ItemStack upgrade = getStackInSlot(2);
-		if(!worldObj.isRemote && upgrade != null && MMGeneratorUpgrades.containsItem(upgrade.getItem()) && MMGeneratorUpgrades.getUpgrade(upgrade.getItem()).action != null && getBound() != null){
+		if(!worldObj.isRemote && upgrade != null && MMGeneratorUpgrades.containsItem(upgrade.getItem()) && MMGeneratorUpgrades.getUpgrade(upgrade.getItem()).action != null){
 			IGeneratorAction action = MMGeneratorUpgrades.getUpgrade(upgrade.getItem()).action;
 			increaseHeat(action.generateHeat(this));
+			markForUpdate();
+			if(getBound() != null){
+				IHeatTransport ht = getBound();
+				if(ht.canAdd(calculateSending(ht))){
+					ht.getHeatStorage().increaseHeat(calculateSending(ht));
+					storage.decreaseEnergy(calculateSending(ht));
+				}
+			}
 		}
 	}
 	
@@ -37,6 +49,7 @@ public class TileGenerator extends TileEntity implements ISidedInventory, IHeatG
 	public void writeToNBT(NBTTagCompound nbt){
 		super.writeToNBT(nbt);
 		
+		nbt.setInteger("ENERGY", this.storage.heat);
 		NBTTagList itemList = new NBTTagList();
         for (int i = 0; i < stacks.length; i++) {
         	ItemStack stack = stacks[i];
@@ -53,7 +66,7 @@ public class TileGenerator extends TileEntity implements ISidedInventory, IHeatG
 	@Override
 	public void readFromNBT(NBTTagCompound nbt){
 		super.readFromNBT(nbt);
-		
+		this.storage.setHeat(nbt.getInteger("ENERGY"));
 		NBTTagList tagList = nbt.getTagList("Inventory", Constants.NBT.TAG_COMPOUND);
 		for (int i = 0; i < tagList.tagCount(); i++) {
 			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
@@ -219,22 +232,33 @@ public class TileGenerator extends TileEntity implements ISidedInventory, IHeatG
 	}
 
 	@Override
-	public void increaseHeat(int heat){		
-		IHeatTransport ht = getBound();
-		if(ht.canAdd(calcSending(heat))){
-			ht.getHeatStorage().increaseHeat(calcSending(heat));
+	public void increaseHeat(int heat){
+		if(storage != null && storage.getHeat() + heat <= storage.getMaxHeat()){
+			storage.increaseHeat(heat);
 		}
 	}
 	
-	public int calcSending(int heat){
-		IHeatTransport ht = getBound();
-		if(heat > ht.getHeatStorage().transfer)
-			return ht.getHeatStorage().transfer;
-		return heat;
+	public int calculateSending(IHeatTransport transport) {
+		if(storage.getHeat() > transport.getHeatStorage().getTransfer())
+			return transport.getHeatStorage().getTransfer();
+		else if(storage.getHeat() == transport.getHeatStorage().getTransfer())
+			return transport.getHeatStorage().getTransfer();
+		else if(storage.getHeat() < transport.getHeatStorage().getTransfer())
+			return storage.getHeat();
+		return 0;
 	}
 
 	@Override
 	public ItemStack getFuel() {
 		return stacks[0];
+	}
+
+	@Override
+	public NBTTagCompound getInfo(){
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setString("name", "Interacting Core");
+		tag.setString("heat", "Heat: " + storage.getHeat() + "/" + storage.getMaxHeat());
+		tag.setString("transfer", "Transfer: " + storage.getTransfer());
+		return tag;
 	}
 }

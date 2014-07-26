@@ -33,7 +33,7 @@ public class GuiMachineBase extends GuiContainer{
 		x = (width - xSize) / 2;
 		y = (height - ySize) / 2;
 
-		heat = new ElementHeat(tile, x + 5, y + 15, 20, 56);		
+		heat = new ElementHeat(tile.heat, x + 5, y + 15, 20, 56);		
 		
 		String[] string;
 		info = new ElementInfo(tile.heat.getHeat() + "/" + tile.heat.getMaxHeat(), tile, x - 20, y + 15, 20, 20, x - 75, y + 15, 75, 20, new Color(0, 155, 0).getRGB());

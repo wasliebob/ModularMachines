@@ -5,6 +5,7 @@ import java.awt.Color;
 import modularmachines.api.heat.HeatStorage;
 import modularmachines.api.heat.interfaces.IHeatedMachine;
 import modularmachines.api.main.MMInteractingUpgrades;
+import modularmachines.api.misc.interfaces.IScanable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
@@ -18,7 +19,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.ForgeDirection;
-public class TileInteracting extends TileEntity implements IInventory, IHeatedMachine{
+public class TileInteracting extends TileEntity implements IInventory, IHeatedMachine, IScanable{
 	public TileInteracting(){
 		filter = new ItemStack[9];
 		heat = new HeatStorage(1200, 10);
@@ -88,7 +89,8 @@ public class TileInteracting extends TileEntity implements IInventory, IHeatedMa
 		
 		nbt.setInteger("META", this.meta);
 		nbt.setInteger("PROGRAMMER", this.programmerMode);
-		
+		nbt.setInteger("ENERGY", this.heat.heat);
+
 		NBTTagList itemList = new NBTTagList();
         for (int i = 0; i < filter.length; i++) {
         	ItemStack stack = filter[i];
@@ -106,6 +108,8 @@ public class TileInteracting extends TileEntity implements IInventory, IHeatedMa
 	public void readFromNBT(NBTTagCompound nbt)
 	{
 		super.readFromNBT(nbt);
+		this.heat.setHeat(nbt.getInteger("ENERGY"));
+
 		if(nbt.getInteger("INPUT") != 0)
 			this.input = ForgeDirection.getOrientation(nbt.getInteger("INPUT"));
 		
@@ -272,5 +276,14 @@ public class TileInteracting extends TileEntity implements IInventory, IHeatedMa
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack) {
 		return false;
+	}
+
+	@Override
+	public NBTTagCompound getInfo(){
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setString("name", "Interacting Core");
+		tag.setString("heat", "Heat: " + heat.getHeat() + "/" + heat.getMaxHeat());
+		tag.setString("transfer", "Transfer: " + heat.getTransfer());
+		return tag;
 	}
 }

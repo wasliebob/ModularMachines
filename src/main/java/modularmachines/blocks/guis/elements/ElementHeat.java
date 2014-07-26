@@ -2,7 +2,7 @@ package modularmachines.blocks.guis.elements;
 
 import java.awt.Color;
 
-import modularmachines.api.classes.TileMachineBase;
+import modularmachines.api.heat.HeatStorage;
 import modularmachines.helpers.GuiHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
@@ -10,34 +10,39 @@ import wasliecore.interfaces.IElement;
 
 public class ElementHeat extends GuiScreen implements IElement{
 
-	public ElementHeat(TileMachineBase tile, int x, int y, int width, int height) {
+	public ElementHeat(HeatStorage storage, int x, int y, int width, int height) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
-		this.tile = tile;
+		this.storage = storage;
 	}
 	public int x;
 	public int y;
 	public int width;
 	public int height;
-	public TileMachineBase tile;
+	public HeatStorage storage;
 	
 	@Override
 	public void drawElement() {
 		drawRect(x, y, x + width, y + height, Color.gray.getRGB());
 		
-		if(tile.getHeatStorage().getHeat() != 0){
-			int stored = tile.getHeatStorage().getHeat();
-			if(stored > 0 && stored < 250)
-				drawRect(x, (y + height), x + width, (y + height) - 12, Color.red.getRGB());
-			else if(stored >= 250 && stored < 500)
+		if(storage.getHeat() != 0){
+			int stored = storage.getHeat();
+			int max = storage.capacity;
+			int first = max/5;
+			
+			if(stored > 0 && stored < first)
+				drawRect(x, (y + height), x + width, (y + height) - 16, Color.red.getRGB());
+			else if(stored >= first && stored < (first*2))
 				drawRect(x, (y + height), x + width, (y + height) - 24, Color.red.getRGB());
-			else if(stored >= 500 && stored < 750)
+			else if(stored >= (first*2) && stored < (first*3))
 				drawRect(x, (y + height), x + width, (y + height) - 32, Color.red.getRGB());
-			else if(stored >= 750 && stored < 1200)
-				drawRect(x, (y + height), x + width, (y + height) - 44, Color.red.getRGB());
-			else if(stored == 1200)
+			else if(stored >= (first*3) && stored < (first*4))
+				drawRect(x, (y + height), x + width, (y + height) - 40, Color.red.getRGB());
+			else if(stored >= (first*4) && stored < (first*5))
+				drawRect(x, (y + height), x + width, (y + height) - 48, Color.red.getRGB());
+			else if(stored == (first*5))
 				drawRect(x, (y + height), x + width, (y + height) - 56, Color.red.getRGB());
 		}
 	}
@@ -49,7 +54,7 @@ public class ElementHeat extends GuiScreen implements IElement{
 	
 	@Override
 	public void onMouseEnter(int mX, int mY) {
-    	Minecraft.getMinecraft().fontRenderer.drawString(tile.heat.getHeat() + "/" + tile.heat.getMaxHeat(), mX + 6, mY, 0);			
+    	Minecraft.getMinecraft().fontRenderer.drawString(storage.getHeat() + "/" + storage.getMaxHeat(), mX + 6, mY, 0);			
 	}
 
 	@Override

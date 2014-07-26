@@ -5,6 +5,7 @@ import modularmachines.api.heat.MMHeatFuels;
 import modularmachines.api.heat.interfaces.IHeatedMachine;
 import modularmachines.api.main.MMUpgrades;
 import modularmachines.api.misc.helpers.DirectionHelper;
+import modularmachines.api.misc.interfaces.IScanable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
@@ -25,7 +26,7 @@ import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 
-public class TileMachineBase extends TileEntity implements ISidedInventory, IHeatedMachine, IFluidHandler{    
+public class TileMachineBase extends TileEntity implements ISidedInventory, IHeatedMachine, IFluidHandler, IScanable{    
 	public TileMachineBase(){
 		stacks = new ItemStack[6];
 		heat = new HeatStorage(1200, 10);
@@ -354,5 +355,14 @@ public class TileMachineBase extends TileEntity implements ISidedInventory, IHea
 	
 	public void markForUpdate(){
 		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+	}
+	
+	@Override
+	public NBTTagCompound getInfo(){
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setString("name", "Interacting Core");
+		tag.setString("heat", "Heat: " + heat.getHeat() + "/" + heat.getMaxHeat());
+		tag.setString("transfer", "Transfer: " + heat.getTransfer());
+		return tag;
 	}
 }

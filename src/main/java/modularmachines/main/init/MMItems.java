@@ -7,6 +7,7 @@ import modularmachines.items.MMInteractingUpgrade;
 import modularmachines.items.MMItem;
 import modularmachines.items.MMItemGuide;
 import modularmachines.items.MMItemIngot;
+import modularmachines.items.MMItemScanner;
 import modularmachines.items.MMLinker;
 import modularmachines.items.MMProgrammer;
 import modularmachines.items.MMSpecialUpgrade;
@@ -81,6 +82,7 @@ public class MMItems implements IInitalization{
 		crystal_energy = new MMItem(1, "energy crystal", "crystal_energy");
 		stick_iron = new MMItem(64, "iron stick", "stick_iron");
 		upgrade_empty = new MMItem(64, "empty upgrade", "upgrade");
+		scanner = new MMItemScanner();
 	}
 	public static MMProgrammer programmer;
 	public static MMSpecialUpgrade input;
@@ -93,15 +95,18 @@ public class MMItems implements IInitalization{
 	public static MMItemGuide guide;
 	public static MMLinker linker;
 	public static MMItem upgrade_empty;
+	public static MMItemScanner scanner;
 	
 	public void initIngots(){
 		ingot_copper = new MMItemIngot("Copper", new Color(210, 105, 30).getRGB(), MMBlocks.ore_copper);
 		ingot_tin = new MMItemIngot("Tin", new Color(255, 245, 238).getRGB(), MMBlocks.ore_tin);
 		ingot_bronze = new MMItemIngot("Bronze", new Color(218, 165, 32).getRGB(), null);
+		ingot_steel = new MMItemIngot("Steel", new Color(139, 139, 131).getRGB(), null);
 	}
 	public static MMItemIngot ingot_copper;
 	public static MMItemIngot ingot_tin;
 	public static MMItemIngot ingot_bronze;
+	public static MMItemIngot ingot_steel;
 
 	public void initTools(){
 		heated = EnumHelper.addToolMaterial("HEATED", 4, -1, 10F, 0F, 0);

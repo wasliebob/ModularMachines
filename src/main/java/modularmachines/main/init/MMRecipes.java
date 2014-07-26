@@ -234,10 +234,19 @@ public class MMRecipes implements IInitalization{
 			"XZX",
 			"XYX",
 			"XXX",
-			'X', Blocks.glass_pane,
-			'Z', Items.gold_ingot,
+			'X', Items.gold_ingot,
+			'Z', Blocks.glass_pane,
 			'Y', MMItems.programmer});
 		linker = RecipeHelper.getLatest();
+		
+		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.scanner), new Object[]{
+			"XZX",
+			"XYX",
+			"XXX",
+			'X', MMItems.ingot_steel,
+			'Z', Blocks.glass_pane,
+			'Y', MMItems.programmer});
+		scanner = RecipeHelper.getLatest();
 		
 		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.interacting_break), new Object[]{
 			"XYX",
@@ -415,7 +424,8 @@ public class MMRecipes implements IInitalization{
 	public static IRecipe wrench;
 	public static IRecipe programmer;
 	public static IRecipe linker;
-
+	public static IRecipe scanner;
+	
 	public static IRecipe stick_iron;
 	public static IRecipe crystal_energy;
 	public static IRecipe ingot_bronze;

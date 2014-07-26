@@ -3,6 +3,7 @@ package modularmachines.blocks.guis;
 import modularmachines.api.classes.TileGenerator;
 import modularmachines.api.main.MMGeneratorUpgrades;
 import modularmachines.blocks.containers.ContainerGenerator;
+import modularmachines.blocks.guis.elements.ElementHeat;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -16,6 +17,7 @@ public class GuiGenerator extends GuiContainer{
 	}
     private static final ResourceLocation gui = new ResourceLocation("modularmachines:textures/gui/generator.png");
 	TileGenerator tile;
+	ElementHeat heat;
 	int x, y;
 	
 	@Override
@@ -23,6 +25,7 @@ public class GuiGenerator extends GuiContainer{
 		super.initGui();
 		x = (width - xSize) / 2;
 		y = (height - ySize) / 2;
+		heat = new ElementHeat(tile.storage, x + 5, y + 15, 20, 56);		
 	}
 	
 	@Override
@@ -31,6 +34,11 @@ public class GuiGenerator extends GuiContainer{
 		mc.renderEngine.bindTexture(gui);
 		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 		GL11.glColor3f(1F, 1F, 1F);
+		
+		heat.drawElement();
+		
+		if(heat.isMouseInElement(mX, mY))
+			heat.onMouseEnter(mX, mY);
 	}  
 	
 	@Override
