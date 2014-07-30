@@ -33,6 +33,7 @@ public class MM {
 	@EventHandler
     public void preInit(FMLPreInitializationEvent event){
 		proxy.load();
+		Config.loadConfig(event);
 		init.preInit();
     }
     

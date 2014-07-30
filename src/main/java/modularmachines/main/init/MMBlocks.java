@@ -10,6 +10,7 @@ import modularmachines.blocks.MMBlockRouter;
 import modularmachines.blocks.MMBlockTransporter;
 import modularmachines.blocks.integration.MMBlockPowerConverterCoFH;
 import modularmachines.blocks.integration.MMBlockPowerConverterIC2;
+import modularmachines.main.Config;
 import modularmachines.world.WorldGen;
 import wasliecore.interfaces.IInitalization;
 import cpw.mods.fml.common.Loader;
@@ -20,7 +21,9 @@ public class MMBlocks implements IInitalization{
 	public void preInit(){
 		initBlocks();
 		initOres();
-		initWorldGen();
+		
+		if(Config.worldGen)
+			initWorldGen();
 	}
 	
 	@Override
