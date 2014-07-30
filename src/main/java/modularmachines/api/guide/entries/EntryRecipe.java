@@ -8,7 +8,6 @@ import modularmachines.api.guide.IEntry;
 import modularmachines.blocks.guis.guide.GuiEntry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.texture.TextureManager;
@@ -144,7 +143,7 @@ public class EntryRecipe implements IEntry{
 	public void renderOverlay(GuiEntry entry, int width, int height, int left, int top){
 		TextureManager tm = Minecraft.getMinecraft().getTextureManager();
 		tm.bindTexture(new ResourceLocation("modularmachines:textures/gui/crafting.png"));
-		((GuiScreen) entry).drawTexturedModalRect(left, (height/2 - 18) + (18*0) - 17, 0, 0, width, height);
+		entry.drawTexturedModalRect(left, (height/2 - 18) + (18*0) - 17, 0, 0, width, height);
 		
 	}
 	
@@ -160,7 +159,7 @@ public class EntryRecipe implements IEntry{
 		
 	}
 	
-	static class ItemIcon extends GuiScreen{
+	static class ItemIcon {
 		public ItemIcon(ItemStack stack, int x, int y){
 			this.stack = stack;
 			this.x = x;
