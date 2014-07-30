@@ -256,7 +256,7 @@ public class TileGenerator extends TileEntity implements ISidedInventory, IHeatG
 	@Override
 	public NBTTagCompound getInfo(){
 		NBTTagCompound tag = new NBTTagCompound();
-		tag.setString("name", "Interacting Core");
+		tag.setString("name", "Heat Generator");
 		tag.setString("heat", "Heat: " + storage.getHeat() + "/" + storage.getMaxHeat());
 		tag.setString("transfer", "Transfer: " + storage.getTransfer());
 		return tag;

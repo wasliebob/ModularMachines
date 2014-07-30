@@ -1,10 +1,8 @@
 package modularmachines.items;
 
 import modularmachines.api.misc.interfaces.IScanable;
-import modularmachines.blocks.guis.GuiScanner;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMTabs;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -32,7 +30,7 @@ public class MMItemScanner extends Item {
 		if(player.isSneaking()){
 			TileEntity te = Utils.getTargetTile(player);
 			if(te != null && te instanceof IScanable)
-				Minecraft.getMinecraft().displayGuiScreen(new GuiScanner((IScanable)te));
+				player.openGui(MM.instance, 8, world, Utils.getTargetX(player), Utils.getTargetY(player), Utils.getTargetZ(player));
 		}
 		return stack;
     }

@@ -360,7 +360,7 @@ public class TileMachineBase extends TileEntity implements ISidedInventory, IHea
 	@Override
 	public NBTTagCompound getInfo(){
 		NBTTagCompound tag = new NBTTagCompound();
-		tag.setString("name", "Interacting Core");
+		tag.setString("name", "Machine Core");
 		tag.setString("heat", "Heat: " + heat.getHeat() + "/" + heat.getMaxHeat());
 		tag.setString("transfer", "Transfer: " + heat.getTransfer());
 		return tag;

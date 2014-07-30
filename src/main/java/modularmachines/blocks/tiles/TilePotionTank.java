@@ -99,6 +99,7 @@ public class TilePotionTank extends TileEntity implements IPotionStorage, ITrans
 	@Override
 	public NBTTagCompound getInfo(){
 		NBTTagCompound tag = new NBTTagCompound();
+		tag.setString("name", "Potion Tank");
 		tag.setString("potion", StatCollector.translateToLocal(tank.getPotion().getName()) + ": " + tank.getAmount() + "/" + tank.capacity);
 		return tag;
 	}

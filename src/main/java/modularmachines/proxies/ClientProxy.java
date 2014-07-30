@@ -14,16 +14,24 @@ import modularmachines.client.renders.TilePotionTankRenderer;
 import modularmachines.client.renders.TileRouterRenderer;
 import modularmachines.client.renders.TileTransporterRenderer;
 import modularmachines.events.MMKeyHandler;
+import modularmachines.main.init.MMInit;
+import modularmachines.network.packets.newpackets.PacketToggle;
+import modularmachines.network.packets.newpackets.PacketToggleInteracting;
+import modularmachines.network.packets.newpackets.PacketTransferRate;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.World;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.relauncher.Side;
 
 public class ClientProxy extends CommonProxy{
 	@Override
 	public void registerPackets(){
 		super.registerPackets();
+		MMInit.network.registerMessage(PacketToggle.class, PacketToggle.class, 201, Side.SERVER);
+		MMInit.network.registerMessage(PacketToggleInteracting.class, PacketToggleInteracting.class, 202, Side.SERVER);
+		MMInit.network.registerMessage(PacketTransferRate.class, PacketTransferRate.class, 203, Side.SERVER);
 	}
 	
 	@Override

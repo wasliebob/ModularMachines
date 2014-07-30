@@ -4,11 +4,9 @@ import modularmachines.api.classes.TileInteracting;
 import modularmachines.api.guide.IGuided;
 import modularmachines.api.main.MMInteractingUpgrades;
 import modularmachines.api.upgrades.IInteractingAction;
-import modularmachines.blocks.guis.guide.GuiEntry;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMTabs;
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -49,26 +47,26 @@ public class MMItemGuide extends Item{
 						if(action != null && action instanceof IGuided){
 							String key = ((IGuided)action).getKey();
 							if(key != null){
-								Minecraft.getMinecraft().displayGuiScreen(new GuiEntry(key, player, 0));
+								player.openGui(MM.instance, 7, world, Utils.getTargetX(player), Utils.getTargetY(player), Utils.getTargetZ(player));
 							}else{
-								openGuide(guided, player);
+								openGuide(guided, player, world);
 							}
 						}else{
-							openGuide(guided, player);
+							openGuide(guided, player, world);
 						}
 					}else{
-						openGuide(guided, player);
+						openGuide(guided, player, world);
 					}
 				}else{
-					openGuide(guided, player);
+					openGuide(guided, player, world);
 				}
 			}
 		}
 		return stack;
     }
 	
-	public void openGuide(IGuided guided, EntityPlayer player){
+	public void openGuide(IGuided guided, EntityPlayer player, World world){
 		if(guided.getKey() != null)
-			Minecraft.getMinecraft().displayGuiScreen(new GuiEntry(guided.getKey(), player, 0));
+			player.openGui(MM.instance, 6, world, Utils.getTargetX(player), Utils.getTargetY(player), Utils.getTargetZ(player));
 	}
 }
