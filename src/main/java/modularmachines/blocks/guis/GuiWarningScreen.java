@@ -14,7 +14,6 @@ public class GuiWarningScreen extends GuiScreen{
 		this.parent = parent;
 	}
     private GuiScreen parent;
-    String url_bug = "Not Available";
     
     @SuppressWarnings("unchecked")
 	@Override

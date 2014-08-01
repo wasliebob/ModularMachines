@@ -15,7 +15,8 @@ public class GuiWarningOptions extends GuiScreen{
     String url_developer = "http://www.wasliebob.nl/about.php";
     String url_download = "https://wasliebob.ci.cloudbees.com/job/ModularMachines/";
     String url_ideas = "https://docs.google.com/document/d/1X2dNhauFYkDwff3gmrcm7x50AdvxVb_Kyc9KR5DwiQM/edit?usp=sharing";
-    
+    String url_donate = "http://www.patreon.com/wasliebob";
+
     @SuppressWarnings("unchecked")
 	@Override
     public void initGui(){
@@ -29,7 +30,7 @@ public class GuiWarningOptions extends GuiScreen{
         this.buttonList.add(new GuiButton(2, (this.width / 2) - 175, (this.height - 84), 350, 20, "About The Developer"));
         this.buttonList.add(new GuiButton(3, (this.width / 2) - 175, (this.height - 104), 350, 20, "Ideas/Progress"));
         this.buttonList.add(new GuiButton(4, (this.width / 2) - 175, (this.height - 124), 350, 20, "Downloads"));
-
+        this.buttonList.add(new GuiButton(5, (this.width / 2) - 175, (this.height - 144), 350, 20, "Donate/Support"));
     }
 
     @Override
@@ -44,6 +45,8 @@ public class GuiWarningOptions extends GuiScreen{
     		WebHelper.openURL(this.url_ideas);
     	if(button.id == 4)
     		WebHelper.openURL(this.url_download);
+    	if(button.id == 5)
+    		WebHelper.openURL(this.url_donate);
     }
     
     @Override
