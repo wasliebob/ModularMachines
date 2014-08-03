@@ -5,8 +5,11 @@ import java.awt.Color;
 import modularmachines.items.MMGeneratorUpgrade;
 import modularmachines.items.MMInteractingUpgrade;
 import modularmachines.items.MMItem;
+import modularmachines.items.MMItemCrystal;
+import modularmachines.items.MMItemDust;
 import modularmachines.items.MMItemGuide;
 import modularmachines.items.MMItemIngot;
+import modularmachines.items.MMItemNugget;
 import modularmachines.items.MMItemScanner;
 import modularmachines.items.MMLinker;
 import modularmachines.items.MMProgrammer;
@@ -27,6 +30,8 @@ public class MMItems implements IInitalization{
 	public void preInit(){
 		initItems();
 		initIngots();
+		initDusts();
+		initNuggets();
 		initTools();
 		initUpgrades();
 		initInteractingUpgrades();
@@ -79,7 +84,7 @@ public class MMItems implements IInitalization{
 		guide = new MMItemGuide();
 		linker = new MMLinker();
 		wrench = new MMWrench("modular wrench");
-		crystal_energy = new MMItem(1, "energy crystal", "crystal_energy");
+		crystal_energy = new MMItemCrystal("energy crystal", new Color(65, 105, 225).getRGB());
 		stick_iron = new MMItem(64, "iron stick", "stick_iron");
 		upgrade_empty = new MMItem(64, "empty upgrade", "upgrade");
 		scanner = new MMItemScanner();
@@ -90,7 +95,7 @@ public class MMItems implements IInitalization{
 	public static MMSpecialUpgrade expension;
 	public static MMSpecialUpgradeScreen screen;
 	public static MMWrench wrench;
-	public static MMItem crystal_energy;
+	public static MMItemCrystal crystal_energy;
 	public static MMItem stick_iron;
 	public static MMItemGuide guide;
 	public static MMLinker linker;
@@ -108,6 +113,42 @@ public class MMItems implements IInitalization{
 	public static MMItemIngot ingot_bronze;
 	public static MMItemIngot ingot_steel;
 
+	public void initNuggets(){
+		nugget_copper = new MMItemNugget("Copper", new Color(210, 105, 30).getRGB());
+		nugget_tin = new MMItemNugget("Tin", new Color(255, 245, 238).getRGB());
+		nugget_bronze = new MMItemNugget("Bronze", new Color(218, 165, 32).getRGB());
+		nugget_steel = new MMItemNugget("Steel", new Color(139, 139, 131).getRGB());
+	}
+	public static MMItemNugget nugget_copper;
+	public static MMItemNugget nugget_tin;
+	public static MMItemNugget nugget_bronze;
+	public static MMItemNugget nugget_steel;
+
+	public void initDusts(){
+		//Vanilla Materials;
+		dust_iron = new MMItemDust("Iron", new Color(190, 190, 190).getRGB());
+		dust_gold = new MMItemDust("Gold", new Color(255, 215, 0).getRGB());
+		dust_diamond = new MMItemDust("Diamond", new Color(135, 206, 250).getRGB());
+		dust_emerald = new MMItemDust("Emerald", new Color(50, 205, 50).getRGB());
+		dust_coal = new MMItemDust("Coal", new Color(105, 105, 105).getRGB());
+
+		//Modular Machines Materials
+		dust_copper = new MMItemDust("Copper", new Color(210, 105, 30).getRGB());
+		dust_tin = new MMItemDust("Tin", new Color(255, 245, 238).getRGB());
+		dust_bronze = new MMItemDust("Bronze", new Color(218, 165, 32).getRGB());
+		dust_steel = new MMItemDust("Steel", new Color(139, 139, 131).getRGB());
+	}
+	public static MMItemDust dust_iron;
+	public static MMItemDust dust_gold;
+	public static MMItemDust dust_diamond;
+	public static MMItemDust dust_emerald;
+	public static MMItemDust dust_coal;
+
+	public static MMItemDust dust_copper;
+	public static MMItemDust dust_tin;
+	public static MMItemDust dust_bronze;
+	public static MMItemDust dust_steel;
+	
 	public void initTools(){
 		heated = EnumHelper.addToolMaterial("HEATED", 4, -1, 10F, 0F, 0);
 		pickaxe_heated = new HeatedPickaxe("heated pickaxe");

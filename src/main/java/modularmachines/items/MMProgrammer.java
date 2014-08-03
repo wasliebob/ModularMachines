@@ -19,6 +19,6 @@ public class MMProgrammer extends Item{
 
 	@Override
     public void registerIcons(IIconRegister ir){
-        itemIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "scanner");
+        itemIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "programmer");
 	}
 }

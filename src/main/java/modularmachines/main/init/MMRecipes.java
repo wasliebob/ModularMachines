@@ -8,6 +8,7 @@ import modularmachines.api.misc.GeneratorUpgrade;
 import modularmachines.api.misc.InteractingUpgrade;
 import modularmachines.api.misc.Upgrade;
 import modularmachines.api.misc.helpers.MiscHelper;
+import modularmachines.api.misc.helpers.RecipeHelper;
 import modularmachines.api.recipes.MMRecipeHelper;
 import modularmachines.upgrades.base.UpgradeBlast;
 import modularmachines.upgrades.base.UpgradeBrewing;
@@ -27,11 +28,9 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 import wasliecore.interfaces.IInitalization;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -48,6 +47,7 @@ public class MMRecipes implements IInitalization{
 		initCraftingRecipes();
 		initFuels();
 		initFluidFuels();
+		initFurnaceRecipes();
 		initMaceratorRecipes();
 		initBlastRecipes();
 		initBrewingRecipes();
@@ -431,6 +431,17 @@ public class MMRecipes implements IInitalization{
 	public static IRecipe ingot_bronze;
 	public static IRecipe upgrade_empty;
 	
+	public void initFurnaceRecipes(){
+		//Modular Machines Materials
+		RecipeHelper.addDustSmeltingRecipe("Iron");
+		RecipeHelper.addDustSmeltingRecipe("Gold");
+		
+		//Vanilla Materials
+		RecipeHelper.addDustSmeltingRecipe("Copper");
+		RecipeHelper.addDustSmeltingRecipe("Tin");
+		RecipeHelper.addDustSmeltingRecipe("Bronze");
+	}
+	
 	public void initMaceratorRecipes(){
 		ArrayList<ItemStack> output;
 		output = OreDictionary.getOres("dustIron");
@@ -451,10 +462,36 @@ public class MMRecipes implements IInitalization{
 			MMRecipeHelper.macerator.put(Item.getItemFromBlock(Blocks.diamond_ore), new ItemStack(output.get(0).getItem(), 1, output.get(0).getItemDamage()));
 		}
 		
+		output = OreDictionary.getOres("dustEmerald");
+		if(output != null && output.size() > 0){
+			MMRecipeHelper.macerator.put(Items.emerald, output.get(0));
+			MMRecipeHelper.macerator.put(Item.getItemFromBlock(Blocks.emerald_ore), new ItemStack(output.get(0).getItem(), 1, output.get(0).getItemDamage()));
+		}
+		
 		output = OreDictionary.getOres("dustCoal");
 		if(output != null && output.size() > 0){
 			MMRecipeHelper.macerator.put(Items.coal, output.get(0));
 			MMRecipeHelper.macerator.put(Item.getItemFromBlock(Blocks.coal_ore), new ItemStack(output.get(0).getItem(), 1, output.get(0).getItemDamage()));
+		}
+		
+		output = OreDictionary.getOres("dustCopper");
+		if(output != null && output.size() > 0){
+			MMRecipeHelper.macerator.put(MMItems.ingot_copper, output.get(0));
+		}
+		
+		output = OreDictionary.getOres("dustTin");
+		if(output != null && output.size() > 0){
+			MMRecipeHelper.macerator.put(MMItems.ingot_tin, output.get(0));
+		}
+		
+		output = OreDictionary.getOres("dustBronze");
+		if(output != null && output.size() > 0){
+			MMRecipeHelper.macerator.put(MMItems.ingot_bronze, output.get(0));
+		}
+		
+		output = OreDictionary.getOres("dustSteel");
+		if(output != null && output.size() > 0){
+			MMRecipeHelper.macerator.put(MMItems.ingot_steel, output.get(0));
 		}
 	}
 	
@@ -463,6 +500,8 @@ public class MMRecipes implements IInitalization{
 		output = OreDictionary.getOres("ingotSteel");
 		if(output != null && output.size() > 0){
 			MMRecipeHelper.blast.put(Items.iron_ingot, output.get(0));
+			MMRecipeHelper.blast.put(MMItems.dust_iron, output.get(0));
+			MMRecipeHelper.blast.put(MMItems.dust_steel, output.get(0));
 		}
 	}
 	
@@ -531,24 +570,5 @@ public class MMRecipes implements IInitalization{
 	
 	public void initGeneratorUpgrades(){
 		MMApi.addGeneratorUpgrade(MMItems.generator_base, new GeneratorUpgrade(new UpgradeBase()));
-	}
-	
-	static class RecipeHelper{
-		public static ArrayList<IRecipe> recipes = new ArrayList<IRecipe>();
-		
-		/** Used registering items to the guide */
-		public static IRecipe getLatest(){
-			IRecipe rec = (IRecipe)CraftingManager.getInstance().getRecipeList().get(CraftingManager.getInstance().getRecipeList().size() -1);
-			recipes.add(rec);
-			return recipes.get(recipes.size() - 1);
-		}
-		
-		public static void addShapedRecipe(ItemStack output, Object[] obj){
-			GameRegistry.addShapedRecipe(output, obj);
-		}
-		
-		public static void addShapedOreRecipe(ItemStack output, Object[] obj){
-			GameRegistry.addRecipe(new ShapedOreRecipe(output, obj));
-		}
 	}
 }

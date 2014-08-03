@@ -41,10 +41,28 @@ item.modularmachines.item.scanner.name=Scanner
 item.modularmachines.item.empty upgrade.name=Empty Upgrade
 item.modularmachines.item.energy crystal.name=Energy Crystal
 item.modularmachines.item.iron stick.name=Iron Stick
+==Ingots==
 item.modularmachines.ingot.copper.name=Copper Ingot
 item.modularmachines.ingot.tin.name=Tin Ingot
 item.modularmachines.ingot.bronze.name=Bronze Ingot
 item.modularmachines.ingot.steel.name=Steel Ingot
+==Dusts==
+=Vanilla=
+item.modularmachines.dust.iron.name=Iron Dust
+item.modularmachines.dust.gold.name=Gold Dust
+item.modularmachines.dust.diamond.name=Diamond Dust
+item.modularmachines.dust.emerald.name=Emerald Dust
+item.modularmachines.dust.coal.name=Coal Dust
+=Modular Machines=
+item.modularmachines.dust.copper.name=Copper Dust
+item.modularmachines.dust.tin.name=Tin Dust
+item.modularmachines.dust.bronze.name=Bronze Dust
+item.modularmachines.dust.steel.name=Steel Dust
+==Nuggets==
+item.modularmachines.nugget.copper.name=Copper Nugget
+item.modularmachines.nugget.tin.name=Tin Nugget
+item.modularmachines.nugget.bronze.name=Bronze Nugget
+item.modularmachines.nugget.steel.name=Steel Nugget
 ===Text===
 mm.guide.entries.Modular Machines.1=Tip: you can return to previous page by pressing backspace or the right mouse button!
 ==Blocks==
