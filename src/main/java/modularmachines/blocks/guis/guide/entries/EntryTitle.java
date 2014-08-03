@@ -2,8 +2,8 @@ package modularmachines.blocks.guis.guide.entries;
 
 import java.util.List;
 
+import modularmachines.api.classes.guis.GuiEntry;
 import modularmachines.api.guide.IEntry;
-import modularmachines.blocks.guis.guide.GuiEntry;
 import modularmachines.helpers.IconHelper;
 import modularmachines.main.MM;
 import net.minecraft.client.Minecraft;

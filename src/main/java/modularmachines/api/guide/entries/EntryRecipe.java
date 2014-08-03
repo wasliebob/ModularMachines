@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+import modularmachines.api.classes.guis.GuiEntry;
 import modularmachines.api.guide.IEntry;
-import modularmachines.blocks.guis.guide.GuiEntry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.RenderHelper;

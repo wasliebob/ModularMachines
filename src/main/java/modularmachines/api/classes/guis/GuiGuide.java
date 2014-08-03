@@ -1,8 +1,8 @@
-package modularmachines.blocks.guis.guide;
+package modularmachines.api.classes.guis;
 
+import modularmachines.api.classes.guis.buttons.ButtonNext;
+import modularmachines.api.classes.guis.buttons.ButtonPage;
 import modularmachines.api.guide.EntryHelper;
-import modularmachines.blocks.guis.buttons.ButtonNext;
-import modularmachines.blocks.guis.buttons.ButtonPage;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;

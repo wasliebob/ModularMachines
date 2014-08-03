@@ -3,7 +3,7 @@
  * @author Mojang (Minecraft)
  * @author wasliebob (Fixing one bug that Mojang made themself)
  */
-package modularmachines.blocks.guis.buttons;
+package modularmachines.api.classes.guis.buttons;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;

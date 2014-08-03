@@ -2,7 +2,7 @@ package modularmachines.api.guide;
 
 import java.util.List;
 
-import modularmachines.blocks.guis.guide.GuiEntry;
+import modularmachines.api.classes.guis.GuiEntry;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.EntityPlayer;
 

@@ -1,4 +1,4 @@
-package modularmachines.blocks.guis.buttons;
+package modularmachines.api.classes.guis.buttons;
 
 import java.awt.Color;
 
