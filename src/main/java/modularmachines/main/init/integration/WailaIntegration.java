@@ -1,3 +1,8 @@
+/**
+* This file is created by wasliebob.
+* Created on: 3 aug. 2014, at 14:56:22
+* This file is part of Modular Machines (created by wasliebob)
+*/
 /** Waila is still bugged in 1.7.10 weird */
 package modularmachines.main.init.integration;
 

@@ -8,6 +8,11 @@ import modularmachines.api.guide.entries.EntryText;
 import modularmachines.blocks.guis.guide.entries.EntryTitle;
 import wasliecore.interfaces.IInitalization;
 
+/**
+* This file is created by wasliebob.
+* Created on: 3 aug. 2014, at 14:56:22
+* This file is part of Modular Machines (created by wasliebob)
+*/
 public class MMEntries implements IInitalization{
 	@Override
 	public void preInit() {

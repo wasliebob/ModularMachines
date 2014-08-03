@@ -1,5 +1,5 @@
 ====================================
-			Version 0.9:
+Version 0.9:
 ====================================
 Added a lot of different dusts.
 Added a lot of different nuggets.
