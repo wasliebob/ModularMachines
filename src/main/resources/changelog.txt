@@ -1,5 +1,6 @@
-Added a lot of different dusts
+Added a lot of different dusts.
 Added a lot of different nuggets.
+Added a changelog button to the startup options menu.
 Added RecipeHelper.class to the api.
 Added OreDictionaryHelper to the api.
 Made the crystal textures color coded.

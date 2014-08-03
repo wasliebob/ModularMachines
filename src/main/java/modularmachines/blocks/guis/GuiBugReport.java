@@ -8,6 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
+import net.minecraft.util.StatCollector;
 
 import org.lwjgl.input.Keyboard;
 
@@ -31,7 +32,7 @@ public class GuiBugReport extends GuiScreen{
 
         name = new GuiTextField(Minecraft.getMinecraft().fontRenderer, (this.width / 2) - 175, (this.height - 204), 350, 20);
         name.setFocused(false);
-        name.setText("FileName");
+        name.setText("File Name");
         
         this.buttonList.add(new GuiButton(1, (this.width / 2) - 175, (this.height - 44), 350, 20, "Save"));
 

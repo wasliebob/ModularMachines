@@ -13,10 +13,11 @@ public class GuiWarningOptions extends GuiScreen{
 	}
     private GuiScreen parent;
     String url_developer = "http://www.wasliebob.nl/about.php";
-    String url_download = "https://wasliebob.ci.cloudbees.com/job/ModularMachines/";
+    String url_download = "http://ci.tterrag.com/view/Admin/job/Modular%20Machines/lastSuccessfulBuild/artifact/src/main/resources/changelog.txt";
     String url_ideas = "https://docs.google.com/document/d/1X2dNhauFYkDwff3gmrcm7x50AdvxVb_Kyc9KR5DwiQM/edit?usp=sharing";
     String url_donate = "http://www.patreon.com/wasliebob";
-
+    String url_changelog = "http://ci.tterrag.com/view/Admin/job/Modular%20Machines/lastSuccessfulBuild/artifact/src/main/resources/changelog.txt";
+    
     @SuppressWarnings("unchecked")
 	@Override
     public void initGui(){
@@ -31,6 +32,8 @@ public class GuiWarningOptions extends GuiScreen{
         this.buttonList.add(new GuiButton(3, (this.width / 2) - 175, (this.height - 104), 350, 20, "Ideas/Progress"));
         this.buttonList.add(new GuiButton(4, (this.width / 2) - 175, (this.height - 124), 350, 20, "Downloads"));
         this.buttonList.add(new GuiButton(5, (this.width / 2) - 175, (this.height - 144), 350, 20, "Donate/Support"));
+        this.buttonList.add(new GuiButton(6, (this.width / 2) - 175, (this.height - 164), 350, 20, "Changelog"));
+
     }
 
     @Override
@@ -47,6 +50,8 @@ public class GuiWarningOptions extends GuiScreen{
     		WebHelper.openURL(this.url_download);
     	if(button.id == 5)
     		WebHelper.openURL(this.url_donate);
+    	if(button.id == 6)
+    		WebHelper.openURL(this.url_changelog);
     }
     
     @Override
