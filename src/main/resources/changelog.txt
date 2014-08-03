@@ -1,0 +1,8 @@
+Added a lot of different dusts
+Added a lot of different nuggets.
+Added RecipeHelper.class to the api.
+Added OreDictionaryHelper to the api.
+Made the crystal textures color coded.
+Changed the texture for the linker.
+Changed the texture for the programmer.
+Changed the texture for the scanner.
