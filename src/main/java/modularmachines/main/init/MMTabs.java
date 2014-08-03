@@ -34,4 +34,12 @@ public class MMTabs {
 			return MMItems.ingot_copper;
 		}
 	};
+	
+    public static CreativeTabs tabPotionOrbs = new CreativeTabs("tabModularMachinesPotionOrbs"){
+		@Override
+		@SideOnly(Side.CLIENT)
+		public Item getTabIconItem(){
+			return MMItems.orb_empty;
+		}
+	};
 }

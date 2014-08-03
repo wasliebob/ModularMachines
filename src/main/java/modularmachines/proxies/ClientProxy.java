@@ -12,12 +12,14 @@ import modularmachines.blocks.tiles.TilePotionTank;
 import modularmachines.blocks.tiles.TileRouter;
 import modularmachines.blocks.tiles.TileTransporter;
 import modularmachines.client.renders.RenderFluidHeater;
+import modularmachines.client.renders.RenderOrb;
 import modularmachines.client.renders.TileFluidHeaterRenderer;
 import modularmachines.client.renders.TileInteractingRenderer;
 import modularmachines.client.renders.TileMachineBaseRenderer;
 import modularmachines.client.renders.TilePotionTankRenderer;
 import modularmachines.client.renders.TileRouterRenderer;
 import modularmachines.client.renders.TileTransporterRenderer;
+import modularmachines.entities.projectiles.ProjectilePotionOrb;
 import modularmachines.events.MMKeyHandler;
 import modularmachines.main.init.MMInit;
 import modularmachines.network.packets.newpackets.PacketToggle;
@@ -45,13 +47,13 @@ public class ClientProxy extends CommonProxy{
 	@Override
 	public void render(){
 		RenderingRegistry.registerBlockHandler(new RenderFluidHeater());
+		RenderingRegistry.registerEntityRenderingHandler(ProjectilePotionOrb.class, new RenderOrb());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileMachineBase.class, new TileMachineBaseRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileInteracting.class, new TileInteractingRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileRouter.class, new TileRouterRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TilePotionTank.class, new TilePotionTankRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileTransporter.class, new TileTransporterRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileFluidHeater.class, new TileFluidHeaterRenderer());
-
 	}
 	
 	@Override

@@ -390,7 +390,14 @@ public class MMRecipes implements IInitalization{
 			'Y', MMItems.crystal_energy,
 			'I', MMItems.stick_iron});
 		shovel_heated = RecipeHelper.getLatest();
-
+		
+		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.orb_empty), new Object[]{
+			"XXX",
+			"XYX",
+			"XXX",
+			'X', Blocks.glass_pane,
+			'Y', MMItems.ingot_tin});
+		orb_empty = RecipeHelper.getLatest();
 	}
 	public static IRecipe core_machine;
 	public static IRecipe core_interacting;
@@ -436,12 +443,11 @@ public class MMRecipes implements IInitalization{
 	public static IRecipe ingot_bronze;
 	public static IRecipe upgrade_empty;
 	
+	public static IRecipe orb_empty;
+	
 	public void initFurnaceRecipes(){
-		//Modular Machines Materials
 		RecipeHelper.addDustSmeltingRecipe("Iron");
 		RecipeHelper.addDustSmeltingRecipe("Gold");
-		
-		//Vanilla Materials
 		RecipeHelper.addDustSmeltingRecipe("Copper");
 		RecipeHelper.addDustSmeltingRecipe("Tin");
 		RecipeHelper.addDustSmeltingRecipe("Bronze");

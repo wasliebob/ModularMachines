@@ -7,6 +7,7 @@ package modularmachines.main.init;
 
 import java.awt.Color;
 
+import modularmachines.entities.projectiles.ProjectilePotionOrb;
 import modularmachines.items.MMGeneratorUpgrade;
 import modularmachines.items.MMInteractingUpgrade;
 import modularmachines.items.MMItem;
@@ -15,6 +16,8 @@ import modularmachines.items.MMItemDust;
 import modularmachines.items.MMItemGuide;
 import modularmachines.items.MMItemIngot;
 import modularmachines.items.MMItemNugget;
+import modularmachines.items.MMItemOrbEmpty;
+import modularmachines.items.MMItemPotionOrb;
 import modularmachines.items.MMItemScanner;
 import modularmachines.items.MMLinker;
 import modularmachines.items.MMProgrammer;
@@ -25,10 +28,12 @@ import modularmachines.items.MMWrench;
 import modularmachines.items.tools.HeatedAxe;
 import modularmachines.items.tools.HeatedPickaxe;
 import modularmachines.items.tools.HeatedShovel;
+import modularmachines.main.MM;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.util.EnumHelper;
 import wasliecore.helpers.ColorHelper;
 import wasliecore.interfaces.IInitalization;
+import cpw.mods.fml.common.registry.EntityRegistry;
 
 public class MMItems implements IInitalization{
 	@Override
@@ -93,6 +98,8 @@ public class MMItems implements IInitalization{
 		stick_iron = new MMItem(64, "iron stick", "stick_iron");
 		upgrade_empty = new MMItem(64, "empty upgrade", "upgrade");
 		scanner = new MMItemScanner();
+		orb_empty = new MMItemOrbEmpty();
+		orb_potion = new MMItemPotionOrb();
 	}
 	public static MMProgrammer programmer;
 	public static MMSpecialUpgrade input;
@@ -106,6 +113,8 @@ public class MMItems implements IInitalization{
 	public static MMLinker linker;
 	public static MMItem upgrade_empty;
 	public static MMItemScanner scanner;
+	public static MMItemOrbEmpty orb_empty;
+	public static MMItemPotionOrb orb_potion;
 	
 	public void initIngots(){
 		ingot_copper = new MMItemIngot("Copper", new Color(210, 105, 30).getRGB(), MMBlocks.ore_copper);
@@ -167,9 +176,14 @@ public class MMItems implements IInitalization{
 	public static HeatedAxe axe_heated;
 	
 	@Override
-	public void init(){		
+	public void init(){
+		initMisc();
 	}
 
+	public void initMisc(){
+        EntityRegistry.registerModEntity(ProjectilePotionOrb.class, "orbPotion", 1, MM.instance, 160, 20, true);	
+	}
+	
 	@Override
 	public void postInit(){		
 	}

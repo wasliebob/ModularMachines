@@ -13,7 +13,10 @@ import modularmachines.api.guide.IGuided;
 import modularmachines.api.misc.interfaces.IColorable;
 import modularmachines.blocks.tiles.TilePotionTank;
 import modularmachines.helpers.DyeHelper;
+import modularmachines.helpers.PotionHelper;
+import modularmachines.items.MMItemOrbEmpty;
 import modularmachines.main.MM;
+import modularmachines.main.init.MMItems;
 import modularmachines.main.init.MMTabs;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -110,6 +113,17 @@ public class MMBlockPotionTank extends BlockContainer implements IWrenchable, IG
 			int meta = player.getHeldItem().getItemDamage();
 			te.setColor(new Color(DyeHelper.getColorCode(meta)));
 			world.markBlockForUpdate(x, y, z);
+		}else if(te != null && player.getHeldItem() != null && player.getHeldItem().getItem() instanceof MMItemOrbEmpty){
+			if(te.tank.getPotion() != null && te.tank.getAmount() - 10 >= 0){
+				player.setCurrentItemOrArmor(0, new ItemStack(MMItems.orb_potion, 1, PotionHelper.getIDFromPotion(te.tank.potion)));
+				
+				te.tank.decreaseAmount(10);
+				
+				if(te.tank.getAmount() == 0)
+					te.tank.setPotion(null);
+				
+				world.markBlockForUpdate(x, y, z);
+			}
 		}
 		return true;
     }

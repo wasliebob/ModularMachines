@@ -5,6 +5,8 @@
 */
 package modularmachines.helpers;
 
+import java.util.ArrayList;
+
 import net.minecraft.potion.Potion;
 
 public class PotionHelper {
@@ -14,5 +16,20 @@ public class PotionHelper {
 	
 	public static int getIDFromPotion(Potion potion){
 		return potion.getId();
+	}
+	
+	public static ArrayList<Potion> getPotionList(){
+		return PotionHelper.convertToList(Potion.potionTypes);
+	}
+	
+	public static Potion getPotion(int entry){
+		return getPotionList().get(entry);
+	}
+	
+	public static ArrayList<Potion> convertToList(Potion[] potions){
+		ArrayList<Potion> list = new ArrayList<Potion>();
+		for(Potion s : potions)
+			list.add(s);
+		return list;
 	}
 }

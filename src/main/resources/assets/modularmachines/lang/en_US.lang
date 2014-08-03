@@ -37,6 +37,8 @@ item.modularmachines.item.base.name=Generator Upgrade: Base
 item.modularmachines.item.guide.name=Modular Guide
 item.modularmachines.item.linker.name=Linker
 item.modularmachines.item.scanner.name=Scanner
+item.modularmachines.item.potion orb.name=Potion Orb
+item.modularmachines.item.empty orb.name=Empty Orb
 ==Materials==
 item.modularmachines.item.empty upgrade.name=Empty Upgrade
 item.modularmachines.item.energy crystal.name=Energy Crystal
@@ -90,9 +92,12 @@ mm.guide.entries.Upgrade: Macerator.0=This upgrade will make your core act like 
 mm.guide.entries.Upgrade: Charger.0=This upgrade will make your core act like a charging station, it uses heat.
 mm.guide.entries.Upgrade: Blast.0=This upgrade will make your core act like a blast furnace. This upgrade can convert iron ingots to steel ingots.
 mm.guide.entries.Upgrade: Brewing.0=This upgrade will make your core function like a brewing system, it will require an expansion upgrade to be on the block and a potion tank on the side of the expansion. It will deposite the potion into the tank.
+==Misc==
+mm.guide.entries.Potion Orb.0=This item acts like a throwable potion. You can fill it by clicking on a potion tank with an empty orb.
 ===Misc===
-itemGroup.tabModularMachinesMain=Modular Machines Main
-itemGroup.tabModularMachinesMaterials=Modular Machines Materials
-itemGroup.tabModularMachinesUpgrades=Modular Machines Upgrades
+itemGroup.tabModularMachinesMain=Modular Machines: Main
+itemGroup.tabModularMachinesMaterials=Modular Machines: Materials
+itemGroup.tabModularMachinesUpgrades=Modular Machines: Upgrades
+itemGroup.tabModularMachinesPotionOrbs=Modular Machines: Potion Orbs
 mm.warning.1=You are using a unstable build of Modular Machines!
 mm.warning.2=Be aware that this will most likely have a lot of bugs, and is unstable!

@@ -54,6 +54,6 @@ public class MMEntries implements IInitalization{
 		EntryHelper.addEntry("Upgrade: Brewing", new IEntry[]{new EntryText(), new EntryInfo(0, 10), new EntryRecipe(MMRecipes.upgrade_brewing)}, 1);
 		EntryHelper.addEntry("Heat Generator", new IEntry[]{new EntryText(), new EntryRecipe(MMRecipes.generator)}, 1);
 		EntryHelper.addEntry("Upgrade: Base", new IEntry[]{new EntryText(), new EntryInfo(2, 0), new EntryRecipe(MMRecipes.generator_base)}, 1);
-
+		EntryHelper.addEntry("Potion Orb", new IEntry[]{new EntryText(), new EntryRecipe(MMRecipes.orb_empty)}, 1);
 	}
 }
