@@ -10,6 +10,7 @@ import modularmachines.api.misc.PotionStorage;
 import modularmachines.api.recipes.MMRecipeHelper;
 import modularmachines.api.upgrades.IMachineAction;
 import modularmachines.blocks.tiles.TilePotionTank;
+import modularmachines.helpers.PotionHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -53,8 +54,8 @@ public class UpgradeBrewing implements IMachineAction{
 
 		TilePotionTank storage = (TilePotionTank)base.getExpansion();
 		PotionStorage tank = storage.getPotionStorage();
-		if(tank.getPotion() == potion && tank.getAmount() + 30 <= tank.capacity){
-			tank.increaseAmount(30);
+		if(tank.getPotion() == potion && tank.getAmount() + PotionHelper.potion_volume*3 <= tank.capacity){
+			tank.increaseAmount(PotionHelper.potion_volume*3);
 			storage.getWorldObj().markBlockForUpdate(storage.xCoord, storage.yCoord, storage.zCoord);
 			
 			if(input.stackSize > 1)
@@ -65,7 +66,7 @@ public class UpgradeBrewing implements IMachineAction{
 			base.heat.decreaseEnergy(cost);
 		}else if(tank.getPotion() == null){
 			tank.setPotion(potion);
-			tank.setAmount(30);
+			tank.setAmount(PotionHelper.potion_volume*3);
 			storage.getWorldObj().markBlockForUpdate(storage.xCoord, storage.yCoord, storage.zCoord);	
 			
 			if(input.stackSize > 1)

@@ -339,6 +339,15 @@ public class MMRecipes implements IInitalization{
 			'I', MMItems.upgrade_empty});
 		generator_base = RecipeHelper.getLatest();
 		
+		RecipeHelper.addShapedOreRecipe(new ItemStack(MMBlocks.tube_potion), new Object[]{
+			"XXX",
+			"YIY",
+			"XXX",
+			'X', "glass",
+			'Y', "ingotCopper",
+			'I', Items.glass_bottle});
+		tube_potion = RecipeHelper.getLatest();
+		
 		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.transporter), new Object[]{
 			"XYX",
 			"WIW",
@@ -406,6 +415,7 @@ public class MMRecipes implements IInitalization{
 	public static IRecipe router;
 	public static IRecipe transporter;
 	public static IRecipe generator;
+	public static IRecipe tube_potion;
 
 	public static IRecipe interacting_break;
 	public static IRecipe interacting_elevator;

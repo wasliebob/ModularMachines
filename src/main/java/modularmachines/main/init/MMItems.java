@@ -7,7 +7,6 @@ package modularmachines.main.init;
 
 import java.awt.Color;
 
-import modularmachines.entities.projectiles.ProjectilePotionOrb;
 import modularmachines.items.MMGeneratorUpgrade;
 import modularmachines.items.MMInteractingUpgrade;
 import modularmachines.items.MMItem;
@@ -28,12 +27,10 @@ import modularmachines.items.MMWrench;
 import modularmachines.items.tools.HeatedAxe;
 import modularmachines.items.tools.HeatedPickaxe;
 import modularmachines.items.tools.HeatedShovel;
-import modularmachines.main.MM;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.util.EnumHelper;
 import wasliecore.helpers.ColorHelper;
 import wasliecore.interfaces.IInitalization;
-import cpw.mods.fml.common.registry.EntityRegistry;
 
 public class MMItems implements IInitalization{
 	@Override
@@ -177,11 +174,6 @@ public class MMItems implements IInitalization{
 	
 	@Override
 	public void init(){
-		initMisc();
-	}
-
-	public void initMisc(){
-        EntityRegistry.registerModEntity(ProjectilePotionOrb.class, "orbPotion", 1, MM.instance, 160, 20, true);	
 	}
 	
 	@Override

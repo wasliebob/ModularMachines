@@ -26,6 +26,7 @@ public class MMInit implements IInitalization{
 		recipes.preInit();
 		entries.preInit();
 		integration.preInit();
+		entities.preInit();
 		
 	     NBTTagCompound tag = NBTHelper.createTagCompound();
 	     tag.setBoolean(IMCHelper.author_wasliebob, true);
@@ -42,6 +43,7 @@ public class MMInit implements IInitalization{
 		events.init();
 		entries.init();
 		integration.init();
+		entities.init();
 		packetPipeline.initialise();
 	}
 	
@@ -52,6 +54,7 @@ public class MMInit implements IInitalization{
 		recipes.postInit();
 		entries.postInit();
 		integration.postInit();
+		entities.postInit();
 		packetPipeline.postInitialise();
 	}
 	public static MMRecipes recipes = new MMRecipes();
@@ -59,6 +62,7 @@ public class MMInit implements IInitalization{
 	public static MMItems items = new MMItems();
 	public static MMEvents events = new MMEvents();
 	public static MMEntries entries = new MMEntries();
+	public static MMEntities entities = new MMEntities();
 
 	public static IntegrationLoader integration = new IntegrationLoader();
 	public static PacketPipeline packetPipeline = new PacketPipeline();

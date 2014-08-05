@@ -11,6 +11,7 @@ import modularmachines.blocks.MMBlockGenerator;
 import modularmachines.blocks.MMBlockInteracting;
 import modularmachines.blocks.MMBlockOre;
 import modularmachines.blocks.MMBlockPotionTank;
+import modularmachines.blocks.MMBlockPotionTube;
 import modularmachines.blocks.MMBlockRouter;
 import modularmachines.blocks.MMBlockTransporter;
 import modularmachines.blocks.integration.MMBlockPowerConverterCoFH;
@@ -48,7 +49,8 @@ public class MMBlocks implements IInitalization{
 		tank_potion = new MMBlockPotionTank("potion tank");
 		transporter = new MMBlockTransporter("transporter");
 		generator = new MMBlockGenerator("generator");
-
+		tube_potion = new MMBlockPotionTube();
+		
 		if(Loader.isModLoaded("IC2") || Loader.isModLoaded("ic2")){
 			power_converter_ic2 = new MMBlockPowerConverterIC2("ic power converter");}
 		
@@ -62,7 +64,8 @@ public class MMBlocks implements IInitalization{
 	public static MMBlockPotionTank tank_potion;
 	public static MMBlockTransporter transporter;
 	public static MMBlockGenerator generator;
-
+	public static MMBlockPotionTube tube_potion;
+	
 	public static MMBlockPowerConverterIC2 power_converter_ic2;
 	public static MMBlockPowerConverterCoFH power_converter_cofh;
 
@@ -72,8 +75,9 @@ public class MMBlocks implements IInitalization{
 		GameRegistry.registerTileEntity(modularmachines.blocks.tiles.TileRouter.class, "mm_fluid_heater");
 		GameRegistry.registerTileEntity(modularmachines.blocks.tiles.TilePotionTank.class, "mm_tank_potion");
 		GameRegistry.registerTileEntity(modularmachines.blocks.tiles.TileTransporter.class, "mm_transporter");
-		GameRegistry.registerTileEntity(modularmachines.api.classes.TileGenerator.class, "mm_generator");
+		GameRegistry.registerTileEntity(modularmachines.blocks.tiles.TilePotionTube.class, "mm_tube_potion");
 
+		GameRegistry.registerTileEntity(modularmachines.api.classes.TileGenerator.class, "mm_generator");
 		GameRegistry.registerTileEntity(modularmachines.api.classes.TileInteracting.class, "mm_interacting");
 
 		if(Loader.isModLoaded("IC2") || Loader.isModLoaded("ic2")){

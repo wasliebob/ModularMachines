@@ -1,22 +1,21 @@
 /**
 * This file is created by wasliebob.
-* Created on: 3 aug. 2014, at 14:56:22
+* Created on: 4 aug. 2014, at 11:45:34
 * This file is part of Modular Machines (created by wasliebob)
 */
 package modularmachines.api.misc.interfaces;
 
+import java.util.ArrayList;
+
 import modularmachines.api.misc.PotionStorage;
 import net.minecraft.potion.Potion;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.tileentity.TileEntity;
 
-public interface IPotionStorage {
+public interface IPotionTransport {
 	public PotionStorage getPotionStorage();
-	public boolean canSend();
-	public ForgeDirection inputSide();
-	public ForgeDirection outputSide();
-	public void send();
+	public ArrayList<TileEntity> getOutput();
 	public boolean canReceive(Potion potion, int amount);
+	public void send();
 	public int getSending();
-	public boolean canConnect(ForgeDirection dir);
 	public void markUpdate();
 }

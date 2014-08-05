@@ -18,10 +18,12 @@ import modularmachines.items.MMItemOrbEmpty;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMItems;
 import modularmachines.main.init.MMTabs;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemPotion;
@@ -30,9 +32,12 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 import wasliecore.helpers.MathHelper;
+import wasliecore.helpers.Utils;
 import wasliecore.interfaces.IWrenchable;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -61,7 +66,20 @@ public class MMBlockPotionTank extends BlockContainer implements IWrenchable, IG
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float cX, float cY, float cZ) {
 		TilePotionTank te = (TilePotionTank)world.getTileEntity(x, y, z);		
 		if(te != null && player.getHeldItem() != null && player.getHeldItem().getItem() == Items.glass_bottle){
-			
+		}else if(te != null && player.getHeldItem() != null && player.getHeldItem().getItem() == MMItems.input && te.input == null && te.output != ForgeDirection.getOrientation(side)){
+			te.input = ForgeDirection.getOrientation(side);
+			if(player.getHeldItem().stackSize > 1)
+				player.setCurrentItemOrArmor(0, new ItemStack(player.getHeldItem().getItem(), player.getHeldItem().stackSize--, player.getHeldItem().getItemDamage()));
+			else
+				player.setCurrentItemOrArmor(0, null);
+			world.markBlockForUpdate(x, y, z);
+		}else if(te != null && player.getHeldItem() != null && player.getHeldItem().getItem() == MMItems.output && te.output == null && te.input != ForgeDirection.getOrientation(side)){
+			te.output = ForgeDirection.getOrientation(side);
+			if(player.getHeldItem().stackSize > 1)
+				player.setCurrentItemOrArmor(0, new ItemStack(player.getHeldItem().getItem(), player.getHeldItem().stackSize--, player.getHeldItem().getItemDamage()));
+			else
+				player.setCurrentItemOrArmor(0, null);
+			world.markBlockForUpdate(x, y, z);	
 		}else if(te != null && player.getHeldItem() != null && player.getHeldItem().getItem() instanceof ItemPotion){
 			ItemPotion potion = (ItemPotion)player.getHeldItem().getItem();
 			if(potion != null && genEffect(player, potion) != null && genEffect(player, potion).size() > 0){
@@ -69,7 +87,7 @@ public class MMBlockPotionTank extends BlockContainer implements IWrenchable, IG
 				Potion pe = Potion.potionTypes[p.getPotionID()];
 				if(te.tank.getPotion() == null){
 					te.tank.setPotion(pe);
-					te.tank.setAmount(10 * getPotionAmplifier(p));
+					te.tank.setAmount(PotionHelper.potion_volume * getPotionAmplifier(p));
 					
 					if(!player.capabilities.isCreativeMode){
 						if(player.getHeldItem().stackSize > 1)
@@ -78,8 +96,8 @@ public class MMBlockPotionTank extends BlockContainer implements IWrenchable, IG
 							player.setCurrentItemOrArmor(0, null);
 					}
 					world.markBlockForUpdate(x, y, z);
-				}else if(te.tank.getPotion() != null && te.tank.getPotion() == pe && te.tank.getAmount() + (10 * getPotionAmplifier(p)) <= te.tank.capacity){
-					te.tank.increaseAmount(10 * getPotionAmplifier(p));
+				}else if(te.tank.getPotion() != null && te.tank.getPotion() == pe && te.tank.getAmount() + (PotionHelper.potion_volume * getPotionAmplifier(p)) <= te.tank.capacity){
+					te.tank.increaseAmount(PotionHelper.potion_volume * getPotionAmplifier(p));
 					
 					if(!player.capabilities.isCreativeMode){
 						if(player.getHeldItem().stackSize > 1)
@@ -89,9 +107,10 @@ public class MMBlockPotionTank extends BlockContainer implements IWrenchable, IG
 					}
 					world.markBlockForUpdate(x, y, z);
 				}
+				return true;
 			}
 		}else if(te != null && player.getHeldItem() == null){
-			if(te.tank.getPotion() != null && te.tank.getAmount() - 10 >= 0){
+			if(te.tank.getPotion() != null && te.tank.getAmount() - PotionHelper.potion_volume >= 0){
 				Potion p = Potion.potionTypes[te.tank.potion.id];
 				if(!te.tank.potion.isInstant()){	
 					if(player.getActivePotionEffect(p) == null){
@@ -102,7 +121,7 @@ public class MMBlockPotionTank extends BlockContainer implements IWrenchable, IG
 				}else{
 					player.addPotionEffect(new PotionEffect(te.tank.potion.id, 1));
 				}
-				te.tank.decreaseAmount(10);
+				te.tank.decreaseAmount(PotionHelper.potion_volume);
 				
 				if(te.tank.getAmount() == 0)
 					te.tank.setPotion(null);
@@ -114,10 +133,10 @@ public class MMBlockPotionTank extends BlockContainer implements IWrenchable, IG
 			te.setColor(new Color(DyeHelper.getColorCode(meta)));
 			world.markBlockForUpdate(x, y, z);
 		}else if(te != null && player.getHeldItem() != null && player.getHeldItem().getItem() instanceof MMItemOrbEmpty){
-			if(te.tank.getPotion() != null && te.tank.getAmount() - 10 >= 0){
+			if(te.tank.getPotion() != null && te.tank.getAmount() - PotionHelper.potion_volume >= 0){
 				player.setCurrentItemOrArmor(0, new ItemStack(MMItems.orb_potion, 1, PotionHelper.getIDFromPotion(te.tank.potion)));
 				
-				te.tank.decreaseAmount(10);
+				te.tank.decreaseAmount(PotionHelper.potion_volume);
 				
 				if(te.tank.getAmount() == 0)
 					te.tank.setPotion(null);
@@ -125,7 +144,7 @@ public class MMBlockPotionTank extends BlockContainer implements IWrenchable, IG
 				world.markBlockForUpdate(x, y, z);
 			}
 		}
-		return true;
+		return false;
     }
 	
     public List<PotionEffect> genEffect(EntityPlayer player, ItemPotion potion){
@@ -175,5 +194,41 @@ public class MMBlockPotionTank extends BlockContainer implements IWrenchable, IG
     		return ((IColorable)te).getColor().getRGB();
     	}
     	return 0;
+    }
+    
+    @Override
+    public void breakBlock(World world, int x, int y, int z, Block block, int side){
+    	TilePotionTank te = (TilePotionTank)world.getTileEntity(x, y, z);
+    	
+    	ArrayList<ItemStack> equiped = new ArrayList<ItemStack>();
+    	
+    	if(te != null && te.input != null)
+    		equiped.add(new ItemStack(MMItems.input));
+    	if(te != null && te.output != null)
+    		equiped.add(new ItemStack(MMItems.output));
+    	
+    	for(ItemStack stack : equiped){
+    		Utils.dropBlock(world, x, y, z, stack);
+    	}
+    	
+    	super.breakBlock(world, x, y, z, block, side);
+    	
+    	world.setBlock(x, y, z, Blocks.air);
+    }
+    
+	@Override
+    public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z){
+        int side = target.sideHit;
+        ForgeDirection dir = ForgeDirection.getOrientation(side);
+        TileEntity te = world.getTileEntity(target.blockX, target.blockY, target.blockZ);
+        
+        if(te != null && te instanceof TilePotionTank){
+        	TilePotionTank tr = (TilePotionTank)te;
+        	if(dir == tr.input)
+        		return new ItemStack(MMItems.input);
+        	else if(dir == tr.output)
+        		return new ItemStack(MMItems.output);
+        }
+        return super.getPickBlock(target, world, x, y, z);
     }
 }

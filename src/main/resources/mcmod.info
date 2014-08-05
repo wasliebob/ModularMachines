@@ -4,7 +4,7 @@
   "name": "Modular Machines",
   "description": "Customize your machines",
   "version": "${version}",
-  "mcversion": "${mcversion}",
+  "mcversion": "${mc_version}",
   "url": "http://wasliebob.nl/MM.html",
   "updateUrl": "",
   "authors": ["Wasliebob"],

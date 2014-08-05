@@ -23,15 +23,18 @@ public class TileRouter extends TileEntity implements IHeatTransport, IScanable{
 		range = 10;
 		input = null;
 		output = null;
+		redstone = true;
 	}
 	public HeatStorage heat;
 	public ForgeDirection input;
 	public ForgeDirection output;
 	public int range;
+	public boolean redstone;
 	
 	@Override
 	public void updateEntity(){
-		if(getBoundMachine() != null){
+		setRedstoneInput();
+		if(getBoundMachine() != null && redstone){
 			IHeatedMachine machine = getBoundMachine();
 			if(machine.canAdd(this.calculateSending(machine))){
 				machine.getHeatStorage().increaseHeat(this.calculateSending(machine));
@@ -40,13 +43,22 @@ public class TileRouter extends TileEntity implements IHeatTransport, IScanable{
 			}
 		}
 		
-		if(getBound() != null){
+		if(getBound() != null && redstone){
 			TileRouter bound = getBound();
 			if(bound.canAdd(this.calculateSending(bound))){
 				bound.getHeatStorage().increaseHeat(this.calculateSending(bound));
 				heat.decreaseEnergy(this.calculateSending(bound));
 				bound.worldObj.markBlockForUpdate(bound.xCoord, bound.yCoord, bound.zCoord);
 			}
+		}
+	}
+	
+	public void setRedstoneInput(){
+		redstone = true;
+		for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS){
+			int power = worldObj.getIndirectPowerLevelTo(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.ordinal());
+			if(power > 0)
+				redstone = false;
 		}
 	}
 	

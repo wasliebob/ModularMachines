@@ -7,6 +7,7 @@ package modularmachines.items;
 
 import modularmachines.api.classes.TileInteracting;
 import modularmachines.api.classes.TileMachineBase;
+import modularmachines.blocks.tiles.TilePotionTank;
 import modularmachines.blocks.tiles.TileRouter;
 import modularmachines.blocks.tiles.TileTransporter;
 import modularmachines.main.MM;
@@ -15,7 +16,6 @@ import modularmachines.main.init.MMTabs;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -58,9 +58,10 @@ public class MMWrench extends Item implements IWrench{
 					
 					Utils.dropBlock(world, x, y, z, s);
 					Utils.dropContent(world, x, y, z);
-					world.setBlock(x, y, z, Blocks.air);
 					
 					b.breakBlock(world, x, y, z, b, 0);
+//					world.setBlock(x, y, z, Blocks.air);
+
 					return stack;
 				}
 			}
@@ -121,6 +122,17 @@ public class MMWrench extends Item implements IWrench{
 					}
 				}else if(te instanceof TileTransporter){
 					TileTransporter ti = (TileTransporter)te;
+					if(ti.input == dir){
+						ti.input = null;
+						if(!world.isRemote)
+							Utils.dropBlock(world, x, y, z, new ItemStack(MMItems.input));
+					}else if(ti.output == dir){
+						ti.output = null;
+						if(!world.isRemote)
+							Utils.dropBlock(world, x, y, z, new ItemStack(MMItems.output));
+					}
+				}else if(te instanceof TilePotionTank){
+					TilePotionTank ti = (TilePotionTank)te;
 					if(ti.input == dir){
 						ti.input = null;
 						if(!world.isRemote)

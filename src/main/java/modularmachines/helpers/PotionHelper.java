@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import net.minecraft.potion.Potion;
 
 public class PotionHelper {
+	public static int potion_volume = 10;
+	
 	public static Potion getPotionFromID(int id){
 		return Potion.potionTypes[id];
 	}
