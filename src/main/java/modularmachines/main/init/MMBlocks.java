@@ -44,12 +44,10 @@ public class MMBlocks implements IInitalization{
 	public void initBlocks(){
 		stone_black = new MMBlockBrick("black stone", "stone_black");
 		stone_red = new MMBlockBrick("red stone", "stone_red");
-		stone_green = new MMBlockBrick("green stone", "stone_green");
 		stone_white = new MMBlockBrick("white stone", "stone_white");
 
 		brick_black = new MMBlockBrick("black brick", "brick_black");
 		brick_red = new MMBlockBrick("red brick", "brick_red");
-		brick_green = new MMBlockBrick("green brick", "brick_green");
 		brick_white = new MMBlockBrick("white brick", "brick_white");
 
 		core_machine = new MMBlockCore("core");
@@ -68,12 +66,10 @@ public class MMBlocks implements IInitalization{
 	}
 	public static MMBlockBrick stone_black;
 	public static MMBlockBrick stone_red;
-	public static MMBlockBrick stone_green;
 	public static MMBlockBrick stone_white;
 
 	public static MMBlockBrick brick_black;
 	public static MMBlockBrick brick_red;
-	public static MMBlockBrick brick_green;
 	public static MMBlockBrick brick_white;
 
 	public static MMBlockCore core_machine;

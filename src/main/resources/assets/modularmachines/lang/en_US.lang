@@ -11,12 +11,10 @@ tile.modularmachines.block.potion tube.name=Potion Tube
 =Stones=
 tile.modularmachines.block.black stone.name=Black Stone
 tile.modularmachines.block.red stone.name=Red Stone
-tile.modularmachines.block.green stone.name=Green Stone
 tile.modularmachines.block.white stone.name=White Stone
 =Bricks=
 tile.modularmachines.block.black brick.name=Black Brick
 tile.modularmachines.block.red brick.name=Red Brick
-tile.modularmachines.block.green brick.name=Green Brick
 tile.modularmachines.block.white brick.name=White Brick
 ==Ores==
 tile.modularmachines.ore.copper.name=Copper Ore

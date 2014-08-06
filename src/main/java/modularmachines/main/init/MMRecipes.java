@@ -407,14 +407,6 @@ public class MMRecipes implements IInitalization{
 			'X', Blocks.stone,
 			'Y', new ItemStack(Items.dye, 1, DyeHelper.getID(DyeHelper.RED))});
 		stone_red = RecipeHelper.getLatest();
-		
-		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.stone_green, 8, 0), new Object[]{
-			"XXX",
-			"XYX",
-			"XXX",
-			'X', Blocks.stone,
-			'Y', new ItemStack(Items.dye, 1, DyeHelper.getID(DyeHelper.GREEN))});
-		stone_green = RecipeHelper.getLatest();
 
 		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.stone_white, 8, 0), new Object[]{
 			"XXX",
@@ -441,14 +433,6 @@ public class MMRecipes implements IInitalization{
 			'Y', new ItemStack(Items.dye, 1, DyeHelper.getID(DyeHelper.RED))});
 		brick_red = RecipeHelper.getLatest();
 		
-		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.brick_green, 8, 0), new Object[]{
-			"XXX",
-			"XYX",
-			"XXX",
-			'X', Blocks.stonebrick,
-			'Y', new ItemStack(Items.dye, 1, DyeHelper.getID(DyeHelper.GREEN))});
-		brick_green = RecipeHelper.getLatest();
-		
 		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.brick_white, 8, 0), new Object[]{
 			"XXX",
 			"XYX",
@@ -467,12 +451,10 @@ public class MMRecipes implements IInitalization{
 
 	public static IRecipe stone_black;
 	public static IRecipe stone_red;
-	public static IRecipe stone_green;
 	public static IRecipe stone_white;
 
 	public static IRecipe brick_black;
 	public static IRecipe brick_red;
-	public static IRecipe brick_green;
 	public static IRecipe brick_white;
 
 	public static IRecipe interacting_break;
