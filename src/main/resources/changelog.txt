@@ -1,5 +1,5 @@
 ==============
-Version 0.93:
+Version 0.94:
 ==============
 Added some nice decorative blocks.
 A lot of blocks have new textures now.
