@@ -14,7 +14,6 @@ import net.minecraft.client.gui.GuiScreen;
 import wasliecore.interfaces.IElement;
 
 public class ElementHeat extends GuiScreen implements IElement{
-
 	public ElementHeat(HeatStorage storage, int x, int y, int width, int height) {
 		this.x = x;
 		this.y = y;

@@ -21,7 +21,6 @@ import modularmachines.items.MMItemScanner;
 import modularmachines.items.MMLinker;
 import modularmachines.items.MMProgrammer;
 import modularmachines.items.MMSpecialUpgrade;
-import modularmachines.items.MMSpecialUpgradeScreen;
 import modularmachines.items.MMUpgrade;
 import modularmachines.items.MMWrench;
 import modularmachines.items.tools.HeatedAxe;
@@ -87,7 +86,6 @@ public class MMItems implements IInitalization{
 		input = new MMSpecialUpgrade("input", ColorHelper.getColorCodeFromColor(Color.cyan));
 		output = new MMSpecialUpgrade("output", ColorHelper.getColorCodeFromColor(Color.red));
 		expension = new MMSpecialUpgrade("expension", ColorHelper.getColorCodeFromColor(Color.magenta));
-		screen = new MMSpecialUpgradeScreen();
 		guide = new MMItemGuide();
 		linker = new MMLinker();
 		wrench = new MMWrench("modular wrench");
@@ -102,7 +100,6 @@ public class MMItems implements IInitalization{
 	public static MMSpecialUpgrade input;
 	public static MMSpecialUpgrade output;
 	public static MMSpecialUpgrade expension;
-	public static MMSpecialUpgradeScreen screen;
 	public static MMWrench wrench;
 	public static MMItemCrystal crystal_energy;
 	public static MMItem stick_iron;

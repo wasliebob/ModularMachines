@@ -16,11 +16,14 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import wasliecore.interfaces.IWrenchable;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class MMBlockRouter extends BlockContainer implements IWrenchable, IGuided{
 
@@ -33,7 +36,10 @@ public class MMBlockRouter extends BlockContainer implements IWrenchable, IGuide
 		GameRegistry.registerBlock(this, this.getUnlocalizedName());
 	}
 	String name;
-
+	IIcon top;
+	IIcon bottom;
+	IIcon side;
+	
 	@Override
 	public TileEntity createNewTileEntity(World world, int var2) {
 		return new TileRouter();
@@ -65,9 +71,22 @@ public class MMBlockRouter extends BlockContainer implements IWrenchable, IGuide
     }
 	
 	@Override
-    public void registerBlockIcons(IIconRegister ir) 
-	{
-        blockIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "core");
+    public void registerBlockIcons(IIconRegister ir) {
+		top = ir.registerIcon(MM.modName.toLowerCase() + ":" + "router_top");
+		bottom = ir.registerIcon(MM.modName.toLowerCase() + ":" + "router_bottom");
+		side = ir.registerIcon(MM.modName.toLowerCase() + ":" + "router_side");
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(int fside, int metadata){
+		ForgeDirection dir = ForgeDirection.getOrientation(fside);
+		if(dir == ForgeDirection.UP)
+			return top;
+		else if(dir == ForgeDirection.DOWN)
+			return bottom;
+		else
+			return side;
 	}
 	
 	@Override

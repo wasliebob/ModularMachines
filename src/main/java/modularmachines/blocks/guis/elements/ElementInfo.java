@@ -16,7 +16,6 @@ import net.minecraft.util.ResourceLocation;
 import wasliecore.interfaces.IElement;
 
 public class ElementInfo extends GuiScreen implements IElement{
-
 	public ElementInfo(String[] string, TileEntity tile, int x, int y, int width, int height, int openX, int openY, int openWidth, int openHeight, int color) {
 		this.string = string;
 		this.tile = tile;

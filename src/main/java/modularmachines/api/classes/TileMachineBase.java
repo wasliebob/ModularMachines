@@ -38,7 +38,6 @@ public class TileMachineBase extends TileEntity implements ISidedInventory, IHea
 		tank_info = new FluidTankInfo(tank.getFluid(), tank.getCapacity());
 		input = null;
 		output = null;
-		screen = null;
 		expension = null;
 		enabled = true;
 	}
@@ -49,7 +48,6 @@ public class TileMachineBase extends TileEntity implements ISidedInventory, IHea
 	public FluidTankInfo tank_info;
 	public ForgeDirection input;
 	public ForgeDirection output;
-	public ForgeDirection screen;
 	public ForgeDirection expension;
 	public boolean enabled;
 
@@ -90,9 +88,6 @@ public class TileMachineBase extends TileEntity implements ISidedInventory, IHea
 		if(this.output != null)
 			nbt.setInteger("OUTPUT", this.output.ordinal());
 		
-		if(this.screen != null)
-			nbt.setInteger("SCREEN", this.screen.ordinal());
-		
 		if(this.expension != null)
 			nbt.setInteger("EXPENSION", this.expension.ordinal());
 		
@@ -125,9 +120,6 @@ public class TileMachineBase extends TileEntity implements ISidedInventory, IHea
 		
 		if(nbt.getInteger("OUTPUT") != 0)
 			this.output = ForgeDirection.getOrientation(nbt.getInteger("OUTPUT"));
-		
-		if(nbt.getInteger("SCREEN") != 0)
-			this.screen = ForgeDirection.getOrientation(nbt.getInteger("SCREEN"));
 
 		if(nbt.getInteger("EXPENSION") != 0)
 			this.expension = ForgeDirection.getOrientation(nbt.getInteger("EXPENSION"));

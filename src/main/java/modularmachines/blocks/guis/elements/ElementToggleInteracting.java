@@ -16,7 +16,6 @@ import net.minecraft.client.gui.GuiScreen;
 import wasliecore.interfaces.IElement;
 
 public class ElementToggleInteracting extends GuiScreen implements IElement{
-
 	public ElementToggleInteracting(TileInteracting tile, int x, int y, int width, int height) {
 		this.x = x;
 		this.y = y;

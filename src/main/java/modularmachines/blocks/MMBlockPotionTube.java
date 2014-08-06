@@ -77,54 +77,6 @@ public class MMBlockPotionTube extends BlockContainer implements IWrenchable{
 		}
 	}
 	
-//    @Override
-//    @SideOnly (Side.CLIENT)
-//    public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, int x, int y, int z){
-//		TileEntity tile = world.getTileEntity(x, y, z);
-//		
-//		if(tile instanceof TilePotionTube){
-//			TilePotionTube te = (TilePotionTube)tile;
-//			float minX = 0.4F;
-//			float minY = 0.4F;
-//			float minZ = 0.4F;
-//			
-//			float maxX = 0.6F;
-//			float maxY = 0.6F;
-//			float maxZ = 0.6F;
-//			
-//			if(te.coords.isEmpty()){
-//
-//			}else{
-//				if(te.coords.containsKey(ForgeDirection.UP)){
-//					maxY = 1F;
-//				}
-//				
-//				if(te.coords.containsKey(ForgeDirection.DOWN)){
-//					minY = 0.4F;
-//				}
-//				
-//				
-//				if(te.coords.containsKey(ForgeDirection.SOUTH)){
-//					maxZ = 1F;
-//				}
-//				
-//				if(te.coords.containsKey(ForgeDirection.NORTH)){
-//					minZ = 0.4F;
-//				}
-//				
-//				if(te.coords.containsKey(ForgeDirection.EAST)){
-//					maxX = 1F;
-//				}
-//				
-//				if(te.coords.containsKey(ForgeDirection.WEST)){
-//					minX = 0.4F;
-//				}
-//			}
-//			return AxisAlignedBB.getBoundingBox(x + minX, y + minY, z + minZ, x + maxX, y + maxY, z + maxZ);
-//		}
-//		return super.getCollisionBoundingBoxFromPool(world, x, y, z);
-//    }
-	
 	@Override
 	public TileEntity createNewTileEntity(World world, int var2) {
 		return new TilePotionTube();
@@ -132,7 +84,7 @@ public class MMBlockPotionTube extends BlockContainer implements IWrenchable{
 	
 	@Override
     public void registerBlockIcons(IIconRegister ir) {
-        blockIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "core");
+        blockIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "core_side");
 	}
 	
 	@Override

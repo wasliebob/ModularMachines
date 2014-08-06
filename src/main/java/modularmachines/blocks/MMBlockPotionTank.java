@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modularmachines.api.guide.IGuided;
+import modularmachines.api.misc.helpers.DyeHelper;
 import modularmachines.api.misc.interfaces.IColorable;
 import modularmachines.blocks.tiles.TilePotionTank;
-import modularmachines.helpers.DyeHelper;
 import modularmachines.helpers.PotionHelper;
 import modularmachines.items.MMItemOrbEmpty;
 import modularmachines.main.MM;

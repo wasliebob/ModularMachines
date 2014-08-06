@@ -2,12 +2,22 @@
 tile.modularmachines.block.core.name=Modular Machine Core
 tile.modularmachines.block.interacting machine core.name=Interacting Machine Core
 tile.modularmachines.block.heat router.name=Heat Router
-tile.modularmachines.block.fluid heater.name=Fluid Heater
 tile.modularmachines.block.ic power converter.name=Power Converter: IC2
 tile.modularmachines.block.potion tank.name=Potion Tank
 tile.modularmachines.block.transporter.name=Transporter
 tile.modularmachines.block.generator.name=Heat Generator
 tile.modularmachines.block.potion tube.name=Potion Tube
+==Decorative==
+=Stones=
+tile.modularmachines.block.black stone.name=Black Stone
+tile.modularmachines.block.red stone.name=Red Stone
+tile.modularmachines.block.green stone.name=Green Stone
+tile.modularmachines.block.white stone.name=White Stone
+=Bricks=
+tile.modularmachines.block.black brick.name=Black Brick
+tile.modularmachines.block.red brick.name=Red Brick
+tile.modularmachines.block.green brick.name=Green Brick
+tile.modularmachines.block.white brick.name=White Brick
 ==Ores==
 tile.modularmachines.ore.copper.name=Copper Ore
 tile.modularmachines.ore.tin.name=Tin Ore
@@ -69,10 +79,9 @@ item.modularmachines.nugget.steel.name=Steel Nugget
 ===Text===
 mm.guide.entries.Modular Machines.1=Tip: you can return to previous page by pressing backspace or the right mouse button!
 ==Blocks==
-mm.guide.entries.Modular Core.0=The modular machine core is the a customizable block. This block also has an GUI, to use this gui you need to add a screen to the core. If you have added a screen you need to click on the side where you placed the screen, this will open the gui.
+mm.guide.entries.Modular Core.0=The modular machine core is the a customizable block. This block also has an GUI.
 mm.guide.entries.Interacting Core.0=The interacting machine core is a really helpful block. This block will interact with the world and has a lot of different upgrades.
 mm.guide.entries.Heat Router.0=The heat router is used to transport heat between locations. It requires an input and an output. When looking at the block with a programmer held you will see to which block it's linked.
-mm.guide.entries.Fluid Heater.0=The fluid heater is used to collect heat from hot fluids. This heat can be used in your machines.
 mm.guide.entries.Potion Tank.0=The potion tank is a block which is capable of storing potions. Right click to apply the potion effect on your. It will use up 10mb of potion. The effects can be stacked as can the time it works.
 mm.guide.entries.Potion Tank.2=You can also use an item called linker, you can link the potion tank to the item by shift right clicking on the potion tank. To apply the effect from the potion tank you simply right click.
 mm.guide.entries.Transporter.0=The transporter is a block capable of easily transporting items without need of pipes or cables. Just set an input where the inventory will be placed. and an output where the chest to move the items to will be.

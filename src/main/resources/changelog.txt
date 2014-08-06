@@ -1,6 +1,17 @@
-====================================
+==============
+Version 0.93:
+==============
+Added some nice decorative blocks.
+A lot of blocks have new textures now.
+The Machine Core no longer needs a screen. It will be added on placing the block.
+Removed the Screen Upgrade.
+==============
+Version 0.93:
+==============
+Removed the Fluid Heater, we have generators now. Those are way less overpowered.
+==============
 Version: 0.92:
-====================================
+==============
 Added Potion Tubes.
 Potion Tanks now can have an input and output upgrade.
 Fixed some wrenching bugs/crashes.

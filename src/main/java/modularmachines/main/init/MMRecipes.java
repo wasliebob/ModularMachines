@@ -12,6 +12,7 @@ import modularmachines.api.main.MMApi;
 import modularmachines.api.misc.GeneratorUpgrade;
 import modularmachines.api.misc.InteractingUpgrade;
 import modularmachines.api.misc.Upgrade;
+import modularmachines.api.misc.helpers.DyeHelper;
 import modularmachines.api.misc.helpers.MiscHelper;
 import modularmachines.api.misc.helpers.RecipeHelper;
 import modularmachines.api.recipes.MMRecipeHelper;
@@ -109,15 +110,6 @@ public class MMRecipes implements IInitalization{
 			'Y', Items.gold_ingot,
 			'I', MMBlocks.router});
 		generator = RecipeHelper.getLatest();
-		
-		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.heater_fluid), new Object[]{
-			"XYX",
-			"YIY",
-			"XYX",
-			'X', Items.lava_bucket,
-			'Y', Items.diamond,
-			'I', MMBlocks.router});
-		heater_fluid = RecipeHelper.getLatest();
 
 		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.tank_potion), new Object[]{
 			"XYX",
@@ -127,7 +119,7 @@ public class MMRecipes implements IInitalization{
 			'Y', Blocks.glass,
 			'I', Items.diamond});
 		tank_potion = RecipeHelper.getLatest();
-
+		
 		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.input), new Object[]{
 			"XYX",
 			"YIY",
@@ -163,15 +155,6 @@ public class MMRecipes implements IInitalization{
 			'Y', Blocks.chest,
 			'I', Items.diamond});
 		expension = RecipeHelper.getLatest();
-		
-		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.screen), new Object[]{
-			"XYX",
-			"YIY",
-			"XYX",
-			'X', Items.gold_ingot,
-			'Y', Items.iron_ingot,
-			'I', Blocks.glass});
-		screen = RecipeHelper.getLatest();
 
 		RecipeHelper.addShapedRecipe(new ItemStack(MMItems.upgrade_furnace), new Object[]{
 			"XYX",
@@ -407,15 +390,90 @@ public class MMRecipes implements IInitalization{
 			'X', Blocks.glass_pane,
 			'Y', MMItems.ingot_tin});
 		orb_empty = RecipeHelper.getLatest();
+		
+		//Stone
+		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.stone_black, 8, 0), new Object[]{
+			"XXX",
+			"XYX",
+			"XXX",
+			'X', Blocks.stone,
+			'Y', new ItemStack(Items.dye, 1, DyeHelper.getID(DyeHelper.BLACK))});
+		stone_black = RecipeHelper.getLatest();
+		
+		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.stone_red, 8, 0), new Object[]{
+			"XXX",
+			"XYX",
+			"XXX",
+			'X', Blocks.stone,
+			'Y', new ItemStack(Items.dye, 1, DyeHelper.getID(DyeHelper.RED))});
+		stone_red = RecipeHelper.getLatest();
+		
+		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.stone_green, 8, 0), new Object[]{
+			"XXX",
+			"XYX",
+			"XXX",
+			'X', Blocks.stone,
+			'Y', new ItemStack(Items.dye, 1, DyeHelper.getID(DyeHelper.GREEN))});
+		stone_green = RecipeHelper.getLatest();
+
+		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.stone_white, 8, 0), new Object[]{
+			"XXX",
+			"XYX",
+			"XXX",
+			'X', Blocks.stone,
+			'Y', new ItemStack(Items.dye, 1, DyeHelper.getID(DyeHelper.WHITE))});
+		stone_white = RecipeHelper.getLatest();
+		
+		//Brick
+		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.brick_black, 8, 0), new Object[]{
+			"XXX",
+			"XYX",
+			"XXX",
+			'X', Blocks.stonebrick,
+			'Y', new ItemStack(Items.dye, 1, DyeHelper.getID(DyeHelper.BLACK))});
+		brick_black = RecipeHelper.getLatest();
+		
+		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.brick_red, 8, 0), new Object[]{
+			"XXX",
+			"XYX",
+			"XXX",
+			'X', Blocks.stonebrick,
+			'Y', new ItemStack(Items.dye, 1, DyeHelper.getID(DyeHelper.RED))});
+		brick_red = RecipeHelper.getLatest();
+		
+		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.brick_green, 8, 0), new Object[]{
+			"XXX",
+			"XYX",
+			"XXX",
+			'X', Blocks.stonebrick,
+			'Y', new ItemStack(Items.dye, 1, DyeHelper.getID(DyeHelper.GREEN))});
+		brick_green = RecipeHelper.getLatest();
+		
+		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.brick_white, 8, 0), new Object[]{
+			"XXX",
+			"XYX",
+			"XXX",
+			'X', Blocks.stonebrick,
+			'Y', new ItemStack(Items.dye, 1, DyeHelper.getID(DyeHelper.WHITE))});
+		brick_white = RecipeHelper.getLatest();
 	}
 	public static IRecipe core_machine;
 	public static IRecipe core_interacting;
-	public static IRecipe heater_fluid;
 	public static IRecipe tank_potion;
 	public static IRecipe router;
 	public static IRecipe transporter;
 	public static IRecipe generator;
 	public static IRecipe tube_potion;
+
+	public static IRecipe stone_black;
+	public static IRecipe stone_red;
+	public static IRecipe stone_green;
+	public static IRecipe stone_white;
+
+	public static IRecipe brick_black;
+	public static IRecipe brick_red;
+	public static IRecipe brick_green;
+	public static IRecipe brick_white;
 
 	public static IRecipe interacting_break;
 	public static IRecipe interacting_elevator;
@@ -440,7 +498,6 @@ public class MMRecipes implements IInitalization{
 
 	public static IRecipe input;
 	public static IRecipe output;
-	public static IRecipe screen;
 	public static IRecipe expension;
 
 	public static IRecipe wrench;

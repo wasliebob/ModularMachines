@@ -100,10 +100,6 @@ public class MMWrench extends Item implements IWrench{
 						ti.output = null;
 						if(!world.isRemote)
 							Utils.dropBlock(world, x, y, z, new ItemStack(MMItems.output));
-					}else if(ti.screen == dir){
-						ti.screen = null;
-						if(!world.isRemote)
-							Utils.dropBlock(world, x, y, z, new ItemStack(MMItems.screen));
 					}else if(ti.expension == dir){
 						ti.expension = null;
 						if(!world.isRemote)

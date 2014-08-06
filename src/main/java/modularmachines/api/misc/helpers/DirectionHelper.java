@@ -6,8 +6,10 @@
 package modularmachines.api.misc.helpers;
 
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
@@ -233,5 +235,16 @@ public class DirectionHelper {
 		if(dir == ForgeDirection.NORTH)
 			return ForgeDirection.SOUTH;
 		return null;
+	}
+	
+	public static ForgeDirection getFace(EntityLivingBase living){
+		ForgeDirection[] faces = new ForgeDirection[]{
+				ForgeDirection.NORTH,
+				ForgeDirection.EAST,
+				ForgeDirection.SOUTH,
+				ForgeDirection.WEST};
+		int i = MathHelper.floor_double((living.rotationYaw + 45) / 90) & 3;
+		
+		return faces[i];
 	}
 }

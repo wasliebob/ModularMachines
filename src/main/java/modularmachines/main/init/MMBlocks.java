@@ -5,8 +5,8 @@
 */
 package modularmachines.main.init;
 
+import modularmachines.blocks.MMBlockBrick;
 import modularmachines.blocks.MMBlockCore;
-import modularmachines.blocks.MMBlockFluidHeater;
 import modularmachines.blocks.MMBlockGenerator;
 import modularmachines.blocks.MMBlockInteracting;
 import modularmachines.blocks.MMBlockOre;
@@ -42,23 +42,41 @@ public class MMBlocks implements IInitalization{
 	}
 	
 	public void initBlocks(){
+		stone_black = new MMBlockBrick("black stone", "stone_black");
+		stone_red = new MMBlockBrick("red stone", "stone_red");
+		stone_green = new MMBlockBrick("green stone", "stone_green");
+		stone_white = new MMBlockBrick("white stone", "stone_white");
+
+		brick_black = new MMBlockBrick("black brick", "brick_black");
+		brick_red = new MMBlockBrick("red brick", "brick_red");
+		brick_green = new MMBlockBrick("green brick", "brick_green");
+		brick_white = new MMBlockBrick("white brick", "brick_white");
+
 		core_machine = new MMBlockCore("core");
-		heater_fluid = new MMBlockFluidHeater("fluid heater");
 		router = new MMBlockRouter("heat router");
 		core_interacting = new MMBlockInteracting("interacting machine core");
 		tank_potion = new MMBlockPotionTank("potion tank");
 		transporter = new MMBlockTransporter("transporter");
 		generator = new MMBlockGenerator("generator");
 		tube_potion = new MMBlockPotionTube();
-		
+
 		if(Loader.isModLoaded("IC2") || Loader.isModLoaded("ic2")){
 			power_converter_ic2 = new MMBlockPowerConverterIC2("ic power converter");}
 		
 		if(Loader.isModLoaded("CoFHCore")){
 			power_converter_cofh = new MMBlockPowerConverterCoFH("rf power converter");}
 	}
+	public static MMBlockBrick stone_black;
+	public static MMBlockBrick stone_red;
+	public static MMBlockBrick stone_green;
+	public static MMBlockBrick stone_white;
+
+	public static MMBlockBrick brick_black;
+	public static MMBlockBrick brick_red;
+	public static MMBlockBrick brick_green;
+	public static MMBlockBrick brick_white;
+
 	public static MMBlockCore core_machine;
-	public static MMBlockFluidHeater heater_fluid;
 	public static MMBlockRouter router;
 	public static MMBlockInteracting core_interacting;
 	public static MMBlockPotionTank tank_potion;
@@ -71,7 +89,6 @@ public class MMBlocks implements IInitalization{
 
 	public void initTiles(){
 		GameRegistry.registerTileEntity(modularmachines.api.classes.TileMachineBase.class, "mm_base");
-		GameRegistry.registerTileEntity(modularmachines.blocks.tiles.TileFluidHeater.class, "mm_router");
 		GameRegistry.registerTileEntity(modularmachines.blocks.tiles.TileRouter.class, "mm_fluid_heater");
 		GameRegistry.registerTileEntity(modularmachines.blocks.tiles.TilePotionTank.class, "mm_tank_potion");
 		GameRegistry.registerTileEntity(modularmachines.blocks.tiles.TileTransporter.class, "mm_transporter");

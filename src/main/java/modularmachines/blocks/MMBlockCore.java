@@ -10,6 +10,7 @@ import java.util.Random;
 
 import modularmachines.api.classes.TileMachineBase;
 import modularmachines.api.guide.IGuided;
+import modularmachines.api.misc.helpers.DirectionHelper;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMItems;
 import modularmachines.main.init.MMTabs;
@@ -17,6 +18,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -24,12 +26,15 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import wasliecore.helpers.Utils;
 import wasliecore.interfaces.IWrenchable;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class MMBlockCore extends BlockContainer implements IWrenchable, IGuided{
 
@@ -44,6 +49,8 @@ public class MMBlockCore extends BlockContainer implements IWrenchable, IGuided{
 		GameRegistry.registerBlock(this, this.getUnlocalizedName());
 	}
 	String name;
+	IIcon side;
+	IIcon front;
 	
 	@Override
 	public TileEntity createNewTileEntity(World world, int var2) {
@@ -53,37 +60,32 @@ public class MMBlockCore extends BlockContainer implements IWrenchable, IGuided{
 	@Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		TileMachineBase base = (TileMachineBase)world.getTileEntity(x, y, z);
+		ForgeDirection dir = ForgeDirection.getOrientation(side);
+
 		if(base != null && player.getHeldItem() != null && player.getHeldItem().getItem() != MMItems.wrench && player.getHeldItem().getItem() != MMItems.guide){
 			Item heldItem = player.getHeldItem().getItem();
-			ForgeDirection dir = ForgeDirection.getOrientation(side);
-			if(!player.isSneaking() && heldItem == MMItems.input && base.input == null && base.output != dir && base.screen != dir && base.expension != dir){
+			if(!player.isSneaking() && heldItem == MMItems.input && base.input == null && base.output != dir && base.expension != dir){
 				base.input = dir;
 				if(player.getHeldItem().stackSize > 1)
 					player.setCurrentItemOrArmor(0, new ItemStack(player.getHeldItem().getItem(), player.getHeldItem().stackSize--, player.getHeldItem().getItemDamage()));
 				else
 					player.setCurrentItemOrArmor(0, null);
-			}else if(!player.isSneaking() && heldItem == MMItems.output && base.output == null && base.input != dir && base.screen != dir && base.expension != dir){
+			}else if(!player.isSneaking() && heldItem == MMItems.output && base.output == null && base.input != dir && base.expension != dir){
 				base.output = dir;
 				if(player.getHeldItem().stackSize > 1)
 					player.setCurrentItemOrArmor(0, new ItemStack(player.getHeldItem().getItem(), player.getHeldItem().stackSize--, player.getHeldItem().getItemDamage()));
 				else
 					player.setCurrentItemOrArmor(0, null);
-			}else if(!player.isSneaking() && heldItem == MMItems.screen && base.screen == null && base.input != dir && base.output != dir && base.expension != dir){
-				base.screen = dir;
-				if(player.getHeldItem().stackSize > 1)
-					player.setCurrentItemOrArmor(0, new ItemStack(player.getHeldItem().getItem(), player.getHeldItem().stackSize--, player.getHeldItem().getItemDamage()));
-				else
-					player.setCurrentItemOrArmor(0, null);
-			}else if(!player.isSneaking() && heldItem == MMItems.expension && base.expension == null && base.input != dir && base.screen != dir && base.output != dir){
+			}else if(!player.isSneaking() && heldItem == MMItems.expension && base.expension == null && base.input != dir && base.output != dir){
 				base.expension = dir;
 				if(player.getHeldItem().stackSize > 1)
 					player.setCurrentItemOrArmor(0, new ItemStack(player.getHeldItem().getItem(), player.getHeldItem().stackSize--, player.getHeldItem().getItemDamage()));
 				else
 					player.setCurrentItemOrArmor(0, null);
-			}else if(base != null && !player.isSneaking() && base.screen != null && ForgeDirection.getOrientation(side) == base.screen){
+			}else if(base != null && !player.isSneaking() && dir != base.input && dir != base.output && dir != base.expension){
 				player.openGui(MM.instance, 1, world, x, y, z);
 			}
-		}else if(base != null && !player.isSneaking() && base.screen != null && ForgeDirection.getOrientation(side) == base.screen){
+		}else if(base != null && !player.isSneaking() && dir != base.input && dir != base.output && dir != base.expension){
 				player.openGui(MM.instance, 1, world, x, y, z);
 		}
 		return false;
@@ -99,8 +101,6 @@ public class MMBlockCore extends BlockContainer implements IWrenchable, IGuided{
     		equiped.add(new ItemStack(MMItems.input));
     	if(base.output != null)
     		equiped.add(new ItemStack(MMItems.output));
-    	if(base.screen != null)
-    		equiped.add(new ItemStack(MMItems.screen));
     	if(base.expension != null)
     		equiped.add(new ItemStack(MMItems.expension));
     	
@@ -147,9 +147,30 @@ public class MMBlockCore extends BlockContainer implements IWrenchable, IGuided{
     	}
     }
 	
-	@Override
+    @Override
     public void registerBlockIcons(IIconRegister ir) {
-        blockIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "core");
+		front = ir.registerIcon(MM.modName.toLowerCase() + ":" + "core_front");
+		side = ir.registerIcon(MM.modName.toLowerCase() + ":" + "core_side");
+	}
+	
+	@Override
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack) {
+		super.onBlockPlacedBy(world, x, y, z, living, stack);
+		ForgeDirection dir = DirectionHelper.getFace(living);
+		world.setBlockMetadataWithNotify(x, y, z, dir.ordinal(), 1);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(int fside, int meta){
+		ForgeDirection dir = ForgeDirection.getOrientation(fside);
+		
+        if(meta == 0 && dir == ForgeDirection.SOUTH)
+            return front;
+        else if(fside == meta && fside > 1)
+            return front;
+		else
+			return side;
 	}
 	
 	@Override
@@ -164,8 +185,6 @@ public class MMBlockCore extends BlockContainer implements IWrenchable, IGuided{
         		return new ItemStack(MMItems.input);
         	else if(dir == tr.output)
         		return new ItemStack(MMItems.output);
-        	else if(dir == tr.screen)
-        		return new ItemStack(MMItems.screen);
         	else if(dir == tr.expension)
         		return new ItemStack(MMItems.expension);
         }

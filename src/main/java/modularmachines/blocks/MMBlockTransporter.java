@@ -83,7 +83,7 @@ public class MMBlockTransporter extends BlockContainer implements IWrenchable, I
 	
 	@Override
     public void registerBlockIcons(IIconRegister ir) {
-        blockIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "core");
+        blockIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "core_side");
 	}
 
 	@Override
