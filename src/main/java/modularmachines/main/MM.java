@@ -20,14 +20,14 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-@Mod(modid = "ModularMachines", name = "ModularMachines", version = "0.92", dependencies = "required-after:WaslieCore")
+@Mod(modid = "ModularMachines", name = "ModularMachines", version = "0.94", dependencies = "required-after:WaslieCore")
 public class MM {
     @SidedProxy(clientSide = "modularmachines.proxies.ClientProxy", serverSide = "modularmachines.proxies.CommonProxy")
     public static CommonProxy proxy;
  
     @Instance("ModularMachines")
     public static MM instance;
-    public static double version = 0.92;
+    public static double version = 0.94;
     public static String mcVersion ="1.7.10";
     
     public static String modName = "ModularMachines";
