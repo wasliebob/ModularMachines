@@ -5,10 +5,12 @@
 */
 package modularmachines.api.heat.interfaces;
 
+import modularmachines.api.heat.HeatStorage;
 import net.minecraft.item.ItemStack;
 
 public interface IHeatGenerator {
 	public IHeatTransport getBound();
 	public void increaseHeat(int heat);
 	public ItemStack getFuel();
+	public HeatStorage getHeatStorage();
 }

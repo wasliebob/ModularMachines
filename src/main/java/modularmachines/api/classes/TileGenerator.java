@@ -266,4 +266,9 @@ public class TileGenerator extends TileEntity implements ISidedInventory, IHeatG
 		tag.setString("transfer", "Transfer: " + storage.getTransfer());
 		return tag;
 	}
+	
+	@Override
+	public HeatStorage getHeatStorage(){
+		return this.storage;
+	}
 }

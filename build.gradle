@@ -28,6 +28,9 @@ task deps{
 
 	def nei = new File('deps/NEI.jar')
 	new URL('https://dl.dropboxusercontent.com/u/46500170/MM/deps/NEI.jar').withInputStream{ i -> nei.withOutputStream{ it << i }}
+
+	def waila = new File('deps/WAILA.jar')
+	new URL('https://dl.dropboxusercontent.com/u/46500170/MM/deps/WAILA.jar').withInputStream{ i -> waila.withOutputStream{ it << i }}
 }
 
 apply plugin: 'forge'
@@ -47,6 +50,7 @@ dependencies{
 	'deps/IC2.jar',
 	'deps/CCC.jar',
 	'deps/NEI.jar',
+	'deps/WAILA.jar'
 	)
 }
 

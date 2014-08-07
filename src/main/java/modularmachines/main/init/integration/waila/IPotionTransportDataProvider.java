@@ -10,19 +10,23 @@ import java.util.List;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
-import modularmachines.api.heat.interfaces.IHeatTransport;
+import modularmachines.api.misc.interfaces.IPotionTransport;
 import net.minecraft.item.ItemStack;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 
-public class IHeatTransportDataProvider implements IWailaDataProvider{
+public class IPotionTransportDataProvider implements IWailaDataProvider{
 
 	@Override
 	public List<String> getWailaBody(ItemStack stack, List<String> tt, IWailaDataAccessor da, IWailaConfigHandler ch) {
-		 if (da.getTileEntity() instanceof IHeatTransport){
-			 IHeatTransport te = (IHeatTransport) da.getTileEntity();
-			 
-			 if(te.getHeatStorage() != null){
-				 tt.add("Energy: " + te.getHeatStorage().getHeat() + "/" + te.getHeatStorage().getMaxHeat());
-				 tt.add("Transfer: " + te.getHeatStorage().getTransfer());
+		 if (da.getTileEntity() instanceof IPotionTransport){
+			 IPotionTransport te = (IPotionTransport) da.getTileEntity();
+			 if(te.getPotionStorage().potion != null){
+				 tt.add("Potion: " + LanguageRegistry.instance().getStringLocalization(te.getPotionStorage().getPotion().getName()));
+				 tt.add("Amount: " + te.getPotionStorage().amount + "/" + te.getPotionStorage().capacity);
+				 tt.add("Instant Effect: " + te.getPotionStorage().getPotion().isInstant());
+				 tt.add("Bad Effect: " + te.getPotionStorage().getPotion().isBadEffect());
+			 }else{
+				 tt.add("Empty");
 			 }
 		 }
 		 return tt;
