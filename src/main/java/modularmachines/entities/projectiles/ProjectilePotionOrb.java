@@ -13,7 +13,6 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
-/** TODO Make it get color of the orb, not sure if it's even possible but might try. */
 public class ProjectilePotionOrb extends EntityThrowable{
     public ProjectilePotionOrb(World world){
         super(world);
