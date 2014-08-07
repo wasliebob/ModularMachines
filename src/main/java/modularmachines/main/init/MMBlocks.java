@@ -50,6 +50,10 @@ public class MMBlocks implements IInitalization{
 		brick_red = new MMBlockBrick("red brick", "brick_red");
 		brick_white = new MMBlockBrick("white brick", "brick_white");
 
+		chiseled_brick_black = new MMBlockBrick("chiseled black brick", "brick_black_2");
+		chiseled_brick_red = new MMBlockBrick("chiseled red brick", "brick_red_2");
+		chiseled_brick_white = new MMBlockBrick("chiseled white brick", "brick_white_2");
+		
 		core_machine = new MMBlockCore("core");
 		router = new MMBlockRouter("heat router");
 		core_interacting = new MMBlockInteracting("interacting machine core");
@@ -71,6 +75,10 @@ public class MMBlocks implements IInitalization{
 	public static MMBlockBrick brick_black;
 	public static MMBlockBrick brick_red;
 	public static MMBlockBrick brick_white;
+
+	public static MMBlockBrick chiseled_brick_black;
+	public static MMBlockBrick chiseled_brick_red;
+	public static MMBlockBrick chiseled_brick_white;
 
 	public static MMBlockCore core_machine;
 	public static MMBlockRouter router;

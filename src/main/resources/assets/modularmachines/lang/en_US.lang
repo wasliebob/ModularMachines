@@ -16,6 +16,10 @@ tile.modularmachines.block.white stone.name=White Stone
 tile.modularmachines.block.black brick.name=Black Brick
 tile.modularmachines.block.red brick.name=Red Brick
 tile.modularmachines.block.white brick.name=White Brick
+=Chiseled Bricks=
+tile.modularmachines.block.chiseled black brick.name=Chiseled Black Brick
+tile.modularmachines.block.chiseled red brick.name=Chiseled Red Brick
+tile.modularmachines.block.chiseled white brick.name=Chiseled White Brick
 ==Ores==
 tile.modularmachines.ore.copper.name=Copper Ore
 tile.modularmachines.ore.tin.name=Tin Ore

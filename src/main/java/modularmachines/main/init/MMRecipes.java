@@ -440,6 +440,22 @@ public class MMRecipes implements IInitalization{
 			'X', Blocks.stonebrick,
 			'Y', new ItemStack(Items.dye, 1, DyeHelper.getID(DyeHelper.WHITE))});
 		brick_white = RecipeHelper.getLatest();
+		
+		//Chiseled
+		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.chiseled_brick_black, 2, 0), new Object[]{
+			"XX",
+			'X', MMBlocks.brick_black});
+		chiseled_brick_white = RecipeHelper.getLatest();
+		
+		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.chiseled_brick_red, 2, 0), new Object[]{
+			"XX",
+			'X', MMBlocks.brick_red});
+		chiseled_brick_red = RecipeHelper.getLatest();
+		
+		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.chiseled_brick_white, 2, 0), new Object[]{
+			"XX",
+			'X', MMBlocks.brick_white});
+		chiseled_brick_white = RecipeHelper.getLatest();
 	}
 	public static IRecipe core_machine;
 	public static IRecipe core_interacting;
@@ -457,6 +473,10 @@ public class MMRecipes implements IInitalization{
 	public static IRecipe brick_red;
 	public static IRecipe brick_white;
 
+	public static IRecipe chiseled_brick_black;
+	public static IRecipe chiseled_brick_red;
+	public static IRecipe chiseled_brick_white;
+	
 	public static IRecipe interacting_break;
 	public static IRecipe interacting_elevator;
 	public static IRecipe interacting_transfer;
