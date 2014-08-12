@@ -27,12 +27,12 @@ public class MMInit implements IInitalization{
 		entries.preInit();
 		integration.preInit();
 		entities.preInit();
-		
-	     NBTTagCompound tag = NBTHelper.createTagCompound();
-	     tag.setBoolean(IMCHelper.author_wasliebob, true);
-	     tag.setBoolean(IMCHelper.mod_wasliecore, true);
+		worldGen.preInit();
+		NBTTagCompound tag = NBTHelper.createTagCompound();
+		tag.setBoolean(IMCHelper.author_wasliebob, true);
+		tag.setBoolean(IMCHelper.mod_wasliecore, true);
 
-	     FMLInterModComms.sendMessage("WaslieCore", IMCHelper.message_register, tag);	
+		FMLInterModComms.sendMessage("WaslieCore", IMCHelper.message_register, tag);	
 	}
 
 	@Override
@@ -44,6 +44,7 @@ public class MMInit implements IInitalization{
 		entries.init();
 		integration.init();
 		entities.init();
+		worldGen.init();
 		packetPipeline.initialise();
 	}
 	
@@ -55,6 +56,7 @@ public class MMInit implements IInitalization{
 		entries.postInit();
 		integration.postInit();
 		entities.postInit();
+		worldGen.postInit();
 		packetPipeline.postInitialise();
 	}
 	public static MMRecipes recipes = new MMRecipes();
@@ -63,6 +65,7 @@ public class MMInit implements IInitalization{
 	public static MMEvents events = new MMEvents();
 	public static MMEntries entries = new MMEntries();
 	public static MMEntities entities = new MMEntities();
+	public static MMWorldGen worldGen = new MMWorldGen();
 
 	public static IntegrationLoader integration = new IntegrationLoader();
 	public static PacketPipeline packetPipeline = new PacketPipeline();

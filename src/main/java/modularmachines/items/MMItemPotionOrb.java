@@ -18,6 +18,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -32,6 +33,7 @@ public class MMItemPotionOrb extends Item{
 		
 		GameRegistry.registerItem(this, this.getUnlocalizedName());
 	}
+	public IIcon icon;
 	
 	@SideOnly(Side.CLIENT)
 	public int getColorFromItemStack(ItemStack stack, int id){
@@ -43,9 +45,9 @@ public class MMItemPotionOrb extends Item{
 	
 	@Override
     public void registerIcons(IIconRegister ir) {
-        itemIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "orb");
+		itemIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "orb");
 	}
-	
+    
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean id){
@@ -73,7 +75,7 @@ public class MMItemPotionOrb extends Item{
 	    		ProjectilePotionOrb orb = new ProjectilePotionOrb(world, player);
 	    		orb.setPotion(PotionHelper.getPotion(stack.getItemDamage()));
 	    		world.spawnEntityInWorld(orb);
-	    		
+
 	    		if(!player.capabilities.isCreativeMode){
 					if(player.getHeldItem().stackSize > 1)
 						player.setCurrentItemOrArmor(0, new ItemStack(player.getHeldItem().getItem(), player.getHeldItem().stackSize--, player.getHeldItem().getItemDamage()));

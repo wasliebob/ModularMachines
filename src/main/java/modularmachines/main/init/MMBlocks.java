@@ -16,8 +16,6 @@ import modularmachines.blocks.MMBlockRouter;
 import modularmachines.blocks.MMBlockTransporter;
 import modularmachines.blocks.integration.MMBlockPowerConverterCoFH;
 import modularmachines.blocks.integration.MMBlockPowerConverterIC2;
-import modularmachines.main.Config;
-import modularmachines.world.WorldGen;
 import wasliecore.interfaces.IInitalization;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -27,9 +25,6 @@ public class MMBlocks implements IInitalization{
 	public void preInit(){
 		initBlocks();
 		initOres();
-		
-		if(Config.worldGen)
-			initWorldGen();
 	}
 	
 	@Override
@@ -113,8 +108,4 @@ public class MMBlocks implements IInitalization{
 	}
 	public static MMBlockOre ore_copper;
 	public static MMBlockOre ore_tin;
-	
-	public void initWorldGen(){
-		GameRegistry.registerWorldGenerator(new WorldGen(), 2);
-	}
 }
