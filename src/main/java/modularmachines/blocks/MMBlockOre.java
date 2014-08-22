@@ -5,6 +5,7 @@
 */
 package modularmachines.blocks;
 
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMTabs;
 import net.minecraft.block.Block;
@@ -20,7 +21,7 @@ public class MMBlockOre extends Block{
 		setHarvestLevel("pickaxe", 2);
 		
 		setCreativeTab(MMTabs.tabMaterials);
-		setBlockName(MM.modName.toLowerCase() + "." + "ore" + "." + name.toLowerCase());
+		setBlockName(LibMod.modName.toLowerCase() + "." + "ore" + "." + name.toLowerCase());
 		
 		this.name = name;
 		
@@ -32,6 +33,6 @@ public class MMBlockOre extends Block{
 	
 	@Override
     public void registerBlockIcons(IIconRegister ir) {
-        blockIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "ore_" + name.toLowerCase());
+        blockIcon = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "ore_" + name.toLowerCase());
 	}
 }

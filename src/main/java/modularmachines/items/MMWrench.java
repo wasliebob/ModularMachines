@@ -10,6 +10,7 @@ import modularmachines.api.classes.TileMachineBase;
 import modularmachines.blocks.tiles.TilePotionTank;
 import modularmachines.blocks.tiles.TileRouter;
 import modularmachines.blocks.tiles.TileTransporter;
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMItems;
 import modularmachines.main.init.MMTabs;
@@ -31,7 +32,7 @@ public class MMWrench extends Item implements IWrench{
 
 	public MMWrench(String name) {
 		setMaxStackSize(1);
-		setUnlocalizedName(MM.modName.toLowerCase() + "." + "item" + "." + name.toLowerCase());
+		setUnlocalizedName(LibMod.modName.toLowerCase() + "." + "item" + "." + name.toLowerCase());
 		setCreativeTab(MMTabs.tabMain);
 		this.name = name;		
 		GameRegistry.registerItem(this, this.getUnlocalizedName());
@@ -40,7 +41,7 @@ public class MMWrench extends Item implements IWrench{
 
 	@Override
     public void registerIcons(IIconRegister ir){
-        itemIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "wrench");
+        itemIcon = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "wrench");
 	}
 	
 	@Override

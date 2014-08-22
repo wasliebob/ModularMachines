@@ -5,6 +5,7 @@
 */
 package modularmachines.items;
 
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMTabs;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -19,7 +20,7 @@ public class MMItemDust extends Item{
 
 	public MMItemDust(String name, int color) {
 		setMaxStackSize(64);
-		setUnlocalizedName(MM.modName.toLowerCase() + "." + "dust" + "." + name.toLowerCase());
+		setUnlocalizedName(LibMod.modName.toLowerCase() + "." + "dust" + "." + name.toLowerCase());
 		setCreativeTab(MMTabs.tabMaterials);
 		
 		this.color = color;
@@ -36,6 +37,6 @@ public class MMItemDust extends Item{
 	
 	@Override
     public void registerIcons(IIconRegister ir) {
-        itemIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "dust");
+        itemIcon = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "dust");
 	}
 }

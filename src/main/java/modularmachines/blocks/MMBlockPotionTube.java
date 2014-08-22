@@ -7,6 +7,7 @@ package modularmachines.blocks;
 
 import modularmachines.blocks.tiles.TilePotionTube;
 import modularmachines.helpers.RenderingHelper;
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMTabs;
 import net.minecraft.block.BlockContainer;
@@ -27,7 +28,7 @@ public class MMBlockPotionTube extends BlockContainer implements IWrenchable{
 		super(Material.iron);
 		setHardness(1.0F);
 		setCreativeTab(MMTabs.tabMain);
-		setBlockName(MM.modName.toLowerCase() + "." + "block" + "." + "potion tube");		
+		setBlockName(LibMod.modName.toLowerCase() + "." + "block" + "." + "potion tube");		
 		GameRegistry.registerBlock(this, this.getUnlocalizedName());
 	}
 	
@@ -84,7 +85,7 @@ public class MMBlockPotionTube extends BlockContainer implements IWrenchable{
 	
 	@Override
     public void registerBlockIcons(IIconRegister ir) {
-        blockIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "core_side");
+        blockIcon = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "core_side");
 	}
 	
 	@Override

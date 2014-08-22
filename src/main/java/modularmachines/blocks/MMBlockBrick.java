@@ -6,6 +6,7 @@
 package modularmachines.blocks;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMTabs;
 import net.minecraft.block.Block;
@@ -16,8 +17,8 @@ public class MMBlockBrick extends Block{
 	public MMBlockBrick(String name, String texture) {
 		super(Material.rock);
 		setHardness(1.0F);
-		setCreativeTab(MMTabs.tabMaterials);
-		setBlockName(MM.modName.toLowerCase() + "." + "block" + "." + name);
+		setCreativeTab(MMTabs.tabDecoration);
+		setBlockName(LibMod.modName.toLowerCase() + "." + "block" + "." + name);
 
 		this.texture = texture;
 		
@@ -27,6 +28,6 @@ public class MMBlockBrick extends Block{
 	
 	@Override
     public void registerBlockIcons(IIconRegister ir) {
-        blockIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + texture);
+        blockIcon = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + texture);
 	}
 }

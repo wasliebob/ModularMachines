@@ -7,6 +7,7 @@ package modularmachines.blocks.integration;
 
 import wasliecore.interfaces.IWrenchable;
 import modularmachines.blocks.tiles.intergration.TilePowerConverterCoFH;
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMItems;
 import modularmachines.main.init.MMTabs;
@@ -25,7 +26,7 @@ public class MMBlockPowerConverterCoFH extends BlockContainer implements IWrench
 		super(Material.iron);
 		setHardness(1.0F);
 		setCreativeTab(MMTabs.tabMain);
-		setBlockName(MM.modName.toLowerCase() + "." + "block" + "." + name);
+		setBlockName(LibMod.modName.toLowerCase() + "." + "block" + "." + name);
 		this.name = name;
 		GameRegistry.registerBlock(this, this.getUnlocalizedName());
 	}
@@ -52,6 +53,6 @@ public class MMBlockPowerConverterCoFH extends BlockContainer implements IWrench
 	@Override
     public void registerBlockIcons(IIconRegister ir) 
 	{
-        blockIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "core");
+        blockIcon = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "core");
 	}
 }

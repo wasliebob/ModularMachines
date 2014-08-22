@@ -9,6 +9,7 @@ import modularmachines.api.classes.TileInteracting;
 import modularmachines.api.guide.IGuided;
 import modularmachines.api.main.MMInteractingUpgrades;
 import modularmachines.api.upgrades.IInteractingAction;
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMTabs;
 import net.minecraft.block.Block;
@@ -25,14 +26,14 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class MMItemGuide extends Item{
 	public MMItemGuide() {
 		setMaxStackSize(1);
-		setUnlocalizedName(MM.modName.toLowerCase() + "." + "item" + "." + "guide");
+		setUnlocalizedName(LibMod.modName.toLowerCase() + "." + "item" + "." + "guide");
 		setCreativeTab(MMTabs.tabMain);
 		GameRegistry.registerItem(this, this.getUnlocalizedName());
 	}
 
 	@Override
     public void registerIcons(IIconRegister ir){
-        itemIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "guide");
+        itemIcon = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "guide");
 	}
 	
 	@Override

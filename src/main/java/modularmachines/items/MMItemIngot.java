@@ -5,6 +5,7 @@
 */
 package modularmachines.items;
 
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMTabs;
 import net.minecraft.block.Block;
@@ -20,7 +21,7 @@ public class MMItemIngot extends Item{
 
 	public MMItemIngot(String name, int color, Block input) {
 		setMaxStackSize(64);
-		setUnlocalizedName(MM.modName.toLowerCase() + "." + "ingot" + "." + name.toLowerCase());
+		setUnlocalizedName(LibMod.modName.toLowerCase() + "." + "ingot" + "." + name.toLowerCase());
 		setCreativeTab(MMTabs.tabMaterials);
 		
 		this.color = color;
@@ -40,6 +41,6 @@ public class MMItemIngot extends Item{
 	
 	@Override
     public void registerIcons(IIconRegister ir) {
-        itemIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "ingot");
+        itemIcon = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "ingot");
 	}
 }

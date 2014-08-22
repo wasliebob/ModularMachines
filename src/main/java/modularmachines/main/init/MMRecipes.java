@@ -30,6 +30,7 @@ import modularmachines.upgrades.interacting.UpgradePlace;
 import modularmachines.upgrades.interacting.UpgradeTransfer;
 import modularmachines.upgrades.interacting.UpgradeUpdate;
 import modularmachines.upgrades.interacting.UpgradeVacuum;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -456,6 +457,46 @@ public class MMRecipes implements IInitalization{
 			"XX",
 			'X', MMBlocks.brick_white});
 		chiseled_brick_white = RecipeHelper.getLatest();
+		
+		//Slabs
+		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.slab_brick_black, 2, 0), new Object[]{
+			"XXX",
+			'X', MMBlocks.brick_black});
+		slab_brick_black = RecipeHelper.getLatest();
+		
+		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.slab_brick_red, 2, 0), new Object[]{
+			"XXX",
+			'X', MMBlocks.brick_red});
+		slab_brick_red = RecipeHelper.getLatest();
+		
+		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.slab_brick_white, 2, 0), new Object[]{
+			"XXX",
+			'X', MMBlocks.brick_white});
+		slab_brick_white = RecipeHelper.getLatest();
+		
+		//Stairs
+		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.stairs_brick_black, 4, 0), new Object[]{
+			"X  ",
+			"XX ",
+			"XXX",
+			'X', MMBlocks.brick_black});
+		stairs_brick_black = RecipeHelper.getLatest();
+		
+		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.stairs_brick_red, 4, 0), new Object[]{
+			"X  ",
+			"XX ",
+			"XXX",
+			'X', MMBlocks.brick_red});
+		stairs_brick_red = RecipeHelper.getLatest();
+		
+		RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.stairs_brick_white, 4, 0), new Object[]{
+			"X  ",
+			"XX ",
+			"XXX",
+			'X', MMBlocks.brick_white});
+		stairs_brick_white = RecipeHelper.getLatest();
+		
+		initArrayRecipes();
 	}
 	public static IRecipe core_machine;
 	public static IRecipe core_interacting;
@@ -476,6 +517,14 @@ public class MMRecipes implements IInitalization{
 	public static IRecipe chiseled_brick_black;
 	public static IRecipe chiseled_brick_red;
 	public static IRecipe chiseled_brick_white;
+	
+	public static IRecipe slab_brick_black;
+	public static IRecipe slab_brick_red;
+	public static IRecipe slab_brick_white;
+	
+	public static IRecipe stairs_brick_black;
+	public static IRecipe stairs_brick_red;
+	public static IRecipe stairs_brick_white;
 	
 	public static IRecipe interacting_break;
 	public static IRecipe interacting_elevator;
@@ -514,6 +563,21 @@ public class MMRecipes implements IInitalization{
 	
 	public static IRecipe orb_empty;
 	
+	public static void initArrayRecipes(){
+		for(int meta = 0; meta < 16; meta++){
+			RecipeHelper.addShapedRecipe(new ItemStack(MMBlocks.glass_default, 4, meta), new Object[]{
+				" X ",
+				"XYX",
+				" X ",
+				'X', Blocks.glass,
+				'Y', new ItemStack(Items.dye, 1, meta)});
+			glass_default[meta] = RecipeHelper.getLatest();
+		}
+	}
+	public static ArrayList<Block> recipeBlocks = new ArrayList<Block>();
+
+	public static IRecipe[] glass_default = new IRecipe[16];
+
 	public void initFurnaceRecipes(){
 		RecipeHelper.addDustSmeltingRecipe("Iron");
 		RecipeHelper.addDustSmeltingRecipe("Gold");

@@ -8,6 +8,7 @@ package modularmachines.blocks;
 import modularmachines.api.classes.TileGenerator;
 import modularmachines.api.guide.IGuided;
 import modularmachines.api.misc.helpers.DirectionHelper;
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMTabs;
 import net.minecraft.block.BlockContainer;
@@ -30,7 +31,7 @@ public class MMBlockGenerator extends BlockContainer implements IWrenchable, IGu
 		super(Material.iron);
 		setHardness(1.0F);
 		setCreativeTab(MMTabs.tabMain);
-		setBlockName(MM.modName.toLowerCase() + "." + "block" + "." + name);
+		setBlockName(LibMod.modName.toLowerCase() + "." + "block" + "." + name);
 		this.name = name;
 		GameRegistry.registerBlock(this, this.getUnlocalizedName());
 	}
@@ -52,9 +53,9 @@ public class MMBlockGenerator extends BlockContainer implements IWrenchable, IGu
 	
 	@Override
     public void registerBlockIcons(IIconRegister ir) {
-		top = ir.registerIcon(MM.modName.toLowerCase() + ":" + "generator_top");
-		front = ir.registerIcon(MM.modName.toLowerCase() + ":" + "generator_front");
-		side = ir.registerIcon(MM.modName.toLowerCase() + ":" + "generator_side");
+		top = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "generator_top");
+		front = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "generator_front");
+		side = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "generator_side");
 	}
 	
 	@Override

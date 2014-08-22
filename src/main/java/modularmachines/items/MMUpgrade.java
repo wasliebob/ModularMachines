@@ -5,6 +5,7 @@
 */
 package modularmachines.items;
 
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMTabs;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -18,7 +19,7 @@ public class MMUpgrade extends Item{
 
 	public MMUpgrade(String name, int color) {
 		setMaxStackSize(1);
-		setUnlocalizedName(MM.modName.toLowerCase() + "." + "item" + "." + name.toLowerCase());
+		setUnlocalizedName(LibMod.modName.toLowerCase() + "." + "item" + "." + name.toLowerCase());
 		setCreativeTab(MMTabs.tabUpgrades);
 		
 		this.name = name;
@@ -38,6 +39,6 @@ public class MMUpgrade extends Item{
 	@Override
     public void registerIcons(IIconRegister ir) 
 	{
-        itemIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "upgrade_core");
+        itemIcon = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "upgrade_core");
 	}
 }

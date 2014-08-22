@@ -8,6 +8,7 @@ package modularmachines.items;
 import java.awt.Color;
 
 import modularmachines.api.upgrades.IInteractingUpgrade;
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMTabs;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -21,7 +22,7 @@ public class MMInteractingUpgrade extends Item implements IInteractingUpgrade{
 
 	public MMInteractingUpgrade(String name, Color color) {
 		setMaxStackSize(1);
-		setUnlocalizedName(MM.modName.toLowerCase() + "." + "item" + "." + name.toLowerCase());
+		setUnlocalizedName(LibMod.modName.toLowerCase() + "." + "item" + "." + name.toLowerCase());
 		setCreativeTab(MMTabs.tabUpgrades);
 		
 		this.name = name;
@@ -41,7 +42,7 @@ public class MMInteractingUpgrade extends Item implements IInteractingUpgrade{
 	@Override
     public void registerIcons(IIconRegister ir) 
 	{
-        itemIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "upgrade");
+        itemIcon = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "upgrade");
 	}
 
 	@Override

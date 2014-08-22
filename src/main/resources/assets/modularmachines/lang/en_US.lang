@@ -7,7 +7,7 @@ tile.modularmachines.block.potion tank.name=Potion Tank
 tile.modularmachines.block.transporter.name=Transporter
 tile.modularmachines.block.generator.name=Heat Generator
 tile.modularmachines.block.potion tube.name=Potion Tube
-==Decorative==
+=Decorative=
 =Stones=
 tile.modularmachines.block.black stone.name=Black Stone
 tile.modularmachines.block.red stone.name=Red Stone
@@ -20,9 +20,34 @@ tile.modularmachines.block.white brick.name=White Brick
 tile.modularmachines.block.chiseled black brick.name=Chiseled Black Brick
 tile.modularmachines.block.chiseled red brick.name=Chiseled Red Brick
 tile.modularmachines.block.chiseled white brick.name=Chiseled White Brick
-==Ores==
+=Stairs=
+tile.modularmachines.block.Black Brick stairs.name=Black Brick Stairs
+tile.modularmachines.block.White Brick stairs.name=White Brick Stairs
+tile.modularmachines.block.Red Brick stairs.name=Red Brick Stairs
+=Slabs=
+tile.modularmachines.block.Black Brick slab.name=Black Brick Slab
+tile.modularmachines.block.White Brick slab.name=White Brick Slab
+tile.modularmachines.block.Red Brick slab.name=Red Brick Slab
+=Ores=
 tile.modularmachines.ore.copper.name=Copper Ore
 tile.modularmachines.ore.tin.name=Tin Ore
+=Glass=
+tile.modularmachines.block.glass: Black.name=Glass: Black
+tile.modularmachines.block.glass: Red.name=Glass: Red
+tile.modularmachines.block.glass: Green.name=Glass: Green
+tile.modularmachines.block.glass: Brown.name=Glass: Brown
+tile.modularmachines.block.glass: Blue.name=Glass: Blue
+tile.modularmachines.block.glass: Purple.name=Glass: Purple
+tile.modularmachines.block.glass: Cyan.name=Glass: Cyan
+tile.modularmachines.block.glass: Light Gray.name=Glass: Light Gray
+tile.modularmachines.block.glass: Gray.name=Glass: Gray
+tile.modularmachines.block.glass: Pink.name=Glass: Pink
+tile.modularmachines.block.glass: Lime.name=Glass: Lime
+tile.modularmachines.block.glass: Yellow.name=Glass: Yellow
+tile.modularmachines.block.glass: Light Blue.name=Glass: Light Blue
+tile.modularmachines.block.glass: Magenta.name=Glass: Magenta
+tile.modularmachines.block.glass: Orange.name=Glass: Orange
+tile.modularmachines.block.glass: White.name=Glass: White
 ===Items===
 item.modularmachines.item.furnace.name=Machine Upgrade: Furnace
 item.modularmachines.item.macerator.name=Machine Upgrade: Macerator
@@ -107,9 +132,12 @@ mm.guide.entries.Upgrade: Brewing.0=This upgrade will make your core function li
 ==Misc==
 mm.guide.entries.Potion Orb.0=This item acts like a throwable potion. You can fill it by clicking on a potion tank with an empty orb.
 ===Misc===
+==Creative Tabs==
 itemGroup.tabModularMachinesMain=Modular Machines: Main
 itemGroup.tabModularMachinesMaterials=Modular Machines: Materials
 itemGroup.tabModularMachinesUpgrades=Modular Machines: Upgrades
 itemGroup.tabModularMachinesPotionOrbs=Modular Machines: Potion Orbs
+itemGroup.tabModularMachinesDecoration=Modular Machines: Decoration
+==Misc==
 mm.warning.1=You are using a unstable build of Modular Machines!
 mm.warning.2=Be aware that this will most likely have a lot of bugs, and is unstable!

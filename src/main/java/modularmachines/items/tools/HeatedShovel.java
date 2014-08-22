@@ -11,6 +11,7 @@ import java.util.List;
 import modularmachines.api.heat.interfaces.IHeatContainer;
 import modularmachines.api.heat.interfaces.IHeatedTool;
 import modularmachines.api.misc.helpers.HeatContainerHelper;
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMItems;
 import modularmachines.main.init.MMTabs;
@@ -30,7 +31,7 @@ public class HeatedShovel extends ItemSpade implements IHeatContainer, IHeatedTo
 	public HeatedShovel(String name){
 		super(MMItems.heated);
 		setMaxStackSize(1);
-		setUnlocalizedName(MM.modName.toLowerCase() + "." + "item" + "." + name.toLowerCase());
+		setUnlocalizedName(LibMod.modName.toLowerCase() + "." + "item" + "." + name.toLowerCase());
 		setCreativeTab(MMTabs.tabMain);
 		
 		modes.put(0, "Normal");
@@ -56,7 +57,7 @@ public class HeatedShovel extends ItemSpade implements IHeatContainer, IHeatedTo
     
 	@Override
     public void registerIcons(IIconRegister ir){
-        itemIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "shovel_heated");
+        itemIcon = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "shovel_heated");
 	}
 	
 	public int calculateCost(ItemStack stack){

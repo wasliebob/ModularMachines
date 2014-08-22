@@ -8,11 +8,14 @@ package modularmachines.main.init;
 import modularmachines.blocks.MMBlockBrick;
 import modularmachines.blocks.MMBlockCore;
 import modularmachines.blocks.MMBlockGenerator;
+import modularmachines.blocks.MMBlockGlass;
 import modularmachines.blocks.MMBlockInteracting;
 import modularmachines.blocks.MMBlockOre;
 import modularmachines.blocks.MMBlockPotionTank;
 import modularmachines.blocks.MMBlockPotionTube;
 import modularmachines.blocks.MMBlockRouter;
+import modularmachines.blocks.MMBlockSlab;
+import modularmachines.blocks.MMBlockStairs;
 import modularmachines.blocks.MMBlockTransporter;
 import modularmachines.blocks.integration.MMBlockPowerConverterCoFH;
 import modularmachines.blocks.integration.MMBlockPowerConverterIC2;
@@ -49,6 +52,16 @@ public class MMBlocks implements IInitalization{
 		chiseled_brick_red = new MMBlockBrick("chiseled red brick", "brick_red_2");
 		chiseled_brick_white = new MMBlockBrick("chiseled white brick", "brick_white_2");
 		
+		stairs_brick_black = new MMBlockStairs(MMBlocks.brick_black, 0);
+		stairs_brick_red = new MMBlockStairs(MMBlocks.brick_red, 0);
+		stairs_brick_white = new MMBlockStairs(MMBlocks.brick_white, 0);
+
+		slab_brick_black = new MMBlockSlab(MMBlocks.brick_black, 0);
+		slab_brick_red = new MMBlockSlab(MMBlocks.brick_red, 0);
+		slab_brick_white = new MMBlockSlab(MMBlocks.brick_white, 0);
+
+		glass_default = new MMBlockGlass("glass");
+		
 		core_machine = new MMBlockCore("core");
 		router = new MMBlockRouter("heat router");
 		core_interacting = new MMBlockInteracting("interacting machine core");
@@ -74,6 +87,16 @@ public class MMBlocks implements IInitalization{
 	public static MMBlockBrick chiseled_brick_black;
 	public static MMBlockBrick chiseled_brick_red;
 	public static MMBlockBrick chiseled_brick_white;
+
+	public static MMBlockStairs stairs_brick_black;
+	public static MMBlockStairs stairs_brick_red;
+	public static MMBlockStairs stairs_brick_white;
+
+	public static MMBlockSlab slab_brick_black;
+	public static MMBlockSlab slab_brick_red;
+	public static MMBlockSlab slab_brick_white;
+
+	public static MMBlockGlass glass_default;
 
 	public static MMBlockCore core_machine;
 	public static MMBlockRouter router;

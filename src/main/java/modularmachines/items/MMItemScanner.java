@@ -6,6 +6,7 @@
 package modularmachines.items;
 
 import modularmachines.api.misc.interfaces.IScanable;
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMTabs;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -20,14 +21,14 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class MMItemScanner extends Item {
 	public MMItemScanner() {
 		setMaxStackSize(1);
-		setUnlocalizedName(MM.modName.toLowerCase() + "." + "item" + "." + "scanner");
+		setUnlocalizedName(LibMod.modName.toLowerCase() + "." + "item" + "." + "scanner");
 		setCreativeTab(MMTabs.tabMain);
 		GameRegistry.registerItem(this, this.getUnlocalizedName());
 	}
 
 	@Override
     public void registerIcons(IIconRegister ir){
-        itemIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "scanner");
+        itemIcon = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "scanner");
 	}
 	
 	@Override

@@ -15,6 +15,7 @@ import modularmachines.api.upgrades.IInteractingAction;
 import modularmachines.api.upgrades.IInteractingUpgrade;
 import modularmachines.items.MMProgrammer;
 import modularmachines.items.MMWrench;
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMItems;
 import modularmachines.main.init.MMTabs;
@@ -42,7 +43,7 @@ public class MMBlockInteracting extends BlockContainer implements IWrenchable, I
 		super(Material.iron);
 		setHardness(1.0F);
 		setCreativeTab(MMTabs.tabMain);
-		setBlockName(MM.modName.toLowerCase() + "." + "block" + "." + name);
+		setBlockName(LibMod.modName.toLowerCase() + "." + "block" + "." + name);
 
 		this.name = name;
 		
@@ -107,7 +108,7 @@ public class MMBlockInteracting extends BlockContainer implements IWrenchable, I
 	
 	@Override
     public void registerBlockIcons(IIconRegister ir) {
-        blockIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "core_side");
+        blockIcon = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "core_side");
 	}
 	
     @Override

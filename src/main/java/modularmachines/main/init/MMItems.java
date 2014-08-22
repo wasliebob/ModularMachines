@@ -90,8 +90,8 @@ public class MMItems implements IInitalization{
 		linker = new MMLinker();
 		wrench = new MMWrench("modular wrench");
 		crystal_energy = new MMItemCrystal("energy crystal", new Color(65, 105, 225).getRGB());
-		stick_iron = new MMItem(64, "iron stick", "stick_iron");
-		upgrade_empty = new MMItem(64, "empty upgrade", "upgrade");
+		stick_iron = new MMItem(64, "iron stick", "stick_iron", MMTabs.tabMaterials);
+		upgrade_empty = new MMItem(64, "empty upgrade", "upgrade", MMTabs.tabMaterials);
 		scanner = new MMItemScanner();
 		orb_empty = new MMItemOrbEmpty();
 		orb_potion = new MMItemPotionOrb();

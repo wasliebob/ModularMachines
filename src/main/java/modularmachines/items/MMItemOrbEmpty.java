@@ -5,6 +5,7 @@
 */
 package modularmachines.items;
 
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMTabs;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -14,7 +15,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class MMItemOrbEmpty extends Item{
 	public MMItemOrbEmpty(){
 		setMaxStackSize(1);
-		setUnlocalizedName(MM.modName.toLowerCase() + "." + "item" + "." + "empty orb");
+		setUnlocalizedName(LibMod.modName.toLowerCase() + "." + "item" + "." + "empty orb");
 		setCreativeTab(MMTabs.tabPotionOrbs);
 		
 		GameRegistry.registerItem(this, this.getUnlocalizedName());
@@ -22,6 +23,6 @@ public class MMItemOrbEmpty extends Item{
 	
 	@Override
     public void registerIcons(IIconRegister ir) {
-        itemIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "orb");
+        itemIcon = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "orb");
 	}
 }

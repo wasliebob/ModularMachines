@@ -7,7 +7,7 @@ package modularmachines.blocks.guis;
 
 import java.awt.Color;
 
-import modularmachines.main.MM;
+import modularmachines.libs.LibMod;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.StatCollector;
@@ -41,7 +41,7 @@ public class GuiWarningScreen extends GuiScreen{
     @Override
     public void drawScreen(int x, int y, float renderPartialTicks){
         this.drawDefaultBackground();
-        this.drawCenteredString(this.fontRendererObj, "Modular Machines " + MM.version, this.width / 2, 50, Color.cyan.getRGB());
+        this.drawCenteredString(this.fontRendererObj, "Modular Machines " + LibMod.modVersion, this.width / 2, 50, Color.cyan.getRGB());
 		
         this.drawCenteredString(this.fontRendererObj, StatCollector.translateToLocal("mm.warning.1"), this.width / 2, 82, Color.red.getRGB());
         this.drawCenteredString(this.fontRendererObj, StatCollector.translateToLocal("mm.warning.2"), this.width / 2, 82 + (8), Color.red.getRGB());

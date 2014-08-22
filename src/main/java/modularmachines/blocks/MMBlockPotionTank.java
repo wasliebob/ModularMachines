@@ -15,6 +15,7 @@ import modularmachines.api.misc.interfaces.IColorable;
 import modularmachines.blocks.tiles.TilePotionTank;
 import modularmachines.helpers.PotionHelper;
 import modularmachines.items.MMItemOrbEmpty;
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMItems;
 import modularmachines.main.init.MMTabs;
@@ -48,7 +49,7 @@ public class MMBlockPotionTank extends BlockContainer implements IWrenchable, IG
 		super(Material.iron);
 		setHardness(1.0F);
 		setCreativeTab(MMTabs.tabMain);
-		setBlockName(MM.modName.toLowerCase() + "." + "block" + "." + name);
+		setBlockName(LibMod.modName.toLowerCase() + "." + "block" + "." + name);
 
 		this.name = name;
 		
@@ -178,8 +179,8 @@ public class MMBlockPotionTank extends BlockContainer implements IWrenchable, IG
     
 	@Override
     public void registerBlockIcons(IIconRegister ir) {
-        blockIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "tank");
-        icon_fluid = ir.registerIcon(MM.modName.toLowerCase() + ":" + "fluid");
+        blockIcon = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "tank");
+        icon_fluid = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "fluid");
 	}
 	
 	@Override

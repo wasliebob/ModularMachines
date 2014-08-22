@@ -11,6 +11,7 @@ import java.util.Random;
 import modularmachines.api.classes.TileMachineBase;
 import modularmachines.api.guide.IGuided;
 import modularmachines.api.misc.helpers.DirectionHelper;
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMItems;
 import modularmachines.main.init.MMTabs;
@@ -42,7 +43,7 @@ public class MMBlockCore extends BlockContainer implements IWrenchable, IGuided{
 		super(Material.iron);
 		setHardness(1.0F);
 		setCreativeTab(MMTabs.tabMain);
-		setBlockName(MM.modName.toLowerCase() + "." + "block" + "." + name);
+		setBlockName(LibMod.modName.toLowerCase() + "." + "block" + "." + name);
 
 		this.name = name;
 		
@@ -149,8 +150,8 @@ public class MMBlockCore extends BlockContainer implements IWrenchable, IGuided{
 	
     @Override
     public void registerBlockIcons(IIconRegister ir) {
-		front = ir.registerIcon(MM.modName.toLowerCase() + ":" + "core_front");
-		side = ir.registerIcon(MM.modName.toLowerCase() + ":" + "core_side");
+		front = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "core_front");
+		side = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "core_side");
 	}
 	
 	@Override

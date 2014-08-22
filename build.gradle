@@ -35,7 +35,7 @@ task deps{
 
 apply plugin: 'forge'
 
-version = "0.94"
+version = "1.0"
 group= "ModularMachines" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ModularMachines"
 

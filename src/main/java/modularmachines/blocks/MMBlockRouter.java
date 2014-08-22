@@ -7,6 +7,7 @@ package modularmachines.blocks;
 
 import modularmachines.api.guide.IGuided;
 import modularmachines.blocks.tiles.TileRouter;
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMItems;
 import modularmachines.main.init.MMTabs;
@@ -31,7 +32,7 @@ public class MMBlockRouter extends BlockContainer implements IWrenchable, IGuide
 		super(Material.iron);
 		setHardness(1.0F);
 		setCreativeTab(MMTabs.tabMain);
-		setBlockName(MM.modName.toLowerCase() + "." + "block" + "." + name);
+		setBlockName(LibMod.modName.toLowerCase() + "." + "block" + "." + name);
 		this.name = name;
 		GameRegistry.registerBlock(this, this.getUnlocalizedName());
 	}
@@ -72,9 +73,9 @@ public class MMBlockRouter extends BlockContainer implements IWrenchable, IGuide
 	
 	@Override
     public void registerBlockIcons(IIconRegister ir) {
-		top = ir.registerIcon(MM.modName.toLowerCase() + ":" + "router_top");
-		bottom = ir.registerIcon(MM.modName.toLowerCase() + ":" + "router_bottom");
-		side = ir.registerIcon(MM.modName.toLowerCase() + ":" + "router_side");
+		top = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "router_top");
+		bottom = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "router_bottom");
+		side = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "router_side");
 	}
 	
 	@Override

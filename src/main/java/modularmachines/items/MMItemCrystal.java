@@ -5,6 +5,7 @@
 */
 package modularmachines.items;
 
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMTabs;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -18,7 +19,7 @@ public class MMItemCrystal extends Item{
 
 	public MMItemCrystal(String name, int color) {
 		setMaxStackSize(1);
-		setUnlocalizedName(MM.modName.toLowerCase() + "." + "item" + "." + name.toLowerCase());
+		setUnlocalizedName(LibMod.modName.toLowerCase() + "." + "item" + "." + name.toLowerCase());
 		setCreativeTab(MMTabs.tabMaterials);
 		
 		this.color = color;
@@ -34,6 +35,6 @@ public class MMItemCrystal extends Item{
 	
 	@Override
     public void registerIcons(IIconRegister ir) {
-        itemIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "crystal");
+        itemIcon = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "crystal");
 	}
 }

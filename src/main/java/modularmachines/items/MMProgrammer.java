@@ -5,6 +5,7 @@
 */
 package modularmachines.items;
 
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMTabs;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -15,7 +16,7 @@ public class MMProgrammer extends Item{
 
 	public MMProgrammer(String name) {
 		setMaxStackSize(1);
-		setUnlocalizedName(MM.modName.toLowerCase() + "." + "item" + "." + name.toLowerCase());
+		setUnlocalizedName(LibMod.modName.toLowerCase() + "." + "item" + "." + name.toLowerCase());
 		setCreativeTab(MMTabs.tabMain);
 		this.name = name;		
 		GameRegistry.registerItem(this, this.getUnlocalizedName());
@@ -24,6 +25,6 @@ public class MMProgrammer extends Item{
 
 	@Override
     public void registerIcons(IIconRegister ir){
-        itemIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "programmer");
+        itemIcon = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "programmer");
 	}
 }

@@ -7,6 +7,7 @@ package modularmachines.blocks;
 
 import modularmachines.api.guide.IGuided;
 import modularmachines.blocks.tiles.TileTransporter;
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMItems;
 import modularmachines.main.init.MMTabs;
@@ -31,7 +32,7 @@ public class MMBlockTransporter extends BlockContainer implements IWrenchable, I
 		super(Material.iron);
 		setHardness(1.0F);
 		setCreativeTab(MMTabs.tabMain);
-		setBlockName(MM.modName.toLowerCase() + "." + "block" + "." + name);
+		setBlockName(LibMod.modName.toLowerCase() + "." + "block" + "." + name);
 
 		this.name = name;
 		
@@ -87,8 +88,8 @@ public class MMBlockTransporter extends BlockContainer implements IWrenchable, I
 	
 	@Override
     public void registerBlockIcons(IIconRegister ir) {
-		top = ir.registerIcon(MM.modName.toLowerCase() + ":" + "transporter_top");
-		side = ir.registerIcon(MM.modName.toLowerCase() + ":" + "transporter_side");
+		top = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "transporter_top");
+		side = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "transporter_side");
 	}
 	
 	@Override

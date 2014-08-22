@@ -5,6 +5,7 @@
 */
 package modularmachines.items;
 
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMTabs;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -19,7 +20,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class MMItemNugget extends Item{
 	public MMItemNugget(String name, int color) {
 		setMaxStackSize(64);
-		setUnlocalizedName(MM.modName.toLowerCase() + "." + "nugget" + "." + name.toLowerCase());
+		setUnlocalizedName(LibMod.modName.toLowerCase() + "." + "nugget" + "." + name.toLowerCase());
 		setCreativeTab(MMTabs.tabMaterials);
 		
 		this.color = color;
@@ -46,6 +47,6 @@ public class MMItemNugget extends Item{
 	
 	@Override
     public void registerIcons(IIconRegister ir) {
-        itemIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "nugget");
+        itemIcon = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "nugget");
 	}
 }

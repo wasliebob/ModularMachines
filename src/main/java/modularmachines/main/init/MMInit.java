@@ -6,6 +6,7 @@
 package modularmachines.main.init;
 
 import modularmachines.helpers.BugHelper;
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.network.PacketPipeline;
 import net.minecraft.nbt.NBTTagCompound;
@@ -69,5 +70,5 @@ public class MMInit implements IInitalization{
 
 	public static IntegrationLoader integration = new IntegrationLoader();
 	public static PacketPipeline packetPipeline = new PacketPipeline();
-	public static SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel(MM.alias + "|PACKET");
+	public static SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel(LibMod.alias + "|PACKET");
 }

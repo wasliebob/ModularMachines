@@ -9,6 +9,7 @@ import java.util.List;
 
 import modularmachines.entities.projectiles.ProjectilePotionOrb;
 import modularmachines.helpers.PotionHelper;
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMTabs;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -28,7 +29,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class MMItemPotionOrb extends Item{
 	public MMItemPotionOrb(){
 		setMaxStackSize(1);
-		setUnlocalizedName(MM.modName.toLowerCase() + "." + "item" + "." + "potion orb");
+		setUnlocalizedName(LibMod.modName.toLowerCase() + "." + "item" + "." + "potion orb");
 		setCreativeTab(MMTabs.tabPotionOrbs);
 		
 		GameRegistry.registerItem(this, this.getUnlocalizedName());
@@ -45,7 +46,7 @@ public class MMItemPotionOrb extends Item{
 	
 	@Override
     public void registerIcons(IIconRegister ir) {
-		itemIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "orb");
+		itemIcon = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "orb");
 	}
     
 	@SuppressWarnings({ "unchecked", "rawtypes" })

@@ -5,7 +5,7 @@
 */
 package modularmachines.main.init;
 
-import modularmachines.main.MM;
+import modularmachines.libs.LibMod;
 import modularmachines.main.init.integration.WailaIntegration;
 import wasliecore.interfaces.IInitalization;
 import cpw.mods.fml.common.Loader;
@@ -30,6 +30,6 @@ public class IntegrationLoader implements IInitalization{
 	public static WailaIntegration waila = new WailaIntegration();
 
 	public static void message(String mod){
-		System.out.println("[" + MM.alias + "] " + "You have " + mod + " installed, adding intergration");
+		System.out.println("[" + LibMod.alias + "] " + "You have " + mod + " installed, adding intergration");
 	}
 }

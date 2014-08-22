@@ -1,8 +1,7 @@
 ==============
-Version 0.94:
+Version 1.0
 ==============
-Added Waila Integration.
-Added some nice decorative blocks.
-A lot of blocks have new textures now.
-The Machine Core no longer needs a screen. It will be added on placing the block.
-Removed the Screen Upgrade.
+Added Glass (clear, 16 different colors)
+Added Stairs for the bricks.
+Added Slabs for the bricks.
+Added Village House.

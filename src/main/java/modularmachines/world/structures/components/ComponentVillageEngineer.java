@@ -32,9 +32,9 @@ public class ComponentVillageEngineer extends StructureVillagePieces.House1{
   	}
   	
 	@Override
-	public boolean addComponentParts(World world, Random rand, StructureBoundingBox p_74875_3_){
+	public boolean addComponentParts(World world, Random rand, StructureBoundingBox box){
 		if(this.field_143015_k < 0){
-			this.field_143015_k = this.getAverageGroundLevel(world, p_74875_3_);
+			this.field_143015_k = this.getAverageGroundLevel(world, box);
 
 			if(this.field_143015_k < 0){
 				return true;
@@ -43,11 +43,11 @@ public class ComponentVillageEngineer extends StructureVillagePieces.House1{
 			this.boundingBox.offset(0, this.field_143015_k - this.boundingBox.maxY + 9 - 1, 0);
 		}
 
-		this.fillWithBlocks(world, p_74875_3_, 1, 1, 1, 7, 5, 4, Blocks.air, Blocks.air, false);
-		this.fillWithBlocks(world, p_74875_3_, 0, 0, 0, 8, 0, 5, MMBlocks.stone_white, MMBlocks.stone_white, false);
-        this.fillWithBlocks(world, p_74875_3_, 0, 5, 0, 8, 5, 5, MMBlocks.stone_white, MMBlocks.stone_white, false);
-        this.fillWithBlocks(world, p_74875_3_, 0, 6, 1, 8, 6, 4, MMBlocks.stone_white, MMBlocks.stone_white, false);
-        this.fillWithBlocks(world, p_74875_3_, 0, 7, 2, 8, 7, 3, MMBlocks.stone_white, MMBlocks.stone_white, false);
+		this.fillWithBlocks(world, box, 1, 1, 1, 7, 5, 4, Blocks.air, Blocks.air, false);
+		this.fillWithBlocks(world, box, 0, 0, 0, 8, 0, 5, MMBlocks.brick_black, MMBlocks.brick_black, false);
+        this.fillWithBlocks(world, box, 0, 5, 0, 8, 5, 5, MMBlocks.brick_black, MMBlocks.brick_black, false);
+        this.fillWithBlocks(world, box, 0, 6, 1, 8, 6, 4, MMBlocks.brick_black, MMBlocks.brick_black, false);
+        this.fillWithBlocks(world, box, 0, 7, 2, 8, 7, 3, MMBlocks.brick_black, MMBlocks.brick_black, false);
         int i = this.getMetadataWithOffset(Blocks.oak_stairs, 3);
         int j = this.getMetadataWithOffset(Blocks.oak_stairs, 2);
         int k;
@@ -55,73 +55,70 @@ public class ComponentVillageEngineer extends StructureVillagePieces.House1{
 
         for(k = -1; k <= 2; ++k){
         	for (l = 0; l <= 8; ++l){
-        		this.placeBlockAtCurrentPosition(world, Blocks.oak_stairs, i, l, 6 + k, k, p_74875_3_);
-                this.placeBlockAtCurrentPosition(world, Blocks.oak_stairs, j, l, 6 + k, 5 - k, p_74875_3_);
+        		this.placeBlockAtCurrentPosition(world, MMBlocks.stairs_brick_black, i, l, 6 + k, k, box);
+                this.placeBlockAtCurrentPosition(world, MMBlocks.stairs_brick_black, j, l, 6 + k, 5 - k, box);
         	}
         }
         
-        this.fillWithBlocks(world, p_74875_3_, 0, 1, 0, 0, 1, 5, MMBlocks.stone_white, MMBlocks.stone_white, false);
-        this.fillWithBlocks(world, p_74875_3_, 1, 1, 5, 8, 1, 5, MMBlocks.stone_white, MMBlocks.stone_white, false);
-        this.fillWithBlocks(world, p_74875_3_, 8, 1, 0, 8, 1, 4, MMBlocks.stone_white, MMBlocks.stone_white, false);
-        this.fillWithBlocks(world, p_74875_3_, 2, 1, 0, 7, 1, 0, MMBlocks.stone_white, MMBlocks.stone_white, false);
-        this.fillWithBlocks(world, p_74875_3_, 0, 2, 0, 0, 4, 0, MMBlocks.stone_white, MMBlocks.stone_white, false);
-        this.fillWithBlocks(world, p_74875_3_, 0, 2, 5, 0, 4, 5, MMBlocks.stone_white, MMBlocks.stone_white, false);
-        this.fillWithBlocks(world, p_74875_3_, 8, 2, 5, 8, 4, 5, MMBlocks.stone_white, MMBlocks.stone_white, false);
-        this.fillWithBlocks(world, p_74875_3_, 8, 2, 0, 8, 4, 0, MMBlocks.stone_white, MMBlocks.stone_white, false);
-        this.fillWithBlocks(world, p_74875_3_, 0, 2, 1, 0, 4, 4, MMBlocks.chiseled_brick_white, MMBlocks.chiseled_brick_white, false);
-        this.fillWithBlocks(world, p_74875_3_, 1, 2, 5, 7, 4, 5, MMBlocks.chiseled_brick_white, MMBlocks.chiseled_brick_white, false);
-        this.fillWithBlocks(world, p_74875_3_, 8, 2, 1, 8, 4, 4, MMBlocks.chiseled_brick_white, MMBlocks.chiseled_brick_white, false);
-        this.fillWithBlocks(world, p_74875_3_, 1, 2, 0, 7, 4, 0, MMBlocks.chiseled_brick_white, MMBlocks.chiseled_brick_white, false);
-        this.placeBlockAtCurrentPosition(world, Blocks.glass_pane, 0, 4, 2, 0, p_74875_3_);
-        this.placeBlockAtCurrentPosition(world, Blocks.glass_pane, 0, 5, 2, 0, p_74875_3_);
-        this.placeBlockAtCurrentPosition(world, Blocks.glass_pane, 0, 6, 2, 0, p_74875_3_);
-        this.placeBlockAtCurrentPosition(world, Blocks.glass_pane, 0, 4, 3, 0, p_74875_3_);
-        this.placeBlockAtCurrentPosition(world, Blocks.glass_pane, 0, 5, 3, 0, p_74875_3_);
-        this.placeBlockAtCurrentPosition(world, Blocks.glass_pane, 0, 6, 3, 0, p_74875_3_);
-        this.placeBlockAtCurrentPosition(world, Blocks.glass_pane, 0, 0, 2, 2, p_74875_3_);
-        this.placeBlockAtCurrentPosition(world, Blocks.glass_pane, 0, 0, 2, 3, p_74875_3_);
-        this.placeBlockAtCurrentPosition(world, Blocks.glass_pane, 0, 0, 3, 2, p_74875_3_);
-        this.placeBlockAtCurrentPosition(world, Blocks.glass_pane, 0, 0, 3, 3, p_74875_3_);
-        this.placeBlockAtCurrentPosition(world, Blocks.glass_pane, 0, 8, 2, 2, p_74875_3_);
-        this.placeBlockAtCurrentPosition(world, Blocks.glass_pane, 0, 8, 2, 3, p_74875_3_);
-        this.placeBlockAtCurrentPosition(world, Blocks.glass_pane, 0, 8, 3, 2, p_74875_3_);
-        this.placeBlockAtCurrentPosition(world, Blocks.glass_pane, 0, 8, 3, 3, p_74875_3_);
-        this.placeBlockAtCurrentPosition(world, Blocks.glass_pane, 0, 2, 2, 5, p_74875_3_);
-        this.placeBlockAtCurrentPosition(world, Blocks.glass_pane, 0, 3, 2, 5, p_74875_3_);
-        this.placeBlockAtCurrentPosition(world, Blocks.glass_pane, 0, 5, 2, 5, p_74875_3_);
-        this.placeBlockAtCurrentPosition(world, Blocks.glass_pane, 0, 6, 2, 5, p_74875_3_);
-
-        //        this.fillWithBlocks(world, p_74875_3_, 1, 3, 4, 7, 3, 4, Blocks.bookshelf, Blocks.bookshelf, false);
-        this.placeBlockAtCurrentPosition(world, MMBlocks.core_machine, 0, 7, 1, 4, p_74875_3_);
-//        this.placeBlockAtCurrentPosition(world, Blocks.oak_stairs, this.getMetadataWithOffset(Blocks.oak_stairs, 0), 7, 1, 3, p_74875_3_);
+        this.fillWithBlocks(world, box, 0, 1, 0, 0, 1, 5, MMBlocks.brick_black, MMBlocks.brick_black, false);
+        this.fillWithBlocks(world, box, 1, 1, 5, 8, 1, 5, MMBlocks.brick_black, MMBlocks.brick_black, false);
+        this.fillWithBlocks(world, box, 8, 1, 0, 8, 1, 4, MMBlocks.brick_black, MMBlocks.brick_black, false);
+        this.fillWithBlocks(world, box, 2, 1, 0, 7, 1, 0, MMBlocks.brick_black, MMBlocks.brick_black, false);
+        this.fillWithBlocks(world, box, 0, 2, 0, 0, 4, 0, MMBlocks.brick_black, MMBlocks.brick_black, false);
+        this.fillWithBlocks(world, box, 0, 2, 5, 0, 4, 5, MMBlocks.brick_black, MMBlocks.brick_black, false);
+        this.fillWithBlocks(world, box, 8, 2, 5, 8, 4, 5, MMBlocks.brick_black, MMBlocks.brick_black, false);
+        this.fillWithBlocks(world, box, 8, 2, 0, 8, 4, 0, MMBlocks.brick_black, MMBlocks.brick_black, false);
+        this.fillWithBlocks(world, box, 0, 2, 1, 0, 4, 4, MMBlocks.brick_red, MMBlocks.brick_red, false);
+        this.fillWithBlocks(world, box, 1, 2, 5, 7, 4, 5, MMBlocks.brick_red, MMBlocks.brick_red, false);
+        this.fillWithBlocks(world, box, 8, 2, 1, 8, 4, 4, MMBlocks.brick_red, MMBlocks.brick_red, false);
+        this.fillWithBlocks(world, box, 1, 2, 0, 7, 4, 0, MMBlocks.brick_red, MMBlocks.brick_red, false);
         
-//        k = this.getMetadataWithOffset(Blocks.oak_stairs, 3);
-//        this.placeBlockAtCurrentPosition(world, Blocks.oak_stairs, k, 6, 1, 4, p_74875_3_);
-//        this.placeBlockAtCurrentPosition(world, Blocks.oak_stairs, k, 5, 1, 4, p_74875_3_);
-//        this.placeBlockAtCurrentPosition(world, Blocks.oak_stairs, k, 4, 1, 4, p_74875_3_);
-//        this.placeBlockAtCurrentPosition(world, Blocks.oak_stairs, k, 3, 1, 4, p_74875_3_);
-//        this.placeBlockAtCurrentPosition(world, Blocks.fence, 0, 6, 1, 3, p_74875_3_);
-//        this.placeBlockAtCurrentPosition(world, Blocks.wooden_pressure_plate, 0, 6, 2, 3, p_74875_3_);
-//        this.placeBlockAtCurrentPosition(world, Blocks.fence, 0, 4, 1, 3, p_74875_3_);
-//        this.placeBlockAtCurrentPosition(world, Blocks.wooden_pressure_plate, 0, 4, 2, 3, p_74875_3_);
-//        this.placeBlockAtCurrentPosition(world, MMBlocks.core_machine, 0, 7, 1, 1, p_74875_3_);
+        this.placeBlockAtCurrentPosition(world, MMBlocks.glass_default, 1, 4, 2, 0, box);
+        this.placeBlockAtCurrentPosition(world, MMBlocks.glass_default, 1, 5, 2, 0, box);
+        this.placeBlockAtCurrentPosition(world, MMBlocks.glass_default, 1, 6, 2, 0, box);
+        
+        this.placeBlockAtCurrentPosition(world, MMBlocks.glass_default, 1, 4, 3, 0, box);
+        this.placeBlockAtCurrentPosition(world, MMBlocks.glass_default, 1, 5, 3, 0, box);
+        this.placeBlockAtCurrentPosition(world, MMBlocks.glass_default, 1, 6, 3, 0, box);
+        
+        this.placeBlockAtCurrentPosition(world, MMBlocks.glass_default, 1, 0, 2, 2, box);
+        this.placeBlockAtCurrentPosition(world, MMBlocks.glass_default, 1, 0, 2, 3, box);
+        this.placeBlockAtCurrentPosition(world, MMBlocks.glass_default, 1, 0, 3, 2, box);
+        this.placeBlockAtCurrentPosition(world, MMBlocks.glass_default, 1, 0, 3, 3, box);
+        
+        this.placeBlockAtCurrentPosition(world, MMBlocks.glass_default, 1, 8, 2, 2, box);
+        this.placeBlockAtCurrentPosition(world, MMBlocks.glass_default, 1, 8, 2, 3, box);
+        this.placeBlockAtCurrentPosition(world, MMBlocks.glass_default, 1, 8, 3, 2, box);
+        this.placeBlockAtCurrentPosition(world, MMBlocks.glass_default, 1, 8, 3, 3, box);
+        
+        this.placeBlockAtCurrentPosition(world, MMBlocks.glass_default, 1, 2, 2, 5, box);
+        this.placeBlockAtCurrentPosition(world, MMBlocks.glass_default, 1, 3, 2, 5, box);
+        this.placeBlockAtCurrentPosition(world, MMBlocks.glass_default, 1, 5, 2, 5, box);
+        this.placeBlockAtCurrentPosition(world, MMBlocks.glass_default, 1, 6, 2, 5, box);
 
-        this.placeBlockAtCurrentPosition(world, Blocks.air, 0, 1, 1, 0, p_74875_3_);
-        this.placeBlockAtCurrentPosition(world, Blocks.air, 0, 1, 2, 0, p_74875_3_);
-        this.placeDoorAtCurrentPosition(world, p_74875_3_, rand, 1, 1, 0, this.getMetadataWithOffset(Blocks.wooden_door, 1));
+        this.placeBlockAtCurrentPosition(world, MMBlocks.glass_default, 1, 2, 3, 5, box);
+        this.placeBlockAtCurrentPosition(world, MMBlocks.glass_default, 1, 3, 3, 5, box);
+        this.placeBlockAtCurrentPosition(world, MMBlocks.glass_default, 1, 5, 3, 5, box);
+        this.placeBlockAtCurrentPosition(world, MMBlocks.glass_default, 1, 6, 3, 5, box);
+        
+        this.placeBlockAtCurrentPosition(world, MMBlocks.core_machine, 0, 1, 1, 4, box);
 
-        if(this.getBlockAtCurrentPosition(world, 1, 0, -1, p_74875_3_).getMaterial() == Material.air && this.getBlockAtCurrentPosition(world, 1, -1, -1, p_74875_3_).getMaterial() != Material.air){
-        	this.placeBlockAtCurrentPosition(world, Blocks.stone_stairs, this.getMetadataWithOffset(Blocks.stone_stairs, 3), 1, 0, -1, p_74875_3_);
+        this.placeBlockAtCurrentPosition(world, Blocks.air, 0, 1, 1, 0, box);
+        this.placeBlockAtCurrentPosition(world, Blocks.air, 0, 1, 2, 0, box);
+        this.placeDoorAtCurrentPosition(world, box, rand, 1, 1, 0, this.getMetadataWithOffset(Blocks.wooden_door, 1));
+
+        if(this.getBlockAtCurrentPosition(world, 1, 0, -1, box).getMaterial() == Material.air && this.getBlockAtCurrentPosition(world, 1, -1, -1, box).getMaterial() != Material.air){
+        	this.placeBlockAtCurrentPosition(world, MMBlocks.stairs_brick_black, this.getMetadataWithOffset(MMBlocks.stairs_brick_black, 3), 1, 0, -1, box);
         }
 
         for (l = 0; l < 6; ++l){
         	for(int i1 = 0; i1 < 9; ++i1){
-        		this.clearCurrentPositionBlocksUpwards(world, i1, 9, l, p_74875_3_);
-                 this.func_151554_b(world, MMBlocks.stone_white, 0, i1, -1, l, p_74875_3_);
+        		this.clearCurrentPositionBlocksUpwards(world, i1, 9, l, box);
+                 this.func_151554_b(world, MMBlocks.stone_black, 0, i1, -1, l, box);
         	}
         }
 
-        this.spawnVillagers(world, p_74875_3_, 2, 1, 2, 1);
+        this.spawnVillagers(world, box, 2, 1, 2, 1);
         return true;
 	}
 }

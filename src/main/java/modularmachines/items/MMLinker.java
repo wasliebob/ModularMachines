@@ -6,6 +6,7 @@
 package modularmachines.items;
 
 import modularmachines.blocks.tiles.TilePotionTank;
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import modularmachines.main.init.MMTabs;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -26,14 +27,14 @@ public class MMLinker extends Item{
 
 	public MMLinker() {
 		setMaxStackSize(1);
-		setUnlocalizedName(MM.modName.toLowerCase() + "." + "item" + "." + "linker");
+		setUnlocalizedName(LibMod.modName.toLowerCase() + "." + "item" + "." + "linker");
 		setCreativeTab(MMTabs.tabMain);
 		GameRegistry.registerItem(this, this.getUnlocalizedName());
 	}
 
 	@Override
     public void registerIcons(IIconRegister ir){
-        itemIcon = ir.registerIcon(MM.modName.toLowerCase() + ":" + "linker");
+        itemIcon = ir.registerIcon(LibMod.modName.toLowerCase() + ":" + "linker");
 	}
 	
 	@Override

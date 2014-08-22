@@ -42,4 +42,12 @@ public class MMTabs {
 			return MMItems.orb_empty;
 		}
 	};
+	
+    public static CreativeTabs tabDecoration = new CreativeTabs("tabModularMachinesDecoration"){
+		@Override
+		@SideOnly(Side.CLIENT)
+		public Item getTabIconItem(){
+			return Item.getItemFromBlock(MMBlocks.brick_black);
+		}
+	};
 }

@@ -8,6 +8,7 @@ package modularmachines.blocks.guis;
 import modularmachines.api.misc.Bug;
 import modularmachines.helpers.BugHelper;
 import modularmachines.helpers.GuiHelper;
+import modularmachines.libs.LibMod;
 import modularmachines.main.MM;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -63,7 +64,7 @@ public class GuiBugReport extends GuiScreen{
     		else
     			this.onGuiClosed();
     	else if(button.id == 1)
-    		BugHelper.createBug(name.getText(), new Bug(text.getText(), MM.version, MM.mcVersion, MM.modName));
+    		BugHelper.createBug(name.getText(), new Bug(text.getText(), LibMod.modVersion, LibMod.mcVersion, LibMod.modName));
     }
     
     @Override
