@@ -35,7 +35,11 @@ task deps{
 
 apply plugin: 'forge'
 
-version = "1.0"
+ext.buildnumber = 0
+if(System.getenv('BUILD_NUMBER') != null)
+    project.buildnumber = System.getenv('BUILD_NUMBER')
+
+version = "1.0_B${buildnumber}"
 group= "ModularMachines" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ModularMachines"
 
